@@ -19,111 +19,104 @@ local lush = require('lush')
 local hsl = lush.hsl
 
 --------------------------------------------------
+-- TODO: Finish color palette
 
 -- GUI options
 local bf, it, un = 'bold', 'italic', 'underline'
+
 -- Color palette
 local red     = hsl(  0, 50, 50)
-local orange  = hsl( 30, 70, 50)
+local orange  = hsl( 30, 60, 50)
 local teal    = hsl(160, 50, 50)
 
 
--- TODO:
-    -- Change order so that low is dark and high is light
-    -- Change bg to base, and fg to <something-else>
-local base = hsl(30, 10, 10)
-local b1   = base.lighten(40)
-local b2   = b1.lighten(40)
-local b3   = b2.lighten(40)
-local b4   = b3.lighten(40)
+local b0 = hsl(30, 10, 10)
+local b1 = b0.lighten(10)
+local b2 = b1.lighten(20)
+local b3 = b2.lighten(20)
+local b4 = b3.lighten(50)
+local b5 = b4.lighten(40)
 
-local c0 = hsl(30, 10, 80)
-local c1 = c0.darken(40).desaturate(50)
-local c2 = c1.darken(40)
-local c3 = c2.darken(40)
-local c4 = c3.darken(40)
+local bg     = b0
+local subtle = b1
 
-local bg = base
-local fg = b4
+local mid    = b2
 
--- Change names
-local mid = c1
-local out = c3
+local faded  = b3
+local fg     = b4
+local pop    = b5
 
 
 return lush(function() return {
 -- :help highlight-groups
 
-Normal       { fg=fg,    bg=bg };
-NormalFloat  { fg=fg,    bg=bg.li(20) }; -- normal text in floating windows
-NormalNC     { fg=fg,    bg=bg.da(20) }; -- normal text in non-current windows
+Normal       { fg=fg,     bg=bg };
+NormalFloat  { fg=fg,     bg=subtle };    -- normal text in floating windows
+NormalNC     { fg=fg,     bg=bg.da(20) }; -- normal text in non-current windows
 
-Comment      { fg=mid,   gui=it};
-Conceal      { bg=c3 }; -- placeholder characters substituted for concealed text (see 'conceallevel')
-Whitespace   { fg=c2 }; -- white space in 'listchars'
-NonText      { fg=c2 }; -- characters that don't exist in the text
-SpecialKey   { fg=c1 }; -- Unprintable characters: text displayed differently from what it really is
+Comment      { fg=faded,  gui=it};
+Conceal      { bg=mid }; -- placeholder characters substituted for concealed text (see 'conceallevel')
+Whitespace   { fg=mid }; -- white space in 'listchars'
+NonText      { fg=mid }; -- characters that don't exist in the text
+SpecialKey   { fg=mid }; -- Unprintable characters: text displayed differently from what it really is
 
-Cursor       { };
-TermCursor   { };
-
-ColorColumn  { bg=out };
-CursorColumn { bg=out };
-CursorLine   { bg=out };
-LineNr       { fg=c1 };
+--Cursor       { };
+--TermCursor   { };
+ColorColumn  { bg=subtle };
+CursorColumn { ColorColumn };
+CursorLine   { ColorColumn };
+LineNr       { fg=faded };
 CursorLineNr { fg=orange.darken(20) }; -- Like LineNr when 'cursorline' or 'relativenumber' is set
-SignColumn   { fg=c1 };
-VertSplit    { fg=c3, bg=c3 };         -- column separating vertically split windows
-Folded       { fg=c1, bg=c3 }; -- line used for closed folds
-FoldColumn   { LineNr }; -- 'foldcolumn'
+SignColumn   { LineNr };
+VertSplit    { fg=mid,    bg=mid };     -- column separating vertically split windows
+Folded       { fg=faded,  bg=subtle };  -- line used for closed folds
+FoldColumn   { fg=faded };
 
-Pmenu        { bg=out }; -- Popup menu normal item
-PmenuSel     { bg=mid }; -- selected item
-PmenuSbar    { bg=out }; -- scrollbar
-PmenuThumb   { bg=mid }; -- Thumb of the scrollbar
+Pmenu        { bg=subtle }; -- Popup menu normal item
+PmenuSel     { bg=mid };    -- selected item
+PmenuSbar    { Pmenu };     -- scrollbar
+PmenuThumb   { PmenuSel };  -- Thumb of the scrollbar
 
-StatusLine   { bg=out }; -- status line of current window
-StatusLineNC { fg=mid,    bg=out }; -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+StatusLine   { bg=subtle };
+StatusLineNC { fg=faded,  bg=subtle };
 
-TabLine      { }; -- tab pages line, not active tab page label
-TabLineFill  { }; -- tab pages line, where there are no labels
-TabLineSel   { }; -- tab pages line, active tab page label
+--TabLine      { }; -- not active tab page label
+--TabLineFill  { }; -- where there are no labels
+--TabLineSel   { }; -- active tab page label
 
-IncSearch    { fg=bg, bg=fg }; -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-Substitute   { fg=bg, bg=fg }; -- |:substitute| replacement text highlighting
-Search       { bg=out }; -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+IncSearch    { fg=bg,     bg=fg };     -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+Substitute   { fg=bg,     bg=fg };     -- |:substitute| replacement text highlighting
+Search       { fg=pop,    bg=subtle }; -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
 
-Visual       { bg=out }; -- Visual mode selection
-VisualNOS    { }; -- Visual mode selection when vim is "Not Owning the Selection".
-WildMenu     { }; -- current match in 'wildmenu' completion
+Visual       { fg=pop,    bg=subtle }; -- Visual mode selection
+VisualNOS    { fg=fg,     bg=subtle }; -- Visual mode selection when vim is "Not Owning the Selection".
 
-MatchParen   { fg=fg,     bg=mid }; -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+WildMenu     { fg=pop }; -- current match in 'wildmenu' completion
 
+MatchParen   { fg=pop,    bg=mid };
 
-ModeMsg      { fg=mid }; -- 'showmode' message (e.g., "-- INSERT -- ")
-MsgArea      { Normal }; -- Area for messages and cmdline
-MsgSeparator { }; -- Separator for scrolled messages, `msgsep` flag of 'display'
-MoreMsg      { fg=teal }; -- |more-prompt|
+QuickFixLine { fg=pop };         -- Current |quickfix| item in the quickfix window
 
-Question     { fg=teal }; -- |hit-enter| prompt and yes/no questions
-QuickFixLine { }; -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
+ModeMsg      { fg=faded }; -- 'showmode' message (e.g. "-- INSERT -- ")
+MsgArea      { Normal };   -- Area for messages and cmdline
+--MsgSeparator { };          -- Separator for scrolled messages `msgsep` flag of 'display'
+MoreMsg      { fg=teal };  -- |more-prompt|
+Question     { fg=teal };  -- |hit-enter| prompt and yes/no questions
+ErrorMsg     { fg=red };   -- error messages on the command line
+WarningMsg   { fg=red };   -- warning messages
 
-Directory    { fg=orange}; -- directory names (and other special names in listings)
+Directory    { fg=orange }; -- directory names (and other special names in listings)
+Title        { fg=orange }; -- titles for output from ":set all" ":autocmd" etc.
 
 DiffAdd      { fg=teal };
 DiffChange   { fg=orange };
 DiffDelete   { fg=red };
 DiffText     { fg=orange, gui=bf };
-ErrorMsg     { fg=red }; -- error messages on the command line
 
-SpellBad     { fg=red,    gui=un }; -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
-SpellCap     { fg=teal,   gui=un }; -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
-SpellLocal   { fg=orange, gui=un }; -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
-SpellRare    { fg=orange, gui=un }; -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
-
-Title        { fg=orange }; -- titles for output from ":set all", ":autocmd" etc.
-WarningMsg   { fg=red }; -- warning messages
-
+SpellBad     { fg=red,    gui=un };
+SpellCap     { fg=teal,   gui=un };
+SpellLocal   { fg=orange, gui=un };
+SpellRare    { fg=orange, gui=un };
 
 
 -- These highlight groups are not listed as default Vim groups,
@@ -132,41 +125,43 @@ WarningMsg   { fg=red }; -- warning messages
 -- default,
 -- Uncomment and edit if you want more specific syntax highlighting.
 
+--- TODO: Cold colors
 Constant       { }; -- (preferred) any constant
-String         { }; --   a string constant: "this is a string"
-Character      { }; --  a character constant: 'c', '\n'
-Number         { }; --   a number constant: 234, 0xff
-Boolean        { }; --  a boolean constant: TRUE, false
-Float          { }; --    a floating point constant: 2.3e10
+String         { }; -- string constant: "this is a string"
+Character      { }; -- character constant: 'c', '\n'
+Number         { }; -- number constant: 234, 0xff
+Boolean        { }; -- boolean constant: TRUE, false
+Float          { }; -- floating point constant: 2.3e10
 
 Identifier     { }; -- (preferred) any variable name
---Function       { fg=orange.ro(30) }; -- function name (also: methods for classes)
 
+---- TODO: Warm colors
+--Function       { fg=orange.ro(30) }; -- function name (also: methods for classes)
 Statement      { fg=orange }; -- (preferred) any statement
---Conditional    { }; --  if, then, else, endif, switch, etc.
---Repeat         { }; --   for, do, while, etc.
---Label          { }; --    case, default, etc.
+--Conditional    { }; -- if, then, else, endif, switch, etc.
+--Repeat         { }; -- for, do, while, etc.
+--Label          { }; -- case, default, etc.
 --Operator       { }; -- "sizeof", "+", "*", etc.
---Keyword        { }; --  any other keyword
---Exception      { }; --  try, catch, throw
+--Keyword        { }; -- any other keyword
+--Exception      { }; -- try, catch, throw
 
 PreProc        { }; -- (preferred) generic Preprocessor
-Include        { }; --  preprocessor #include
-Define         { }; --   preprocessor #define
-Macro          { }; --    same as Define
-PreCondit      { }; --  preprocessor #if, #else, #endif, etc.
+Include        { }; -- preprocessor #include
+Define         { }; -- preprocessor #define
+Macro          { }; -- same as Define
+PreCondit      { }; -- preprocessor #if, #else, #endif, etc.
 
 Type           { }; -- (preferred) int, long, char, etc.
 StorageClass   { }; -- static, register, volatile, etc.
-Structure      { }; --  struct, union, enum, etc.
-Typedef        { }; --  A typedef
+Structure      { }; -- struct, union, enum, etc.
+Typedef        { };
 
 Special        { }; -- (preferred) any special symbol
-SpecialChar    { }; --  special character in a constant
-Tag            { }; --    you can use CTRL-] on this
-Delimiter      { }; --  character that needs attention
+SpecialChar    { }; -- special character in a constant
+Tag            { }; -- you can use CTRL-] on this
+Delimiter      { }; -- character that needs attention
 SpecialComment { }; -- special things inside a comment
-Debug          { }; --    debugging statements
+Debug          { }; -- debugging statements
 
 Underlined { gui = "underline" }; -- (preferred) text that stands out, HTML links
 Bold       { gui = "bold" };

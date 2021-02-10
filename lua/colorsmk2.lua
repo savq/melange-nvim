@@ -18,33 +18,42 @@
 local lush = require('lush')
 local hsl = lush.hsl
 
+-- TODO: Light color scheme
 --------------------------------------------------
--- TODO: Finish color palette
-
 -- GUI options
 local bf, it, un = 'bold', 'italic', 'underline'
 
+-- Base colors
+local c0 = hsl(30, 2, 15)
+local c1 = c0.lighten(10)
+local c2 = c1.lighten(40)
+local c3 = c2.lighten(10)
+local c4 = c3.lighten(60)
+local c5 = c4.lighten(30)
+
+-- Set base colors
+local bg     = c0
+local subtle = c1
+local mid    = c2
+local faded  = c3
+local fg     = c4
+local pop    = c5
+
 -- Color palette
-local red     = hsl(  0, 50, 50)
-local orange  = hsl( 30, 60, 50)
-local teal    = hsl(160, 50, 50)
+local orange  = hsl( 30, 50, 50)
+local yellow  = hsl( 60, 60, 60)
 
+local green   = hsl(105, 40, 40)
 
-local b0 = hsl(30, 10, 10)
-local b1 = b0.lighten(10)
-local b2 = b1.lighten(20)
-local b3 = b2.lighten(20)
-local b4 = b3.lighten(50)
-local b5 = b4.lighten(40)
+local teal    = hsl(150, 50, 50)
+local cyan    = hsl(180, 80, 80)
 
-local bg     = b0
-local subtle = b1
+local blue    = hsl(225, 40, 40)
 
-local mid    = b2
+local magenta = hsl(270, 50, 50)
+local pink    = hsl(300, 80, 80)
 
-local faded  = b3
-local fg     = b4
-local pop    = b5
+local red     = hsl(345, 40, 40)
 
 
 return lush(function() return {
@@ -66,7 +75,7 @@ ColorColumn  { bg=subtle };
 CursorColumn { ColorColumn };
 CursorLine   { ColorColumn };
 LineNr       { fg=faded };
-CursorLineNr { fg=orange.darken(20) }; -- Like LineNr when 'cursorline' or 'relativenumber' is set
+CursorLineNr { fg=orange }; -- Like LineNr when 'cursorline' or 'relativenumber' is set
 SignColumn   { LineNr };
 VertSplit    { fg=mid,    bg=mid };     -- column separating vertically split windows
 Folded       { fg=faded,  bg=subtle };  -- line used for closed folds
@@ -80,7 +89,7 @@ PmenuThumb   { PmenuSel };  -- Thumb of the scrollbar
 StatusLine   { bg=subtle };
 StatusLineNC { fg=faded,  bg=subtle };
 
---TabLine      { }; -- not active tab page label
+--TabLine      { }; -- not active tab page label. TODO
 --TabLineFill  { }; -- where there are no labels
 --TabLineSel   { }; -- active tab page label
 
@@ -100,23 +109,23 @@ QuickFixLine { fg=pop };         -- Current |quickfix| item in the quickfix wind
 ModeMsg      { fg=faded }; -- 'showmode' message (e.g. "-- INSERT -- ")
 MsgArea      { Normal };   -- Area for messages and cmdline
 --MsgSeparator { };          -- Separator for scrolled messages `msgsep` flag of 'display'
-MoreMsg      { fg=teal };  -- |more-prompt|
-Question     { fg=teal };  -- |hit-enter| prompt and yes/no questions
+MoreMsg      { fg=green };  -- |more-prompt|
+Question     { fg=green };  -- |hit-enter| prompt and yes/no questions
 ErrorMsg     { fg=red };   -- error messages on the command line
 WarningMsg   { fg=red };   -- warning messages
 
 Directory    { fg=orange }; -- directory names (and other special names in listings)
 Title        { fg=orange }; -- titles for output from ":set all" ":autocmd" etc.
 
-DiffAdd      { fg=teal };
+DiffAdd      { fg=green };
 DiffChange   { fg=orange };
 DiffDelete   { fg=red };
 DiffText     { fg=orange, gui=bf };
 
 SpellBad     { fg=red,    gui=un };
-SpellCap     { fg=teal,   gui=un };
+SpellCap     { fg=cyan,   gui=un };
 SpellLocal   { fg=orange, gui=un };
-SpellRare    { fg=orange, gui=un };
+SpellRare    { fg=pink,   gui=un };
 
 
 -- These highlight groups are not listed as default Vim groups,
@@ -125,51 +134,50 @@ SpellRare    { fg=orange, gui=un };
 -- default,
 -- Uncomment and edit if you want more specific syntax highlighting.
 
+
 --- TODO: Cold colors
-Constant       { }; -- (preferred) any constant
-String         { }; -- string constant: "this is a string"
-Character      { }; -- character constant: 'c', '\n'
-Number         { }; -- number constant: 234, 0xff
-Boolean        { }; -- boolean constant: TRUE, false
-Float          { }; -- floating point constant: 2.3e10
+Constant       { fg=cyan }; -- (preferred) any constant
+String         { fg=green }; -- string constant: "this is a string"
+--Character      { }; -- character constant: 'c', '\n'
+--Number         { }; -- number constant: 234, 0xff
+--Boolean        { }; -- boolean constant: TRUE, false
+--Float          { }; -- floating point constant: 2.3e10
 
-Identifier     { }; -- (preferred) any variable name
+Identifier     { fg=fg };  -- (preferred) any variable name
+Function       { fg=yellow }; -- function name (also: methods for classes)
 
----- TODO: Warm colors
---Function       { fg=orange.ro(30) }; -- function name (also: methods for classes)
 Statement      { fg=orange }; -- (preferred) any statement
 --Conditional    { }; -- if, then, else, endif, switch, etc.
 --Repeat         { }; -- for, do, while, etc.
 --Label          { }; -- case, default, etc.
---Operator       { }; -- "sizeof", "+", "*", etc.
+Operator       { fg=orange }; -- "sizeof", "+", "*", etc.
 --Keyword        { }; -- any other keyword
 --Exception      { }; -- try, catch, throw
 
-PreProc        { }; -- (preferred) generic Preprocessor
-Include        { }; -- preprocessor #include
-Define         { }; -- preprocessor #define
-Macro          { }; -- same as Define
-PreCondit      { }; -- preprocessor #if, #else, #endif, etc.
+PreProc        { fg=pink }; -- (preferred) generic Preprocessor
+--Include        { }; -- preprocessor #include
+--Define         { }; -- preprocessor #define
+--Macro          { }; -- same as Define
+--PreCondit      { }; -- preprocessor #if, #else, #endif, etc.
 
-Type           { }; -- (preferred) int, long, char, etc.
-StorageClass   { }; -- static, register, volatile, etc.
-Structure      { }; -- struct, union, enum, etc.
-Typedef        { };
+Type           { fg=teal };
+--StorageClass   { }; -- static, register, volatile, etc.
+Structure      { fg=green }; -- struct, union, enum, etc.
+Typedef        { fg=teal, gui=bf };
 
-Special        { }; -- (preferred) any special symbol
-SpecialChar    { }; -- special character in a constant
-Tag            { }; -- you can use CTRL-] on this
-Delimiter      { }; -- character that needs attention
-SpecialComment { }; -- special things inside a comment
-Debug          { }; -- debugging statements
+Special        { fg=magenta }; -- (preferred) any special symbol
+--SpecialChar    { }; -- special character in a constant
+--Tag            { }; -- you can use CTRL-] on this
+--Delimiter      { }; -- character that needs attention
+--SpecialComment { }; -- special things inside a comment
+--Debug          { }; -- debugging statements
 
-Underlined { gui = "underline" }; -- (preferred) text that stands out, HTML links
-Bold       { gui = "bold" };
-Italic     { gui = "italic" };
-
-Ignore         { }; -- (preferred) left blank, hidden  |hl-Ignore|
-Error          { }; -- (preferred) any erroneous construct
-Todo           { fg=red }; -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+Underlined { gui = un };
+Bold       { gui = bf };
+Italic     { gui = it };
+Ignore     { fg=faded }; -- (preferred) left blank, hidden  |hl-Ignore|
+Error      { fg=red };   -- (preferred) any erroneous construct
+Todo       { fg=orange, gui=bf }; -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
 
 
@@ -201,6 +209,7 @@ Todo           { fg=red }; -- (preferred) anything that needs extra attention; m
 -- you explicitly want to support Treesitter's improved syntax awareness.
 
 -- TSError              { }; -- For syntax/parser errors.
+
 -- TSPunctDelimiter     { }; -- For delimiters ie: `.`
 -- TSPunctBracket       { }; -- For brackets and parens.
 -- TSPunctSpecial       { }; -- For special punctutation that does not fall in the catagories before.
@@ -223,6 +232,7 @@ Todo           { fg=red }; -- (preferred) anything that needs extra attention; m
 -- TSField              { }; -- For fields.
 -- TSProperty           { }; -- Same as `TSField`.
 -- TSConstructor        { }; -- For constructor calls and definitions: `{ }` in Lua, and Java constructors.
+
 -- TSConditional        { }; -- For keywords related to conditionnals.
 -- TSRepeat             { }; -- For keywords related to loops.
 -- TSLabel              { }; -- For labels: `label:` in C and `:label:` in Lua.
@@ -230,11 +240,14 @@ Todo           { fg=red }; -- (preferred) anything that needs extra attention; m
 -- TSKeyword            { }; -- For keywords that don't fall in previous categories.
 -- TSKeywordFunction    { }; -- For keywords used to define a fuction.
 -- TSException          { }; -- For exception related keywords.
+
 -- TSType               { }; -- For types.
 -- TSTypeBuiltin        { }; -- For builtin types (you guessed it, right ?).
+
 -- TSNamespace          { }; -- For identifiers referring to modules and namespaces.
 -- TSInclude            { }; -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
 -- TSAnnotation         { }; -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
+
 -- TSText               { }; -- For strings considered text in a markup language.
 -- TSStrong             { }; -- For text to be represented with strong.
 -- TSEmphasis           { }; -- For text to be represented with emphasis.
@@ -243,9 +256,8 @@ Todo           { fg=red }; -- (preferred) anything that needs extra attention; m
 -- TSLiteral            { }; -- Literal text.
 -- TSURI                { }; -- Any URI like a link or email.
 -- TSVariable           { }; -- Any variable name that does not have another highlight.
+
 -- TSVariableBuiltin    { }; -- Variable names that are defined by the languages, like `this` or `self`.
 
-}
-end)
-
+}end)
 -- vi:nowrap

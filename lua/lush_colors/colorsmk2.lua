@@ -18,7 +18,7 @@
 local lush = require 'lush'
 local hsl = lush.hsl
 
--- Define first the TS groups, then define other groups based on that
+-- Settle on Teal and Cyan
 --------------------------------------------------
 
 -- GUI options
@@ -27,11 +27,11 @@ local bf, it, un = 'bold', 'italic', 'underline'
 
 -- Base colors
 local c0 = hsl(30, 5, 15)
-local c1 = c0.lighten(10)
-local c2 = c1.lighten(40)
-local c3 = c2.lighten(10)
-local c4 = c3.lighten(50)
-local c5 = c4.lighten(30)
+local c1 = c0.lighten(5)
+local c2 = c1.lighten(20)
+local c3 = c2.lighten(40)
+local c4 = c3.lighten(60)
+local c5 = c4.lighten(80)
 
 -- Set base colors
 local bg     = c0
@@ -42,15 +42,15 @@ local fg     = c4
 local pop    = c5
 
 -- Color palette
-local red     = hsl(350,  50, 40)
+local red     = hsl(350,  50, 60)
 local orange  = hsl( 30,  60, 50)
 local yellow  = hsl( 40, 100, 70)
 
-local green   = hsl(100,  60, 40)
-local teal    = hsl(150,  30, 50)
-local cyan    = hsl(180,  40, 70)
+local green   = hsl(100,  50, 60)
+local teal    = hsl(150,  30, 70)
+local cyan    = hsl(180,  30, 50) -- :S see possible alternatives
 
-local blue    = hsl(225,  60, 70)
+local blue    = hsl(225,  50, 60)
 local purple  = hsl(270,  50, 60)
 local magenta = hsl(310,  40, 70)
 
@@ -59,80 +59,6 @@ local r = lush['hsl']
 
 return lush(function() return {
 -- :help highlight-groups
-
--- These groups are for the neovim tree-sitter highlights.
--- As of writing, tree-sitter support is a WIP, group names may change.
--- By default, most of these groups link to an appropriate Vim group,
--- TSError -> Error for example, so you do not have to define these unless
--- you explicitly want to support Treesitter's improved syntax awareness.
-
-TSError              { fg=red }; -- syntax/parser errors.
-
-TSPunctDelimiter     { fg=orange };        -- delimiters ie: `.`
-TSPunctBracket       { fg=yellow };        -- brackets and parens.
-TSPunctSpecial       { TSPunctDelimiter }; -- special punctutation that does not fall in the catagories before.
-
-TSConstant           { fg=blue };
-TSConstBuiltin       { fg=blue };         -- constant that are built in the language: `nil` in Lua.
-TSConstMacro         { fg=blue,    gui=bf }; -- constants that are defined by macros: `NULL` in C.
-
---TSString             { fg=green,   gui=it };
---TSStringRegex        { fg=green, gui=it };
---TSStringEscape       { fg=green, gui=it }; -- escape characters within a string
-TSCharacter          { fg=teal };
-
-TSNumber             { fg=teal };
-TSBoolean            { fg=teal,    gui=it };
-TSFloat              { fg=teal };
-
-TSFunction           { fg=yellow };          -- function calls and definitions
-TSFuncBuiltin        { };
-TSFuncMacro          { fg=yellow,  gui=bf }; -- macro defined fuctions (calls and definitions): each `macro_rules` in Rust
-TSParameter          { fg=fg };
-TSParameterReference { TSParameter };
-TSMethod             { fg=yellow };
-
-TSField              { fg=cyan }; -- For fields.
-TSProperty           { fg=magenta }; -- Same as `TSField`.
-TSConstructor        { fg= yellow }; -- For constructor calls and definitions: `{ }` in Lua and Java constructors.
-
-TSKeyword            { fg=orange };
-TSConditional        { TSKeyword };
-TSRepeat             { TSKeyword };
-TSLabel              { TSKeyword,  gui=bf };
-TSOperator           { TSKeyword };
-TSKeywordFunction    { TSKeyword };
-TSException          { fg=red };
-
-TSType               { fg=teal };
-TSTypeBuiltin        { fg=teal };
-
-TSNamespace          { fg=purple }; -- identifiers referring to modules and namespaces.
---TSInclude            { }; -- includes: `#include` in C `use` or `extern crate` in Rust or `require` in Lua.
---TSAnnotation         { }; -- C++/Dart attributes annotations that can be attached to the code to denote some kind of meta information.
-
-TSText               { fg=fg };
-TSStrong             { fg=fg,      gui=bf };
-TSEmphasis           { fg=fg,      gui=it };
-TSUnderline          { fg=fg,      gui=un };
-TSTitle              { fg=orange }; -- Text that is part of a title
-TSLiteral            { fg=faded }; -- Literal text
-TSURI                { fg=blue }; -- Any URI like a link or email
-TSVariable           { fg=fg }; -- Any variable name that does not have another highlight
-
-TSVariableBuiltin    { fg=fg }; -- Variable names that are defined by the languages like `this` or `self`.
-
-
-
-
-
-
---------------------------------------------------------------------------------
-
-
-
-
-
 
 Normal       { fg=fg,     bg=bg };
 NormalFloat  { fg=fg,     bg=subtle };    -- normal text in floating windows
@@ -198,7 +124,7 @@ DiffDelete   { fg=red };
 DiffText     { fg=orange, gui=bf };
 
 SpellBad     { fg=red,     gui=un };
-SpellCap     { fg=cyan,    gui=un };
+SpellCap     { fg=teal,    gui=un };
 SpellLocal   { fg=orange,  gui=un };
 SpellRare    { fg=magenta, gui=un };
 
@@ -209,42 +135,41 @@ SpellRare    { fg=magenta, gui=un };
 -- default,
 -- Uncomment and edit if you want more specific syntax highlighting.
 
---- TODO: Cold colors
-Constant       { }; -- (preferred) any constant
---Boolean        { }; -- boolean constant: TRUE, false
---String         { }; -- string constant: "this is a string"
---Character      { }; -- character constant: 'c', '\n'
---Number         { }; -- number constant: 234, 0xff
---Float          { }; -- floating point constant: 2.3e10
+Constant       { fg=blue };
+Boolean        { fg=teal,  gui=it };
+String         { fg=green, gui=it };
+Character      { fg=teal };
+Number         { fg=teal };
+Float          { Number };
 
-Identifier     { };  -- (preferred) any variable name
---Function       { }; -- function name (also: methods for classes)
+Identifier     { fg=fg };
+Function       { fg=yellow };
 
-Statement      { }; -- (preferred) any statement
---Conditional    { }; -- if, then, else, endif, switch, etc.
---Repeat         { }; -- for, do, while, etc.
---Label          { }; -- case, default, etc.
---Operator       { }; -- "sizeof", "+", "*", etc.
---Keyword        { }; -- any other keyword
---Exception      { }; -- try, catch, throw
+Statement      { fg=orange }; -- (preferred) any statement
+Conditional    { Statement };
+Repeat         { Statement };
+Label          { Statement, gui=bf };       -- case, default, etc.
+Operator       { fg=orange.sa(30).li(30) }; -- "sizeof", "+", "*", etc.
+Keyword        { Statement };               -- any other keyword
+Exception      { fg=red };
 
-PreProc        { }; -- (preferred) generic Preprocessor
---Include        { }; -- preprocessor #include
---Define         { }; -- preprocessor #define
---Macro          { }; -- same as Define
---PreCondit      { }; -- preprocessor #if, #else, #endif, etc.
+PreProc        { fg=purple }; -- (preferred) generic Preprocessor
+Include        { PreProc }; -- preprocessor #include
+Define         { PreProc }; -- preprocessor #define
+Macro          { PreProc }; -- same as Define
+PreCondit      { PreProc }; -- preprocessor #if, #else, #endif, etc.
 
-Type           { };
---StorageClass   { }; -- static, register, volatile, etc.
---Structure      { }; -- struct, union, enum, etc.
---Typedef        { };
+Type           { fg=magenta };
+StorageClass   { fg=magenta }; -- static, register, volatile, etc.
+Structure      { fg=magenta }; -- struct, union, enum, etc.
+Typedef        { fg=magenta };
 
---Special        { fg=pink }; -- (preferred) any special symbol
---SpecialChar    { fg=green }; -- special character in a constant
---Tag            { }; -- you can use CTRL-] on this
---Delimiter      { }; -- character that needs attention
---SpecialComment { }; -- special things inside a comment
---Debug          { }; -- debugging statements
+Special        { fg=orange }; -- (preferred) any special symbol
+SpecialChar    { Special }; -- special character in a constant
+Tag            { Special }; -- you can use CTRL-] on this
+Delimiter      { Special }; -- character that needs attention
+SpecialComment { Special }; -- special things inside a comment
+Debug          { Special }; -- debugging statements
 
 Underlined { gui = un };
 Bold       { gui = bf };
@@ -252,7 +177,6 @@ Italic     { gui = it };
 Ignore     { fg=faded }; -- (preferred) left blank, hidden  |hl-Ignore|
 Error      { fg=red };   -- (preferred) any erroneous construct
 Todo       { fg=orange, gui=bf }; -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
-
 
 
 -- These groups are for the native LSP client. Some other LSP clients may use
@@ -273,6 +197,73 @@ Todo       { fg=orange, gui=bf }; -- (preferred) anything that needs extra atten
 -- LspReferenceText                  { }; -- used for highlighting "text" references
 -- LspReferenceRead                  { }; -- used for highlighting "read" references
 -- LspReferenceWrite                 { }; -- used for highlighting "write" references
+
+
+-- These groups are for the neovim tree-sitter highlights.
+-- As of writing, tree-sitter support is a WIP, group names may change.
+-- By default, most of these groups link to an appropriate Vim group,
+-- TSError -> Error for example, so you do not have to define these unless
+-- you explicitly want to support Treesitter's improved syntax awareness.
+
+TSError              { fg=red }; -- syntax/parser errors.
+
+TSPunctDelimiter     { Delimiter };        -- delimiters ie: `.`
+TSPunctBracket       { fg=yellow };        -- brackets and parens.
+TSPunctSpecial       { TSPunctDelimiter }; -- special punctutation that does not fall in the catagories before.
+
+TSConstant           { Constant };
+TSConstBuiltin       { Constant };         -- constant that are built in the language: `nil` in Lua.
+TSConstMacro         { Constant,    gui=bf }; -- constants that are defined by macros: `NULL` in C.
+
+TSString             { String };
+TSStringRegex        { String };
+TSStringEscape       { String, fg=teal }; -- escape characters within a string
+TSCharacter          { Character };
+
+TSNumber             { Number };
+TSBoolean            { Boolean };
+TSFloat              { Float };
+
+TSFunction           { Function };          -- function calls and definitions
+TSFuncBuiltin        { Function, gui=it };
+TSFuncMacro          { Function, gui=bf }; -- macro defined fuctions (calls and definitions): each `macro_rules` in Rust
+TSMethod             { Function };
+TSConstructor        { Function }; -- For constructor calls and definitions: `{ }` in Lua and Java constructors.
+
+TSParameter          { fg=fg };
+TSParameterReference { TSParameter };
+
+TSField              { fg=cyan }; -- For fields.
+TSProperty           { TSField }; -- Same as `TSField`.
+
+TSKeyword            { Statement };
+TSConditional        { TSKeyword };
+TSRepeat             { TSKeyword };
+TSLabel              { Label };
+
+TSOperator           { TSKeyword };
+
+TSKeywordFunction    { fg=cyan };
+
+TSException          { Exception };
+
+TSType               { fg=magenta };
+TSTypeBuiltin        { fg=magenta };
+
+TSNamespace          { fg=purple }; -- identifiers referring to modules and namespaces.
+TSInclude            { TSNamespace }; -- includes: `#include` in C `use` or `extern crate` in Rust or `require` in Lua.
+TSAnnotation         { TSNamespace }; -- C++/Dart attributes annotations that can be attached to the code to denote some kind of meta information
+
+TSText               { fg=fg };
+TSStrong             { TSText, gui=bf };
+TSEmphasis           { TSText, gui=it };
+TSUnderline          { TSText, gui=un };
+TSTitle              { fg=orange }; -- Text that is part of a title
+TSLiteral            { TSString }; -- Literal text
+TSURI                { TSConstant };  -- Any URI like a link or email
+
+TSVariable           { fg=fg }; -- Any variable name that does not have another highlight
+TSVariableBuiltin    { fg=fg }; -- Variable names that are defined by the languages like `this` or `self`.
 
 }end)
 -- vi:nowrap

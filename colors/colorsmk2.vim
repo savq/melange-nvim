@@ -10,7 +10,7 @@ let g:colors_name="colorsmk2"
 "
 " Note if you're working in on your theme and have lush.ify'd the buffer,
 " your changes will be applied with our without the following line.
-lua package.loaded['lush_colors.colorsmk2'] = nil
+lua package.loaded['colorsmk2'] = nil
 
 " include our theme file and pass it to lush to apply
-lua require('lush')(require('lush_colors.colorsmk2'))
+lua require('lush')(require('colorsmk2'))

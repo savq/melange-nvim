@@ -18,15 +18,13 @@
 local lush = require 'lush'
 local hsl = lush.hsl
 
--- Settle on Teal and Cyan
 --------------------------------------------------
 
 -- GUI options
 local bf, it, un = 'bold', 'italic', 'underline'
 
-
 -- Base colors
-local c0 = hsl(30, 5, 15)
+local c0 = hsl(30, 0, 15)
 local c1 = c0.lighten(5)
 local c2 = c1.lighten(20)
 local c3 = c2.lighten(40)
@@ -45,21 +43,18 @@ local pop    = c5
 local red     = hsl(350,  50, 60)
 local orange  = hsl( 30,  60, 50)
 local yellow  = hsl( 40, 100, 70)
-
 local green   = hsl(100,  50, 60)
 local teal    = hsl(150,  30, 70)
-local cyan    = hsl(180,  30, 50) -- :S see possible alternatives
-
+local cyan    = hsl(180,  30, 50) -- change?
 local blue    = hsl(225,  50, 60)
 local purple  = hsl(270,  50, 60)
 local magenta = hsl(310,  40, 70)
 
 
-local r = lush['hsl']
-
 return lush(function() return {
--- :help highlight-groups
+-- these are repeated here for use elsewhere
 
+-- :help highlight-groups
 Normal       { fg=fg,     bg=bg };
 NormalFloat  { fg=fg,     bg=subtle };    -- normal text in floating windows
 NormalNC     { fg=fg,     bg=bg.da(10) }; -- normal text in non-current windows
@@ -67,11 +62,11 @@ NormalNC     { fg=fg,     bg=bg.da(10) }; -- normal text in non-current windows
 Comment      { fg=mid,  gui=it};
 Conceal      { fg=faded }; -- placeholder characters substituted for concealed text (see 'conceallevel')
 Whitespace   { fg=mid };   -- white space in 'listchars'
-NonText      { fg=subtle };   -- characters that don't exist in the text
+NonText      { fg=mid };   -- characters that don't exist in the text
 SpecialKey   { fg=mid };   -- Unprintable characters: text displayed differently from what it really is
 
---Cursor       { };
---TermCursor   { };
+Cursor       { fg=bg, bg=fg };
+TermCursor   { fg=bg, bg=fg };
 ColorColumn  { bg=subtle };
 CursorColumn { ColorColumn };
 CursorLine   { ColorColumn };
@@ -136,7 +131,7 @@ SpellRare    { fg=magenta, gui=un };
 -- Uncomment and edit if you want more specific syntax highlighting.
 
 Constant       { fg=blue };
-Boolean        { fg=teal,  gui=it };
+Boolean        { fg=teal };
 String         { fg=green, gui=it };
 Character      { fg=teal };
 Number         { fg=teal };
@@ -225,7 +220,7 @@ TSBoolean            { Boolean };
 TSFloat              { Float };
 
 TSFunction           { Function };          -- function calls and definitions
-TSFuncBuiltin        { Function, gui=it };
+TSFuncBuiltin        { Function };
 TSFuncMacro          { Function, gui=bf }; -- macro defined fuctions (calls and definitions): each `macro_rules` in Rust
 TSMethod             { Function };
 TSConstructor        { Function }; -- For constructor calls and definitions: `{ }` in Lua and Java constructors.
@@ -264,6 +259,11 @@ TSURI                { TSConstant };  -- Any URI like a link or email
 
 TSVariable           { fg=fg }; -- Any variable name that does not have another highlight
 TSVariableBuiltin    { fg=fg }; -- Variable names that are defined by the languages like `this` or `self`.
+
+
+-- Default markdown syntax somehow doesn't have these
+markdownCode          { String };
+markdownCodeBlock     { String };
 
 }end)
 -- vi:nowrap

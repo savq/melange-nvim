@@ -1,6 +1,6 @@
 -- colorsmk2.lua
 -- Mantainer: Sergio Alejandro Vargas <savargasqu+git@unal.edu.co>
--- last update: 2021-02-07
+-- last update: 2021-02-19
 --
 -- Built with,
 --
@@ -43,12 +43,14 @@ local pop    = c5
 local red     = hsl(350,  50, 60)
 local orange  = hsl( 30,  60, 50)
 local yellow  = hsl( 40, 100, 70)
-local green   = hsl(100,  50, 60)
-local teal    = hsl(150,  30, 70)
-local cyan    = hsl(180,  30, 50) -- change?
-local blue    = hsl(225,  50, 60)
-local purple  = hsl(270,  50, 60)
-local magenta = hsl(310,  40, 70)
+
+local green   = hsl(100,  40, 50)
+local teal    = hsl(150,  30, 50)
+local cyan    = hsl(180,  30, 60)
+
+local blue    = hsl(225,  90, 80)
+local purple  = hsl(270,  40, 60)
+local magenta = hsl(310,  50, 70)
 
 
 return lush(function() return {
@@ -59,7 +61,7 @@ Normal       { fg=fg,     bg=bg };
 NormalFloat  { fg=fg,     bg=subtle };    -- normal text in floating windows
 NormalNC     { fg=fg,     bg=bg.da(10) }; -- normal text in non-current windows
 
-Comment      { fg=mid,  gui=it};
+Comment      { fg=mid,  gui=it };
 Conceal      { fg=faded }; -- placeholder characters substituted for concealed text (see 'conceallevel')
 Whitespace   { fg=mid };   -- white space in 'listchars'
 NonText      { fg=mid };   -- characters that don't exist in the text
@@ -114,28 +116,27 @@ Directory    { fg=orange }; -- directory names (and other special names in listi
 Title        { fg=orange }; -- titles for output from ":set all" ":autocmd" etc.
 
 DiffAdd      { fg=green };
-DiffChange   { fg=orange };
 DiffDelete   { fg=red };
-DiffText     { fg=orange, gui=bf };
+DiffChange   { fg=magenta }; --strange color
+DiffText     { fg=magenta, gui=un };
 
 SpellBad     { fg=red,     gui=un };
-SpellCap     { fg=teal,    gui=un };
+SpellCap     { fg=magenta, gui=un };
 SpellLocal   { fg=orange,  gui=un };
-SpellRare    { fg=magenta, gui=un };
+SpellRare    { fg=yellow,  gui=un };
 
 
--- These highlight groups are not listed as default Vim groups,
--- but they are de-facto standard for syntax highlighting.
--- commented out groups should chain up to their "preferred" group by
--- default,
--- Uncomment and edit if you want more specific syntax highlighting.
+-- These highlight groups are not listed as default Vim groups, but they are
+-- de-facto standard for syntax highlighting. commented out groups should
+-- chain up to their "preferred" group by default, Uncomment and edit if you
+-- want more specific syntax highlighting.
 
-Constant       { fg=blue };
-Boolean        { fg=teal };
-String         { fg=green, gui=it };
-Character      { fg=teal };
-Number         { fg=teal };
-Float          { Number };
+Constant       { fg=magenta };
+Number         { Constant };
+Float          { Constant };
+Boolean        { Constant };
+Character      { Constant };
+String         { fg=blue, gui=it };
 
 Identifier     { fg=fg };
 Function       { fg=yellow };
@@ -144,61 +145,63 @@ Statement      { fg=orange }; -- (preferred) any statement
 Conditional    { Statement };
 Repeat         { Statement };
 Label          { Statement, gui=bf };       -- case, default, etc.
-Operator       { fg=orange.sa(30).li(30) }; -- "sizeof", "+", "*", etc.
-Keyword        { Statement };               -- any other keyword
+Operator       { fg=orange };
+Keyword        { Statement };    -- any other keyword
 Exception      { fg=red };
 
-PreProc        { fg=purple }; -- (preferred) generic Preprocessor
-Include        { PreProc }; -- preprocessor #include
-Define         { PreProc }; -- preprocessor #define
-Macro          { PreProc }; -- same as Define
-PreCondit      { PreProc }; -- preprocessor #if, #else, #endif, etc.
+PreProc        { fg=green };    -- (preferred) generic Preprocessor
+Include        { PreProc };    -- preprocessor #include
+Define         { PreProc };    -- preprocessor #define
+Macro          { fg=yellow };    -- same as Define
+PreCondit      { PreProc };    -- preprocessor #if, #else, #endif, etc.
 
-Type           { fg=magenta };
-StorageClass   { fg=magenta }; -- static, register, volatile, etc.
-Structure      { fg=magenta }; -- struct, union, enum, etc.
-Typedef        { fg=magenta };
+Type           { fg=cyan };
+StorageClass   { Type };    -- static, register, volatile, etc.
+Structure      { Type };    -- struct, union, enum, etc.
+Typedef        { Type };
 
-Special        { fg=orange }; -- (preferred) any special symbol
-SpecialChar    { Special }; -- special character in a constant
-Tag            { Special }; -- you can use CTRL-] on this
-Delimiter      { Special }; -- character that needs attention
-SpecialComment { Special }; -- special things inside a comment
-Debug          { Special }; -- debugging statements
+Special        { fg=orange };  -- (preferred) any special symbol
+SpecialChar    { Special };    -- special character in a constant
+Tag            { Special };    -- you can use CTRL-] on this
+Delimiter      { Special };    -- character that needs attention
+SpecialComment { Special };    -- special things inside a comment
+Debug          { Special };    -- debugging statements
 
 Underlined { gui = un };
 Bold       { gui = bf };
 Italic     { gui = it };
-Ignore     { fg=faded }; -- (preferred) left blank, hidden  |hl-Ignore|
-Error      { fg=red };   -- (preferred) any erroneous construct
-Todo       { fg=orange, gui=bf }; -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+Ignore     { fg=faded };           --  left blank, hidden  |hl-Ignore|
+Error      { fg=red };             --  any erroneous construct
+Todo       { fg=orange, gui=bf };  --  anything that needs extra attention; mostly the keywords TODO FIXME and XXX
 
 
--- These groups are for the native LSP client. Some other LSP clients may use
--- these groups, or use their own. Consult your LSP client's documentation.
+---- LSP
+---- These groups are for the native LSP client. Some other LSP clients may use
+---- these groups, or use their own. Consult your LSP client's documentation.
 
--- LspDiagnosticsError               { }; -- used for "Error" diagnostic virtual text
--- LspDiagnosticsErrorSign           { }; -- used for "Error" diagnostic signs in sign column
--- LspDiagnosticsErrorFloating       { }; -- used for "Error" diagnostic messages in the diagnostics float
--- LspDiagnosticsWarning             { }; -- used for "Warning" diagnostic virtual text
--- LspDiagnosticsWarningSign         { }; -- used for "Warning" diagnostic signs in sign column
--- LspDiagnosticsWarningFloating     { }; -- used for "Warning" diagnostic messages in the diagnostics float
--- LspDiagnosticsInformation         { }; -- used for "Information" diagnostic virtual text
--- LspDiagnosticsInformationSign     { }; -- used for "Information" signs in sign column
--- LspDiagnosticsInformationFloating { }; -- used for "Information" diagnostic messages in the diagnostics float
--- LspDiagnosticsHint                { }; -- used for "Hint" diagnostic virtual text
--- LspDiagnosticsHintSign            { }; -- used for "Hint" diagnostic signs in sign column
--- LspDiagnosticsHintFloating        { }; -- used for "Hint" diagnostic messages in the diagnostics float
--- LspReferenceText                  { }; -- used for highlighting "text" references
--- LspReferenceRead                  { }; -- used for highlighting "read" references
--- LspReferenceWrite                 { }; -- used for highlighting "write" references
+LspDiagnosticsError               { fg=faded };  -- "Error" diagnostic virtual text
+LspDiagnosticsErrorSign           { fg=red };    -- "Error" diagnostic signs in sign column
+LspDiagnosticsErrorFloating       { fg=faded };  -- "Error" diagnostic messages in the diagnostics float
+LspDiagnosticsWarning             { fg=faded };  -- "Warning" diagnostic virtual text
+LspDiagnosticsWarningSign         { fg=yellow }; -- "Warning" diagnostic signs in sign column
+-- LspDiagnosticsWarningFloating     { }; -- "Warning" diagnostic messages in the diagnostics float
+-- LspDiagnosticsInformation         { }; -- "Information" diagnostic virtual text
+LspDiagnosticsInformationSign     { fg=teal }; -- "Information" signs in sign column
+-- LspDiagnosticsInformationFloating { }; -- "Information" diagnostic messages in the diagnostics float
+LspDiagnosticsHint                { fg=faded }; -- "Hint" diagnostic virtual text
+-- LspDiagnosticsHintSign            { }; -- "Hint" diagnostic signs in sign column
+-- LspDiagnosticsHintFloating        { }; -- "Hint" diagnostic messages in the diagnostics float
+-- LspReferenceText                  { }; -- highlighting "text" references
+-- LspReferenceRead                  { }; -- highlighting "read" references
+-- LspReferenceWrite                 { }; -- highlighting "write" references
 
 
--- These groups are for the neovim tree-sitter highlights.
--- As of writing, tree-sitter support is a WIP, group names may change.
--- By default, most of these groups link to an appropriate Vim group,
--- TSError -> Error for example, so you do not have to define these unless
--- you explicitly want to support Treesitter's improved syntax awareness.
+---- TREESITTER
+---- These groups are for the neovim tree-sitter highlights.  As of writing,
+---- tree-sitter support is a WIP, group names may change.  By default, most of
+---- these groups link to an appropriate Vim group, TSError -> Error for example,
+---- so you do not have to define these unless you explicitly want to support
+---- Treesitter's improved syntax awareness.
 
 TSError              { fg=red }; -- syntax/parser errors.
 
@@ -208,62 +211,60 @@ TSPunctSpecial       { TSPunctDelimiter }; -- special punctutation that does not
 
 TSConstant           { Constant };
 TSConstBuiltin       { Constant };         -- constant that are built in the language: `nil` in Lua.
-TSConstMacro         { Constant,    gui=bf }; -- constants that are defined by macros: `NULL` in C.
+TSConstMacro         { Constant, gui=bf }; -- constants that are defined by macros: `NULL` in C.
 
 TSString             { String };
 TSStringRegex        { String };
-TSStringEscape       { String, fg=teal }; -- escape characters within a string
+TSStringEscape       { String,   fg=cyan }; -- escape characters within a string
 TSCharacter          { Character };
-
-TSNumber             { Number };
 TSBoolean            { Boolean };
+TSNumber             { Number };
 TSFloat              { Float };
 
 TSFunction           { Function };          -- function calls and definitions
 TSFuncBuiltin        { Function };
-TSFuncMacro          { Function, gui=bf }; -- macro defined fuctions (calls and definitions): each `macro_rules` in Rust
+TSFuncMacro          { Macro };  -- macro defined fuctions (calls and definitions): each `macro_rules` in Rust
 TSMethod             { Function };
-TSConstructor        { Function }; -- For constructor calls and definitions: `{ }` in Lua and Java constructors.
+TSConstructor        { Function, gui=bf };  -- For constructor calls and definitions: `{ }` in Lua and Java constructors.
+TSKeywordFunction    { fg=teal };
 
 TSParameter          { fg=fg };
 TSParameterReference { TSParameter };
 
-TSField              { fg=cyan }; -- For fields.
-TSProperty           { TSField }; -- Same as `TSField`.
+TSField              { fg=teal };
+TSProperty           { TSField };
 
 TSKeyword            { Statement };
-TSConditional        { TSKeyword };
-TSRepeat             { TSKeyword };
+TSConditional        { Conditional };
+TSRepeat             { Repeat };
 TSLabel              { Label };
-
-TSOperator           { TSKeyword };
-
-TSKeywordFunction    { fg=cyan };
-
+TSOperator           { Operator };
 TSException          { Exception };
 
-TSType               { fg=magenta };
-TSTypeBuiltin        { fg=magenta };
+TSType               { Type };
+TSTypeBuiltin        { TSType,   gui=it };
 
-TSNamespace          { fg=purple }; -- identifiers referring to modules and namespaces.
-TSInclude            { TSNamespace }; -- includes: `#include` in C `use` or `extern crate` in Rust or `require` in Lua.
-TSAnnotation         { TSNamespace }; -- C++/Dart attributes annotations that can be attached to the code to denote some kind of meta information
+TSNamespace          { fg=purple };      -- identifiers referring to modules and namespaces.
+TSInclude            { TSNamespace };    -- includes: `#include` in C `use` or `extern crate` in Rust or `require` in Lua.
+TSAnnotation         { TSNamespace };    -- C++/Dart attributes annotations that can be attached to the code to denote some kind of meta information
 
 TSText               { fg=fg };
-TSStrong             { TSText, gui=bf };
-TSEmphasis           { TSText, gui=it };
-TSUnderline          { TSText, gui=un };
-TSTitle              { fg=orange }; -- Text that is part of a title
-TSLiteral            { TSString }; -- Literal text
+TSStrong             { TSText,   gui=bf };
+TSEmphasis           { TSText,   gui=it };
+TSUnderline          { TSText,   gui=un };
+TSTitle              { fg=orange };   -- Text that is part of a title
+TSLiteral            { TSString };    -- Literal text
 TSURI                { TSConstant };  -- Any URI like a link or email
 
-TSVariable           { fg=fg }; -- Any variable name that does not have another highlight
-TSVariableBuiltin    { fg=fg }; -- Variable names that are defined by the languages like `this` or `self`.
+TSVariable           { fg=fg };    -- Any variable name that does not have another highlight
+TSVariableBuiltin    { fg=fg };    -- Variable names that are defined by the languages like `this` or `self`.
 
 
--- Default markdown syntax somehow doesn't have these
+---- MARKDOWN
 markdownCode          { String };
 markdownCodeBlock     { String };
+markdownRule          { Statement };
+markdownLinkText      { fg=cyan };
 
 }end)
 -- vi:nowrap

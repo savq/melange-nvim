@@ -1,43 +1,24 @@
-const or = 30;
-
-const colors = [
-  0,
-  120,
-  240,
-
-  30,
-  150,
-  270,
-  
-  75,
-  195,
-  315,
-];
-
 function setup() {
   frameRate(10);
   createCanvas(400, 400);
   colorMode(HSL);
   background(50);
-}
 
-function draw() {
   stroke(0);
   strokeWeight(5);
   noFill();
   circle(200, 200, 300);
+  draw_color(350,  50, 60)
+  draw_color( 30,  60, 50)
+  draw_color( 40, 100, 70)
+  draw_color(100,  40, 50)
+  draw_color(150,  30, 50)
+  draw_color(180,  30, 60)
+  draw_color(225,  90, 80)
+  draw_color(270,  40, 60)
+  draw_color(310,  50, 70)
 
-draw_color( 30, 60, 50);
-draw_color( 60, 70, 70);
-draw_color(105, 50, 55);
-  
-draw_color(150, 60, 50);
-draw_color(180, 60, 70);
-draw_color(225, 50, 55);
-  
-draw_color(270, 60, 50);
-draw_color(300, 50, 70);
-draw_color(345, 50, 55);
+  noLoop()
 }
 
 function draw_color(h, s, l) {

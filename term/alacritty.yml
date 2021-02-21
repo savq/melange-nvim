@@ -1,0 +1,21 @@
+  primary:
+    foreground: #CFCFCF
+    background: #262626
+  normal:
+    white:   #CFCFCF
+    black:   #262626
+    red:     #D65C70
+    yellow:  #FFCC66
+    green:   #59A680
+    cyan:    #7AB8B8
+    blue:    #9EB5FA
+    magenta: #D98CCC
+  bright:
+    white:   #F5F5F5
+    black:   #303030
+    red:     #D65C70
+    yellow:  #CC8033
+    green:   #8BC270
+    cyan:    #9EB5FA
+    blue:    #9EB5FA
+    magenta: #9970C2

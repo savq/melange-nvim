@@ -1,6 +1,6 @@
--- colorsmk2.lua
+-- melange/colors.lua
 -- Mantainer: Sergio Alejandro Vargas <savargasqu+git@unal.edu.co>
--- last update: 2021-02-19
+-- last update: 2021-02-21
 --
 -- Built with,
 --
@@ -27,24 +27,26 @@ local bf, it, un = 'bold', 'italic', 'underline'
 local c0 = hsl(30, 0, 15)
 local c1 = c0.lighten(5)
 local c2 = c1.lighten(20)
-local c3 = c2.lighten(40)
-local c4 = c3.lighten(60)
-local c5 = c4.lighten(80)
+local c3 = c2.lighten(20)
+local c4 = c3.lighten(10)
+local c5 = c4.lighten(60)
+local c6 = c5.lighten(80)
 
 -- Set base colors
 local bg     = c0
 local subtle = c1
 local mid    = c2
 local faded  = c3
-local fg     = c4
-local pop    = c5
+local drop   = c4
+local fg     = c5
+local pop    = c6
 
 -- Color palette
-local red     = hsl(350,  50, 60)
+local red     = hsl(350,  60, 60)
 local orange  = hsl( 30,  60, 50)
 local yellow  = hsl( 40, 100, 70)
 
-local green   = hsl(100,  40, 50)
+local green   = hsl(100,  40, 60)
 local teal    = hsl(150,  30, 50)
 local cyan    = hsl(180,  30, 60)
 
@@ -54,18 +56,16 @@ local magenta = hsl(310,  50, 70)
 
 
 return lush(function() return {
--- these are repeated here for use elsewhere
-
 -- :help highlight-groups
 Normal       { fg=fg,     bg=bg };
 NormalFloat  { fg=fg,     bg=subtle };    -- normal text in floating windows
 NormalNC     { fg=fg,     bg=bg.da(10) }; -- normal text in non-current windows
 
-Comment      { fg=mid,  gui=it };
-Conceal      { fg=faded }; -- placeholder characters substituted for concealed text (see 'conceallevel')
-Whitespace   { fg=mid };   -- white space in 'listchars'
-NonText      { fg=mid };   -- characters that don't exist in the text
-SpecialKey   { fg=mid };   -- Unprintable characters: text displayed differently from what it really is
+Comment      { fg=drop,  gui=it };
+Conceal      { fg=faded };  -- 'conceallevel'
+Whitespace   { fg=mid };    -- 'listchars'
+NonText      { fg=mid };    -- characters that don't exist in the text
+SpecialKey   { fg=mid };    -- Unprintable characters: text displayed differently from what it really is
 
 Cursor       { fg=bg, bg=fg };
 TermCursor   { fg=bg, bg=fg };
@@ -73,9 +73,9 @@ ColorColumn  { bg=subtle };
 CursorColumn { ColorColumn };
 CursorLine   { ColorColumn };
 LineNr       { fg=faded };
-CursorLineNr { fg=orange }; -- Like LineNr when 'cursorline' or 'relativenumber' is set
+CursorLineNr { fg=orange };    -- Like LineNr when 'cursorline' or 'relativenumber' is set
 SignColumn   { LineNr };
-VertSplit    { fg=subtle, bg=subtle };     -- column separating vertically split windows
+VertSplit    { fg=subtle, bg=subtle };    -- column separating vertically split windows
 Folded       { fg=faded, bg=bg.da(10) };  -- line used for closed folds
 FoldColumn   { fg=faded };
 
@@ -104,21 +104,23 @@ MatchParen   { fg=pop,    bg=mid };
 
 QuickFixLine { fg=pop };         -- Current |quickfix| item in the quickfix window
 
-ModeMsg      { fg=faded }; -- 'showmode' message (e.g. "-- INSERT -- ")
-MsgArea      { Normal };   -- Area for messages and cmdline
+ModeMsg      { fg=faded };  -- 'showmode' message (e.g. "-- INSERT -- ")
+MsgArea      { Normal };    -- Area for messages and cmdline
 --MsgSeparator { };          -- Separator for scrolled messages `msgsep` flag of 'display'
 MoreMsg      { fg=green };  -- |more-prompt|
 Question     { fg=green };  -- |hit-enter| prompt and yes/no questions
-ErrorMsg     { fg=red };   -- error messages on the command line
-WarningMsg   { fg=red };   -- warning messages
+ErrorMsg     { fg=red };    -- error messages on the command line
+WarningMsg   { fg=red };    -- warning messages
 
-Directory    { fg=orange }; -- directory names (and other special names in listings)
-Title        { fg=orange }; -- titles for output from ":set all" ":autocmd" etc.
+Directory    { fg=orange };    -- directory names (and other special names in listings)
+Title        { fg=orange };    -- titles for output from ":set all" ":autocmd" etc.
 
 DiffAdd      { fg=green };
 DiffDelete   { fg=red };
-DiffChange   { fg=magenta }; --strange color
-DiffText     { fg=magenta, gui=un };
+DiffChange   { fg=yellow.da(20) };    -- strange color
+DiffText     { DiffChange, gui=un };
+DiffAdded    { DiffAdd };
+DiffRemoved  { DiffDelete };
 
 SpellBad     { fg=red,     gui=un };
 SpellCap     { fg=magenta, gui=un };
@@ -131,11 +133,11 @@ SpellRare    { fg=yellow,  gui=un };
 -- chain up to their "preferred" group by default, Uncomment and edit if you
 -- want more specific syntax highlighting.
 
-Constant       { fg=magenta };
-Number         { Constant };
-Float          { Constant };
-Boolean        { Constant };
-Character      { Constant };
+Constant       { fg=purple };
+Number         { fg=magenta };
+Float          { Number };
+Boolean        { Number };
+Character      { fg=blue };
 String         { fg=blue, gui=it };
 
 Identifier     { fg=fg };
@@ -149,13 +151,13 @@ Operator       { fg=orange };
 Keyword        { Statement };    -- any other keyword
 Exception      { fg=red };
 
-PreProc        { fg=green };    -- (preferred) generic Preprocessor
+PreProc        { fg=green };   --  generic Preprocessor
 Include        { PreProc };    -- preprocessor #include
 Define         { PreProc };    -- preprocessor #define
-Macro          { fg=yellow };    -- same as Define
+Macro          { PreProc };    -- same as Define
 PreCondit      { PreProc };    -- preprocessor #if, #else, #endif, etc.
 
-Type           { fg=cyan };
+Type           { fg=teal };
 StorageClass   { Type };    -- static, register, volatile, etc.
 Structure      { Type };    -- struct, union, enum, etc.
 Typedef        { Type };
@@ -179,18 +181,19 @@ Todo       { fg=orange, gui=bf };  --  anything that needs extra attention; most
 ---- These groups are for the native LSP client. Some other LSP clients may use
 ---- these groups, or use their own. Consult your LSP client's documentation.
 
-LspDiagnosticsError               { fg=faded };  -- "Error" diagnostic virtual text
+c_lsp {fg=faded};
+LspDiagnosticsError               { c_lsp };     -- "Error" diagnostic virtual text
 LspDiagnosticsErrorSign           { fg=red };    -- "Error" diagnostic signs in sign column
-LspDiagnosticsErrorFloating       { fg=faded };  -- "Error" diagnostic messages in the diagnostics float
-LspDiagnosticsWarning             { fg=faded };  -- "Warning" diagnostic virtual text
+LspDiagnosticsErrorFloating       { c_lsp };     -- "Error" diagnostic messages in the diagnostics float
+LspDiagnosticsWarning             { c_lsp };     -- "Warning" diagnostic virtual text
 LspDiagnosticsWarningSign         { fg=yellow }; -- "Warning" diagnostic signs in sign column
--- LspDiagnosticsWarningFloating     { }; -- "Warning" diagnostic messages in the diagnostics float
--- LspDiagnosticsInformation         { }; -- "Information" diagnostic virtual text
-LspDiagnosticsInformationSign     { fg=teal }; -- "Information" signs in sign column
--- LspDiagnosticsInformationFloating { }; -- "Information" diagnostic messages in the diagnostics float
-LspDiagnosticsHint                { fg=faded }; -- "Hint" diagnostic virtual text
--- LspDiagnosticsHintSign            { }; -- "Hint" diagnostic signs in sign column
--- LspDiagnosticsHintFloating        { }; -- "Hint" diagnostic messages in the diagnostics float
+LspDiagnosticsWarningFloating     { c_lsp };     -- "Warning" diagnostic messages in the diagnostics float
+LspDiagnosticsInformation         { c_lsp };     -- "Information" diagnostic virtual text
+LspDiagnosticsInformationSign     { fg=teal };   -- "Information" signs in sign column
+LspDiagnosticsInformationFloating { c_lsp };     -- "Information" diagnostic messages in the diagnostics float
+LspDiagnosticsHint                { c_lsp };     -- "Hint" diagnostic virtual text
+LspDiagnosticsHintSign            { c_lsp };     -- "Hint" diagnostic signs in sign column
+LspDiagnosticsHintFloating        { c_lsp };     -- "Hint" diagnostic messages in the diagnostics float
 -- LspReferenceText                  { }; -- highlighting "text" references
 -- LspReferenceRead                  { }; -- highlighting "read" references
 -- LspReferenceWrite                 { }; -- highlighting "write" references
@@ -203,14 +206,12 @@ LspDiagnosticsHint                { fg=faded }; -- "Hint" diagnostic virtual tex
 ---- so you do not have to define these unless you explicitly want to support
 ---- Treesitter's improved syntax awareness.
 
-TSError              { fg=red }; -- syntax/parser errors.
-
 TSPunctDelimiter     { Delimiter };        -- delimiters ie: `.`
 TSPunctBracket       { fg=yellow };        -- brackets and parens.
 TSPunctSpecial       { TSPunctDelimiter }; -- special punctutation that does not fall in the catagories before.
 
 TSConstant           { Constant };
-TSConstBuiltin       { Constant };         -- constant that are built in the language: `nil` in Lua.
+TSConstBuiltin       { Constant, gui=it }; -- constant that are built in the language: `nil` in Lua.
 TSConstMacro         { Constant, gui=bf }; -- constants that are defined by macros: `NULL` in C.
 
 TSString             { String };
@@ -221,18 +222,15 @@ TSBoolean            { Boolean };
 TSNumber             { Number };
 TSFloat              { Float };
 
-TSFunction           { Function };          -- function calls and definitions
-TSFuncBuiltin        { Function };
-TSFuncMacro          { Macro };  -- macro defined fuctions (calls and definitions): each `macro_rules` in Rust
-TSMethod             { Function };
-TSConstructor        { Function, gui=bf };  -- For constructor calls and definitions: `{ }` in Lua and Java constructors.
+TSFunction           { Function };
+TSFuncBuiltin        { TSFunction };
+TSFuncMacro          { TSFunction };          -- macro defined fuctions: each `macro_rules` in Rust
+TSMethod             { TSFunction };
+TSConstructor        { TSFunction, gui=bf };  -- For constructor: `{}` in Lua and Java constructors.
 TSKeywordFunction    { fg=teal };
 
 TSParameter          { fg=fg };
 TSParameterReference { TSParameter };
-
-TSField              { fg=teal };
-TSProperty           { TSField };
 
 TSKeyword            { Statement };
 TSConditional        { Conditional };
@@ -244,9 +242,16 @@ TSException          { Exception };
 TSType               { Type };
 TSTypeBuiltin        { TSType,   gui=it };
 
-TSNamespace          { fg=purple };      -- identifiers referring to modules and namespaces.
+TSNamespace          { PreProc };        -- identifiers referring to modules and namespaces.
 TSInclude            { TSNamespace };    -- includes: `#include` in C `use` or `extern crate` in Rust or `require` in Lua.
 TSAnnotation         { TSNamespace };    -- C++/Dart attributes annotations that can be attached to the code to denote some kind of meta information
+
+TSVariable           { fg=fg };          -- Any variable name that does not have another highlight
+TSVariableBuiltin    { fg=fg, gui=it };  -- Variable names that are defined by the languages like `this` or `self`.
+TSField              { fg=fg };
+TSProperty           { TSField };
+
+TSError              { fg=red }; -- syntax/parser errors.
 
 TSText               { fg=fg };
 TSStrong             { TSText,   gui=bf };
@@ -255,9 +260,6 @@ TSUnderline          { TSText,   gui=un };
 TSTitle              { fg=orange };   -- Text that is part of a title
 TSLiteral            { TSString };    -- Literal text
 TSURI                { TSConstant };  -- Any URI like a link or email
-
-TSVariable           { fg=fg };    -- Any variable name that does not have another highlight
-TSVariableBuiltin    { fg=fg };    -- Variable names that are defined by the languages like `this` or `self`.
 
 
 ---- MARKDOWN

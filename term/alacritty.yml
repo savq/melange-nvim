@@ -1,21 +1,21 @@
   primary:
-    foreground: #CFCFCF
-    background: #262626
+    foreground: '#C4C4C4'
+    background: '#262626'
   normal:
-    white:   #CFCFCF
-    black:   #262626
-    red:     #D65C70
-    yellow:  #FFCC66
-    green:   #59A680
-    cyan:    #7AB8B8
-    blue:    #9EB5FA
-    magenta: #D98CCC
+    white:   '#C4C4C4'
+    black:   '#262626'
+    red:     '#D65C70'
+    yellow:  '#FFCC66'
+    green:   '#4DB380'
+    cyan:    '#7AB8B8'
+    blue:    '#8C9FD9'
+    magenta: '#997AB8'
   bright:
-    white:   #F5F5F5
-    black:   #303030
-    red:     #D65C70
-    yellow:  #CC8033
-    green:   #8BC270
-    cyan:    #9EB5FA
-    blue:    #9EB5FA
-    magenta: #9970C2
+    white:   '#262626'
+    black:   '#7A7A7A'
+    red:     '#F07F75'
+    yellow:  '#CC8033'
+    green:   '#88CC66'
+    cyan:    '#7AB8B8'
+    blue:    '#8C9FD9'
+    magenta: '#EBADE0'

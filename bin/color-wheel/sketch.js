@@ -10,34 +10,35 @@ function setup() {
   background(50);
   angleMode(DEGREES)
   translate(width / 2, height / 2)
-
   stroke(0);
   strokeWeight(2);
   noFill();
-  circle(0, 0, 300);
 
-  // draw some radii
+  // draw a circle with some radii
+  circle(0, 0, 300);
   for (let i = 0; i < 360; i += 15) {
     line(0, 0, cos(i) * 150, sin(i) * 150)
   }
 
-  draw_color(350,  60, 60)
-  draw_color( 30,  60, 50)
-  draw_color( 40, 100, 70)
-
-  draw_color(100,  90, 80)
-  draw_color(150,  30, 50)
-  draw_color(180,  30, 60)
-
-  draw_color(225,  90, 80)
-  draw_color(270,  40, 60)
-  draw_color(310,  50, 70)
-
-  noLoop()
+  draw_colors();
+  noLoop();
 }
 
-function draw_color(h, s, l) {
-  let a;
+function draw_colors() {
+  draw_hsl(350, 60, 60);
+  draw_hsl(30,  60, 50);
+  draw_hsl(40, 100, 70);
+                        
+  draw_hsl(100, 50, 60);
+  draw_hsl(150, 40, 50);
+  draw_hsl(180, 30, 60);
+                        
+  draw_hsl(225, 30, 60);
+  draw_hsl(270, 40, 70);
+  draw_hsl(310, 50, 70);
+}
+
+function draw_hsl(h, s, l) {
   stroke(h, s, l);
   strokeWeight(l / 2);
   point(cos(h) * s * 1.5, sin(h) * s * 1.5);
@@ -45,12 +46,10 @@ function draw_color(h, s, l) {
 
 /*
 function draw_color_wheel() {
-  let a;
   for (let i = 0; i < 360; i++) {
     for (let j = 0; j < 100; j++) {
       stroke(i, j, 50);
-      a = radians(i);
-      point(cos(a) * j + 200, sin(a) * j + 200);
+      point(cos(i) * j + 200, sin(i) * j + 200);
     }
   }
 }

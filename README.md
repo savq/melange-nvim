@@ -1,16 +1,11 @@
 🚧 **WORK IN PROGRESS** 🚧
 
-## TODO
-  - Screenshot
-  - Logo
-  - Distribute cold colors better
-
+**TODO:** Screenshot or logo
 
 # Meλanʒe
 
-Melange is a dark color scheme with a warm, moderate contrast color palette;
-written for Neovim, and with tree-sitter support.
-
+Melange is a dark color scheme with a warm, moderate contrast color palette,
+and with tree-sitter support.
 
 ## Requirements
 

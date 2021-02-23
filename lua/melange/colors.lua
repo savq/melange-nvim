@@ -29,7 +29,7 @@ local c1 = c0.lighten(5)
 local c2 = c1.lighten(20)
 local c3 = c2.lighten(20)
 local c4 = c3.lighten(10)
-local c5 = c4.lighten(60)
+local c5 = c4.lighten(50)
 local c6 = c5.lighten(80)
 
 -- Set base colors
@@ -91,12 +91,12 @@ StatusLineNC { fg=faded,  bg=subtle };
 --TabLineFill  { }; -- where there are no labels
 --TabLineSel   { }; -- active tab page label
 
-IncSearch    { fg=bg,     bg=fg };     -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-Substitute   { fg=bg,     bg=fg };     -- |:substitute| replacement text highlighting
-Search       { fg=pop,    bg=subtle }; -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
+Search       { fg=bg,    bg=yellow };  -- Last search pattern highlighting (see 'hlsearch')
+IncSearch    { Search };               -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+Substitute   { Search };               -- |:substitute| replacement text highlighting
 
-Visual       { fg=pop,    bg=subtle }; -- Visual mode selection
-VisualNOS    { fg=fg,     bg=subtle }; -- Visual mode selection when vim is "Not Owning the Selection".
+Visual       { bg=mid };    -- Visual mode selection
+VisualNOS    { bg=subtle }; -- Visual mode selection when vim is "Not Owning the Selection".
 
 WildMenu     { fg=pop }; -- current match in 'wildmenu' completion
 
@@ -157,7 +157,7 @@ Define         { PreProc };    -- preprocessor #define
 Macro          { PreProc };    -- same as Define
 PreCondit      { PreProc };    -- preprocessor #if, #else, #endif, etc.
 
-Type           { fg=teal };
+Type           { fg=cyan };
 StorageClass   { Type };    -- static, register, volatile, etc.
 Structure      { Type };    -- struct, union, enum, etc.
 Typedef        { Type };
@@ -174,14 +174,14 @@ Bold       { gui = bf };
 Italic     { gui = it };
 Ignore     { fg=faded };           --  left blank, hidden  |hl-Ignore|
 Error      { fg=red };             --  any erroneous construct
-Todo       { fg=orange, gui=bf };  --  anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+Todo       { fg=orange, gui=bf };  --  anything that needs extra attention
 
 
 ---- LSP
 ---- These groups are for the native LSP client. Some other LSP clients may use
 ---- these groups, or use their own. Consult your LSP client's documentation.
 
-c_lsp {fg=faded};
+c_lsp {fg=faded}; -- TODO
 LspDiagnosticsError               { c_lsp };     -- "Error" diagnostic virtual text
 LspDiagnosticsErrorSign           { fg=red };    -- "Error" diagnostic signs in sign column
 LspDiagnosticsErrorFloating       { c_lsp };     -- "Error" diagnostic messages in the diagnostics float

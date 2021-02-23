@@ -42,18 +42,18 @@ local fg     = c5
 local pop    = c6
 
 -- Color palette
-local red     = hsl(350,  60, 60)
-local orange  = hsl( 30,  60, 50)
-local yellow  = hsl( 40, 100, 70)
+local red     = hsl(350, 60, 60)
+local salmon  = hsl(  5, 80, 70)
+local orange  = hsl(30,  60, 50)
+local yellow  = hsl(40, 100, 70)
 
-local green   = hsl(100,  40, 60)
-local teal    = hsl(150,  30, 50)
-local cyan    = hsl(180,  30, 60)
+local green   = hsl(100, 50, 60)
+local teal    = hsl(150, 40, 50)
+local cyan    = hsl(180, 30, 60)
 
-local blue    = hsl(225,  90, 80)
-local purple  = hsl(270,  40, 60)
-local magenta = hsl(310,  50, 70)
-
+local blue    = hsl(225, 50, 70)
+local purple  = hsl(270, 30, 60)
+local magenta = hsl(310, 60, 80)
 
 return lush(function() return {
 -- :help highlight-groups
@@ -147,7 +147,7 @@ Statement      { fg=orange }; -- (preferred) any statement
 Conditional    { Statement };
 Repeat         { Statement };
 Label          { Statement, gui=bf };       -- case, default, etc.
-Operator       { fg=orange };
+Operator       { fg=salmon };
 Keyword        { Statement };    -- any other keyword
 Exception      { fg=red };
 

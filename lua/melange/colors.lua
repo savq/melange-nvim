@@ -155,7 +155,7 @@ Operator       { fg=salmon };
 Keyword        { Statement };    -- any other keyword
 Exception      { fg=red };
 
-PreProc        { fg=green };   --  generic Preprocessor
+PreProc        { fg=teal };    --  generic Preprocessor
 Include        { PreProc };    -- preprocessor #include
 Define         { PreProc };    -- preprocessor #define
 Macro          { PreProc };    -- same as Define
@@ -232,7 +232,7 @@ TSFuncBuiltin        { TSFunction };
 TSFuncMacro          { TSFunction };          -- macro defined fuctions: each `macro_rules` in Rust
 TSMethod             { TSFunction };
 TSConstructor        { TSFunction, gui=bf };  -- For constructor: `{}` in Lua and Java constructors.
-TSKeywordFunction    { fg=teal };
+TSKeywordFunction    { fg=green };
 
 TSParameter          { fg=fg };
 TSParameterReference { TSParameter };

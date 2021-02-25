@@ -1,6 +1,6 @@
 🚧 **WORK IN PROGRESS** 🚧
 
-**TODO:** Screenshot or logo
+See [TODO](TODO.md)
 
 # Meλanʒe
 
@@ -53,7 +53,7 @@ which makes it very easy to modify.
 
 Assuming you have Lush.nvim installed, you can change the definitions in 
 `lua/melange/colors.lua`, live preview them, and when your happy with them
-compile them to a `.vim` file. Melange provides a makefile for convenience.
+compile them to a `.vim` file (see `lua/melange/build.lua`).
 
 Alternatively, you can use the color scheme `melange_dev`, which will source
 the `.lua` files directly.

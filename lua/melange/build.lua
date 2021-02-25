@@ -16,7 +16,7 @@ local function build_alacritty()
         "    black:   '" .. c.Normal.bg .. "'",
         "    red:     '" .. c.Error.fg .. "'",
         "    yellow:  '" .. c.Function.fg .. "'",
-        "    green:   '" .. c.TSKeywordFunction.fg .. "'", -- teal
+        "    green:   '" .. c.PreProc.fg .. "'",            -- teal
         "    cyan:    '" .. c.Type.fg .. "'",
         "    blue:    '" .. c.String.fg .. "'",
         "    magenta: '" .. c.Constant.fg .. "'",
@@ -24,11 +24,11 @@ local function build_alacritty()
         "    white:   '" .. c.Search.fg .. "'",             -- pop
         "    black:   '" .. c.Conceal.fg .. "'",            -- faded
         "    red:     '" .. c.Operator.fg .. "'",
-        "    yellow:  '" .. c.Statement.fg .. "'",
+        "    yellow:  '" .. c.Statement.fg .. "'",          -- orange
         "    green:   '" .. c.Question.fg .. "'",
         "    cyan:    '" .. c.Type.fg .. "'",
         "    blue:    '" .. c.String.fg .. "'",
-        "    magenta: '" .. c.Number.fg .. "'",           -- purple
+        "    magenta: '" .. c.Number.fg .. "'",             -- purple
     }, "\n")
 end
 
@@ -39,18 +39,21 @@ local function build_viml()
 end
 
 local targets = {
-    alacritty = {build = build_alacritty, dir = './term/alacritty.yml'},
-    viml      = {build = build_viml, dir = './colors/melange.vim'},
+    alacritty = build_alacritty,
+    viml      = build_viml,
 }
 
-local function build(t)
-    local target = targets[t]
-    local colors = target.build()
-    local fd = assert(uv.fs_open(target.dir, 'w', 420))
+local function build(t, dir)
+    local colors = targets[t]()
+    local fd = assert(uv.fs_open(dir, 'w', 420))
     uv.fs_write(fd, colors, -1)
     assert(uv.fs_close(fd))
 end
 
-return {
-    build = build,
-}
+-- TODO: proper path handling. libuv can't tell where the script is located...
+build('viml', './term/alacritty.yml')
+build('alacritty', './term/alacritty.yml')
+
+--return {
+--    build = build,
+--}

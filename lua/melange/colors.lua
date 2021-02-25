@@ -24,72 +24,74 @@ local hsl = lush.hsl
 local bf, it, un = 'bold', 'italic', 'underline'
 
 -- Base colors
-local c0 = hsl(30, 0, 15)
+local c0 = hsl(30, 10, 15)
 local c1 = c0.lighten(5)
-local c2 = c1.lighten(20)
-local c3 = c2.lighten(20)
+local c2 = c1.lighten(5)
+local c3 = c2.lighten(20).sa(10)
 local c4 = c3.lighten(10)
-local c5 = c4.lighten(50)
-local c6 = c5.lighten(80)
+local c5 = c4.lighten(20)
+local c6 = c5.lighten(60)
+local c7 = c6.lighten(80)
 
 -- Set base colors
-local bg     = c0
-local subtle = c1
-local mid    = c2
-local faded  = c3
-local drop   = c4
-local fg     = c5
-local pop    = c6
+local bg     = c0    -- base background
+local overbg = c1    -- other backgrounds
+local subtle = c2    -- out-of-buffer elements
+
+local mid    = c3    -- either foreground or background
+local faded  = c4    -- non-important text elements
+local drop   = c5    -- comments
+local fg     = c6
+local pop    = c7
 
 -- Color palette
 local red     = hsl(350, 60, 60)
 local salmon  = hsl(  5, 80, 70)
 local orange  = hsl(30,  60, 50)
 local yellow  = hsl(40, 100, 70)
-
 local green   = hsl(100, 50, 60)
 local teal    = hsl(150, 40, 50)
 local cyan    = hsl(180, 30, 60)
-
 local blue    = hsl(225, 50, 70)
 local purple  = hsl(270, 30, 60)
 local magenta = hsl(310, 60, 80)
 
+
 return lush(function() return {
--- :help highlight-groups
+
 Normal       { fg=fg,     bg=bg };
-NormalFloat  { fg=fg,     bg=subtle };    -- normal text in floating windows
+NormalFloat  { fg=fg,     bg=overbg };
 NormalNC     { fg=fg,     bg=bg.da(10) }; -- normal text in non-current windows
 
 Comment      { fg=drop,  gui=it };
-Conceal      { fg=faded };  -- 'conceallevel'
-Whitespace   { fg=mid };    -- 'listchars'
-NonText      { fg=mid };    -- characters that don't exist in the text
-SpecialKey   { fg=mid };    -- Unprintable characters: text displayed differently from what it really is
+Conceal      { fg=faded };
+Whitespace   { fg=mid };      -- 'listchars'
+NonText      { Whitespace };  -- characters that don't exist in the text
+SpecialKey   { Whitespace };  -- Unprintable characters: text displayed differently from what it really is
 
 Cursor       { fg=bg, bg=fg };
 TermCursor   { fg=bg, bg=fg };
-ColorColumn  { bg=subtle };
-CursorColumn { ColorColumn };
-CursorLine   { ColorColumn };
+ColorColumn  { bg=overbg };
+CursorColumn { bg=subtle };
+CursorLine   { CursorColumn };
 LineNr       { fg=faded };
-CursorLineNr { fg=orange };    -- Like LineNr when 'cursorline' or 'relativenumber' is set
+CursorLineNr { fg=orange };
 SignColumn   { LineNr };
-VertSplit    { fg=subtle, bg=subtle };    -- column separating vertically split windows
-Folded       { fg=faded, bg=bg.da(10) };  -- line used for closed folds
-FoldColumn   { fg=faded };
+VertSplit    { fg=overbg, bg=overbg };  -- column separating vertically split windows
+Folded       { fg=drop, bg=overbg };
+FoldColumn   { LineNr };
 
-Pmenu        { bg=subtle }; -- Popup menu normal item
+Pmenu        { bg=overbg }; -- Popup menu normal item
 PmenuSel     { bg=mid };    -- selected item
 PmenuSbar    { Pmenu };     -- scrollbar
 PmenuThumb   { PmenuSel };  -- Thumb of the scrollbar
 
 StatusLine   { bg=subtle };
-StatusLineNC { fg=faded,  bg=subtle };
+StatusLineNC { fg=faded,  bg=overbg };
 
---TabLine      { }; -- not active tab page label. TODO
---TabLineFill  { }; -- where there are no labels
---TabLineSel   { }; -- active tab page label
+TabLine      { bg=mid }; -- not active tab page label. TODO
+TabLineFill  { bg=overbg }; -- where there are no labels
+TabLineSel   { bg=faded }; -- active tab page label
 
 Search       { fg=bg,    bg=yellow };  -- Last search pattern highlighting (see 'hlsearch')
 IncSearch    { Search };               -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
@@ -98,7 +100,7 @@ Substitute   { Search };               -- |:substitute| replacement text highlig
 Visual       { bg=mid };    -- Visual mode selection
 VisualNOS    { bg=subtle }; -- Visual mode selection when vim is "Not Owning the Selection".
 
-WildMenu     { fg=pop }; -- current match in 'wildmenu' completion
+WildMenu     { Pmenu }; -- current match in 'wildmenu' completion
 
 MatchParen   { fg=pop,    bg=mid };
 
@@ -106,7 +108,9 @@ QuickFixLine { fg=pop };         -- Current |quickfix| item in the quickfix wind
 
 ModeMsg      { fg=faded };  -- 'showmode' message (e.g. "-- INSERT -- ")
 MsgArea      { Normal };    -- Area for messages and cmdline
---MsgSeparator { };          -- Separator for scrolled messages `msgsep` flag of 'display'
+
+
+MsgSeparator { fg=orange }; -- Separator for scrolled messages `msgsep` flag of 'display'
 MoreMsg      { fg=green };  -- |more-prompt|
 Question     { fg=green };  -- |hit-enter| prompt and yes/no questions
 ErrorMsg     { fg=red };    -- error messages on the command line

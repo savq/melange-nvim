@@ -25,8 +25,8 @@ local bf, it, un = 'bold', 'italic', 'underline'
 
 -- Base colors
 local c0 = hsl(30, 10, 15)
-local c1 = c0.lighten(5)
-local c2 = c1.lighten(5)
+local c1 = c0.lighten(10)
+local c2 = c1.lighten(2)
 local c3 = c2.lighten(20).sa(10)
 local c4 = c3.lighten(10)
 local c5 = c4.lighten(20)
@@ -49,12 +49,12 @@ local red     = hsl(350, 60, 60)
 local salmon  = hsl(  5, 80, 70)
 local orange  = hsl(30,  60, 50)
 local yellow  = hsl(40, 100, 70)
-local green   = hsl(100, 50, 60)
+local green   = hsl(100, 40, 60)
 local teal    = hsl(150, 40, 50)
 local cyan    = hsl(180, 30, 60)
 local blue    = hsl(225, 50, 70)
 local purple  = hsl(270, 30, 60)
-local magenta = hsl(310, 60, 80)
+local magenta = hsl(310, 40, 70)
 
 
 return lush(function() return {
@@ -185,19 +185,20 @@ Todo       { fg=orange, gui=bf };  --  anything that needs extra attention
 ---- These groups are for the native LSP client. Some other LSP clients may use
 ---- these groups, or use their own. Consult your LSP client's documentation.
 
-c_lsp {fg=faded}; -- TODO
-LspDiagnosticsError               { c_lsp };     -- "Error" diagnostic virtual text
-LspDiagnosticsErrorSign           { fg=red };    -- "Error" diagnostic signs in sign column
-LspDiagnosticsErrorFloating       { c_lsp };     -- "Error" diagnostic messages in the diagnostics float
-LspDiagnosticsWarning             { c_lsp };     -- "Warning" diagnostic virtual text
-LspDiagnosticsWarningSign         { fg=yellow }; -- "Warning" diagnostic signs in sign column
-LspDiagnosticsWarningFloating     { c_lsp };     -- "Warning" diagnostic messages in the diagnostics float
-LspDiagnosticsInformation         { c_lsp };     -- "Information" diagnostic virtual text
-LspDiagnosticsInformationSign     { fg=teal };   -- "Information" signs in sign column
-LspDiagnosticsInformationFloating { c_lsp };     -- "Information" diagnostic messages in the diagnostics float
-LspDiagnosticsHint                { c_lsp };     -- "Hint" diagnostic virtual text
-LspDiagnosticsHintSign            { c_lsp };     -- "Hint" diagnostic signs in sign column
-LspDiagnosticsHintFloating        { c_lsp };     -- "Hint" diagnostic messages in the diagnostics float
+LspFloating {fg=faded};
+LspDiagnosticsVT { bg=overbg };
+LspDiagnosticsError               { LspDiagnosticsVT };
+LspDiagnosticsErrorSign           { fg=red };
+LspDiagnosticsErrorFloating       { LspFloating };
+LspDiagnosticsWarning             { LspDiagnosticsVT };
+LspDiagnosticsWarningSign         { fg=yellow };
+LspDiagnosticsWarningFloating     { LspFloating };
+LspDiagnosticsInformation         { LspDiagnosticsVT };
+LspDiagnosticsInformationSign     { fg=teal };
+LspDiagnosticsInformationFloating { LspFloating };
+LspDiagnosticsHint                { LspDiagnosticsVT };
+LspDiagnosticsHintSign            { fg=orange };
+LspDiagnosticsHintFloating        { LspFloating };
 -- LspReferenceText                  { }; -- highlighting "text" references
 -- LspReferenceRead                  { }; -- highlighting "read" references
 -- LspReferenceWrite                 { }; -- highlighting "write" references
@@ -267,10 +268,10 @@ TSURI                { TSConstant };  -- Any URI like a link or email
 
 
 ---- MARKDOWN
-markdownCode          { String };
-markdownCodeBlock     { String };
-markdownRule          { Statement };
-markdownLinkText      { fg=cyan };
+--markdownCode          { String };
+--markdownCodeBlock     { String };
+--markdownRule          { Statement };
+--markdownLinkText      { fg=cyan };
 
 }end)
 -- vi:nowrap

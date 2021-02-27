@@ -1,0 +1,46 @@
+// p5.js sketch to draw the logo
+
+function setup() {
+  createCanvas(640, 320);
+  colorMode(HSL);
+
+  const bg = color(30, 20, 15);
+  const fg = color('#DED1C4');
+
+  background(bg);
+  stroke(fg);
+  strokeWeight(2);
+  fill(fg);
+
+  textFont('Noto Serif');
+  textStyle(BOLDITALIC);
+  textAlign(CENTER);
+  textSize(80);
+  text('meλanʒe', width / 2, height / 2);
+
+  line(0, height *2 / 3, width, height * 2 / 3);
+  draw_colors();
+  noLoop();
+  //saveCanvas('melange-logo');
+}
+
+function draw_colors() {
+  draw_hsl(-10,  60, 60);
+  draw_hsl( 30,  60, 50);
+  draw_hsl( 40, 100, 70);
+
+  draw_hsl(100,  50, 60);
+  draw_hsl(150,  40, 50);
+  draw_hsl(180,  30, 60);
+
+  draw_hsl(225,  50, 70);
+  draw_hsl(270,  30, 60);
+  draw_hsl(310,  60, 80);
+}
+
+function draw_hsl(h, s, l) {
+  fill(30, 20, 15); // bg
+  stroke(h, s, l);
+  strokeWeight(2);
+  circle(h * 1.6 + 80, height * 2 / 3, 2000 / l);
+} 

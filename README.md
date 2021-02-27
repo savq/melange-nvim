@@ -2,6 +2,8 @@
 
 See [TODO](TODO.md)
 
+![logo](./assets/melange-logo.png)
+
 # Meλanʒe
 
 Melange is a dark color scheme with a warm, moderate contrast color palette,

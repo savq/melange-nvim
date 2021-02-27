@@ -1,5 +1,6 @@
 # TODO
 
-- Screenshot or logo
-- TeX/VimTeX support
-- Light theme???
+- [ ] Screenshot
+- [ ] logo
+- [ ] TeX/VimTeX support
+- [ ] Light theme???

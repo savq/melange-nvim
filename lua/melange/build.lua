@@ -6,7 +6,9 @@ local uv = vim.loop
 local lush = require('lush')
 local c = require('melange.colors')
 
-local function build_alacritty()
+local targets = {}
+
+function targets.alacritty()
     return table.concat({
         "  primary:",
         "    foreground: '" .. c.Normal.fg .. "'",
@@ -32,16 +34,12 @@ local function build_alacritty()
     }, "\n")
 end
 
-local function build_viml()
+function targets.viml()
     local parsed = lush(c)
     local compiled = lush.compile(parsed, {force_clean = true })
+    table.insert(compiled, 4, "let g:colors_name = 'melange'")
     return table.concat(compiled, '\n')
 end
-
-local targets = {
-    alacritty = build_alacritty,
-    viml      = build_viml,
-}
 
 local function build(t, dir)
     local colors = targets[t]()
@@ -50,10 +48,6 @@ local function build(t, dir)
     assert(uv.fs_close(fd))
 end
 
--- TODO: proper path handling. libuv can't tell where the script is located...
-build('viml', './term/alacritty.yml')
-build('alacritty', './term/alacritty.yml')
-
---return {
---    build = build,
---}
+return {
+    build = build,
+}

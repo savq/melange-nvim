@@ -1,6 +1,6 @@
 -- melange/colors.lua
 -- Mantainer: Sergio Alejandro Vargas <savargasqu+git@unal.edu.co>
--- last update: 2021-02-21
+-- last update: 2021-03-06
 --
 -- Built with,
 --
@@ -25,12 +25,12 @@ local bf, it, un = 'bold', 'italic', 'underline'
 
 -- Base colors
 local c0 = hsl(30, 10, 15)
-local c1 = c0.lighten(10)
+local c1 = c0.lighten(5)
 local c2 = c1.lighten(2)
 local c3 = c2.lighten(20).sa(10)
 local c4 = c3.lighten(10)
 local c5 = c4.lighten(20)
-local c6 = c5.lighten(60)
+local c6 = c5.lighten(70)
 local c7 = c6.lighten(80)
 
 -- Set base colors
@@ -45,16 +45,16 @@ local fg     = c6
 local pop    = c7
 
 -- Color palette
-local red     = hsl(350, 60, 60)
-local salmon  = hsl(  5, 80, 70)
-local orange  = hsl(30,  60, 50)
-local yellow  = hsl(40, 100, 70)
-local green   = hsl(100, 40, 60)
-local teal    = hsl(150, 40, 50)
-local cyan    = hsl(180, 30, 60)
-local blue    = hsl(225, 50, 70)
-local purple  = hsl(270, 30, 60)
-local magenta = hsl(310, 40, 70)
+local red     = hsl(350,  60, 60)
+local salmon  = hsl( 10,  90, 70)
+local orange  = hsl( 30,  60, 50)
+local yellow  = hsl( 40, 100, 70)
+local green   = hsl(100,  40, 60)
+local teal    = hsl(150,  40, 50)
+local cyan    = hsl(180,  20, 60)
+local blue    = hsl(225,  30, 70)
+local purple  = hsl(270,  30, 60)
+local magenta = hsl(310,  40, 70)
 
 
 return lush(function() return {
@@ -150,7 +150,7 @@ Function       { fg=yellow };
 Statement      { fg=orange }; -- (preferred) any statement
 Conditional    { Statement };
 Repeat         { Statement };
-Label          { Statement, gui=bf };       -- case, default, etc.
+Label          { Statement };       -- case, default, etc.
 Operator       { fg=salmon };
 Keyword        { Statement };    -- any other keyword
 Exception      { fg=red };
@@ -266,12 +266,8 @@ TSTitle              { fg=orange };   -- Text that is part of a title
 TSLiteral            { TSString };    -- Literal text
 TSURI                { TSConstant };  -- Any URI like a link or email
 
-
----- MARKDOWN
---markdownCode          { String };
---markdownCodeBlock     { String };
---markdownRule          { Statement };
---markdownLinkText      { fg=cyan };
+-- Other stuff
+HelpHyperTextJump {fg=yellow};
 
 }end)
 -- vi:nowrap

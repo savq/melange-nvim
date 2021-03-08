@@ -1,8 +1,5 @@
 // p5.js sketch to visualise colors
 
-// This isn't needed for anything in the color scheme.
-// It's just a visual aid to help design.
-
 function setup() {
   createCanvas(400, 400);
   colorMode(HSL);
@@ -22,7 +19,7 @@ function setup() {
   circle(0, 0, 300);
   let x = 0;
   for (let i = 0; i < 360; i += 15) {
-    line(0, , cos(i) * 150, sin(i) * 150);
+    line(0, 0, cos(i) * 150, sin(i) * 150);
   }
 
   // Middle "invisible" circle
@@ -32,6 +29,8 @@ function setup() {
 
   // Color circles
   draw_colors();
+
+  // Don't animate
   noLoop();
 }
 
@@ -48,7 +47,6 @@ function draw_colors() {
   draw_hsl(225, 50, 70);
   draw_hsl(270, 30, 60);
   draw_hsl(310, 60, 80);
-
 }
 
 function draw_hsl(h, s, l) {

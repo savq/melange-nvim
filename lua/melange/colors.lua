@@ -49,79 +49,77 @@ local red     = hsl(350,  60, 60)
 local salmon  = hsl( 10,  90, 70)
 local orange  = hsl( 30,  60, 50)
 local yellow  = hsl( 40, 100, 70)
+
 local green   = hsl(100,  40, 60)
 local teal    = hsl(150,  40, 50)
 local cyan    = hsl(180,  20, 60)
+
 local blue    = hsl(225,  30, 70)
 local purple  = hsl(270,  30, 60)
 local magenta = hsl(310,  40, 70)
 
 
 return lush(function() return {
+Normal       { fg=fg,      bg=bg };
+NormalFloat  { fg=fg,      bg=overbg };
+NormalNC     { fg=fg,      bg=bg.da(10) }; -- normal text in non-current windows
 
-Normal       { fg=fg,     bg=bg };
-NormalFloat  { fg=fg,     bg=overbg };
-NormalNC     { fg=fg,     bg=bg.da(10) }; -- normal text in non-current windows
-
-Comment      { fg=drop,  gui=it };
+Comment      { fg=drop,    gui=it };
 Conceal      { fg=faded };
-Whitespace   { fg=mid };      -- 'listchars'
-NonText      { Whitespace };  -- characters that don't exist in the text
-SpecialKey   { Whitespace };  -- Unprintable characters: text displayed differently from what it really is
+Whitespace   { fg=mid };                   -- 'listchars'
+NonText      { Whitespace };               -- characters that don't exist in the text
+SpecialKey   { Whitespace };               -- Unprintable characters: text displayed differently from what it really is
 
-Cursor       { fg=bg, bg=fg };
-TermCursor   { fg=bg, bg=fg };
+
+Cursor       { fg=bg,      bg=fg };
+TermCursor   { fg=bg,      bg=fg };
 ColorColumn  { bg=overbg };
 CursorColumn { bg=subtle };
 CursorLine   { CursorColumn };
+MatchParen   { fg=pop,     bg=mid };
+
 LineNr       { fg=faded };
 CursorLineNr { fg=orange };
 SignColumn   { LineNr };
-VertSplit    { fg=overbg, bg=overbg };  -- column separating vertically split windows
-Folded       { fg=drop, bg=overbg };
+VertSplit    { fg=overbg,  bg=overbg };    -- column separating vertically split windows
+Folded       { fg=drop,    bg=overbg };
 FoldColumn   { LineNr };
 
-Pmenu        { bg=overbg }; -- Popup menu normal item
-PmenuSel     { bg=mid };    -- selected item
-PmenuSbar    { Pmenu };     -- scrollbar
-PmenuThumb   { PmenuSel };  -- Thumb of the scrollbar
+Pmenu        { bg=overbg };                -- Popup menu normal item
+PmenuSel     { bg=mid };                   -- selected item
+PmenuSbar    { Pmenu };                    -- scrollbar
+PmenuThumb   { PmenuSel };                 -- Thumb of the scrollbar
+WildMenu     { Pmenu };                    -- current match in 'wildmenu' completion
+QuickFixLine { fg=pop };                   -- Current |quickfix| item in the quickfix window
 
 StatusLine   { bg=subtle };
-StatusLineNC { fg=faded,  bg=overbg };
+StatusLineNC { fg=faded,   bg=overbg };
 
-TabLine      { bg=mid }; -- not active tab page label. TODO
-TabLineFill  { bg=overbg }; -- where there are no labels
-TabLineSel   { bg=faded }; -- active tab page label
+TabLine      { bg=mid };                   -- not active tab page label
+TabLineFill  { bg=overbg };                -- where there are no labels
+TabLineSel   { bg=faded };                 -- active tab page label
 
-Search       { fg=bg,    bg=yellow };  -- Last search pattern highlighting (see 'hlsearch')
-IncSearch    { Search };               -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-Substitute   { Search };               -- |:substitute| replacement text highlighting
+Search       { fg=bg,      bg=yellow };    -- Last search pattern highlighting (see 'hlsearch')
+IncSearch    { Search };                   -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+Substitute   { Search };                   -- |:substitute| replacement text highlighting
 
-Visual       { bg=mid };    -- Visual mode selection
-VisualNOS    { bg=subtle }; -- Visual mode selection when vim is "Not Owning the Selection".
+Visual       { bg=mid };                   -- Visual mode selection
+VisualNOS    { bg=subtle };                -- Visual mode selection when Vim is "Not Owning the Selection".
 
-WildMenu     { Pmenu }; -- current match in 'wildmenu' completion
+ModeMsg      { fg=faded };                 -- 'showmode' message (e.g. "-- INSERT -- ")
+MsgArea      { Normal };                   -- Area for messages and cmdline
+MsgSeparator { fg=orange };                -- Separator for scrolled messages `msgsep` flag of 'display'
+MoreMsg      { fg=green };                 -- |more-prompt|
+Question     { fg=green };                 -- |hit-enter| prompt and yes/no questions
+ErrorMsg     { fg=red };                   -- error messages on the command line
+WarningMsg   { fg=red };                   -- warning messages
 
-MatchParen   { fg=pop,    bg=mid };
-
-QuickFixLine { fg=pop };         -- Current |quickfix| item in the quickfix window
-
-ModeMsg      { fg=faded };  -- 'showmode' message (e.g. "-- INSERT -- ")
-MsgArea      { Normal };    -- Area for messages and cmdline
-
-
-MsgSeparator { fg=orange }; -- Separator for scrolled messages `msgsep` flag of 'display'
-MoreMsg      { fg=green };  -- |more-prompt|
-Question     { fg=green };  -- |hit-enter| prompt and yes/no questions
-ErrorMsg     { fg=red };    -- error messages on the command line
-WarningMsg   { fg=red };    -- warning messages
-
-Directory    { fg=orange };    -- directory names (and other special names in listings)
-Title        { fg=orange };    -- titles for output from ":set all" ":autocmd" etc.
+Directory    { fg=orange };                -- directory names (and other special names in listings)
+Title        { fg=orange };                -- titles for output from ":set all" ":autocmd" etc.
 
 DiffAdd      { fg=green };
 DiffDelete   { fg=red };
-DiffChange   { fg=yellow.da(20) };    -- strange color
+DiffChange   { fg=yellow.da(20) };
 DiffText     { DiffChange, gui=un };
 DiffAdded    { DiffAdd };
 DiffRemoved  { DiffDelete };
@@ -131,6 +129,40 @@ SpellCap     { fg=magenta, gui=un };
 SpellLocal   { fg=orange,  gui=un };
 SpellRare    { fg=yellow,  gui=un };
 
+
+
+---- Language Server Protocol highlight groups ---------------------------------
+
+-- LspReferenceText                  { }; -- highlighting "text" references
+-- LspReferenceRead                  { }; -- highlighting "read" references
+-- LspReferenceWrite                 { }; -- highlighting "write" references
+
+-- base highlight groups. Other LspDiagnostic highlights link to these by default (except Underline)
+LspDiagnosticsDefaultError           { fg=red };
+LspDiagnosticsDefaultWarning         { fg=yellow };
+LspDiagnosticsDefaultInformation     { fg=fg };
+LspDiagnosticsDefaultHint            { fg=green };
+
+--LspDiagnosticsVirtualTextError       { }; -- "Error" diagnostic virtual text
+--LspDiagnosticsVirtualTextWarning     { }; -- "Warning" diagnostic virtual text
+--LspDiagnosticsVirtualTextInformation { }; -- "Information" diagnostic virtual text
+--LspDiagnosticsVirtualTextHint        { }; -- "Hint" diagnostic virtual text
+--LspDiagnosticsUnderlineError         { }; -- underline "Error" diagnostics
+--LspDiagnosticsUnderlineWarning       { }; -- underline "Warning" diagnostics
+--LspDiagnosticsUnderlineInformation   { }; -- underline "Information" diagnostics
+--LspDiagnosticsUnderlineHint          { }; -- underline "Hint" diagnostics
+--LspDiagnosticsFloatingError          { }; -- color "Error" diagnostic messages in diagnostics float
+--LspDiagnosticsFloatingWarning        { }; -- color "Warning" diagnostic messages in diagnostics float
+--LspDiagnosticsFloatingInformation    { }; -- color "Information" diagnostic messages in diagnostics float
+--LspDiagnosticsFloatingHint           { }; -- color "Hint" diagnostic messages in diagnostics float
+--LspDiagnosticsSignError              { }; -- "Error" signs in sign column
+--LspDiagnosticsSignWarning            { }; -- "Warning" signs in sign column
+--LspDiagnosticsSignInformation        { }; -- "Information" signs in sign column
+--LspDiagnosticsSignHint               { }; -- "Hint" signs in sign column
+
+
+
+---- Standard highlight groups -------------------------------------------------
 
 -- These highlight groups are not listed as default Vim groups, but they are
 -- de-facto standard for syntax highlighting. commented out groups should
@@ -181,35 +213,8 @@ Error      { fg=red };             --  any erroneous construct
 Todo       { fg=orange, gui=bf };  --  anything that needs extra attention
 
 
----- LSP
----- These groups are for the native LSP client. Some other LSP clients may use
----- these groups, or use their own. Consult your LSP client's documentation.
 
-LspFloating {fg=faded};
-LspDiagnosticsVT { bg=overbg };
-LspDiagnosticsError               { LspDiagnosticsVT };
-LspDiagnosticsErrorSign           { fg=red };
-LspDiagnosticsErrorFloating       { LspFloating };
-LspDiagnosticsWarning             { LspDiagnosticsVT };
-LspDiagnosticsWarningSign         { fg=yellow };
-LspDiagnosticsWarningFloating     { LspFloating };
-LspDiagnosticsInformation         { LspDiagnosticsVT };
-LspDiagnosticsInformationSign     { fg=teal };
-LspDiagnosticsInformationFloating { LspFloating };
-LspDiagnosticsHint                { LspDiagnosticsVT };
-LspDiagnosticsHintSign            { fg=orange };
-LspDiagnosticsHintFloating        { LspFloating };
--- LspReferenceText                  { }; -- highlighting "text" references
--- LspReferenceRead                  { }; -- highlighting "read" references
--- LspReferenceWrite                 { }; -- highlighting "write" references
-
-
----- TREESITTER
----- These groups are for the neovim tree-sitter highlights.  As of writing,
----- tree-sitter support is a WIP, group names may change.  By default, most of
----- these groups link to an appropriate Vim group, TSError -> Error for example,
----- so you do not have to define these unless you explicitly want to support
----- Treesitter's improved syntax awareness.
+---- TREESITTER ----------------------------------------------------------------
 
 TSPunctDelimiter     { Delimiter };        -- delimiters ie: `.`
 TSPunctBracket       { fg=yellow };        -- brackets and parens.
@@ -266,8 +271,11 @@ TSTitle              { fg=orange };   -- Text that is part of a title
 TSLiteral            { TSString };    -- Literal text
 TSURI                { TSConstant };  -- Any URI like a link or email
 
+
 -- Other stuff
 HelpHyperTextJump {fg=yellow};
+markdownLinkText {fg=fg};
 
 }end)
+
 -- vi:nowrap

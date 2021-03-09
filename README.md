@@ -3,10 +3,7 @@
 ![logo](./assets/melange-logo.png)
 
 Melange is a dark color scheme with a warm, moderate contrast color palette.
-It works with Neovim, as well as Vim 8, and it has with tree-sitter support.
-
-![screenshot](./assets/screenshot-ch20rs.png)
-
+It works with Neovim, as well as Vim 8, and it has tree-sitter support.
 
 
 ## Requirements
@@ -66,7 +63,7 @@ Melange is made with [Lush.nvim](https://github.com/rktjmp/lush.nvim),
 which makes it very easy to modify.
 
 Assuming you have Lush.nvim installed, you can change the definitions in
-`lua/melange/colors.lua`, live preview them, and when your happy with them
+`lua/melange/colors.lua`, live preview them, and when you're happy with them
 compile them to a `.vim` file. Melange provides a build script and a makefile
 for convenience.
 
@@ -92,3 +89,8 @@ If you want to add support for another terminal emulator, feel free to open a PR
 
 Support for status line plugins would also be welcome
 (the lush templates have some info on that).
+
+## Preview
+
+![screenshot](./assets/screenshot-ch20rs.png)
+

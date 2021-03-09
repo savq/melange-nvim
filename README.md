@@ -3,7 +3,7 @@
 ![logo](./assets/melange-logo.png)
 
 Melange is a dark color scheme with a warm, moderate contrast color palette.
-It works with Neovim, as well as Vim 8, and it has tree-sitter support.
+It supports tree-sitter and regular highlighting (works with Vim8).
 
 
 ## Requirements

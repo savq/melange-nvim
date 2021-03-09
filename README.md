@@ -6,7 +6,7 @@ Melange is a dark color scheme with a warm, moderate contrast color palette.
 It supports tree-sitter and regular highlighting (works with Vim8).
 
 
-## Requirements
+### Requirements
 
 * `termguicolors` enabled for true color support
 
@@ -15,7 +15,7 @@ It supports tree-sitter and regular highlighting (works with Vim8).
 
 
 
-## Installation
+### Installation
 
 With [Paq](https://github.com/savq/paq-nvim):
 
@@ -33,7 +33,7 @@ Additionally, [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitt
 can be used to install tree-sitter grammars.
 
 
-## Usage
+### Usage
 
 In your `init.vim`:
 ```vim
@@ -46,7 +46,7 @@ vim.cmd 'colorscheme melange'
 ```
 
 
-## Design
+### Design
 
 The color scheme was developed with the following ideas in mind:
 
@@ -57,7 +57,7 @@ The color scheme was developed with the following ideas in mind:
 
 
 
-## Build and develop
+### Build and develop
 
 Melange is made with [Lush.nvim](https://github.com/rktjmp/lush.nvim),
 which makes it very easy to modify.
@@ -74,7 +74,7 @@ lua require('lush')(require('melange.colors'))
 ```
 
 
-## Contributing
+### Contributing
 
 I'm open to suggestions on the color scheme, there are still things that
 I don't find perfect just yet.
@@ -90,7 +90,7 @@ If you want to add support for another terminal emulator, feel free to open a PR
 Support for status line plugins would also be welcome
 (the lush templates have some info on that).
 
-## Preview
+### Preview
 
 ![screenshot](./assets/screenshot-ch20rs.png)
 

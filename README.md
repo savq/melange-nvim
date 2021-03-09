@@ -14,7 +14,7 @@ It works with Neovim, as well as Vim 8, and it has with tree-sitter support.
 * `termguicolors` enabled for true color support
 
 * (recommended) Neovim 0.5
-* (recommended) [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter),
+* (recommended) [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 
 
 
@@ -32,7 +32,7 @@ With [Packer](https://github.com/wbthomason/packer.nvim):
 use 'savq/melange'
 ```
 
-Additionally, [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter),
+Additionally, [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 can be used to install tree-sitter grammars.
 
 
@@ -86,9 +86,9 @@ Highlight group definitions for specific languages won't be accepted though.
 Your favorite language probably has a tree-sitter grammar already available.
 See the [supported languages](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages).
 
-Auto-generation of colors schemes for different terminal emulators is possible.
-Currently only [Alacritty](https://github.com/alacritty/alacritty) is available.
+It's possible to auto-generate colors schemes for different terminal emulators.
+Although, only [Alacritty](https://github.com/alacritty/alacritty) is currently available.
 If you want to add support for another terminal emulator, feel free to open a PR.
 
-Support status line plugins is also be welcome
-(The lush templates have some info on that).
+Support for status line plugins would also be welcome
+(the lush templates have some info on that).

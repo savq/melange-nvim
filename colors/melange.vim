@@ -10,7 +10,7 @@ highlight Type guifg=#85ADAD guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight String guifg=#9CA7C9 guibg=NONE guisp=NONE gui=italic blend=NONE
 highlight Constant guifg=#997AB8 guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight Search guifg=#2A2622 guibg=#FFCC66 guisp=NONE gui=NONE blend=NONE
-highlight Conceal guifg=#826E59 guibg=NONE guisp=NONE gui=NONE blend=NONE
+highlight Conceal guifg=#FFCC66 guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight Operator guifg=#F7856E guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight Statement guifg=#CC8033 guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight Question guifg=#8BC270 guibg=NONE guisp=NONE gui=NONE blend=NONE
@@ -26,6 +26,7 @@ highlight TermCursor guifg=#2A2622 guibg=#E2DBD5 guisp=NONE gui=NONE blend=NONE
 highlight ColorColumn guifg=NONE guibg=#35302C guisp=NONE gui=NONE blend=NONE
 highlight CursorColumn guifg=NONE guibg=#3B3630 guisp=NONE gui=NONE blend=NONE
 highlight! link CursorLine CursorColumn
+highlight MatchParen guifg=#F9F7F6 guibg=#705E4C guisp=NONE gui=NONE blend=NONE
 highlight LineNr guifg=#826E59 guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight CursorLineNr guifg=#CC8033 guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight! link SignColumn LineNr
@@ -36,6 +37,8 @@ highlight Pmenu guifg=NONE guibg=#35302C guisp=NONE gui=NONE blend=NONE
 highlight PmenuSel guifg=NONE guibg=#705E4C guisp=NONE gui=NONE blend=NONE
 highlight! link PmenuSbar Pmenu
 highlight! link PmenuThumb PmenuSel
+highlight! link WildMenu Pmenu
+highlight QuickFixLine guifg=#F9F7F6 guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight StatusLine guifg=NONE guibg=#3B3630 guisp=NONE gui=NONE blend=NONE
 highlight StatusLineNC guifg=#826E59 guibg=#35302C guisp=NONE gui=NONE blend=NONE
 highlight TabLine guifg=NONE guibg=#705E4C guisp=NONE gui=NONE blend=NONE
@@ -45,9 +48,6 @@ highlight! link IncSearch Search
 highlight! link Substitute Search
 highlight Visual guifg=NONE guibg=#705E4C guisp=NONE gui=NONE blend=NONE
 highlight VisualNOS guifg=NONE guibg=#3B3630 guisp=NONE gui=NONE blend=NONE
-highlight! link WildMenu Pmenu
-highlight MatchParen guifg=#F9F7F6 guibg=#705E4C guisp=NONE gui=NONE blend=NONE
-highlight QuickFixLine guifg=#F9F7F6 guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight ModeMsg guifg=#826E59 guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight! link MsgArea Normal
 highlight MsgSeparator guifg=#CC8033 guibg=NONE guisp=NONE gui=NONE blend=NONE
@@ -66,6 +66,10 @@ highlight SpellBad guifg=#D65C70 guibg=NONE guisp=NONE gui=underline blend=NONE
 highlight SpellCap guifg=#D194C7 guibg=NONE guisp=NONE gui=underline blend=NONE
 highlight SpellLocal guifg=#CC8033 guibg=NONE guisp=NONE gui=underline blend=NONE
 highlight SpellRare guifg=#FFCC66 guibg=NONE guisp=NONE gui=underline blend=NONE
+highlight LspDiagnosticsDefaultError guifg=#D65C70 guibg=NONE guisp=NONE gui=NONE blend=NONE
+highlight LspDiagnosticsDefaultWarning guifg=#FFCC66 guibg=NONE guisp=NONE gui=NONE blend=NONE
+highlight LspDiagnosticsDefaultInformation guifg=#E2DBD5 guibg=NONE guisp=NONE gui=NONE blend=NONE
+highlight LspDiagnosticsDefaultHint guifg=#8BC270 guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight! link Float Number
 highlight! link Boolean Number
 highlight Character guifg=#9CA7C9 guibg=NONE guisp=NONE gui=NONE blend=NONE
@@ -93,20 +97,6 @@ highlight Bold guifg=NONE guibg=NONE guisp=NONE gui=bold blend=NONE
 highlight Italic guifg=NONE guibg=NONE guisp=NONE gui=italic blend=NONE
 highlight Ignore guifg=#826E59 guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight Todo guifg=#CC8033 guibg=NONE guisp=NONE gui=bold blend=NONE
-highlight LspFloating guifg=#826E59 guibg=NONE guisp=NONE gui=NONE blend=NONE
-highlight LspDiagnosticsVT guifg=NONE guibg=#35302C guisp=NONE gui=NONE blend=NONE
-highlight! link LspDiagnosticsError LspDiagnosticsVT
-highlight LspDiagnosticsErrorSign guifg=#D65C70 guibg=NONE guisp=NONE gui=NONE blend=NONE
-highlight! link LspDiagnosticsErrorFloating LspFloating
-highlight! link LspDiagnosticsWarning LspDiagnosticsVT
-highlight LspDiagnosticsWarningSign guifg=#FFCC66 guibg=NONE guisp=NONE gui=NONE blend=NONE
-highlight! link LspDiagnosticsWarningFloating LspFloating
-highlight! link LspDiagnosticsInformation LspDiagnosticsVT
-highlight LspDiagnosticsInformationSign guifg=#4DB380 guibg=NONE guisp=NONE gui=NONE blend=NONE
-highlight! link LspDiagnosticsInformationFloating LspFloating
-highlight! link LspDiagnosticsHint LspDiagnosticsVT
-highlight LspDiagnosticsHintSign guifg=#CC8033 guibg=NONE guisp=NONE gui=NONE blend=NONE
-highlight! link LspDiagnosticsHintFloating LspFloating
 highlight! link TSPunctDelimiter Delimiter
 highlight TSPunctBracket guifg=#FFCC66 guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight! link TSPunctSpecial TSPunctDelimiter
@@ -136,19 +126,20 @@ highlight! link TSOperator Operator
 highlight! link TSException Exception
 highlight! link TSType Type
 highlight TSTypeBuiltin guifg=#85ADAD guibg=NONE guisp=NONE gui=italic blend=NONE
-highlight HelpHyperTextJump guifg=#FFCC66 guibg=NONE guisp=NONE gui=NONE blend=NONE
-highlight! link TSURI TSConstant
-highlight! link TSLiteral TSString
-highlight TSTitle guifg=#CC8033 guibg=NONE guisp=NONE gui=NONE blend=NONE
-highlight TSUnderline guifg=#E2DBD5 guibg=NONE guisp=NONE gui=underline blend=NONE
-highlight TSEmphasis guifg=#E2DBD5 guibg=NONE guisp=NONE gui=italic blend=NONE
-highlight TSStrong guifg=#E2DBD5 guibg=NONE guisp=NONE gui=bold blend=NONE
-highlight TSText guifg=#E2DBD5 guibg=NONE guisp=NONE gui=NONE blend=NONE
-highlight TSError guifg=#D65C70 guibg=NONE guisp=NONE gui=NONE blend=NONE
-highlight! link TSProperty TSField
-highlight TSField guifg=#E2DBD5 guibg=NONE guisp=NONE gui=NONE blend=NONE
-highlight TSVariableBuiltin guifg=#E2DBD5 guibg=NONE guisp=NONE gui=italic blend=NONE
-highlight TSVariable guifg=#E2DBD5 guibg=NONE guisp=NONE gui=NONE blend=NONE
-highlight! link TSAnnotation TSNamespace
-highlight! link TSInclude TSNamespace
 highlight! link TSNamespace PreProc
+highlight! link TSInclude TSNamespace
+highlight! link TSAnnotation TSNamespace
+highlight TSVariable guifg=#E2DBD5 guibg=NONE guisp=NONE gui=NONE blend=NONE
+highlight TSVariableBuiltin guifg=#E2DBD5 guibg=NONE guisp=NONE gui=italic blend=NONE
+highlight TSField guifg=#E2DBD5 guibg=NONE guisp=NONE gui=NONE blend=NONE
+highlight! link TSProperty TSField
+highlight TSError guifg=#D65C70 guibg=NONE guisp=NONE gui=NONE blend=NONE
+highlight TSText guifg=#E2DBD5 guibg=NONE guisp=NONE gui=NONE blend=NONE
+highlight TSStrong guifg=#E2DBD5 guibg=NONE guisp=NONE gui=bold blend=NONE
+highlight TSEmphasis guifg=#E2DBD5 guibg=NONE guisp=NONE gui=italic blend=NONE
+highlight TSUnderline guifg=#E2DBD5 guibg=NONE guisp=NONE gui=underline blend=NONE
+highlight TSTitle guifg=#CC8033 guibg=NONE guisp=NONE gui=NONE blend=NONE
+highlight! link TSLiteral TSString
+highlight! link TSURI TSConstant
+highlight HelpHyperTextJump guifg=#FFCC66 guibg=NONE guisp=NONE gui=NONE blend=NONE
+highlight markdownLinkText guifg=#E2DBD5 guibg=NONE guisp=NONE gui=NONE blend=NONE

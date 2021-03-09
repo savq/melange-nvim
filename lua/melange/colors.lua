@@ -65,7 +65,7 @@ NormalFloat  { fg=fg,      bg=overbg };
 NormalNC     { fg=fg,      bg=bg.da(10) }; -- normal text in non-current windows
 
 Comment      { fg=drop,    gui=it };
-Conceal      { fg=faded };
+Conceal      { fg=yellow };
 Whitespace   { fg=mid };                   -- 'listchars'
 NonText      { Whitespace };               -- characters that don't exist in the text
 SpecialKey   { Whitespace };               -- Unprintable characters: text displayed differently from what it really is

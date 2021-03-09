@@ -1,20 +1,20 @@
-🚧 **WORK IN PROGRESS** 🚧
-
-See [TODO](TODO.md)
+🚧 **WORK IN PROGRESS. See [TODO](TODO.md)** 🚧
 
 ![logo](./assets/melange-logo.png)
 
-# Meλanʒe
+Melange is a dark color scheme with a warm, moderate contrast color palette.
+It works with Neovim, as well as Vim 8, and it has with tree-sitter support.
 
-Melange is a dark color scheme with a warm, moderate contrast color palette,
-and with tree-sitter support.
+![screenshot](./assets/screenshot-ch20rs.png)
+
+
 
 ## Requirements
 
-* (recommended) Neovim 0.5
-* (alternative) Vim 8
-* (recommended) [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 * `termguicolors` enabled for true color support
+
+* (recommended) Neovim 0.5
+* (recommended) [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter),
 
 
 
@@ -33,7 +33,7 @@ use 'savq/melange'
 ```
 
 Additionally, [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter),
-can be used to install language specific grammars.
+can be used to install tree-sitter grammars.
 
 
 ## Usage
@@ -90,12 +90,5 @@ Auto-generation of colors schemes for different terminal emulators is possible.
 Currently only [Alacritty](https://github.com/alacritty/alacritty) is available.
 If you want to add support for another terminal emulator, feel free to open a PR.
 
-
-### Other annotations
-
-VimTeX looks mostly fine, although the `Conceal` highlight group is a bit dark by default.
-To display concealed math symbols in a lighter tone, you can add the following to your config:
-
-```Vim
-autocmd Filetype tex highlight! link Conceal Function
-```
+Support status line plugins is also be welcome
+(The lush templates have some info on that).

@@ -18,19 +18,19 @@ function targets.alacritty()
         "    black:   '" .. c.Normal.bg .. "'",
         "    red:     '" .. c.Error.fg .. "'",
         "    yellow:  '" .. c.Function.fg .. "'",
-        "    green:   '" .. c.PreProc.fg .. "'",            -- teal
+        "    green:   '" .. c.PreProc.fg .. "'",        -- teal
         "    cyan:    '" .. c.Type.fg .. "'",
         "    blue:    '" .. c.String.fg .. "'",
         "    magenta: '" .. c.Constant.fg .. "'",
         "  bright:",
-        "    white:   '" .. c.Search.fg .. "'",             -- pop
-        "    black:   '" .. c.Conceal.fg .. "'",            -- faded
+        "    white:   '" .. c.MatchParen.fg .. "'",     -- pop
+        "    black:   '" .. c.ColorColumn.bg .. "'",    -- overbg
         "    red:     '" .. c.Operator.fg .. "'",
-        "    yellow:  '" .. c.Statement.fg .. "'",          -- orange
+        "    yellow:  '" .. c.Statement.fg .. "'",      -- orange
         "    green:   '" .. c.Question.fg .. "'",
         "    cyan:    '" .. c.Type.fg .. "'",
         "    blue:    '" .. c.String.fg .. "'",
-        "    magenta: '" .. c.Number.fg .. "'",             -- purple
+        "    magenta: '" .. c.Number.fg .. "'",         -- purple
     }, "\n")
 end
 

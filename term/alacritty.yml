@@ -1,8 +1,8 @@
   primary:
-    foreground: '#E2DBD5'
+    foreground: '#E4DED8'
     background: '#2A2622'
   normal:
-    white:   '#E2DBD5'
+    white:   '#E4DED8'
     black:   '#2A2622'
     red:     '#D65C70'
     yellow:  '#FFCC66'
@@ -11,8 +11,8 @@
     blue:    '#9CA7C9'
     magenta: '#997AB8'
   bright:
-    white:   '#2A2622'
-    black:   '#FFCC66'
+    white:   '#F9F7F6'
+    black:   '#35302C'
     red:     '#F7856E'
     yellow:  '#CC8033'
     green:   '#8BC270'

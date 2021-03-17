@@ -1,6 +1,6 @@
 -- melange/colors.lua
 -- Mantainer: Sergio Alejandro Vargas <savargasqu+git@unal.edu.co>
--- last update: 2021-03-06
+-- last update: 2021-03-17
 --
 -- Built with,
 --
@@ -26,7 +26,7 @@ local bf, it, un = 'bold', 'italic', 'underline'
 -- Base colors
 local c0 = hsl(30, 10, 15)
 local c1 = c0.lighten(5)
-local c2 = c1.lighten(2)
+local c2 = c1.lighten(5)
 local c3 = c2.lighten(20).sa(10)
 local c4 = c3.lighten(10)
 local c5 = c4.lighten(20)
@@ -74,7 +74,7 @@ SpecialKey   { Whitespace };               -- Unprintable characters: text displ
 Cursor       { fg=bg,      bg=fg };
 TermCursor   { fg=bg,      bg=fg };
 ColorColumn  { bg=overbg };
-CursorColumn { bg=subtle };
+CursorColumn { bg=overbg };
 CursorLine   { CursorColumn };
 MatchParen   { fg=pop,     bg=mid };
 
@@ -95,15 +95,15 @@ QuickFixLine { fg=pop };                   -- Current |quickfix| item in the qui
 StatusLine   { bg=subtle };
 StatusLineNC { fg=faded,   bg=overbg };
 
-TabLine      { bg=mid };                   -- not active tab page label
+TabLine      { fg=drop, bg=subtle };       -- not active tab page label
 TabLineFill  { bg=overbg };                -- where there are no labels
-TabLineSel   { bg=faded };                 -- active tab page label
+TabLineSel   { bg=mid };                   -- active tab page label
 
 Search       { fg=bg,      bg=yellow };    -- Last search pattern highlighting (see 'hlsearch')
 IncSearch    { Search };                   -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 Substitute   { Search };                   -- |:substitute| replacement text highlighting
 
-Visual       { bg=mid };                   -- Visual mode selection
+Visual       { bg=subtle };                -- Visual mode selection
 VisualNOS    { bg=subtle };                -- Visual mode selection when Vim is "Not Owning the Selection".
 
 ModeMsg      { fg=faded };                 -- 'showmode' message (e.g. "-- INSERT -- ")

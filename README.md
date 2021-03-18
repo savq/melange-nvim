@@ -3,13 +3,20 @@
 ![logo](./assets/melange-logo.png)
 
 Melange is a dark color scheme with a warm, moderate contrast color palette.
-It supports tree-sitter and regular highlighting (works with Vim8).
+
+### Features
+
+- Works with Neovim and Vim
+- tree-sitter support
+- Support for various terminal emulators:
+  - [Alacritty](https://github.com/alacritty/alacritty)
+  - [iTerm2](https://github.com/gnachman/iTerm2)
+  - [Kitty](https://github.com/kovidgoyal/kitty)
 
 
 ### Requirements
 
 * `termguicolors` enabled for true color support
-
 * (recommended) Neovim 0.5
 * (recommended) [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 
@@ -18,13 +25,11 @@ It supports tree-sitter and regular highlighting (works with Vim8).
 ### Installation
 
 With [Paq](https://github.com/savq/paq-nvim):
-
 ```lua
 paq 'savq/melange'
 ```
 
 With [Packer](https://github.com/wbthomason/packer.nvim):
-
 ```lua
 use 'savq/melange'
 ```
@@ -84,13 +89,12 @@ Your favorite language probably has a tree-sitter grammar already available.
 See the [supported languages](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages).
 
 It's possible to auto-generate colors schemes for different terminal emulators.
-Although, only [Alacritty](https://github.com/alacritty/alacritty) is currently available.
 If you want to add support for another terminal emulator, feel free to open a PR.
 
 Support for status line plugins would also be welcome
 (the lush templates have some info on that).
 
+
 ### Preview
 
 ![screenshot](./assets/screenshot-ch20rs.png)
-

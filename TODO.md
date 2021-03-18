@@ -6,7 +6,8 @@
   (foreground, background, black, white, bright black, and bright white)
 - Split into modules:
   - The color palette should be defined in a separate file, so that terminal's
-  - colors are defined by colors and not Vim groups.
+    colors are defined by colors and not Vim groups.
+  - Makes variants easier to mantain
 - Variants:
   - Light theme
   - high contrast dark theme

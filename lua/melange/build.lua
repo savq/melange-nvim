@@ -1,6 +1,7 @@
 -- Scripts to compile Lush colors to different targets, including:
     -- Viml
     -- Alacritty
+    -- kitty
 
 local uv = vim.loop
 local lush = require('lush')
@@ -31,6 +32,45 @@ function targets.alacritty()
         "    cyan:    '" .. c.Type.fg .. "'",
         "    blue:    '" .. c.String.fg .. "'",
         "    magenta: '" .. c.Number.fg .. "'",         -- purple
+    }, "\n")
+end
+
+function targets.kitty()
+    return table.concat({
+        "background " .. c.Normal.bg,
+        "foreground " .. c.Normal.fg,
+
+        "cursor " .. c.Normal.fg,
+        "url_color " .. c.TSURI.fg,
+
+        "selection_background " .. c.Visual.bg,
+        "selection_foreground " .. c.Normal.fg,
+
+        "tab_bar_background " .. c.TabLineFill.bg,
+        "active_tab_background " .. c.TabLineSel.bg,
+        "active_tab_foreground " .. c.Normal.fg,
+        "inactive_tab_background " .. c.TabLine.bg,
+        "inactive_tab_foreground " .. c.Normal.fg,
+
+        -- normal
+        "color0 " .. c.Normal.bg,
+        "color1 " .. c.Error.fg,
+        "color2 " .. c.PreProc.fg,
+        "color3 " .. c.Function.fg,
+        "color4 " .. c.String.fg,
+        "color5 " .. c.Constant.fg,
+        "color6 " .. c.Type.fg,
+        "color7 " .. c.Normal.fg,
+        -- bright
+        "color8 " .. c.ColorColumn.bg,
+        "color9 " .. c.Operator.fg,
+        "color10 " .. c.Question.fg,
+        "color11 " .. c.Statement.fg,
+        "color12 " .. c.String.fg,
+        "color13 " .. c.Number.fg,
+        "color14 " .. c.Type.fg,
+        "color15 " .. c.MatchParen.fg,
+        ""
     }, "\n")
 end
 

@@ -1,81 +1,81 @@
 -- Scripts to compile Lush colors to different targets, including:
-    -- Viml
+    -- VimL
     -- Alacritty
     -- kitty
 
 local uv = vim.loop
 local lush = require('lush')
-local c = require('melange.colors')
+local melange = require('melange.colors')
+local c = melange.Melange.lush
 
 local targets = {}
 
 function targets.alacritty()
     return table.concat({
         "  primary:",
-        "    foreground: '" .. c.Normal.fg .. "'",
-        "    background: '" .. c.Normal.bg .. "'",
+        "    foreground: '" .. c.g[6] .. "'",
+        "    background: '" .. c.g[1] .. "'",
         "  normal:",
-        "    white:   '" .. c.Normal.fg .. "'",
-        "    black:   '" .. c.Normal.bg .. "'",
-        "    red:     '" .. c.Error.fg .. "'",
-        "    yellow:  '" .. c.Function.fg .. "'",
-        "    green:   '" .. c.PreProc.fg .. "'",        -- teal
-        "    cyan:    '" .. c.Type.fg .. "'",
-        "    blue:    '" .. c.String.fg .. "'",
-        "    magenta: '" .. c.Constant.fg .. "'",
+        "    white:   '" .. c.g[6]    .. "'",
+        "    black:   '" .. c.g[2]    .. "'",
+        "    red:     '" .. c.red     .. "'",
+        "    yellow:  '" .. c.yellow  .. "'",
+        "    green:   '" .. c.teal    .. "'",
+        "    cyan:    '" .. c.cyan    .. "'",
+        "    blue:    '" .. c.blue    .. "'",
+        "    magenta: '" .. c.purple  .. "'",
         "  bright:",
-        "    white:   '" .. c.MatchParen.fg .. "'",     -- pop
-        "    black:   '" .. c.ColorColumn.bg .. "'",    -- overbg
-        "    red:     '" .. c.Operator.fg .. "'",
-        "    yellow:  '" .. c.Statement.fg .. "'",      -- orange
-        "    green:   '" .. c.Question.fg .. "'",
-        "    cyan:    '" .. c.Type.fg .. "'",
-        "    blue:    '" .. c.String.fg .. "'",
-        "    magenta: '" .. c.Number.fg .. "'",         -- purple
+        "    white:   '" .. c.g[6]    .. "'",
+        "    black:   '" .. c.g[3]    .. "'",
+        "    red:     '" .. c.salmon  .. "'",
+        "    yellow:  '" .. c.orange  .. "'",
+        "    green:   '" .. c.green   .. "'",
+        "    cyan:    '" .. c.cyan    .. "'",
+        "    blue:    '" .. c.blue    .. "'",
+        "    magenta: '" .. c.magenta .. "'",
     }, "\n")
 end
 
 function targets.kitty()
     return table.concat({
-        "background " .. c.Normal.bg,
-        "foreground " .. c.Normal.fg,
+        "background " .. c.g[1],
+        "foreground " .. c.g[6],
+        "cursor "     .. c.g[6],
+        "url_color "  .. melange.TSURI.fg,
 
-        "cursor " .. c.Normal.fg,
-        "url_color " .. c.TSURI.fg,
+        "selection_background " .. melange.Visual.bg,
+        "selection_foreground " .. melange.Normal.fg,
 
-        "selection_background " .. c.Visual.bg,
-        "selection_foreground " .. c.Normal.fg,
-
-        "tab_bar_background " .. c.TabLineFill.bg,
-        "active_tab_background " .. c.TabLineSel.bg,
-        "active_tab_foreground " .. c.Normal.fg,
-        "inactive_tab_background " .. c.TabLine.bg,
-        "inactive_tab_foreground " .. c.Normal.fg,
+        "tab_bar_background "      .. melange.TabLineFill.bg,
+        "active_tab_background "   .. melange.TabLineSel.bg,
+        "active_tab_foreground "   .. melange.Normal.fg,
+        "inactive_tab_background " .. melange.TabLine.bg,
+        "inactive_tab_foreground " .. melange.Normal.fg,
 
         -- normal
-        "color0 " .. c.Normal.bg,
-        "color1 " .. c.Error.fg,
-        "color2 " .. c.PreProc.fg,
-        "color3 " .. c.Function.fg,
-        "color4 " .. c.String.fg,
-        "color5 " .. c.Constant.fg,
-        "color6 " .. c.Type.fg,
-        "color7 " .. c.Normal.fg,
+        "color0 " .. c.g[1],
+        "color1 " .. c.red,
+        "color2 " .. c.teal,
+        "color3 " .. c.yellow,
+        "color4 " .. c.blue,
+        "color5 " .. c.purple,
+        "color6 " .. c.cyan,
+        "color7 " .. c.g[6],
         -- bright
-        "color8 " .. c.ColorColumn.bg,
-        "color9 " .. c.Operator.fg,
-        "color10 " .. c.Question.fg,
-        "color11 " .. c.Statement.fg,
-        "color12 " .. c.String.fg,
-        "color13 " .. c.Number.fg,
-        "color14 " .. c.Type.fg,
-        "color15 " .. c.MatchParen.fg,
+        "color8 " .. c.g[2],
+        "color9 " .. c.salmon,
+        "color10 " .. c.green,
+        "color11 " .. c.orange,
+        "color12 " .. c.blue,
+        "color13 " .. c.purple,
+        "color14 " .. c.cyan,
+        "color15 " .. c.g[6],
         ""
     }, "\n")
 end
 
 function targets.viml()
-    local parsed = lush(c)
+    local parsed = lush(melange)
     local compiled = lush.compile(parsed, {force_clean = true })
     table.insert(compiled, 4, "let g:colors_name = 'melange'")
     return table.concat(compiled, '\n')

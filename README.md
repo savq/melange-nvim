@@ -97,4 +97,4 @@ Support for status line plugins would also be welcome
 
 ### Preview
 
-![screenshot](./assets/screenshot-ch20rs.png)
+![screenshot](./assets/screenshot2021-03-27.png)

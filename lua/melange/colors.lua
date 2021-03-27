@@ -1,6 +1,7 @@
--- melange/colors.lua
--- Mantainer: Sergio Alejandro Vargas <savargasqu+git@unal.edu.co>
--- last update: 2021-03-17
+-- Melange dark
+--
+--      Author: Sergio Vargas <savargasqu+git@unal.edu.co>
+-- Last update: 2021-03-26
 --
 -- Built with,
 --
@@ -15,54 +16,71 @@
 -- Yb,_,d88b,,_   ,d8b,  ,d8b,,8'_   8) ,d8     I8,
 --  "Y8P"  "Y888888P'"Y88P"`Y8P' "YY8P8P88P     `Y8
 
+
 local lush = require 'lush'
 local hsl = lush.hsl
-
---------------------------------------------------
 
 -- GUI options
 local bf, it, un = 'bold', 'italic', 'underline'
 
--- Base colors
-local c0 = hsl(30, 10, 15)
-local c1 = c0.lighten(5)
-local c2 = c1.lighten(5)
-local c3 = c2.lighten(20).sa(10)
-local c4 = c3.lighten(10)
-local c5 = c4.lighten(20)
-local c6 = c5.lighten(70)
-local c7 = c6.lighten(80)
 
--- Set base colors
-local bg     = c0    -- base background
-local overbg = c1    -- other backgrounds
-local subtle = c2    -- out-of-buffer elements
+local g = {
+    hsl(30, 10, 15);
+    hsl(30, 10, 20);
+    hsl(30, 15, 30);
+    hsl(30, 20, 35);
+    hsl(30, 20, 55);
+    hsl(30, 30, 90);
+}
 
-local mid    = c3    -- either foreground or background
-local faded  = c4    -- non-important text elements
-local drop   = c5    -- comments
-local fg     = c6
-local pop    = c7
+-- Backgrounds
+local bg     = g[1]
+local overbg = g[2]
+local faded  = g[3]
+
+-- Foregrounds
+local mid    = g[4]
+local drop   = g[5]
+local fg     = g[6]
+
 
 -- Color palette
-local red     = hsl(350,  60, 60)
-local salmon  = hsl( 10,  90, 70)
-local orange  = hsl( 30,  60, 50)
-local yellow  = hsl( 40, 100, 70)
+local red     = hsl(350, 60, 60)
+local salmon  = hsl( 10, 90, 70)
+local orange  = hsl( 30, 60, 50)
+local amber   = hsl( 40, 60, 50)
+local yellow  = hsl( 40, 90, 70)
 
-local green   = hsl(100,  40, 60)
-local teal    = hsl(150,  40, 50)
-local cyan    = hsl(180,  20, 60)
+local green   = hsl(100, 40, 60)
+local teal    = hsl(150, 40, 50)
+local cyan    = hsl(180, 20, 60)
 
-local blue    = hsl(225,  30, 70)
-local purple  = hsl(270,  30, 60)
-local magenta = hsl(310,  40, 70)
+local blue    = hsl(225, 30, 70)
+local purple  = hsl(270, 30, 60)
+local magenta = hsl(310, 40, 70)
 
 
+
+--------------------------------------------------------------------------------
 return lush(function() return {
+-- Metagroup (basically a hack for builds)
+Melange {lush = {
+    g=g,
+    red=red,
+    salmon=salmon,
+    orange=orange,
+    amber=amber,
+    yellow=yellow,
+    green=green,
+    teal=teal,
+    cyan=cyan,
+    blue=blue,
+    purple=purple,
+    magenta=magenta}};
+
 Normal       { fg=fg,      bg=bg };
 NormalFloat  { fg=fg,      bg=overbg };
-NormalNC     { fg=fg,      bg=bg.da(10) }; -- normal text in non-current windows
+NormalNC     { fg=fg,      bg=bg };        -- normal text in non-current windows
 
 Comment      { fg=drop,    gui=it };
 Conceal      { fg=yellow };
@@ -76,37 +94,37 @@ TermCursor   { fg=bg,      bg=fg };
 ColorColumn  { bg=overbg };
 CursorColumn { bg=overbg };
 CursorLine   { CursorColumn };
-MatchParen   { fg=pop,     bg=mid };
+MatchParen   { fg=fg,      bg=faded };
 
-LineNr       { fg=faded };
+LineNr       { fg=mid };
 CursorLineNr { fg=orange };
 SignColumn   { LineNr };
 VertSplit    { fg=overbg,  bg=overbg };    -- column separating vertically split windows
 Folded       { fg=drop,    bg=overbg };
 FoldColumn   { LineNr };
 
-Pmenu        { bg=overbg };                -- Popup menu normal item
-PmenuSel     { bg=mid };                   -- selected item
+Pmenu        { fg=fg,      bg=overbg };    -- Popup menu normal item
+PmenuSel     { fg=fg,      bg=faded };     -- selected item
 PmenuSbar    { Pmenu };                    -- scrollbar
 PmenuThumb   { PmenuSel };                 -- Thumb of the scrollbar
 WildMenu     { Pmenu };                    -- current match in 'wildmenu' completion
-QuickFixLine { fg=pop };                   -- Current |quickfix| item in the quickfix window
 
-StatusLine   { bg=subtle };
-StatusLineNC { fg=faded,   bg=overbg };
+StatusLine   { fg=fg,      bg=overbg };
+StatusLineNC { fg=mid,     bg=overbg };
 
-TabLine      { fg=drop, bg=subtle };       -- not active tab page label
+TabLine      { fg=fg,      bg=overbg };    -- not active tab page label
 TabLineFill  { bg=overbg };                -- where there are no labels
-TabLineSel   { bg=mid };                   -- active tab page label
+TabLineSel   { fg=yellow,  bg=faded };     -- active tab page label
 
 Search       { fg=bg,      bg=yellow };    -- Last search pattern highlighting (see 'hlsearch')
 IncSearch    { Search };                   -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 Substitute   { Search };                   -- |:substitute| replacement text highlighting
+QuickFixLine { Search };                   -- Current |quickfix| item in the quickfix window
 
-Visual       { bg=subtle };                -- Visual mode selection
-VisualNOS    { bg=subtle };                -- Visual mode selection when Vim is "Not Owning the Selection".
+Visual       { bg=overbg };                -- Visual mode selection
+VisualNOS    { bg=overbg };                -- Visual mode selection when Vim is "Not Owning the Selection".
 
-ModeMsg      { fg=faded };                 -- 'showmode' message (e.g. "-- INSERT -- ")
+ModeMsg      { fg=mid };                   -- 'showmode' message (e.g. "-- INSERT -- ")
 MsgArea      { Normal };                   -- Area for messages and cmdline
 MsgSeparator { fg=orange };                -- Separator for scrolled messages `msgsep` flag of 'display'
 MoreMsg      { fg=green };                 -- |more-prompt|
@@ -119,7 +137,7 @@ Title        { fg=orange };                -- titles for output from ":set all" 
 
 DiffAdd      { fg=green };
 DiffDelete   { fg=red };
-DiffChange   { fg=yellow.da(20) };
+DiffChange   { fg=amber };
 DiffText     { DiffChange, gui=un };
 DiffAdded    { DiffAdd };
 DiffRemoved  { DiffDelete };
@@ -175,38 +193,38 @@ String         { fg=blue, gui=it };
 Identifier     { fg=fg };
 Function       { fg=yellow };
 
-Statement      { fg=orange }; -- (preferred) any statement
+Statement      { fg=orange };    -- (preferred) any statement
 Conditional    { Statement };
 Repeat         { Statement };
-Label          { Statement };       -- case, default, etc.
+Label          { Statement };    -- case, default, etc.
 Operator       { fg=salmon };
 Keyword        { Statement };    -- any other keyword
 Exception      { fg=red };
 
-PreProc        { fg=teal };    --  generic Preprocessor
-Include        { PreProc };    -- preprocessor #include
-Define         { PreProc };    -- preprocessor #define
-Macro          { PreProc };    -- same as Define
-PreCondit      { PreProc };    -- preprocessor #if, #else, #endif, etc.
+PreProc        { fg=teal };      --  generic Preprocessor
+Include        { PreProc };      -- preprocessor #include
+Define         { PreProc };      -- preprocessor #define
+Macro          { PreProc };      -- same as Define
+PreCondit      { PreProc };      -- preprocessor #if, #else, #endif, etc.
 
 Type           { fg=cyan };
-StorageClass   { Type };    -- static, register, volatile, etc.
-Structure      { Type };    -- struct, union, enum, etc.
+StorageClass   { Type };         -- static, register, volatile, etc.
+Structure      { Type };         -- struct, union, enum, etc.
 Typedef        { Type };
 
-Special        { fg=orange };  -- (preferred) any special symbol
-SpecialChar    { Special };    -- special character in a constant
-Tag            { fg=yellow };  -- you can use CTRL-] on this
-Delimiter      { Special };    -- character that needs attention
-SpecialComment { Special };    -- special things inside a comment
-Debug          { Special };    -- debugging statements
+Special        { fg=orange };    -- (preferred) any special symbol
+SpecialChar    { Special };      -- special character in a constant
+Tag            { fg=yellow };    -- you can use CTRL-] on this
+Delimiter      { fg=salmon };    -- character that needs attention
+SpecialComment { Special };      -- special things inside a comment
+Debug          { Special };      -- debugging statements
 
 Underlined { gui = un };
 Bold       { gui = bf };
 Italic     { gui = it };
-Ignore     { fg=faded };           --  left blank, hidden  |hl-Ignore|
-Error      { fg=red };             --  any erroneous construct
-Todo       { fg=orange, gui=bf };  --  anything that needs extra attention
+Ignore     { fg=faded };                   --  left blank, hidden  |hl-Ignore|
+Error      { fg=red };                     --  any erroneous construct
+Todo       { fg=orange, gui=bf..','..it};  --  anything that needs extra attention
 
 
 
@@ -236,7 +254,7 @@ TSFunction           { Function };
 TSFuncBuiltin        { TSFunction };
 TSFuncMacro          { TSFunction };            -- macro defined fuctions: each `macro_rules` in Rust
 TSMethod             { TSFunction };
-TSConstructor        { TSFunction, gui=bf };    -- For constructor: `{}` in Lua and Java constructors.
+TSConstructor        { TSFunction };            -- For constructor: `{}` in Lua and Java constructors.
 TSKeywordFunction    { fg=green };
 
 TSKeyword            { Keyword };
@@ -255,8 +273,8 @@ TSType               { Type };
 TSTypeBuiltin        { TSType,     gui=it };
 
 TSPunctDelimiter     { Delimiter };             -- delimiters ie: `.`
-TSPunctBracket       { fg=yellow };             -- brackets and parens.
-TSPunctSpecial       { TSPunctDelimiter };      -- special punctutation that does not fall in the catagories before.
+TSPunctBracket       { fg=amber };              -- brackets and parens.
+TSPunctSpecial       { Delimiter };             -- special punctutation that does not fall in the catagories before.
 
 TSComment            { Comment };
 TSTag                { Tag };                   -- Tags like html tag names.

@@ -60,7 +60,6 @@ local purple  = hsl(270, 30, 60)
 local magenta = hsl(310, 40, 70)
 
 
-
 --------------------------------------------------------------------------------
 return lush(function() return {
 -- Metagroup (basically a hack for builds)
@@ -110,7 +109,7 @@ PmenuThumb   { PmenuSel };                 -- Thumb of the scrollbar
 WildMenu     { Pmenu };                    -- current match in 'wildmenu' completion
 
 StatusLine   { fg=fg,      bg=overbg };
-StatusLineNC { fg=mid,     bg=overbg };
+StatusLineNC { fg=drop,    bg=overbg };
 
 TabLine      { fg=fg,      bg=overbg };    -- not active tab page label
 TabLineFill  { bg=overbg };                -- where there are no labels
@@ -124,7 +123,7 @@ QuickFixLine { Search };                   -- Current |quickfix| item in the qui
 Visual       { bg=overbg };                -- Visual mode selection
 VisualNOS    { bg=overbg };                -- Visual mode selection when Vim is "Not Owning the Selection".
 
-ModeMsg      { fg=mid };                   -- 'showmode' message (e.g. "-- INSERT -- ")
+ModeMsg      { fg=drop };                  -- 'showmode' message (e.g. "-- INSERT -- ")
 MsgArea      { Normal };                   -- Area for messages and cmdline
 MsgSeparator { fg=orange };                -- Separator for scrolled messages `msgsep` flag of 'display'
 MoreMsg      { fg=green };                 -- |more-prompt|
@@ -159,24 +158,24 @@ SpellRare    { fg=yellow,  gui=un };
 LspDiagnosticsDefaultError           { fg=red };
 LspDiagnosticsDefaultWarning         { fg=yellow };
 LspDiagnosticsDefaultInformation     { fg=fg };
-LspDiagnosticsDefaultHint            { fg=teal };
+LspDiagnosticsDefaultHint            { fg=green };
 
---LspDiagnosticsVirtualTextError       { };    -- "Error" diagnostic virtual text
---LspDiagnosticsVirtualTextWarning     { };    -- "Warning" diagnostic virtual text
---LspDiagnosticsVirtualTextInformation { };    -- "Information" diagnostic virtual text
---LspDiagnosticsVirtualTextHint        { };    -- "Hint" diagnostic virtual text
---LspDiagnosticsUnderlineError         { };    -- underline "Error" diagnostics
---LspDiagnosticsUnderlineWarning       { };    -- underline "Warning" diagnostics
---LspDiagnosticsUnderlineInformation   { };    -- underline "Information" diagnostics
---LspDiagnosticsUnderlineHint          { };    -- underline "Hint" diagnostics
---LspDiagnosticsFloatingError          { };    -- color "Error" diagnostic messages in diagnostics float
---LspDiagnosticsFloatingWarning        { };    -- color "Warning" diagnostic messages in diagnostics float
---LspDiagnosticsFloatingInformation    { };    -- color "Information" diagnostic messages in diagnostics float
---LspDiagnosticsFloatingHint           { };    -- color "Hint" diagnostic messages in diagnostics float
---LspDiagnosticsSignError              { };    -- "Error" signs in sign column
---LspDiagnosticsSignWarning            { };    -- "Warning" signs in sign column
---LspDiagnosticsSignInformation        { };    -- "Information" signs in sign column
---LspDiagnosticsSignHint               { };    -- "Hint" signs in sign column
+--LspDiagnosticsVirtualTextError       { };           -- "Error" diagnostic virtual text
+--LspDiagnosticsVirtualTextWarning     { };           -- "Warning" diagnostic virtual text
+--LspDiagnosticsVirtualTextInformation { };           -- "Information" diagnostic virtual text
+--LspDiagnosticsVirtualTextHint        { };           -- "Hint" diagnostic virtual text
+LspDiagnosticsUnderlineError         { gui=un };    -- underline "Error" diagnostics
+LspDiagnosticsUnderlineWarning       { gui=un };    -- underline "Warning" diagnostics
+LspDiagnosticsUnderlineInformation   { gui=un };    -- underline "Information" diagnostics
+LspDiagnosticsUnderlineHint          { gui=un };    -- underline "Hint" diagnostics
+--LspDiagnosticsFloatingError          { };           -- color "Error" diagnostic messages in diagnostics float
+--LspDiagnosticsFloatingWarning        { };           -- color "Warning" diagnostic messages in diagnostics float
+--LspDiagnosticsFloatingInformation    { };           -- color "Information" diagnostic messages in diagnostics float
+--LspDiagnosticsFloatingHint           { };           -- color "Hint" diagnostic messages in diagnostics float
+--LspDiagnosticsSignError              { };           -- "Error" signs in sign column
+--LspDiagnosticsSignWarning            { };           -- "Warning" signs in sign column
+--LspDiagnosticsSignInformation        { };           -- "Information" signs in sign column
+--LspDiagnosticsSignHint               { };           -- "Hint" signs in sign column
 
 
 

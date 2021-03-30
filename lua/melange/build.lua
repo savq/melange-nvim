@@ -76,7 +76,10 @@ end
 
 function targets.viml()
     local parsed = lush(melange)
-    local compiled = lush.compile(parsed, {force_clean = true })
+    local compiled = lush.compile(parsed, {force_clean=true})
+    for i,s in ipairs(compiled) do
+        compiled[i] = s:gsub("%s*blend=NONE", "")    --Remove blend property
+    end
     table.insert(compiled, 4, "let g:colors_name = 'melange'")
     return table.concat(compiled, '\n')
 end

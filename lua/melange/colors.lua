@@ -1,4 +1,4 @@
--- Melange dark
+-- Melange
 --
 --      Author: Sergio Vargas <savargasqu+git@unal.edu.co>
 -- Last update: 2021-04-24
@@ -17,48 +17,86 @@
 --  "Y8P"  "Y888888P'"Y88P"`Y8P' "YY8P8P88P     `Y8
 
 
-local lush = require 'lush'
+local lush = require('lush')
 local hsl = lush.hsl
 
--- GUI options
-local bf, it, un = 'bold', 'italic', 'underline'
+local lighting = vim.o.background --dark | light
+local bf, it, un = 'bold', 'italic', 'underline' --GUI options
 
-
-local g = {
-    hsl(30, 10, 15);
-    hsl(30, 10, 20);
-    hsl(30, 10, 30);
-    hsl(30, 20, 35);
-    hsl(30, 20, 55);
-    hsl(30, 30, 90);
+--------------------------------------------------------------------------------
+local grays = {
+    dark = {
+        hsl(30, 10, 15),
+        hsl(30, 10, 20),
+        hsl(30, 10, 30),
+        hsl(30, 20, 35),
+        hsl(30, 20, 55),
+        hsl(30, 30, 90),
+    },
+    light = {
+        hsl(30, 60, 90),
+        hsl(30, 40, 80),
+        hsl(30, 30, 70),
+        hsl(30, 30, 60),
+        hsl(30, 20, 50),
+        hsl(30, 10, 30),
+    },
 }
 
--- Backgrounds
-local bg     = g[1]
-local overbg = g[2]
-local faded  = g[3]
+-- backgrounds
+local bg     = grays[lighting][1]
+local overbg = grays[lighting][2]
+local faded  = grays[lighting][3]
+-- foregrounds
+local mid    = grays[lighting][4]
+local drop   = grays[lighting][5]
+local fg     = grays[lighting][6]
 
--- Foregrounds
-local mid    = g[4]
-local drop   = g[5]
-local fg     = g[6]
+--------------------------------------------------------------------------------
+local colors = {
+    red     = hsl(350, 60, 60);
+    salmon  = hsl( 10, 90, 70);
+    orange  = hsl( 30, 60, 50);
+    amber   = hsl( 40, 60, 50);
+    yellow  = hsl( 40, 90, 70);
 
+    green   = hsl(100, 40, 60);
+    teal    = hsl(150, 40, 50);
+    cyan    = hsl(180, 20, 60);
 
--- Color palette
-local red     = hsl(350, 60, 60)
-local salmon  = hsl( 10, 90, 70)
-local orange  = hsl( 30, 60, 50)
-local amber   = hsl( 40, 60, 50)
-local yellow  = hsl( 40, 90, 70)
+    blue    = hsl(225, 30, 70);
+    purple  = hsl(270, 30, 60);
+    magenta = hsl(310, 40, 70);
+}
 
-local green   = hsl(100, 40, 60)
-local teal    = hsl(150, 40, 50)
-local cyan    = hsl(180, 20, 60)
+local red, salmon, orange, amber, yellow, green, teal, cyan, blue, purple, magenta;
 
-local blue    = hsl(225, 30, 70)
-local purple  = hsl(270, 30, 60)
-local magenta = hsl(310, 40, 70)
-
+if lighting == 'light' then
+    --TODO: write in terms of colors above
+    red     = colors.red    .abs_da(20)
+    salmon  = colors.salmon .abs_da(30)
+    orange  = colors.orange .abs_da(10)
+    amber   = colors.amber  --.abs_da(0)
+    yellow  = colors.yellow .abs_da(30)
+    green   = colors.green  .abs_da(20)
+    teal    = colors.teal   .abs_da(20)
+    cyan    = colors.cyan   .abs_da(20)
+    blue    = colors.blue   .abs_da(20)
+    purple  = colors.purple .abs_da(20)
+    magenta = colors.magenta.abs_da(20)
+elseif lighting == 'dark' then
+    red     = colors.red
+    salmon  = colors.salmon
+    orange  = colors.orange
+    amber   = colors.amber
+    yellow  = colors.yellow
+    green   = colors.green
+    teal    = colors.teal
+    cyan    = colors.cyan
+    blue    = colors.blue
+    purple  = colors.purple
+    magenta = colors.magenta
+end
 
 --------------------------------------------------------------------------------
 return lush(function() return {

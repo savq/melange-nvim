@@ -1,7 +1,7 @@
 -- Melange dark
 --
 --      Author: Sergio Vargas <savargasqu+git@unal.edu.co>
--- Last update: 2021-03-26
+-- Last update: 2021-04-24
 --
 -- Built with,
 --
@@ -27,7 +27,7 @@ local bf, it, un = 'bold', 'italic', 'underline'
 local g = {
     hsl(30, 10, 15);
     hsl(30, 10, 20);
-    hsl(30, 15, 30);
+    hsl(30, 10, 30);
     hsl(30, 20, 35);
     hsl(30, 20, 55);
     hsl(30, 30, 90);
@@ -75,7 +75,8 @@ Melange {lush = {
     cyan=cyan,
     blue=blue,
     purple=purple,
-    magenta=magenta}};
+    magenta=magenta}
+};
 
 Normal       { fg=fg,      bg=bg };
 NormalFloat  { fg=fg,      bg=overbg };
@@ -120,7 +121,7 @@ IncSearch    { Search };                   -- 'incsearch' highlighting; also use
 Substitute   { Search };                   -- |:substitute| replacement text highlighting
 QuickFixLine { Search };                   -- Current |quickfix| item in the quickfix window
 
-Visual       { bg=overbg };                -- Visual mode selection
+Visual       { bg=faded, gui=bf };         -- Visual mode selection
 VisualNOS    { bg=overbg };                -- Visual mode selection when Vim is "Not Owning the Selection".
 
 ModeMsg      { fg=drop };                  -- 'showmode' message (e.g. "-- INSERT -- ")
@@ -164,10 +165,10 @@ LspDiagnosticsDefaultHint            { fg=green };
 --LspDiagnosticsVirtualTextWarning     { };           -- "Warning" diagnostic virtual text
 --LspDiagnosticsVirtualTextInformation { };           -- "Information" diagnostic virtual text
 --LspDiagnosticsVirtualTextHint        { };           -- "Hint" diagnostic virtual text
-LspDiagnosticsUnderlineError         { gui=un };    -- underline "Error" diagnostics
-LspDiagnosticsUnderlineWarning       { gui=un };    -- underline "Warning" diagnostics
-LspDiagnosticsUnderlineInformation   { gui=un };    -- underline "Information" diagnostics
-LspDiagnosticsUnderlineHint          { gui=un };    -- underline "Hint" diagnostics
+--LspDiagnosticsUnderlineError         { gui=un };    -- underline "Error" diagnostics
+--LspDiagnosticsUnderlineWarning       { gui=un };    -- underline "Warning" diagnostics
+--LspDiagnosticsUnderlineInformation   { gui=un };    -- underline "Information" diagnostics
+--LspDiagnosticsUnderlineHint          { gui=un };    -- underline "Hint" diagnostics
 --LspDiagnosticsFloatingError          { };           -- color "Error" diagnostic messages in diagnostics float
 --LspDiagnosticsFloatingWarning        { };           -- color "Warning" diagnostic messages in diagnostics float
 --LspDiagnosticsFloatingInformation    { };           -- color "Information" diagnostic messages in diagnostics float

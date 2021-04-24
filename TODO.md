@@ -6,8 +6,8 @@
     colors are defined by colors and not Vim groups.
   - Makes variants easier to mantain
 - [ ] Variants:
-  - Light theme
-  - high contrast dark theme
+  - [X] Light theme
+  - [ ] high contrast dark theme
 - [ ] Better screenshots:
   - Explain that tree-sitter makes color more consistent across languages
   - showcase various languages: static and dynamic; with and without type inference; etc.

@@ -73,17 +73,17 @@ local red, salmon, orange, amber, yellow, green, teal, cyan, blue, purple, magen
 
 if lighting == 'light' then
     --TODO: write in terms of colors above
-    red     = colors.red    .abs_da(20)
-    salmon  = colors.salmon .abs_da(30)
-    orange  = colors.orange .abs_da(10)
-    amber   = colors.amber  --.abs_da(0)
-    yellow  = colors.yellow .abs_da(30)
-    green   = colors.green  .abs_da(20)
-    teal    = colors.teal   .abs_da(20)
-    cyan    = colors.cyan   .abs_da(20)
-    blue    = colors.blue   .abs_da(20)
-    purple  = colors.purple .abs_da(20)
-    magenta = colors.magenta.abs_da(20)
+    red     = colors.red    .da(20)
+    salmon  = colors.salmon .da(20).de(30)
+    orange  = colors.orange
+    amber   = colors.amber  .da(20)
+    yellow  = colors.yellow .da(35)
+    green   = colors.green  .da(20)
+    teal    = colors.teal   .da(20)
+    cyan    = colors.cyan   .da(20)
+    blue    = colors.blue   .da(20)
+    purple  = colors.purple .da(20)
+    magenta = colors.magenta.da(20)
 elseif lighting == 'dark' then
     red     = colors.red
     salmon  = colors.salmon
@@ -102,7 +102,12 @@ end
 return lush(function() return {
 -- Metagroup (basically a hack for builds)
 Melange {lush = {
-    g=g,
+    bg=bg,
+    overbg=overbg,
+    faded=faded,
+    mid=mid,
+    drop=drop,
+    fg=fg,
     red=red,
     salmon=salmon,
     orange=orange,

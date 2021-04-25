@@ -3,7 +3,7 @@
     background: '#2A2622'
   normal:
     white:   '#EDE6DE'
-    black:   '#38332E'
+    black:   '#6B5947'
     red:     '#D65C70'
     yellow:  '#F7C96E'
     green:   '#4DB380'
@@ -12,7 +12,7 @@
     magenta: '#997AB8'
   bright:
     white:   '#EDE6DE'
-    black:   '#584D41'
+    black:   '#A38C75'
     red:     '#F7856E'
     yellow:  '#CC8033'
     green:   '#8BC270'

@@ -2,12 +2,11 @@
 
 ![logo](./assets/melange-logo.png)
 
-Melange is a dark color scheme with a warm, moderate contrast color palette.
-
 ### Features
 
 - Works with Neovim and Vim
 - tree-sitter support
+- Dark and light variants
 - Support for various terminal emulators:
   - [Alacritty](https://github.com/alacritty/alacritty)
   - [iTerm2](https://github.com/gnachman/iTerm2)

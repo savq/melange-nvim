@@ -1,29 +1,25 @@
+![logo](./.assets/melange-logo.png)
+
 🚧 **WORK IN PROGRESS. See [TODO](TODO.md)** 🚧
 
-![logo](./assets/melange-logo.png)
-
-Melange is a dark color scheme with a warm, moderate contrast color palette.
-
-### Features
-
+## Features
 - Works with Neovim and Vim
 - tree-sitter support
+- Dark and light variants
 - Support for various terminal emulators:
   - [Alacritty](https://github.com/alacritty/alacritty)
   - [iTerm2](https://github.com/gnachman/iTerm2)
   - [Kitty](https://github.com/kovidgoyal/kitty)
 
 
-### Requirements
-
+## Requirements
 * `termguicolors` enabled for true color support
-* (recommended) Neovim 0.5
-* (recommended) [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+* Neovim 0.5 (recommended)
+* [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) (recommended)
 
 
 
-### Installation
-
+## Installation
 With [Paq](https://github.com/savq/paq-nvim):
 ```lua
 paq 'savq/melange'
@@ -38,20 +34,24 @@ Additionally, [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitt
 can be used to install tree-sitter grammars.
 
 
-### Usage
+## Usage
+
+Set the `colorscheme` option. If you want to enable the light variant, set the `background` before setting the colorscheme.
 
 In your `init.vim`:
 ```vim
+"set background=light
 colorscheme melange
 ```
 
 Or in your `init.lua`:
 ```lua
+--vim.o.background = 'light'
 vim.cmd 'colorscheme melange'
 ```
 
 
-### Design
+## Design
 
 The color scheme was developed with the following ideas in mind:
 
@@ -62,7 +62,7 @@ The color scheme was developed with the following ideas in mind:
 
 
 
-### Build and develop
+## Build and develop
 
 Melange is made with [Lush.nvim](https://github.com/rktjmp/lush.nvim),
 which makes it very easy to modify.
@@ -79,10 +79,12 @@ lua require('lush')(require('melange.colors'))
 ```
 
 
-### Contributing
+## Contributing
 
 I'm open to suggestions on the color scheme, there are still things that
 I don't find perfect just yet.
+
+Support for plugins, status-lines and the like are welcome.
 
 Highlight group definitions for specific languages won't be accepted though.
 Your favorite language probably has a tree-sitter grammar already available.
@@ -91,10 +93,7 @@ See the [supported languages](https://github.com/nvim-treesitter/nvim-treesitter
 It's possible to auto-generate colors schemes for different terminal emulators.
 If you want to add support for another terminal emulator, feel free to open a PR.
 
-Support for status line plugins would also be welcome
-(the lush templates have some info on that).
 
+## Preview
 
-### Preview
-
-![screenshot](./assets/screenshot2021-03-27.png)
+![screenshot](./.assets/screenshot2021-03-27.png)

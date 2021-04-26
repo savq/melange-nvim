@@ -1,32 +1,30 @@
--- Scripts to compile Lush colors to different targets, including:
+-- Scripts to compile Lush colors to different targets:
     -- VimL
     -- Alacritty
     -- kitty
 
 local uv = vim.loop
 local lush = require('lush')
-local melange = require('melange.colors')
-local c = melange.Melange.lush
 
 local targets = {}
 
-function targets.alacritty()
+function targets.alacritty(c)
     return table.concat({
         "  primary:",
-        "    foreground: '" .. c.g[6] .. "'",
-        "    background: '" .. c.g[1] .. "'",
+        "    foreground: '" .. c.fg .. "'",
+        "    background: '" .. c.bg .. "'",
         "  normal:",
-        "    white:   '" .. c.g[6]    .. "'",
-        "    black:   '" .. c.g[2]    .. "'",
-        "    red:     '" .. c.red     .. "'",
-        "    yellow:  '" .. c.yellow  .. "'",
-        "    green:   '" .. c.teal    .. "'",
-        "    cyan:    '" .. c.cyan    .. "'",
-        "    blue:    '" .. c.blue    .. "'",
-        "    magenta: '" .. c.purple  .. "'",
+        "    white:   '" .. c.fg     .. "'",
+        "    black:   '" .. c.mid    .. "'",
+        "    red:     '" .. c.red    .. "'",
+        "    yellow:  '" .. c.yellow .. "'",
+        "    green:   '" .. c.teal   .. "'",
+        "    cyan:    '" .. c.cyan   .. "'",
+        "    blue:    '" .. c.blue   .. "'",
+        "    magenta: '" .. c.purple .. "'",
         "  bright:",
-        "    white:   '" .. c.g[6]    .. "'",
-        "    black:   '" .. c.g[3]    .. "'",
+        "    white:   '" .. c.fg      .. "'",
+        "    black:   '" .. c.drop    .. "'",
         "    red:     '" .. c.salmon  .. "'",
         "    yellow:  '" .. c.orange  .. "'",
         "    green:   '" .. c.green   .. "'",
@@ -36,11 +34,11 @@ function targets.alacritty()
     }, "\n")
 end
 
-function targets.kitty()
+function targets.kitty(c, melange)
     return table.concat({
-        "background " .. c.g[1],
-        "foreground " .. c.g[6],
-        "cursor "     .. c.g[6],
+        "background " .. c.bg,
+        "foreground " .. c.fg,
+        "cursor "     .. c.fg,
         "url_color "  .. melange.TSURI.fg,
 
         "selection_background " .. melange.Visual.bg,
@@ -53,44 +51,69 @@ function targets.kitty()
         "inactive_tab_foreground " .. melange.Normal.fg,
 
         -- normal
-        "color0 " .. c.g[1],
+        "color0 " .. c.bg,
         "color1 " .. c.red,
         "color2 " .. c.teal,
         "color3 " .. c.yellow,
         "color4 " .. c.blue,
         "color5 " .. c.purple,
         "color6 " .. c.cyan,
-        "color7 " .. c.g[6],
+        "color7 " .. c.fg,
         -- bright
-        "color8 " .. c.g[2],
+        "color8 " .. c.overbg,
         "color9 " .. c.salmon,
         "color10 " .. c.green,
         "color11 " .. c.orange,
         "color12 " .. c.blue,
         "color13 " .. c.purple,
         "color14 " .. c.cyan,
-        "color15 " .. c.g[6],
+        "color15 " .. c.fg,
         ""
     }, "\n")
 end
 
-function targets.viml()
+function targets.viml(_, melange)
     local parsed = lush(melange)
-    local compiled = lush.compile(parsed, {force_clean=true})
+    local compiled = lush.compile(parsed, {force_clean=false})
     for i,s in ipairs(compiled) do
         compiled[i] = s:gsub("%s*blend=NONE", "")    --Remove blend property
     end
-    table.insert(compiled, 4, "let g:colors_name = 'melange'")
+    --table.insert(compiled, 4, "let g:colors_name = 'melange'")
     return table.concat(compiled, '\n')
 end
 
-local function build(t, dir)
-    local colors = targets[t]()
-    local fd = assert(uv.fs_open(dir, 'w', 420))
+
+local function build(t, file, melange, c)
+    local colors = targets[t](c, melange)
+    local fd = assert(uv.fs_open(file, 'w', 420))
     uv.fs_write(fd, colors, -1)
     assert(uv.fs_close(fd))
 end
 
+
+local function buildall()
+    -- Build dark colorschemes
+    vim.o.background = 'dark'
+    package.loaded['melange.colors'] = nil
+    local melange = require('melange.colors')
+    local c = melange.Melange.lush
+
+    build("viml",      "./colors/melange_dark.vim", melange, c)
+    build("alacritty", "./term/alacritty_dark.yml", melange, c)
+    build("kitty",     "./term/kitty_dark.conf", melange, c)
+
+    -- Build light colorschemes
+    vim.o.background = 'light'
+    package.loaded['melange.colors'] = nil
+    melange = require('melange.colors')
+    c = melange.Melange.lush
+
+    build("viml",      "./colors/melange_light.vim", melange, c)
+    build("alacritty", "./term/alacritty_light.yml", melange, c)
+    build("kitty",     "./term/kitty_light.conf", melange, c)
+end
+
 return {
     build = build,
+    buildall = buildall,
 }

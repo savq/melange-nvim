@@ -1,4 +1,4 @@
-![logo](./assets/melange-logo.png)
+![logo](./.assets/melange-logo.png)
 
 🚧 **WORK IN PROGRESS. See [TODO](TODO.md)** 🚧
 
@@ -96,4 +96,4 @@ If you want to add support for another terminal emulator, feel free to open a PR
 
 ## Preview
 
-![screenshot](./assets/screenshot2021-03-27.png)
+![screenshot](./.assets/screenshot2021-03-27.png)

@@ -1,7 +1,7 @@
 -- Melange
 --
 --      Author: Sergio Vargas <savargasqu+git@unal.edu.co>
--- Last update: 2021-04-24
+-- Last update: 2021-05-01
 --
 -- Built with,
 --
@@ -20,42 +20,33 @@
 local lush = require('lush')
 local hsl = lush.hsl
 
-local lighting = vim.o.background --dark | light
+local lighting = vim.o.background -- dark | light
 local bf, it, un = 'bold', 'italic', 'underline' --GUI options
 
 --------------------------------------------------------------------------------
 local grays = {
     dark = {
-        hsl(30, 10, 15),
-        hsl(30, 10, 20),
-        hsl(30, 10, 30),
-        hsl(30, 20, 35),
-        hsl(30, 20, 55),
-        hsl(30, 30, 90),
+        hsl(30, 10, 15);
+        hsl(30, 10, 20);
+        hsl(30, 10, 30);
+        hsl(30, 20, 35);
+        hsl(30, 20, 55);
+        hsl(30, 30, 90);
     },
     light = {
-        hsl(30, 60, 90),
-        hsl(30, 40, 80),
-        hsl(30, 30, 70),
-        hsl(30, 30, 60),
-        hsl(30, 20, 50),
-        hsl(30, 10, 30),
+        hsl(30, 60, 90);
+        hsl(30, 40, 80);
+        hsl(30, 30, 70);
+        hsl(30, 30, 60);
+        hsl(30, 20, 50);
+        hsl(30, 10, 30);
     },
 }
 
--- backgrounds
-local bg     = grays[lighting][1]
-local overbg = grays[lighting][2]
-local faded  = grays[lighting][3]
--- foregrounds
-local mid    = grays[lighting][4]
-local drop   = grays[lighting][5]
-local fg     = grays[lighting][6]
-
---------------------------------------------------------------------------------
 local colors = {
     red     = hsl(350, 60, 60);
     salmon  = hsl( 10, 90, 70);
+
     orange  = hsl( 30, 60, 50);
     amber   = hsl( 40, 60, 50);
     yellow  = hsl( 40, 90, 70);
@@ -69,10 +60,19 @@ local colors = {
     magenta = hsl(310, 40, 70);
 }
 
+local bg, overbg, faded, mid, drop, fg;
 local red, salmon, orange, amber, yellow, green, teal, cyan, blue, purple, magenta;
 
+-- backgrounds
+bg     = grays[lighting][1]
+overbg = grays[lighting][2]
+faded  = grays[lighting][3]
+-- foregrounds
+mid    = grays[lighting][4]
+drop   = grays[lighting][5]
+fg     = grays[lighting][6]
+
 if lighting == 'light' then
-    --TODO: write in terms of colors above
     red     = colors.red    .da(20)
     salmon  = colors.salmon .da(20).de(30)
     orange  = colors.orange
@@ -99,7 +99,7 @@ elseif lighting == 'dark' then
 end
 
 --------------------------------------------------------------------------------
-return lush(function() return {
+local colorscheme = lush(function() return {
 -- Metagroup (basically a hack for builds)
 Melange {lush = {
     bg=bg,
@@ -108,6 +108,7 @@ Melange {lush = {
     mid=mid,
     drop=drop,
     fg=fg,
+
     red=red,
     salmon=salmon,
     orange=orange,
@@ -339,5 +340,10 @@ HelpHyperTextJump {fg=yellow};
 markdownLinkText {fg=fg};
 
 }end)
+
+return {
+    setup = setup,
+    colorscheme = colorscheme,
+}
 
 -- vi:nowrap

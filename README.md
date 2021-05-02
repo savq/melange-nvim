@@ -75,7 +75,7 @@ for convenience.
 Alternatively, you can source the `.lua` file directly:
 
 ```lua
-lua require('lush')(require('melange.colors'))
+lua require('lush')(require('melange'))
 ```
 
 

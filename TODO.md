@@ -1,14 +1,10 @@
 # TODO
 
-- [ ] Split into modules:
-  - The color palette should be defined in a separate file, so that terminal's
-    colors are defined by colors and not Vim groups.
-  - Makes variants easier to mantain
-
 - [ ] Variants:
   - [X] Light
-  - NOTE: Currently the light colors are generated and applied based on `&background`,
-    this is annoyingly stateful and requires module reloading. TODO: Figure out a more functional way to do this.
+    - NOTE: Currently the light colors are generated and applied based on `&background`,
+      this is annoyingly stateful and requires module reloading.
+      TODO: Figure out a more functional way to do this.
   - [ ] dark high contrast
 
 - [ ] Better screenshots:
@@ -20,6 +16,3 @@
   - VimTeX is widely used and should look nice by default
 
 - [ ] Update kitty definitions to only require the `c` table (see `build.lua`)
-
-- [X] Fix grays
-- [X] Organize makefile

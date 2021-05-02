@@ -99,7 +99,7 @@ elseif lighting == 'dark' then
 end
 
 --------------------------------------------------------------------------------
-local colorscheme = lush(function() return {
+return lush(function() return {
 -- Metagroup (basically a hack for builds)
 Melange {lush = {
     bg=bg,
@@ -340,10 +340,5 @@ HelpHyperTextJump {fg=yellow};
 markdownLinkText {fg=fg};
 
 }end)
-
-return {
-    setup = setup,
-    colorscheme = colorscheme,
-}
 
 -- vi:nowrap

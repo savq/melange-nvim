@@ -92,9 +92,8 @@ function targets.viml(colorscheme)
     for i,s in ipairs(compiled) do
         compiled[i] = s:gsub("%s*blend=NONE", "")    --Remove blend property
     end
-    return table.concat(compiled, '\n')
+    return table.concat(vim.fn.sort(compiled), '\n') --Sort items for better diffs
 end
-
 
 local function write_file(file, buf)
     local fd = assert(uv.fs_open(file, 'w', 420))
@@ -111,13 +110,12 @@ local function buildall()
         package.loaded['melange'] = nil
         vim.o.background = l
         melange = require('melange')
-        colorscheme = melange.colorscheme
 
-        write_file(string.format("./term/alacritty_%s.yml", l), targets.alacritty(colorscheme))
+        write_file(string.format("./term/alacritty_%s.yml", l), targets.alacritty(melange))
 
-        write_file(string.format("./term/kitty_%s.conf", l), targets.kitty(colorscheme))
+        write_file(string.format("./term/kitty_%s.conf", l), targets.kitty(melange))
 
-        vimcolors[l] = targets.viml(colorscheme)
+        vimcolors[l] = targets.viml(melange)
     end
 
     -- vim colors are written to the same file

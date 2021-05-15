@@ -1,7 +1,7 @@
 -- Melange
 --
 --      Author: Sergio Vargas <savargasqu+git@unal.edu.co>
--- Last update: 2021-05-01
+-- Last update: 2021-05-15
 --
 -- Built with,
 --
@@ -31,15 +31,15 @@ local grays = {
         hsl(30, 10, 30);
         hsl(30, 20, 35);
         hsl(30, 20, 55);
-        hsl(30, 30, 90);
+        hsl(30, 20, 90);
     },
     light = {
-        hsl(30, 60, 90);
+        hsl(30, 40, 85);
         hsl(30, 40, 80);
-        hsl(30, 30, 70);
-        hsl(30, 30, 60);
-        hsl(30, 20, 50);
-        hsl(30, 10, 30);
+        hsl(30, 40, 70);
+        hsl(30, 20, 65);
+        hsl(30, 20, 45);
+        hsl(30, 20, 30);
     },
 }
 
@@ -74,10 +74,10 @@ fg     = grays[lighting][6]
 
 if lighting == 'light' then
     red     = colors.red    .da(20)
-    salmon  = colors.salmon .da(20).de(30)
-    orange  = colors.orange
-    amber   = colors.amber  .da(20)
-    yellow  = colors.yellow .da(35)
+    salmon  = colors.salmon .da(20).de(20)
+    orange  = colors.orange .da(10).sa(40)
+    amber   = colors.amber
+    yellow  = colors.yellow .da(30).de(20)
     green   = colors.green  .da(20)
     teal    = colors.teal   .da(20)
     cyan    = colors.cyan   .da(20)
@@ -100,31 +100,9 @@ end
 
 --------------------------------------------------------------------------------
 return lush(function() return {
--- Metagroup (basically a hack for builds)
-Melange {lush = {
-    bg=bg,
-    overbg=overbg,
-    faded=faded,
-    mid=mid,
-    drop=drop,
-    fg=fg,
-
-    red=red,
-    salmon=salmon,
-    orange=orange,
-    amber=amber,
-    yellow=yellow,
-    green=green,
-    teal=teal,
-    cyan=cyan,
-    blue=blue,
-    purple=purple,
-    magenta=magenta}
-};
-
 Normal       { fg=fg,      bg=bg };
 NormalFloat  { fg=fg,      bg=overbg };
-NormalNC     { fg=fg,      bg=bg };        -- normal text in non-current windows
+NormalNC     { Normal };        -- normal text in non-current windows
 
 Comment      { fg=drop,    gui=it };
 Conceal      { fg=yellow };
@@ -132,13 +110,12 @@ Whitespace   { fg=mid };                   -- 'listchars'
 NonText      { Whitespace };               -- characters that don't exist in the text
 SpecialKey   { Whitespace };               -- Unprintable characters: text displayed differently from what it really is
 
-
-Cursor       { fg=bg,      bg=fg };
+Cursor       { fg='reverse', bg='reverse' };
 TermCursor   { fg=bg,      bg=fg };
 ColorColumn  { bg=overbg };
-CursorColumn { bg=overbg };
-CursorLine   { CursorColumn };
-MatchParen   { fg=fg,      bg=faded };
+CursorColumn { ColorColumn };
+CursorLine   { ColorColumn };
+MatchParen   { fg=fg,      bg=mid };
 
 LineNr       { fg=mid };
 CursorLineNr { fg=orange };
@@ -156,16 +133,17 @@ WildMenu     { Pmenu };                    -- current match in 'wildmenu' comple
 StatusLine   { fg=fg,      bg=overbg };
 StatusLineNC { fg=drop,    bg=overbg };
 
-TabLine      { fg=fg,      bg=overbg };    -- not active tab page label
-TabLineFill  { bg=overbg };                -- where there are no labels
-TabLineSel   { fg=yellow,  bg=faded };     -- active tab page label
+TabLine      { StatusLineNC };             -- not active tab page label
+TabLineFill  { StatusLineNC };             -- where there are no labels
+TabLineSel   { StatusLine };               -- active tab page label
+
 
 Search       { fg=bg,      bg=yellow };    -- Last search pattern highlighting (see 'hlsearch')
 IncSearch    { Search };                   -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 Substitute   { Search };                   -- |:substitute| replacement text highlighting
 QuickFixLine { Search };                   -- Current |quickfix| item in the quickfix window
 
-Visual       { bg=faded, gui=bf };         -- Visual mode selection
+Visual       { bg=overbg,  gui=bf };       -- Visual mode selection
 VisualNOS    { bg=overbg };                -- Visual mode selection when Vim is "Not Owning the Selection".
 
 ModeMsg      { fg=drop };                  -- 'showmode' message (e.g. "-- INSERT -- ")
@@ -339,6 +317,27 @@ TSError              { fg=red };                -- syntax/parser errors.
 HelpHyperTextJump {fg=yellow};
 markdownLinkText {fg=fg};
 
+-- Metagroup (basically a hack for builds)
+Melange {lush = {
+    bg=bg,
+    overbg=overbg,
+    faded=faded,
+    mid=mid,
+    drop=drop,
+    fg=fg,
+
+    red=red,
+    salmon=salmon,
+    orange=orange,
+    amber=amber,
+    yellow=yellow,
+    green=green,
+    teal=teal,
+    cyan=cyan,
+    blue=blue,
+    purple=purple,
+    magenta=magenta}
+};
 }end)
 
 -- vi:nowrap

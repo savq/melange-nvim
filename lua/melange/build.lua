@@ -3,6 +3,8 @@
     -- Alacritty
     -- kitty
 
+vim.cmd('packadd lush.nvim')
+
 local uv = vim.loop
 local lush = require('lush')
 

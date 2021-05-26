@@ -113,9 +113,9 @@ local function buildall()
         vim.o.background = l
         melange = require('melange')
 
-        write_file(string.format("./term/alacritty_%s.yml", l), targets.alacritty(melange))
-
-        write_file(string.format("./term/kitty_%s.conf", l), targets.kitty(melange))
+        for t,f in pairs{alacritty='yml', kitty='conf'} do
+            write_file(string.format("./term/%s/melange_%s.%s", t, l, f), targets[t](melange))
+        end
 
         vimcolors[l] = targets.viml(melange)
     end

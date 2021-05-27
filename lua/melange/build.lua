@@ -8,72 +8,102 @@ vim.cmd('packadd lush.nvim')
 local uv = vim.loop
 local lush = require('lush')
 
+-- format each entry in a table, and concatenate them into a single string
+local function concat_format(t)
+    return table.concat(vim.tbl_map(function(x) return string.format(unpack(x)) end, t), "\n")
+end
+
+-- write the contents of a buffer to a file
+local function write_file(file, buf)
+    local fd = assert(uv.fs_open(file, 'w', 420))
+    uv.fs_write(fd, buf, -1)
+    assert(uv.fs_close(fd))
+end
+
 local targets = {}
 
 function targets.alacritty(colorscheme)
     local c = colorscheme.Melange.lush
-    return table.concat({
-        "  primary:",
-        "    foreground: '" .. c.fg .. "'",
-        "    background: '" .. c.bg .. "'",
-        "  normal:",
-        "    white:   '" .. c.fg     .. "'",
-        "    black:   '" .. c.mid    .. "'",
-        "    red:     '" .. c.red    .. "'",
-        "    yellow:  '" .. c.yellow .. "'",
-        "    green:   '" .. c.teal   .. "'",
-        "    cyan:    '" .. c.cyan   .. "'",
-        "    blue:    '" .. c.blue   .. "'",
-        "    magenta: '" .. c.purple .. "'",
-        "  bright:",
-        "    white:   '" .. c.fg      .. "'",
-        "    black:   '" .. c.drop    .. "'",
-        "    red:     '" .. c.salmon  .. "'",
-        "    yellow:  '" .. c.orange  .. "'",
-        "    green:   '" .. c.green   .. "'",
-        "    cyan:    '" .. c.cyan    .. "'",
-        "    blue:    '" .. c.blue    .. "'",
-        "    magenta: '" .. c.magenta .. "'",
-    }, "\n")
+    return concat_format {
+        {"colors:"};
+        {"  primary:"};
+        {"    foreground: '%s'", c.fg};
+        {"    background: '%s'", c.bg};
+        {"  normal:"};
+        {"    white:   '%s'", c.fg};
+        {"    black:   '%s'", c.mid};
+        {"    red:     '%s'", c.red};
+        {"    yellow:  '%s'", c.yellow};
+        {"    green:   '%s'", c.teal};
+        {"    cyan:    '%s'", c.cyan};
+        {"    blue:    '%s'", c.blue};
+        {"    magenta: '%s'", c.purple};
+        {"  bright:"};
+        {"    white:   '%s'", c.fg};
+        {"    black:   '%s'", c.drop};
+        {"    red:     '%s'", c.salmon};
+        {"    yellow:  '%s'", c.orange};
+        {"    green:   '%s'", c.green};
+        {"    cyan:    '%s'", c.cyan};
+        {"    blue:    '%s'", c.blue};
+        {"    magenta: '%s'", c.magenta};
+    }
 end
 
 function targets.kitty(colorscheme)
     local c = colorscheme.Melange.lush
-    return table.concat({
-        "background " .. c.bg,
-        "foreground " .. c.fg,
-        "cursor "     .. c.fg,
-        "url_color "  .. colorscheme.TSURI.fg,
+    return concat_format {
+        {"background %s", c.bg};
+        {"foreground %s", c.fg};
+        {"cursor     %s", c.fg};
+        {"url_color  %s", colorscheme.TSURI.fg};
 
-        "selection_background " .. colorscheme.Visual.bg,
-        "selection_foreground " .. c.fg,
+        {"selection_background %s", colorscheme.Visual.bg};
+        {"selection_foreground %s", c.fg};
 
-        "tab_bar_background "      .. colorscheme.TabLineFill.bg,
-        "active_tab_background "   .. colorscheme.TabLineSel.bg,
-        "active_tab_foreground "   .. c.fg,
-        "inactive_tab_background " .. colorscheme.TabLine.bg,
-        "inactive_tab_foreground " .. c.fg,
+        {"tab_bar_background      %s", colorscheme.TabLineFill.bg};
+        {"active_tab_background   %s", colorscheme.TabLineSel.bg};
+        {"active_tab_foreground   %s", c.fg};
+        {"inactive_tab_background %s", colorscheme.TabLine.bg};
+        {"inactive_tab_foreground %s", c.fg};
 
         -- normal
-        "color0 " .. c.bg,
-        "color1 " .. c.red,
-        "color2 " .. c.teal,
-        "color3 " .. c.yellow,
-        "color4 " .. c.blue,
-        "color5 " .. c.purple,
-        "color6 " .. c.cyan,
-        "color7 " .. c.fg,
+        {"color0  %s",  c.bg};
+        {"color1  %s",  c.red};
+        {"color2  %s",  c.teal};
+        {"color3  %s",  c.yellow};
+        {"color4  %s",  c.blue};
+        {"color5  %s",  c.purple};
+        {"color6  %s",  c.cyan};
+        {"color7  %s",  c.fg};
         -- bright
-        "color8 " .. c.overbg,
-        "color9 " .. c.salmon,
-        "color10 " .. c.green,
-        "color11 " .. c.orange,
-        "color12 " .. c.blue,
-        "color13 " .. c.purple,
-        "color14 " .. c.cyan,
-        "color15 " .. c.fg,
-        ""
-    }, "\n")
+        {"color8  %s",  c.overbg};
+        {"color9  %s",  c.salmon};
+        {"color10 %s", c.green};
+        {"color11 %s", c.orange};
+        {"color12 %s", c.blue};
+        {"color13 %s", c.purple};
+        {"color14 %s", c.cyan};
+        {"color15 %s", c.fg};
+    }
+end
+
+function targets.wezterm(colorscheme)
+    local c = colorscheme.Melange.lush
+    return concat_format {
+        {'[colors]'};
+        {'foreground    = "%s"', c.fg};
+        {'background    = "%s"', c.bg};
+        {'cursor_bg     = "%s"', c.fg};
+        {'cursor_border = "%s"', c.fg};
+        {'cursor_fg     = "%s"', c.bg};
+        {'selection_bg  = "%s"', c.fg};
+        {'selection_fg  = "%s"', c.bg};
+        {'ansi = ["%s","%s","%s","%s","%s","%s","%s","%s"]',
+            c.bg, c.red, c.teal, c.yellow, c.blue, c.purple, c.cyan, c.drop};
+        {'brights = ["%s","%s","%s","%s","%s","%s","%s","%s"]',
+            c.overbg, c.salmon, c.green, c.orange, c.blue, c.magenta, c.cyan, c.fg};
+    }
 end
 
 local viml_template = [[
@@ -97,12 +127,6 @@ function targets.viml(colorscheme)
     return table.concat(vim.fn.sort(compiled), '\n') --Sort items for better diffs
 end
 
-local function write_file(file, buf)
-    local fd = assert(uv.fs_open(file, 'w', 420))
-    uv.fs_write(fd, buf, -1)
-    assert(uv.fs_close(fd))
-end
-
 local function buildall()
     local melange;     --module
     local colorscheme; --lush colorscheme
@@ -113,7 +137,7 @@ local function buildall()
         vim.o.background = l
         melange = require('melange')
 
-        for t,f in pairs{alacritty='yml', kitty='conf'} do
+        for t,f in pairs{alacritty='yml', kitty='conf', wezterm='toml'} do
             write_file(string.format("./term/%s/melange_%s.%s", t, l, f), targets[t](melange))
         end
 
@@ -128,3 +152,4 @@ end
 return {
     buildall = buildall,
 }
+

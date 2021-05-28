@@ -10,6 +10,7 @@
   - [Alacritty](https://github.com/alacritty/alacritty)
   - [iTerm2](https://github.com/gnachman/iTerm2)
   - [Kitty](https://github.com/kovidgoyal/kitty)
+  - [Wezterm](https://github.com/wez/wezterm)
 
 
 ## Requirements

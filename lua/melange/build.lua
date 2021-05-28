@@ -17,6 +17,7 @@ end
 local function write_file(file, buf)
     local fd = assert(uv.fs_open(file, 'w', 420))
     uv.fs_write(fd, buf, -1)
+    uv.fs_write(fd, '\n', -1)
     assert(uv.fs_close(fd))
 end
 
@@ -58,9 +59,8 @@ function targets.kitty(colorscheme)
         {"cursor     %s", c.fg};
         {"url_color  %s", colorscheme.TSURI.fg};
 
-        {"selection_background %s", colorscheme.Visual.bg};
-        {"selection_foreground %s", c.fg};
-
+        {"selection_background    %s", colorscheme.Visual.bg};
+        {"selection_foreground    %s", c.fg};
         {"tab_bar_background      %s", colorscheme.TabLineFill.bg};
         {"active_tab_background   %s", colorscheme.TabLineSel.bg};
         {"active_tab_foreground   %s", c.fg};

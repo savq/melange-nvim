@@ -299,3 +299,4 @@ highlight! link TabLineSel StatusLine
 highlight! link Typedef Type
 highlight! link WildMenu Pmenu
 endif
+

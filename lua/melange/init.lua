@@ -37,7 +37,7 @@ local grays = {
         hsl(30, 40, 85);
         hsl(30, 40, 80);
         hsl(30, 40, 70);
-        hsl(30, 20, 65);
+        hsl(30, 40, 65);
         hsl(30, 20, 45);
         hsl(30, 20, 30);
     },
@@ -48,20 +48,23 @@ local colors = {
     salmon  = hsl( 10, 90, 70);
 
     orange  = hsl( 30, 60, 50);
+    papaya  = hsl( 30, 90, 70);
+
     amber   = hsl( 40, 60, 50);
     yellow  = hsl( 40, 90, 70);
 
     green   = hsl(100, 40, 60);
     teal    = hsl(150, 40, 50);
-    cyan    = hsl(180, 20, 60);
 
+    aqua    = hsl(180, 20, 60);
     blue    = hsl(225, 30, 70);
+
     purple  = hsl(270, 30, 60);
     magenta = hsl(310, 40, 70);
 }
 
 local bg, overbg, faded, mid, drop, fg;
-local red, salmon, orange, amber, yellow, green, teal, cyan, blue, purple, magenta;
+local red, salmon, orange, papaya, amber, yellow, green, teal, aqua, blue, purple, magenta;
 
 -- backgrounds
 bg     = grays[lighting][1]
@@ -76,11 +79,12 @@ if lighting == 'light' then
     red     = colors.red    .da(20)
     salmon  = colors.salmon .da(20).de(20)
     orange  = colors.orange .da(10).sa(40)
+    papaya  = colors.papaya .da(20)
     amber   = colors.amber
     yellow  = colors.yellow .da(30).de(20)
     green   = colors.green  .da(20)
     teal    = colors.teal   .da(20)
-    cyan    = colors.cyan   .da(20)
+    aqua    = colors.aqua   .da(20)
     blue    = colors.blue   .da(20)
     purple  = colors.purple .da(20)
     magenta = colors.magenta.da(20)
@@ -88,11 +92,12 @@ elseif lighting == 'dark' then
     red     = colors.red
     salmon  = colors.salmon
     orange  = colors.orange
+    papaya  = colors.papaya
     amber   = colors.amber
     yellow  = colors.yellow
     green   = colors.green
     teal    = colors.teal
-    cyan    = colors.cyan
+    aqua    = colors.aqua
     blue    = colors.blue
     purple  = colors.purple
     magenta = colors.magenta
@@ -229,14 +234,14 @@ Define         { PreProc };      -- preprocessor #define
 Macro          { PreProc };      -- same as Define
 PreCondit      { PreProc };      -- preprocessor #if, #else, #endif, etc.
 
-Type           { fg=cyan };
+Type           { fg=aqua };
 StorageClass   { Type };         -- static, register, volatile, etc.
 Structure      { Type };         -- struct, union, enum, etc.
 Typedef        { Type };
 
-Special        { fg=orange };    -- (preferred) any special symbol
+Special        { fg=papaya };    -- (preferred) any special symbol
 SpecialChar    { Special };      -- special character in a constant
-Tag            { fg=yellow };    -- you can use CTRL-] on this
+Tag            { Special };      -- you can use CTRL-] on this
 Delimiter      { fg=salmon };    -- character that needs attention
 SpecialComment { Special };      -- special things inside a comment
 Debug          { Special };      -- debugging statements
@@ -261,7 +266,7 @@ TSBoolean            { Boolean };
 TSCharacter          { Character };
 TSString             { String };
 TSStringRegex        { String };
-TSStringEscape       { String,     fg=cyan };   -- escape characters within a string
+TSStringEscape       { String,     fg=aqua };   -- escape characters within a string
 TSSymbol             { fg=magenta, gui=it };    -- For identifiers referring to symbols or atoms.
 
 -- TODO: More variety in these groups
@@ -314,7 +319,7 @@ TSError              { fg=red };                -- syntax/parser errors.
 
 
 -- Other stuff
-HelpHyperTextJump {fg=yellow};
+HelpHyperTextJump {Tag};
 markdownLinkText {fg=fg};
 
 -- Metagroup (basically a hack for builds)
@@ -329,11 +334,12 @@ Melange {lush = {
     red=red,
     salmon=salmon,
     orange=orange,
+    papaya=papaya,
     amber=amber,
     yellow=yellow,
     green=green,
     teal=teal,
-    cyan=cyan,
+    aqua=aqua,
     blue=blue,
     purple=purple,
     magenta=magenta}

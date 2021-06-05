@@ -2,6 +2,7 @@
     -- VimL
     -- Alacritty
     -- kitty
+-- NOTE: In terminal color palettes orange replaces cyan
 
 vim.cmd('packadd lush.nvim')
 
@@ -31,23 +32,23 @@ function targets.alacritty(colorscheme)
         {"    foreground: '%s'", c.fg};
         {"    background: '%s'", c.bg};
         {"  normal:"};
-        {"    white:   '%s'", c.fg};
         {"    black:   '%s'", c.mid};
         {"    red:     '%s'", c.red};
-        {"    yellow:  '%s'", c.yellow};
         {"    green:   '%s'", c.teal};
-        {"    cyan:    '%s'", c.cyan};
-        {"    blue:    '%s'", c.blue};
+        {"    yellow:  '%s'", c.yellow};
+        {"    blue:    '%s'", c.aqua};
         {"    magenta: '%s'", c.purple};
-        {"  bright:"};
+        {"    cyan:    '%s'", c.orange};
         {"    white:   '%s'", c.fg};
+        {"  bright:"};
         {"    black:   '%s'", c.drop};
         {"    red:     '%s'", c.salmon};
-        {"    yellow:  '%s'", c.orange};
         {"    green:   '%s'", c.green};
-        {"    cyan:    '%s'", c.cyan};
+        {"    yellow:  '%s'", c.yellow};
         {"    blue:    '%s'", c.blue};
         {"    magenta: '%s'", c.magenta};
+        {"    cyan:    '%s'", c.papaya};
+        {"    white:   '%s'", c.fg};
     }
 end
 
@@ -72,18 +73,18 @@ function targets.kitty(colorscheme)
         {"color1  %s",  c.red};
         {"color2  %s",  c.teal};
         {"color3  %s",  c.yellow};
-        {"color4  %s",  c.blue};
+        {"color4  %s",  c.aqua};
         {"color5  %s",  c.purple};
-        {"color6  %s",  c.cyan};
+        {"color6  %s",  c.orange};
         {"color7  %s",  c.fg};
         -- bright
-        {"color8  %s",  c.overbg};
-        {"color9  %s",  c.salmon};
+        {"color8  %s", c.overbg};
+        {"color9  %s", c.salmon};
         {"color10 %s", c.green};
-        {"color11 %s", c.orange};
+        {"color11 %s", c.yellow};
         {"color12 %s", c.blue};
-        {"color13 %s", c.purple};
-        {"color14 %s", c.cyan};
+        {"color13 %s", c.magenta};
+        {"color14 %s", c.papaya};
         {"color15 %s", c.fg};
     }
 end
@@ -100,9 +101,9 @@ function targets.wezterm(colorscheme)
         {'selection_bg  = "%s"', c.fg};
         {'selection_fg  = "%s"', c.bg};
         {'ansi = ["%s","%s","%s","%s","%s","%s","%s","%s"]',
-            c.bg, c.red, c.teal, c.yellow, c.blue, c.purple, c.cyan, c.drop};
+            c.bg, c.red, c.teal, c.yellow, c.aqua, c.purple, c.orange, c.drop};
         {'brights = ["%s","%s","%s","%s","%s","%s","%s","%s"]',
-            c.overbg, c.salmon, c.green, c.orange, c.blue, c.magenta, c.cyan, c.fg};
+            c.overbg, c.salmon, c.green, c.yellow, c.blue, c.magenta, c.papaya, c.fg};
     }
 end
 
@@ -148,6 +149,8 @@ local function buildall()
     local buf = string.format(viml_template, vimcolors.dark, vimcolors.light)
     write_file("./colors/melange.vim", buf)
 end
+
+buildall()
 
 return {
     buildall = buildall,

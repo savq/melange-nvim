@@ -12,17 +12,16 @@ highlight Constant guifg=#997AB8 guibg=NONE guisp=NONE gui=NONE
 highlight Cursor guifg=reverse guibg=reverse guisp=NONE gui=NONE
 highlight CursorLineNr guifg=#CC8033 guibg=NONE guisp=NONE gui=NONE
 highlight Delimiter guifg=#F7856E guibg=NONE guisp=NONE gui=NONE
-highlight DiffAdd guifg=#8BC270 guibg=NONE guisp=NONE gui=NONE
-highlight DiffChange guifg=#CC9933 guibg=NONE guisp=NONE gui=NONE
-highlight DiffDelete guifg=#D65C70 guibg=NONE guisp=NONE gui=NONE
-highlight DiffText guifg=#CC9933 guibg=NONE guisp=NONE gui=underline
+highlight DiffAdd guifg=NONE guibg=#2E4224 guisp=NONE gui=NONE
+highlight DiffChange guifg=NONE guibg=#423824 guisp=NONE gui=NONE
+highlight DiffDelete guifg=NONE guibg=#422429 guisp=NONE gui=NONE
+highlight DiffText guifg=NONE guibg=#6B572E guisp=NONE gui=bold
 highlight Directory guifg=#CC8033 guibg=NONE guisp=NONE gui=NONE
 highlight Error guifg=#D65C70 guibg=NONE guisp=NONE gui=NONE
 highlight ErrorMsg guifg=#D65C70 guibg=NONE guisp=NONE gui=NONE
 highlight Exception guifg=#D65C70 guibg=NONE guisp=NONE gui=NONE
 highlight Folded guifg=#A38C75 guibg=#38332E guisp=NONE gui=NONE
 highlight Function guifg=#F7C96E guibg=NONE guisp=NONE gui=NONE
-highlight HelpHyperTextJump guifg=#F7C96E guibg=NONE guisp=NONE gui=NONE
 highlight Identifier guifg=#EBE6E0 guibg=NONE guisp=NONE gui=NONE
 highlight Ignore guifg=#544D45 guibg=NONE guisp=NONE gui=NONE
 highlight Italic guifg=NONE guibg=NONE guisp=NONE gui=italic
@@ -45,7 +44,7 @@ highlight PmenuSel guifg=#EBE6E0 guibg=#544D45 guisp=NONE gui=NONE
 highlight PreProc guifg=#4DB380 guibg=NONE guisp=NONE gui=NONE
 highlight Question guifg=#8BC270 guibg=NONE guisp=NONE gui=NONE
 highlight Search guifg=#2A2622 guibg=#F7C96E guisp=NONE gui=NONE
-highlight Special guifg=#CC8033 guibg=NONE guisp=NONE gui=NONE
+highlight Special guifg=#F7B36E guibg=NONE guisp=NONE gui=NONE
 highlight SpellBad guifg=#D65C70 guibg=NONE guisp=NONE gui=underline
 highlight SpellCap guifg=#D194C7 guibg=NONE guisp=NONE gui=underline
 highlight SpellLocal guifg=#CC8033 guibg=NONE guisp=NONE gui=underline
@@ -72,7 +71,6 @@ highlight TSTypeBuiltin guifg=#85ADAD guibg=NONE guisp=NONE gui=italic
 highlight TSUnderline guifg=#EBE6E0 guibg=NONE guisp=NONE gui=underline
 highlight TSVariable guifg=#EBE6E0 guibg=NONE guisp=NONE gui=NONE
 highlight TSVariableBuiltin guifg=#EBE6E0 guibg=NONE guisp=NONE gui=italic
-highlight Tag guifg=#F7C96E guibg=NONE guisp=NONE gui=NONE
 highlight TermCursor guifg=#2A2622 guibg=#EBE6E0 guisp=NONE gui=NONE
 highlight Title guifg=#CC8033 guibg=NONE guisp=NONE gui=NONE
 highlight Todo guifg=#CC8033 guibg=NONE guisp=NONE gui=bold,italic
@@ -94,6 +92,7 @@ highlight! link DiffAdded DiffAdd
 highlight! link DiffRemoved DiffDelete
 highlight! link Float Number
 highlight! link FoldColumn LineNr
+highlight! link HelpHyperTextJump Tag
 highlight! link IncSearch Search
 highlight! link Include PreProc
 highlight! link Keyword Statement
@@ -148,6 +147,7 @@ highlight! link TSURI TSSymbol
 highlight! link TabLine StatusLineNC
 highlight! link TabLineFill StatusLineNC
 highlight! link TabLineSel StatusLine
+highlight! link Tag Special
 highlight! link Typedef Type
 highlight! link WildMenu Pmenu
 else
@@ -160,26 +160,25 @@ highlight Constant guifg=#7A569F guibg=NONE guisp=NONE gui=NONE
 highlight Cursor guifg=reverse guibg=reverse guisp=NONE gui=NONE
 highlight CursorLineNr guifg=#CA731C guibg=NONE guisp=NONE gui=NONE
 highlight Delimiter guifg=#E0593E guibg=NONE guisp=NONE gui=NONE
-highlight DiffAdd guifg=#6AAB49 guibg=NONE guisp=NONE gui=NONE
-highlight DiffChange guifg=#CC9933 guibg=NONE guisp=NONE gui=NONE
-highlight DiffDelete guifg=#C43149 guibg=NONE guisp=NONE gui=NONE
-highlight DiffText guifg=#CC9933 guibg=NONE guisp=NONE gui=underline
+highlight DiffAdd guifg=NONE guibg=#C7DBBD guisp=NONE gui=NONE
+highlight DiffChange guifg=NONE guibg=#E6D5B3 guisp=NONE gui=NONE
+highlight DiffDelete guifg=NONE guibg=#E6B3BB guisp=NONE gui=NONE
+highlight DiffText guifg=NONE guibg=#F0D8A8 guisp=NONE gui=bold
 highlight Directory guifg=#CA731C guibg=NONE guisp=NONE gui=NONE
 highlight Error guifg=#C43149 guibg=NONE guisp=NONE gui=NONE
 highlight ErrorMsg guifg=#C43149 guibg=NONE guisp=NONE gui=NONE
 highlight Exception guifg=#C43149 guibg=NONE guisp=NONE gui=NONE
 highlight Folded guifg=#8A735C guibg=#E0CCB8 guisp=NONE gui=NONE
 highlight Function guifg=#D79B23 guibg=NONE guisp=NONE gui=NONE
-highlight HelpHyperTextJump guifg=#D79B23 guibg=NONE guisp=NONE gui=NONE
 highlight Identifier guifg=#5C4D3D guibg=NONE guisp=NONE gui=NONE
 highlight Ignore guifg=#D1B394 guibg=NONE guisp=NONE gui=NONE
 highlight Italic guifg=NONE guibg=NONE guisp=NONE gui=italic
-highlight LineNr guifg=#B8A694 guibg=NONE guisp=NONE gui=NONE
+highlight LineNr guifg=#C9A682 guibg=NONE guisp=NONE gui=NONE
 highlight LspDiagnosticsDefaultError guifg=#C43149 guibg=NONE guisp=NONE gui=NONE
 highlight LspDiagnosticsDefaultHint guifg=#6AAB49 guibg=NONE guisp=NONE gui=NONE
 highlight LspDiagnosticsDefaultInformation guifg=#5C4D3D guibg=NONE guisp=NONE gui=NONE
 highlight LspDiagnosticsDefaultWarning guifg=#D79B23 guibg=NONE guisp=NONE gui=NONE
-highlight MatchParen guifg=#5C4D3D guibg=#B8A694 guisp=NONE gui=NONE
+highlight MatchParen guifg=#5C4D3D guibg=#C9A682 guisp=NONE gui=NONE
 highlight Melange guifg=NONE guibg=NONE guisp=NONE gui=NONE
 highlight ModeMsg guifg=#8A735C guibg=NONE guisp=NONE gui=NONE
 highlight MoreMsg guifg=#6AAB49 guibg=NONE guisp=NONE gui=NONE
@@ -193,7 +192,7 @@ highlight PmenuSel guifg=#5C4D3D guibg=#D1B394 guisp=NONE gui=NONE
 highlight PreProc guifg=#3D8F66 guibg=NONE guisp=NONE gui=NONE
 highlight Question guifg=#6AAB49 guibg=NONE guisp=NONE gui=NONE
 highlight Search guifg=#E8D9C9 guibg=#D79B23 guisp=NONE gui=NONE
-highlight Special guifg=#CA731C guibg=NONE guisp=NONE gui=NONE
+highlight Special guifg=#F48F2A guibg=NONE guisp=NONE gui=NONE
 highlight SpellBad guifg=#C43149 guibg=NONE guisp=NONE gui=underline
 highlight SpellCap guifg=#BC62AD guibg=NONE guisp=NONE gui=underline
 highlight SpellLocal guifg=#CA731C guibg=NONE guisp=NONE gui=underline
@@ -220,7 +219,6 @@ highlight TSTypeBuiltin guifg=#629393 guibg=NONE guisp=NONE gui=italic
 highlight TSUnderline guifg=#5C4D3D guibg=NONE guisp=NONE gui=underline
 highlight TSVariable guifg=#5C4D3D guibg=NONE guisp=NONE gui=NONE
 highlight TSVariableBuiltin guifg=#5C4D3D guibg=NONE guisp=NONE gui=italic
-highlight Tag guifg=#D79B23 guibg=NONE guisp=NONE gui=NONE
 highlight TermCursor guifg=#E8D9C9 guibg=#5C4D3D guisp=NONE gui=NONE
 highlight Title guifg=#CA731C guibg=NONE guisp=NONE gui=NONE
 highlight Todo guifg=#CA731C guibg=NONE guisp=NONE gui=bold,italic
@@ -230,7 +228,7 @@ highlight VertSplit guifg=#E0CCB8 guibg=#E0CCB8 guisp=NONE gui=NONE
 highlight Visual guifg=NONE guibg=#E0CCB8 guisp=NONE gui=bold
 highlight VisualNOS guifg=NONE guibg=#E0CCB8 guisp=NONE gui=NONE
 highlight WarningMsg guifg=#C43149 guibg=NONE guisp=NONE gui=NONE
-highlight Whitespace guifg=#B8A694 guibg=NONE guisp=NONE gui=NONE
+highlight Whitespace guifg=#C9A682 guibg=NONE guisp=NONE gui=NONE
 highlight markdownLinkText guifg=#5C4D3D guibg=NONE guisp=NONE gui=NONE
 highlight! link Boolean Number
 highlight! link Conditional Statement
@@ -242,6 +240,7 @@ highlight! link DiffAdded DiffAdd
 highlight! link DiffRemoved DiffDelete
 highlight! link Float Number
 highlight! link FoldColumn LineNr
+highlight! link HelpHyperTextJump Tag
 highlight! link IncSearch Search
 highlight! link Include PreProc
 highlight! link Keyword Statement
@@ -296,6 +295,7 @@ highlight! link TSURI TSSymbol
 highlight! link TabLine StatusLineNC
 highlight! link TabLineFill StatusLineNC
 highlight! link TabLineSel StatusLine
+highlight! link Tag Special
 highlight! link Typedef Type
 highlight! link WildMenu Pmenu
 endif

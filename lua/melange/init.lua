@@ -73,10 +73,10 @@ local c = {
 }
 
 local diff = {
-    add    = hsl(c.green.h, 20, 20);
-    change = hsl(c.amber.h, 20, 20);
-    delete = hsl(c.red.h,   20, 20);
-    text   = hsl(c.amber.h, 40, 20);
+    add    = hsl(c.green.h, 30, 20);
+    delete = hsl(c.red.h,   30, 20);
+    change = hsl(c.amber.h, 30, 20);
+    text   = hsl(c.amber.h, 40, 30);
 }
 
 if lighting == 'light' then
@@ -94,8 +94,8 @@ if lighting == 'light' then
     c.magenta = c.magenta.da(20)
 
     diff.add    = hsl(c.green.h, 30, 80)
-    diff.change = hsl(c.amber.h, 50, 80)
     diff.delete = hsl(c.red.h,   50, 80)
+    diff.change = hsl(c.amber.h, 50, 80)
     diff.text   = hsl(c.amber.h, 70, 80)
 end
 
@@ -161,7 +161,7 @@ Title        { fg=c.orange };                -- titles for output from ":set all
 DiffAdd      { bg=diff.add };
 DiffDelete   { bg=diff.delete };
 DiffChange   { bg=diff.change };
-DiffText     { bg=diff.text, gui=un };
+DiffText     { bg=diff.text, gui=bf };
 DiffAdded    { DiffAdd };
 DiffRemoved  { DiffDelete };
 

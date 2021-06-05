@@ -23,7 +23,7 @@
 ## Installation
 With [Paq](https://github.com/savq/paq-nvim):
 ```lua
-paq 'savq/melange'
+'savq/melange';
 ```
 
 With [Packer](https://github.com/wbthomason/packer.nvim):

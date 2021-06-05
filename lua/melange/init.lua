@@ -1,6 +1,6 @@
 -- Melange
 --
---      Author: Sergio Vargas <savargasqu+git@unal.edu.co>
+--      Author: Sergio A. Vargas <savargasqu+git@unal.edu.co>
 -- Last update: 2021-05-15
 --
 -- Built with,
@@ -42,8 +42,16 @@ local grays = {
         hsl(30, 20, 30);
     },
 }
+-- backgrounds
+local bg     = grays[lighting][1]
+local overbg = grays[lighting][2]
+local faded  = grays[lighting][3]
+-- foregrounds
+local mid    = grays[lighting][4]
+local drop   = grays[lighting][5]
+local fg     = grays[lighting][6]
 
-local colors = {
+local c = {
     red     = hsl(350, 60, 60);
     salmon  = hsl( 10, 90, 70);
 
@@ -63,44 +71,19 @@ local colors = {
     magenta = hsl(310, 40, 70);
 }
 
-local bg, overbg, faded, mid, drop, fg;
-local red, salmon, orange, papaya, amber, yellow, green, teal, aqua, blue, purple, magenta;
-
--- backgrounds
-bg     = grays[lighting][1]
-overbg = grays[lighting][2]
-faded  = grays[lighting][3]
--- foregrounds
-mid    = grays[lighting][4]
-drop   = grays[lighting][5]
-fg     = grays[lighting][6]
-
 if lighting == 'light' then
-    red     = colors.red    .da(20)
-    salmon  = colors.salmon .da(20).de(20)
-    orange  = colors.orange .da(10).sa(40)
-    papaya  = colors.papaya .da(20)
-    amber   = colors.amber
-    yellow  = colors.yellow .da(30).de(20)
-    green   = colors.green  .da(20)
-    teal    = colors.teal   .da(20)
-    aqua    = colors.aqua   .da(20)
-    blue    = colors.blue   .da(20)
-    purple  = colors.purple .da(20)
-    magenta = colors.magenta.da(20)
-elseif lighting == 'dark' then
-    red     = colors.red
-    salmon  = colors.salmon
-    orange  = colors.orange
-    papaya  = colors.papaya
-    amber   = colors.amber
-    yellow  = colors.yellow
-    green   = colors.green
-    teal    = colors.teal
-    aqua    = colors.aqua
-    blue    = colors.blue
-    purple  = colors.purple
-    magenta = colors.magenta
+    c.red     = c.red    .da(20)
+    c.salmon  = c.salmon .da(20).de(20)
+    c.orange  = c.orange .da(10).sa(40)
+    c.papaya  = c.papaya .da(20)
+    c.amber   = c.amber
+    c.yellow  = c.yellow .da(30).de(20)
+    c.green   = c.green  .da(20)
+    c.teal    = c.teal   .da(20)
+    c.aqua    = c.aqua   .da(20)
+    c.blue    = c.blue   .da(20)
+    c.purple  = c.purple .da(20)
+    c.magenta = c.magenta.da(20)
 end
 
 --------------------------------------------------------------------------------
@@ -110,10 +93,10 @@ NormalFloat  { fg=fg,      bg=overbg };
 NormalNC     { Normal };        -- normal text in non-current windows
 
 Comment      { fg=drop,    gui=it };
-Conceal      { fg=yellow };
-Whitespace   { fg=mid };                   -- 'listchars'
-NonText      { Whitespace };               -- characters that don't exist in the text
-SpecialKey   { Whitespace };               -- Unprintable characters: text displayed differently from what it really is
+Conceal      { fg=c.yellow };
+Whitespace   { fg=mid };                     -- 'listchars'
+NonText      { Whitespace };                 -- characters that don't exist in the text
+SpecialKey   { Whitespace };                 -- Unprintable characters: text displayed differently from what it really is
 
 Cursor       { fg='reverse', bg='reverse' };
 TermCursor   { fg=bg,      bg=fg };
@@ -123,56 +106,56 @@ CursorLine   { ColorColumn };
 MatchParen   { fg=fg,      bg=mid };
 
 LineNr       { fg=mid };
-CursorLineNr { fg=orange };
+CursorLineNr { fg=c.orange };
 SignColumn   { LineNr };
-VertSplit    { fg=overbg,  bg=overbg };    -- column separating vertically split windows
+VertSplit    { fg=overbg,  bg=overbg };      -- column separating vertically split windows
 Folded       { fg=drop,    bg=overbg };
 FoldColumn   { LineNr };
 
-Pmenu        { fg=fg,      bg=overbg };    -- Popup menu normal item
-PmenuSel     { fg=fg,      bg=faded };     -- selected item
-PmenuSbar    { Pmenu };                    -- scrollbar
-PmenuThumb   { PmenuSel };                 -- Thumb of the scrollbar
-WildMenu     { Pmenu };                    -- current match in 'wildmenu' completion
+Pmenu        { fg=fg,      bg=overbg };      -- Popup menu normal item
+PmenuSel     { fg=fg,      bg=faded };       -- selected item
+PmenuSbar    { Pmenu };                      -- scrollbar
+PmenuThumb   { PmenuSel };                   -- Thumb of the scrollbar
+WildMenu     { Pmenu };                      -- current match in 'wildmenu' completion
 
 StatusLine   { fg=fg,      bg=overbg };
 StatusLineNC { fg=drop,    bg=overbg };
 
-TabLine      { StatusLineNC };             -- not active tab page label
-TabLineFill  { StatusLineNC };             -- where there are no labels
-TabLineSel   { StatusLine };               -- active tab page label
+TabLine      { StatusLineNC };               -- not active tab page label
+TabLineFill  { StatusLineNC };               -- where there are no labels
+TabLineSel   { StatusLine };                 -- active tab page label
 
 
-Search       { fg=bg,      bg=yellow };    -- Last search pattern highlighting (see 'hlsearch')
-IncSearch    { Search };                   -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-Substitute   { Search };                   -- |:substitute| replacement text highlighting
-QuickFixLine { Search };                   -- Current |quickfix| item in the quickfix window
+Search       { fg=bg,      bg=c.yellow };    -- Last search pattern highlighting (see 'hlsearch')
+IncSearch    { Search };                     -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
+Substitute   { Search };                     -- |:substitute| replacement text highlighting
+QuickFixLine { Search };                     -- Current |quickfix| item in the quickfix window
 
-Visual       { bg=overbg,  gui=bf };       -- Visual mode selection
-VisualNOS    { bg=overbg };                -- Visual mode selection when Vim is "Not Owning the Selection".
+Visual       { bg=overbg,  gui=bf };         -- Visual mode selection
+VisualNOS    { bg=overbg };                  -- Visual mode selection when Vim is "Not Owning the Selection".
 
-ModeMsg      { fg=drop };                  -- 'showmode' message (e.g. "-- INSERT -- ")
-MsgArea      { Normal };                   -- Area for messages and cmdline
-MsgSeparator { fg=orange };                -- Separator for scrolled messages `msgsep` flag of 'display'
-MoreMsg      { fg=green };                 -- |more-prompt|
-Question     { fg=green };                 -- |hit-enter| prompt and yes/no questions
-ErrorMsg     { fg=red };                   -- error messages on the command line
-WarningMsg   { fg=red };                   -- warning messages
+ModeMsg      { fg=drop };                    -- 'showmode' message (e.g. "-- INSERT -- ")
+MsgArea      { Normal };                     -- Area for messages and cmdline
+MsgSeparator { fg=c.orange };                -- Separator for scrolled messages `msgsep` flag of 'display'
+MoreMsg      { fg=c.green };                 -- |more-prompt|
+Question     { fg=c.green };                 -- |hit-enter| prompt and yes/no questions
+ErrorMsg     { fg=c.red };                   -- error messages on the command line
+WarningMsg   { fg=c.red };                   -- warning messages
 
-Directory    { fg=orange };                -- directory names (and other special names in listings)
-Title        { fg=orange };                -- titles for output from ":set all" ":autocmd" etc.
+Directory    { fg=c.orange };                -- directory names (and other special names in listings)
+Title        { fg=c.orange };                -- titles for output from ":set all" ":autocmd" etc.
 
-DiffAdd      { fg=green };
-DiffDelete   { fg=red };
-DiffChange   { fg=amber };
+DiffAdd      { fg=c.green };
+DiffDelete   { fg=c.red };
+DiffChange   { fg=c.amber };
 DiffText     { DiffChange, gui=un };
 DiffAdded    { DiffAdd };
 DiffRemoved  { DiffDelete };
 
-SpellBad     { fg=red,     gui=un };
-SpellCap     { fg=magenta, gui=un };
-SpellLocal   { fg=orange,  gui=un };
-SpellRare    { fg=yellow,  gui=un };
+SpellBad     { fg=c.red,     gui=un };
+SpellCap     { fg=c.magenta, gui=un };
+SpellLocal   { fg=c.orange,  gui=un };
+SpellRare    { fg=c.yellow,  gui=un };
 
 
 
@@ -183,10 +166,10 @@ SpellRare    { fg=yellow,  gui=un };
 -- LspReferenceWrite                 { };    -- highlighting "write" references
 
 -- base highlight groups. Other LspDiagnostic highlights link to these by default (except Underline)
-LspDiagnosticsDefaultError           { fg=red };
-LspDiagnosticsDefaultWarning         { fg=yellow };
+LspDiagnosticsDefaultError           { fg=c.red };
+LspDiagnosticsDefaultWarning         { fg=c.yellow };
 LspDiagnosticsDefaultInformation     { fg=fg };
-LspDiagnosticsDefaultHint            { fg=green };
+LspDiagnosticsDefaultHint            { fg=c.green };
 
 --LspDiagnosticsVirtualTextError       { };           -- "Error" diagnostic virtual text
 --LspDiagnosticsVirtualTextWarning     { };           -- "Warning" diagnostic virtual text
@@ -210,48 +193,48 @@ LspDiagnosticsDefaultHint            { fg=green };
 ---- Standard highlight groups -------------------------------------------------
 -- See :help group-name
 
-Constant       { fg=purple };
-Number         { fg=magenta };
+Constant       { fg=c.purple };
+Number         { fg=c.magenta };
 Float          { Number };
 Boolean        { Number };
-Character      { fg=blue };
-String         { fg=blue, gui=it };
+Character      { fg=c.blue };
+String         { fg=c.blue, gui=it };
 
 Identifier     { fg=fg };
-Function       { fg=yellow };
+Function       { fg=c.yellow };
 
-Statement      { fg=orange };    -- (preferred) any statement
+Statement      { fg=c.orange };    -- (preferred) any statement
 Conditional    { Statement };
 Repeat         { Statement };
-Label          { Statement };    -- case, default, etc.
-Operator       { fg=salmon };
-Keyword        { Statement };    -- any other keyword
-Exception      { fg=red };
+Label          { Statement };      -- case, default, etc.
+Operator       { fg=c.salmon };
+Keyword        { Statement };      -- any other keyword
+Exception      { fg=c.red };
 
-PreProc        { fg=teal };      --  generic Preprocessor
-Include        { PreProc };      -- preprocessor #include
-Define         { PreProc };      -- preprocessor #define
-Macro          { PreProc };      -- same as Define
-PreCondit      { PreProc };      -- preprocessor #if, #else, #endif, etc.
+PreProc        { fg=c.teal };      --  generic Preprocessor
+Include        { PreProc };        -- preprocessor #include
+Define         { PreProc };        -- preprocessor #define
+Macro          { PreProc };        -- same as Define
+PreCondit      { PreProc };        -- preprocessor #if, #else, #endif, etc.
 
-Type           { fg=aqua };
-StorageClass   { Type };         -- static, register, volatile, etc.
-Structure      { Type };         -- struct, union, enum, etc.
+Type           { fg=c.aqua };
+StorageClass   { Type };           -- static, register, volatile, etc.
+Structure      { Type };           -- struct, union, enum, etc.
 Typedef        { Type };
 
-Special        { fg=papaya };    -- (preferred) any special symbol
-SpecialChar    { Special };      -- special character in a constant
-Tag            { Special };      -- you can use CTRL-] on this
-Delimiter      { fg=salmon };    -- character that needs attention
-SpecialComment { Special };      -- special things inside a comment
-Debug          { Special };      -- debugging statements
+Special        { fg=c.papaya };    -- (preferred) any special symbol
+SpecialChar    { Special };        -- special character in a constant
+Tag            { Special };        -- you can use CTRL-] on this
+Delimiter      { fg=c.salmon };    -- character that needs attention
+SpecialComment { Special };        -- special things inside a comment
+Debug          { Special };        -- debugging statements
 
 Underlined { gui = un };
 Bold       { gui = bf };
 Italic     { gui = it };
-Ignore     { fg=faded };                   --  left blank, hidden  |hl-Ignore|
-Error      { fg=red };                     --  any erroneous construct
-Todo       { fg=orange, gui=bf..','..it};  --  anything that needs extra attention
+Ignore     { fg=faded };                     --  left blank, hidden  |hl-Ignore|
+Error      { fg=c.red };                     --  any erroneous construct
+Todo       { fg=c.orange, gui=bf..','..it};  --  anything that needs extra attention
 
 
 
@@ -266,8 +249,8 @@ TSBoolean            { Boolean };
 TSCharacter          { Character };
 TSString             { String };
 TSStringRegex        { String };
-TSStringEscape       { String,     fg=aqua };   -- escape characters within a string
-TSSymbol             { fg=magenta, gui=it };    -- For identifiers referring to symbols or atoms.
+TSStringEscape       { String,     fg=c.aqua };   -- escape characters within a string
+TSSymbol             { fg=c.magenta, gui=it };    -- For identifiers referring to symbols or atoms.
 
 -- TODO: More variety in these groups
 TSField              { fg=fg };
@@ -282,7 +265,7 @@ TSFuncBuiltin        { TSFunction };
 TSFuncMacro          { TSFunction };            -- macro defined fuctions: each `macro_rules` in Rust
 TSMethod             { TSFunction };
 TSConstructor        { TSFunction };            -- For constructor: `{}` in Lua and Java constructors.
-TSKeywordFunction    { fg=green };
+TSKeywordFunction    { fg=c.green };
 
 TSKeyword            { Keyword };
 TSConditional        { Conditional };
@@ -300,7 +283,7 @@ TSType               { Type };
 TSTypeBuiltin        { TSType,     gui=it };
 
 TSPunctDelimiter     { Delimiter };             -- delimiters ie: `.`
-TSPunctBracket       { fg=amber };              -- brackets and parens.
+TSPunctBracket       { fg=c.amber };            -- brackets and parens.
 TSPunctSpecial       { Delimiter };             -- special punctutation that does not fall in the catagories before.
 
 TSComment            { Comment };
@@ -311,11 +294,11 @@ TSEmphasis           { TSText,     gui=it };
 TSUnderline          { TSText,     gui=un };
 TSStrike             { Comment,    gui=un };
 TSStrong             { TSText,     gui=bf };
-TSTitle              { fg=orange };             -- Text that is part of a title
+TSTitle              { fg=c.orange };           -- Text that is part of a title
 TSLiteral            { TSString };              -- Literal text
 TSURI                { TSSymbol };              -- Any URI like a link or email
 
-TSError              { fg=red };                -- syntax/parser errors.
+TSError              { fg=c.red };              -- syntax/parser errors.
 
 
 -- Other stuff
@@ -323,27 +306,7 @@ HelpHyperTextJump {Tag};
 markdownLinkText {fg=fg};
 
 -- Metagroup (basically a hack for builds)
-Melange {lush = {
-    bg=bg,
-    overbg=overbg,
-    faded=faded,
-    mid=mid,
-    drop=drop,
-    fg=fg,
-
-    red=red,
-    salmon=salmon,
-    orange=orange,
-    papaya=papaya,
-    amber=amber,
-    yellow=yellow,
-    green=green,
-    teal=teal,
-    aqua=aqua,
-    blue=blue,
-    purple=purple,
-    magenta=magenta}
-};
+Melange {lush = c};
 }end)
 
 -- vi:nowrap

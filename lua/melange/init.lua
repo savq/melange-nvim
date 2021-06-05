@@ -17,6 +17,7 @@
 --  "Y8P"  "Y888888P'"Y88P"`Y8P' "YY8P8P88P     `Y8
 
 
+local vim = vim
 local lush = require('lush')
 local hsl = lush.hsl
 
@@ -71,6 +72,13 @@ local c = {
     magenta = hsl(310, 40, 70);
 }
 
+local diff = {
+    add    = hsl(c.green.h, 20, 20);
+    change = hsl(c.amber.h, 20, 20);
+    delete = hsl(c.red.h,   20, 20);
+    text   = hsl(c.amber.h, 40, 20);
+}
+
 if lighting == 'light' then
     c.red     = c.red    .da(20)
     c.salmon  = c.salmon .da(20).de(20)
@@ -84,6 +92,11 @@ if lighting == 'light' then
     c.blue    = c.blue   .da(20)
     c.purple  = c.purple .da(20)
     c.magenta = c.magenta.da(20)
+
+    diff.add    = hsl(c.green.h, 30, 80)
+    diff.change = hsl(c.amber.h, 50, 80)
+    diff.delete = hsl(c.red.h,   50, 80)
+    diff.text   = hsl(c.amber.h, 70, 80)
 end
 
 --------------------------------------------------------------------------------
@@ -145,12 +158,13 @@ WarningMsg   { fg=c.red };                   -- warning messages
 Directory    { fg=c.orange };                -- directory names (and other special names in listings)
 Title        { fg=c.orange };                -- titles for output from ":set all" ":autocmd" etc.
 
-DiffAdd      { fg=c.green };
-DiffDelete   { fg=c.red };
-DiffChange   { fg=c.amber };
-DiffText     { DiffChange, gui=un };
+DiffAdd      { bg=diff.add };
+DiffDelete   { bg=diff.delete };
+DiffChange   { bg=diff.change };
+DiffText     { bg=diff.text, gui=un };
 DiffAdded    { DiffAdd };
 DiffRemoved  { DiffDelete };
+
 
 SpellBad     { fg=c.red,     gui=un };
 SpellCap     { fg=c.magenta, gui=un };
@@ -306,7 +320,16 @@ HelpHyperTextJump {Tag};
 markdownLinkText {fg=fg};
 
 -- Metagroup (basically a hack for builds)
-Melange {lush = c};
+Melange {lush = vim.tbl_extend('keep', c,
+    {bg=bg,
+    overbg=overbg,
+    faded=faded,
+    egroun=egroun,
+    mid=mid,
+    drop=drop,
+    fg=fg})
+};
+
 }end)
 
 -- vi:nowrap

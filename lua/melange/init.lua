@@ -144,8 +144,8 @@ IncSearch    { Search };                     -- 'incsearch' highlighting; also u
 Substitute   { Search };                     -- |:substitute| replacement text highlighting
 QuickFixLine { Search };                     -- Current |quickfix| item in the quickfix window
 
-Visual       { bg=overbg,  gui=bf };         -- Visual mode selection
-VisualNOS    { bg=overbg };                  -- Visual mode selection when Vim is "Not Owning the Selection".
+Visual       { bg=faded,  gui=bf };         -- Visual mode selection
+VisualNOS    { Visual };                    -- Visual mode selection when Vim is "Not Owning the Selection".
 
 ModeMsg      { fg=drop };                    -- 'showmode' message (e.g. "-- INSERT -- ")
 MsgArea      { Normal };                     -- Area for messages and cmdline

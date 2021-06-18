@@ -77,8 +77,7 @@ highlight Todo guifg=#CC8033 guibg=NONE guisp=NONE gui=bold,italic
 highlight Type guifg=#85ADAD guibg=NONE guisp=NONE gui=NONE
 highlight Underlined guifg=NONE guibg=NONE guisp=NONE gui=underline
 highlight VertSplit guifg=#38332E guibg=#38332E guisp=NONE gui=NONE
-highlight Visual guifg=NONE guibg=#38332E guisp=NONE gui=bold
-highlight VisualNOS guifg=NONE guibg=#38332E guisp=NONE gui=NONE
+highlight Visual guifg=NONE guibg=#544D45 guisp=NONE gui=bold
 highlight WarningMsg guifg=#D65C70 guibg=NONE guisp=NONE gui=NONE
 highlight Whitespace guifg=#6B5947 guibg=NONE guisp=NONE gui=NONE
 highlight markdownLinkText guifg=#EBE6E0 guibg=NONE guisp=NONE gui=NONE
@@ -149,6 +148,7 @@ highlight! link TabLineFill StatusLineNC
 highlight! link TabLineSel StatusLine
 highlight! link Tag Special
 highlight! link Typedef Type
+highlight! link VisualNOS Visual
 highlight! link WildMenu Pmenu
 else
 highlight Bold guifg=NONE guibg=NONE guisp=NONE gui=bold
@@ -225,8 +225,7 @@ highlight Todo guifg=#CA731C guibg=NONE guisp=NONE gui=bold,italic
 highlight Type guifg=#629393 guibg=NONE guisp=NONE gui=NONE
 highlight Underlined guifg=NONE guibg=NONE guisp=NONE gui=underline
 highlight VertSplit guifg=#E0CCB8 guibg=#E0CCB8 guisp=NONE gui=NONE
-highlight Visual guifg=NONE guibg=#E0CCB8 guisp=NONE gui=bold
-highlight VisualNOS guifg=NONE guibg=#E0CCB8 guisp=NONE gui=NONE
+highlight Visual guifg=NONE guibg=#D1B394 guisp=NONE gui=bold
 highlight WarningMsg guifg=#C43149 guibg=NONE guisp=NONE gui=NONE
 highlight Whitespace guifg=#C9A682 guibg=NONE guisp=NONE gui=NONE
 highlight markdownLinkText guifg=#5C4D3D guibg=NONE guisp=NONE gui=NONE
@@ -297,6 +296,7 @@ highlight! link TabLineFill StatusLineNC
 highlight! link TabLineSel StatusLine
 highlight! link Tag Special
 highlight! link Typedef Type
+highlight! link VisualNOS Visual
 highlight! link WildMenu Pmenu
 endif
 

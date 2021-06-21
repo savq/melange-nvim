@@ -4,7 +4,7 @@
 
 ## Features
 - Works with Neovim and Vim
-- tree-sitter support
+- Tree-sitter support (Neovim only)
 - Dark and light variants
 - Support for various terminal emulators:
   - [Alacritty](https://github.com/alacritty/alacritty)
@@ -13,14 +13,22 @@
   - [Wezterm](https://github.com/wez/wezterm)
 
 
+## Design
+
+Melange was developed with the following ideas in mind:
+
+* _Control flow_ should use warmer colors and _data_ should use colder colors.
+* No configuration. It's open source, fork it if you don't like something.
+* Ayu and Gruvbox were the main inspirations.
+
+
 ## Requirements
 * `termguicolors` enabled for true color support
-* Neovim 0.5 (recommended)
-* [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) (recommended)
-
+* A terminal or GUI with font variants support (italics, bold, etc).
 
 
 ## Installation
+
 With [Paq](https://github.com/savq/paq-nvim):
 ```lua
 'savq/melange';
@@ -32,67 +40,25 @@ use 'savq/melange'
 ```
 
 Additionally, [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-can be used to install tree-sitter grammars.
+can be used to install tree-sitter parsers.
 
 
 ## Usage
 
-Set the `colorscheme` option. If you want to enable the light variant, set the `background` before setting the colorscheme.
+Set the `colorscheme` option. 
 
 In your `init.vim`:
 ```vim
-"set background=light
 colorscheme melange
 ```
 
 Or in your `init.lua`:
 ```lua
---vim.o.background = 'light'
-vim.cmd 'colorscheme melange'
+vim.cmd("colorscheme melange")
 ```
 
-
-## Design
-
-The color scheme was developed with the following ideas in mind:
-
-* Control flow should use warmer colors
-* Data should use colder colors
-* It should be easy to modify
-* Ayu and Gruvbox were the main inspirations
-
-
-
-## Build and develop
-
-Melange is made with [Lush.nvim](https://github.com/rktjmp/lush.nvim),
-which makes it very easy to modify.
-
-Assuming you have Lush.nvim installed, you can change the definitions in
-`lua/melange/colors.lua`, live preview them, and when you're happy with them
-compile them to a `.vim` file. Melange provides a build script and a makefile
-for convenience.
-
-Alternatively, you can source the `.lua` file directly:
-
-```lua
-lua require('lush')(require('melange'))
-```
-
-
-## Contributing
-
-I'm open to suggestions on the color scheme, there are still things that
-I don't find perfect just yet.
-
-Support for plugins, status-lines and the like are welcome.
-
-Highlight group definitions for specific languages won't be accepted though.
-Your favorite language probably has a tree-sitter grammar already available.
-See the [supported languages](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages).
-
-It's possible to auto-generate colors schemes for different terminal emulators.
-If you want to add support for another terminal emulator, feel free to open a PR.
+To enable the light variant, set the `background` (or configure your terminal
+to set it for you) before setting the colorscheme.
 
 
 ## Preview

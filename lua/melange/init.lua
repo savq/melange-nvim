@@ -20,12 +20,12 @@ local palette = {}
 
 palette.dark = {
     grays = {
-        bg      = hsl(30, 10, 15);
-        litebg  = hsl(30, 10, 20);
-        sel     = hsl(30, 10, 30);
-        com     = hsl(30, 20, 50);
-        darkfg  = hsl(30, 30, 70);
-        fg      = hsl(30, 30, 90);
+        bg     = hsl(30, 10, 15);
+        overbg = hsl(30, 10, 20);
+        sel    = hsl(30, 10, 30);
+        com    = hsl(30, 20, 50);
+        faded  = hsl(30, 30, 70);
+        fg     = hsl(30, 30, 90);
     };
 
     shades = {
@@ -39,43 +39,43 @@ palette.dark = {
 
     tones = {
         red     = hsl(  0, 40, 50);
-        yellow  = hsl( 30, 70, 50); -- orange
-        green   = hsl(120, 20, 50); -- teal
+        yellow  = hsl( 30, 70, 60); -- orange
+        green   = hsl(120, 30, 50); -- teal
         cyan    = hsl(180, 20, 60); -- aqua
         blue    = hsl(220, 30, 50);
-        magenta = hsl(300, 30, 60);
+        magenta = hsl(300, 20, 60);
     };
     tints = {
         red     = hsl( 10, 90, 70); -- salmon
         yellow  = hsl( 40, 90, 70);
-        green   = hsl(100, 50, 70);
-        cyan    = hsl(160, 30, 80);
-        blue    = hsl(220, 50, 70);
+        green   = hsl(100, 40, 70);
+        cyan    = hsl(160, 40, 70);
+        blue    = hsl(220, 40, 70);
         magenta = hsl(320, 40, 70);
     };
 }
 
 palette.light = {
     grays = {
-        bg     = hsl(30, 40, 85);
-        litebg = hsl(30, 40, 80);
-        sel    = hsl(30, 40, 70);
+        bg     = hsl(30, 40, 95);
+        overbg = hsl(30, 40, 90);
+        sel    = hsl(30, 40, 80);
         com    = hsl(30, 30, 50);
-        darkfg = hsl(30, 30, 40);
+        faded  = hsl(30, 30, 40);
         fg     = hsl(30, 30, 30);
     };
 
     tints = {
-        red     = hsl( 10, 60, 70);
+        red     = hsl( 10, 60, 80);
         yellow  = hsl( 40, 60, 60);
         green   = hsl(100, 50, 90);
         cyan    = hsl(180, 50, 90);
         blue    = hsl(220, 50, 90);
-        magenta = hsl(320, 50, 90);
+        magenta = hsl(300, 30, 90);
     };
 
     tones = {
-        red     = hsl(  0, 60, 70);
+        red     = hsl(  0, 60, 60);
         yellow  = hsl( 30, 60, 50); -- orange
         green   = hsl(120, 30, 60); -- teal
         cyan    = hsl(180, 20, 60); -- aqua
@@ -89,7 +89,7 @@ palette.light = {
         green   = hsl(100, 50, 40);
         cyan    = hsl(180, 30, 30); -- aqua
         blue    = hsl(220, 40, 60);
-        magenta = hsl(300, 40, 50);
+        magenta = hsl(320, 40, 50);
     };
 }
 
@@ -112,7 +112,7 @@ return lush(function() return {
 ---- :help highlight-default -------------------------------
 
 Normal       { fg=g.fg, bg=g.bg };                          -- Normal text
-NormalFloat  { bg=g.litebg };                               -- Normal text in floating windows
+NormalFloat  { bg=g.overbg };                               -- Normal text in floating windows
 -- NormalNC     { };                                        -- Normal text in non-current windows
 
 -- Cursor       { };                                        -- Character under the cursor
@@ -121,7 +121,7 @@ NormalFloat  { bg=g.litebg };                               -- Normal text in fl
 -- TermCursor   { };                                        -- Cursor in a focused terminal
 -- TermCursorNC { };                                        -- Cursor in an unfocused terminal
 
-ColorColumn  { bg=g.litebg };                               -- Used for the columns set with 'colorcolumn'
+ColorColumn  { bg=g.overbg };                               -- Used for the columns set with 'colorcolumn'
 CursorColumn { ColorColumn };                               -- Screen-column at the cursor, when 'cursorcolumn' is set
 CursorLine   { ColorColumn };                               -- Screen-line at the cursor, when 'cursorline' is set
 VertSplit    { fg=g.sel };                                  -- The column separating vertically split windows
@@ -129,7 +129,7 @@ VertSplit    { fg=g.sel };                                  -- The column separa
 LineNr       { fg=g.sel };                                  -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set
 CursorLineNr { fg=c.yellow };                               -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line
 
-Folded       { fg=g.com, bg=g.litebg };                     -- Line used for closed folds
+Folded       { fg=g.com, bg=g.overbg };                     -- Line used for closed folds
 FoldColumn   { LineNr };                                    -- 'foldcolumn'
 SignColumn   { LineNr };                                    -- Column where |signs| are displayed
 
@@ -139,14 +139,14 @@ PmenuSbar    { Pmenu };                                     -- scrollbar
 PmenuThumb   { PmenuSel };                                  -- Thumb of the scrollbar
 
 StatusLine   { NormalFloat };                               -- status line of current window
-StatusLineNC { StatusLine, fg=g.darkfg };                   -- status lines of not-current windows
+StatusLineNC { StatusLine, fg=g.faded };                    -- status lines of not-current windows
 WildMenu     { NormalFloat };                               -- current match in 'wildmenu' completion
 
 TabLine      { StatusLineNC };                              -- not active tab page label
 TabLineFill  { StatusLine };                                -- where there are no labels
 TabLineSel   { StatusLine, gui="bold" };                    -- active tab page label
 
-MatchParen   { bg=g.sel, gui="bold" };                      -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+MatchParen   { bg=g.overbg, gui="bold" };                   -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
 Substitute   { fg=g.fg, bg=d.yellow };                      -- |:substitute| replacement text highlighting
 Search       { fg=g.fg, bg=d.yellow };                      -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
 -- QuickFixLine { };                                        -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
@@ -163,7 +163,7 @@ SpecialKey   { Whitespace };                                -- Unprintable chara
 Directory    { fg=c.yellow };                               -- directory names (and other special names in listings)
 Title        { fg=c.yellow };                               -- titles for output from ":set all", ":autocmd" etc.
 ErrorMsg     { bg=d.red };                                  -- error messages on the command line
-ModeMsg      { fg=g.darkfg };                               -- 'showmode' message (e.g., "-- INSERT -- ")
+ModeMsg      { fg=g.faded };                                -- 'showmode' message (e.g., "-- INSERT -- ")
 -- MsgArea      { };                                        -- Area for messages and cmdline
 -- MsgSeparator { };                                        -- Separator for scrolled messages, `msgsep` flag of 'display'
 MoreMsg      { fg=c.green, gui="bold" };                    -- |more-prompt|
@@ -171,8 +171,10 @@ WarningMsg   { fg=c.red };                                  -- warning messages
 Question     { MoreMsg };                                   -- |hit-enter| prompt and yes/no questions
 
 DiffAdd      { bg=d.green };
-DiffChange   { bg=d.magenta };
+DiffAdded    { DiffAdd };
 DiffDelete   { bg=d.red };
+DiffRemoved  { DiffDelete };
+DiffChange   { bg=d.magenta };
 DiffText     { bg=d.blue };
 
 SpellBad     { fg=c.red,    gui="undercurl" };
@@ -225,7 +227,7 @@ Underlined     { gui="underline" };
 Bold           { gui="bold" };
 Italic         { gui="italic" };
 
-Ignore         { fg=g.litebg };
+Ignore         { fg=g.overbg };
 Error          { bg=d.red };
 Todo           { fg=c.yellow, gui="bold" };
 
@@ -278,17 +280,17 @@ TSVariableBuiltin    { gui="italic" };                      -- Variable names th
 
 -- TSTag                { };                                -- Tags like html tag names.
 -- TSTagDelimiter       { };                                -- Tag delimiter like `<` `>` `/`
--- TSText               { };                                -- For strings considered text in a markup language.
-TSEmphasis           { Italic };                            -- For text to be represented with emphasis.
-TSUnderline          { Underlined };                        -- For text to be represented with an underline.
-TSStrike             { gui="strikethrough" };               -- For strikethrough text.
+-- TSText               { };                                -- strings considered text in a markup language.
+TSEmphasis           { Italic };                            -- text to be represented with emphasis.
+TSUnderline          { Underlined };                        -- text to be represented with an underline.
+TSStrike             { gui="strikethrough" };               -- strikethrough text.
 -- TSTitle              { };                                -- Text that is part of a title.
--- TSLiteral            { };                                -- Literal text.
+-- TSLiteral            { };
 TSURI                { String, gui="underline" };           -- Any URI like a link or email.
--- TSMath               { };                                -- For LaTeX-like math environments.
--- TSTextReference      { };                                -- For footnotes, text references, citations.
--- TSEnviroment         { };                                -- For text environments of markup languages.
--- TSEnviromentName     { };                                -- For the name/the string indicating the type of text environment.
+-- TSMath               { };                                -- LaTeX-like math environments.
+-- TSTextReference      { };                                -- footnotes, text references, citations.
+-- TSEnviroment         { };                                -- text environments of markup languages.
+-- TSEnviromentName     { };                                -- name/string indicating the type of text environment.
 -- TSNote               { };                                -- Text representation of an informational note.
 -- TSWarning            { };                                -- Text representation of a warning note.
 -- TSDanger             { };                                -- Text representation of a danger note.
@@ -297,34 +299,34 @@ TSURI                { String, gui="underline" };           -- Any URI like a li
 
 ---- :help lsp-highlight -----------------------------------
 
--- LspReferenceText                     { };                -- used for highlighting "text" references
--- LspReferenceRead                     { };                -- used for highlighting "read" references
--- LspReferenceWrite                    { };                -- used for highlighting "write" references
+-- LspReferenceText                     { };                -- highlighting "text" references
+-- LspReferenceRead                     { };                -- highlighting "read" references
+-- LspReferenceWrite                    { };                -- highlighting "write" references
 
-LspDiagnosticsDefaultError           { fg=c.red };          -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-LspDiagnosticsDefaultWarning         { fg=b.yellow };       -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-LspDiagnosticsDefaultInformation     { fg=b.blue };         -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-LspDiagnosticsDefaultHint            { fg=c.green};         -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+LspDiagnosticsDefaultError           { fg=c.red };          -- base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+LspDiagnosticsDefaultWarning         { fg=b.yellow };       -- base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+LspDiagnosticsDefaultInformation     { fg=b.blue };         -- base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+LspDiagnosticsDefaultHint            { fg=c.green};         -- base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 
--- LspDiagnosticsVirtualTextError       { };                -- Used for "Error" diagnostic virtual text
--- LspDiagnosticsVirtualTextWarning     { };                -- Used for "Warning" diagnostic virtual text
--- LspDiagnosticsVirtualTextInformation { };                -- Used for "Information" diagnostic virtual text
--- LspDiagnosticsVirtualTextHint        { };                -- Used for "Hint" diagnostic virtual text
+-- LspDiagnosticsVirtualTextError       { };                -- "Error" diagnostic virtual text
+-- LspDiagnosticsVirtualTextWarning     { };                -- "Warning" diagnostic virtual text
+-- LspDiagnosticsVirtualTextInformation { };                -- "Information" diagnostic virtual text
+-- LspDiagnosticsVirtualTextHint        { };                -- "Hint" diagnostic virtual text
 
-LspDiagnosticsUnderlineError         { gui="undercurl" };   -- Used to underline "Error" diagnostics
-LspDiagnosticsUnderlineWarning       { gui="undercurl" };   -- Used to underline "Warning" diagnostics
-LspDiagnosticsUnderlineInformation   { gui="undercurl" };   -- Used to underline "Information" diagnostics
-LspDiagnosticsUnderlineHint          { gui="undercurl" };   -- Used to underline "Hint" diagnostics
+LspDiagnosticsUnderlineError         { gui="undercurl" };   -- underline "Error" diagnostics
+LspDiagnosticsUnderlineWarning       { gui="undercurl" };   -- underline "Warning" diagnostics
+LspDiagnosticsUnderlineInformation   { gui="undercurl" };   -- underline "Information" diagnostics
+LspDiagnosticsUnderlineHint          { gui="undercurl" };   -- underline "Hint" diagnostics
 
--- LspDiagnosticsFloatingError          { };                -- Used to color "Error" diagnostic messages in diagnostics float
--- LspDiagnosticsFloatingWarning        { };                -- Used to color "Warning" diagnostic messages in diagnostics float
--- LspDiagnosticsFloatingInformation    { };                -- Used to color "Information" diagnostic messages in diagnostics float
--- LspDiagnosticsFloatingHint           { };                -- Used to color "Hint" diagnostic messages in diagnostics float
+-- LspDiagnosticsFloatingError          { };                -- color "Error" diagnostic messages in diagnostics float
+-- LspDiagnosticsFloatingWarning        { };                -- color "Warning" diagnostic messages in diagnostics float
+-- LspDiagnosticsFloatingInformation    { };                -- color "Information" diagnostic messages in diagnostics float
+-- LspDiagnosticsFloatingHint           { };                -- color "Hint" diagnostic messages in diagnostics float
 
--- LspDiagnosticsSignError              { };                -- Used for "Error" signs in sign column
--- LspDiagnosticsSignWarning            { };                -- Used for "Warning" signs in sign column
--- LspDiagnosticsSignInformation        { };                -- Used for "Information" signs in sign column
--- LspDiagnosticsSignHint               { };                -- Used for "Hint" signs in sign column
+-- LspDiagnosticsSignError              { };                -- "Error" signs in sign column
+-- LspDiagnosticsSignWarning            { };                -- "Warning" signs in sign column
+-- LspDiagnosticsSignInformation        { };                -- "Information" signs in sign column
+-- LspDiagnosticsSignHint               { };                -- "Hint" signs in sign column
 
 
 ---- Other Vim groups --------------------------------------

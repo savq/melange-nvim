@@ -252,7 +252,7 @@ TSError              { gui="undercurl" };                   -- syntax/parser err
 -- TSFloat              { };
 -- TSFunction           { };                                -- function (calls and definitions).
 TSFuncBuiltin        { Function };                          -- builtin functions: `table.insert` in Lua.
-TSFuncMacro          { fg=b.yellow, gui="italic" };         -- macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
+TSFuncMacro          { Function };                          -- macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
 -- TSInclude            { };                                -- includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
 -- TSKeyword            { };                                -- keywords that don't fall in previous categories.
 -- TSKeywordOperator    { };                                -- operators that are English words, e.g. `and`, `as`, `or`.
@@ -288,9 +288,9 @@ TSStrike             { gui="strikethrough" };               -- strikethrough tex
 -- TSTitle              { };                                -- Text that is part of a title.
 -- TSLiteral            { };
 TSURI                { String, gui="underline" };           -- Any URI like a link or email.
--- TSMath               { };                                -- LaTeX-like math environments.
+TSMath               { Identifier };                        -- LaTeX-like math environments.
 -- TSTextReference      { };                                -- footnotes, text references, citations.
--- TSEnviroment         { };                                -- text environments of markup languages.
+TSEnviroment         { Statement };                         -- text environments of markup languages.
 -- TSEnviromentName     { };                                -- name/string indicating the type of text environment.
 -- TSNote               { };                                -- Text representation of an informational note.
 -- TSWarning            { };                                -- Text representation of a warning note.
@@ -330,8 +330,25 @@ LspDiagnosticsUnderlineHint          { gui="undercurl" };   -- underline "Hint" 
 -- LspDiagnosticsSignHint               { };                -- "Hint" signs in sign column
 
 
+
+--- :help vimtex-syntax-reference --------------------------
+
+texOptSep            { TSPunctDelimiter };
+texOptEqual          { Operator };
+texFileArg           { Constant };
+texTitleArg          { gui="bold" };
+texRefArg            { Constant };
+
+texMathZone          { Identifier };
+texMathDelimZone     { TSPunctDelimiter };
+texMathDelim         { Special };
+texMathEnvArgName    { Type };
+
+
+
 ---- Other Vim groups --------------------------------------
-HelpHyperTextJump       { fg=c.yellow };
+HelpHyperTextJump    { fg=c.yellow };
+
 
 
 ---- Metagroup (basically a hack for builds) ---------------

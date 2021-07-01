@@ -40,8 +40,8 @@ palette.dark = {
     tones = {
         red     = hsl(  0, 40, 50);
         yellow  = hsl( 30, 70, 60); -- orange
-        green   = hsl(120, 30, 50); -- teal
-        cyan    = hsl(180, 20, 60); -- aqua
+        green   = hsl(120, 20, 50);
+        cyan    = hsl(180, 20, 60);
         blue    = hsl(220, 30, 50);
         magenta = hsl(300, 20, 60);
     };
@@ -67,7 +67,7 @@ palette.light = {
 
     tints = {
         red     = hsl( 10, 60, 80);
-        yellow  = hsl( 40, 60, 60);
+        yellow  = hsl( 40, 60, 70);
         green   = hsl(100, 50, 90);
         cyan    = hsl(180, 50, 90);
         blue    = hsl(220, 50, 90);
@@ -76,18 +76,18 @@ palette.light = {
 
     tones = {
         red     = hsl(  0, 60, 60);
-        yellow  = hsl( 30, 60, 50); -- orange
-        green   = hsl(120, 30, 60); -- teal
-        cyan    = hsl(180, 20, 60); -- aqua
+        yellow  = hsl( 30, 60, 50);
+        green   = hsl(120, 30, 60);
+        cyan    = hsl(180, 20, 50);
         blue    = hsl(220, 50, 70);
-        magenta = hsl(300, 30, 70);
+        magenta = hsl(300, 30, 60);
     };
 
     shades = {
         red     = hsl(  0, 70, 40);
-        yellow  = hsl( 40, 70, 50); -- orange
+        yellow  = hsl( 40, 70, 50);
         green   = hsl(100, 50, 40);
-        cyan    = hsl(180, 30, 30); -- aqua
+        cyan    = hsl(180, 30, 30);
         blue    = hsl(220, 40, 60);
         magenta = hsl(320, 40, 50);
     };
@@ -98,10 +98,10 @@ local g = palette[bg].grays
 local c = palette[bg].tones
 
 local d, b; -- TODO: Rename
-if bg == 'dark' then --shades are backgrounds, and tints foregrounds
+if bg == "dark" then --shades are backgrounds, and tints foregrounds
     d = palette[bg].shades
     b = palette[bg].tints
-elseif bg == 'light' then --tints are backgrounds, and shades foregrounds
+elseif bg == "light" then --tints are backgrounds, and shades foregrounds
     d = palette[bg].tints
     b = palette[bg].shades
 end
@@ -146,9 +146,9 @@ TabLine      { StatusLineNC };                              -- not active tab pa
 TabLineFill  { StatusLine };                                -- where there are no labels
 TabLineSel   { StatusLine, gui="bold" };                    -- active tab page label
 
-MatchParen   { bg=g.overbg, gui="bold" };                   -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
-Substitute   { fg=g.fg, bg=d.yellow };                      -- |:substitute| replacement text highlighting
-Search       { fg=g.fg, bg=d.yellow };                      -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+MatchParen   { fg=b.yellow, bg=g.sel, gui="bold" };         -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+Substitute   { fg=g.bg, bg=d.yellow };                      -- |:substitute| replacement text highlighting
+Search       { fg=g.bg, bg=d.yellow };                      -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
 -- QuickFixLine { };                                        -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
 -- IncSearch    { };                                        -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 Visual       { bg=g.sel, gui="bold" };                      -- Visual mode selection
@@ -250,7 +250,7 @@ TSError              { gui="undercurl" };                   -- syntax/parser err
 -- TSField              { };
 -- TSFloat              { };
 -- TSFunction           { };                                -- function (calls and definitions).
--- TSFuncBuiltin        { };                                -- builtin functions: `table.insert` in Lua.
+TSFuncBuiltin        { Function };                          -- builtin functions: `table.insert` in Lua.
 TSFuncMacro          { fg=b.yellow, gui="italic" };         -- macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
 -- TSInclude            { };                                -- includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
 -- TSKeyword            { };                                -- keywords that don't fall in previous categories.
@@ -330,7 +330,8 @@ LspDiagnosticsUnderlineHint          { gui="undercurl" };   -- underline "Hint" 
 
 
 ---- Other Vim groups --------------------------------------
-HelpHyperTextJump { fg=c.yellow };
+HelpHyperTextJump       { fg=c.yellow };
+
 
 ---- Metagroup (basically a hack for builds) ---------------
 Melange { lush = palette[bg] };

@@ -31,7 +31,7 @@ palette.dark = {
     shades = {
         red     = hsl(  0, 40, 30);
         yellow  = hsl( 40, 50, 50); -- amber
-        green   = hsl(100, 30, 20);
+        green   = hsl(120, 30, 20);
         cyan    = hsl(180, 30, 20);
         blue    = hsl(220, 30, 20);
         magenta = hsl(320, 30, 20);
@@ -40,16 +40,17 @@ palette.dark = {
     tones = {
         red     = hsl(  0, 40, 50);
         yellow  = hsl( 30, 70, 60); -- orange
-        green   = hsl(120, 20, 50);
+        green   = hsl(120, 30, 50);
         cyan    = hsl(180, 20, 60);
         blue    = hsl(220, 30, 50);
         magenta = hsl(300, 20, 60);
     };
+
     tints = {
         red     = hsl( 10, 90, 70); -- salmon
         yellow  = hsl( 40, 90, 70);
-        green   = hsl(100, 40, 70);
-        cyan    = hsl(160, 40, 70);
+        green   = hsl(120, 40, 70);
+        cyan    = hsl(180, 40, 70);
         blue    = hsl(220, 40, 70);
         magenta = hsl(320, 40, 70);
     };
@@ -68,10 +69,10 @@ palette.light = {
     tints = {
         red     = hsl( 10, 60, 80);
         yellow  = hsl( 40, 60, 70);
-        green   = hsl(100, 50, 90);
+        green   = hsl(120, 50, 90);
         cyan    = hsl(180, 50, 90);
         blue    = hsl(220, 50, 90);
-        magenta = hsl(300, 30, 90);
+        magenta = hsl(320, 30, 90);
     };
 
     tones = {
@@ -86,7 +87,7 @@ palette.light = {
     shades = {
         red     = hsl(  0, 70, 40);
         yellow  = hsl( 40, 70, 50);
-        green   = hsl(100, 50, 40);
+        green   = hsl(120, 50, 40);
         cyan    = hsl(180, 30, 30);
         blue    = hsl(220, 40, 60);
         magenta = hsl(320, 40, 50);

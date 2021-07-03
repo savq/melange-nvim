@@ -40,7 +40,7 @@ palette.dark = {
     tones = {
         red     = hsl(  0, 40, 50);
         yellow  = hsl( 30, 70, 60); -- orange
-        green   = hsl(120, 30, 50);
+        green   = hsl(120, 20, 50);
         cyan    = hsl(180, 20, 60);
         blue    = hsl(220, 30, 50);
         magenta = hsl(300, 20, 60);
@@ -89,7 +89,7 @@ palette.light = {
         yellow  = hsl( 40, 70, 50);
         green   = hsl(120, 50, 40);
         cyan    = hsl(180, 30, 30);
-        blue    = hsl(220, 40, 60);
+        blue    = hsl(220, 40, 50);
         magenta = hsl(320, 40, 50);
     };
 }

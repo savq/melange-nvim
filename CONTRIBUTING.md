@@ -10,7 +10,7 @@ Your favorite language likely has a tree-sitter grammar already available.
 See the [supported languages](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages).
 
 Many markup languages don't have a good tree-sitter grammar yet.
-Improved highlights for these plugins that support these formats are welcome.
+Improved highlights for plugins that support these formats are welcome.
 
 It's possible to auto-generate colors schemes for different terminal emulators.
 This is done in a very ad hoc way, defining some template-like format strings.

@@ -15,7 +15,8 @@ function setup() {
         red     : color(  0, 40, 50),
         orange  : color( 30, 70, 60),
         yellow  : color( 40, 90, 70),
-        green   : color(100, 30, 50),
+        green   : color(120, 20, 50),
+        // bgreen  : color(120, 40, 70),
         cyan    : color(180, 20, 60),
         blue    : color(220, 40, 70),
         purple  : color(300, 20, 60),
@@ -23,7 +24,6 @@ function setup() {
     }
 
     background(bg)
-
     fill(fg)
     textFont('Noto Serif')
     textStyle(BOLDITALIC)
@@ -34,8 +34,9 @@ function setup() {
     let y = height * 2 / 3
     fill(bg)
     stroke(fg)
-    strokeWeight(2)
+    strokeWeight(1)
     line(0, y, width, y)
+    strokeWeight(2)
     draw_colors(tones, y)
 
     noLoop();
@@ -54,7 +55,6 @@ function draw_color(color, y) {
     const s = saturation(color);
     const l = lightness(color);
     stroke(h, s, l);
-    strokeWeight(2);
     const x = map(h, -20, 360, 0, width);
     circle(x, y, 2000 / l);
 }

@@ -1,11 +1,12 @@
 ![logo](./.assets/melange-logo.png)
 
-🚧 **WORK IN PROGRESS. See [TODO](TODO.md)** 🚧
-
 ## Features
 - Works with Neovim and Vim
-- Tree-sitter support (Neovim only)
 - Dark and light variants
+- Support for:
+- LSP
+- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) (Neovim only)
+- [VimTeX](https://github.com/lervag/vimtex)
 - Support for various terminal emulators:
   - [Alacritty](https://github.com/alacritty/alacritty)
   - [iTerm2](https://github.com/gnachman/iTerm2)
@@ -23,20 +24,16 @@ Melange was developed with the following ideas in mind:
 
 
 ## Requirements
-* `termguicolors` enabled for true color support
-* A terminal or GUI with font variants support (italics, bold, etc).
+* A terminal or GUI with true color and font variants support (italics, bold, etc).
+* `termguicolors` enabled
 
 
 ## Installation
 
-With [Paq](https://github.com/savq/paq-nvim):
+You can install Melange with any Neovim/Vim8 plugin manager.
+For example, with [Packer](https://github.com/wbthomason/packer.nvim):
 ```lua
-'savq/melange';
-```
-
-With [Packer](https://github.com/wbthomason/packer.nvim):
-```lua
-use 'savq/melange'
+use "savq/melange"
 ```
 
 Additionally, [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
@@ -45,22 +42,32 @@ can be used to install tree-sitter parsers.
 
 ## Usage
 
-Set the `colorscheme` option. 
+Enable `termguicolors` and load the `colorscheme`.
 
 In your `init.vim`:
 ```vim
+set termguicolors
 colorscheme melange
 ```
 
 Or in your `init.lua`:
 ```lua
+vim.opt.termguicolors = true
 vim.cmd("colorscheme melange")
 ```
 
-To enable the light variant, set the `background` (or configure your terminal
-to set it for you) before setting the colorscheme.
+To enable the light variant, set the `background` (or let your terminal do it for you)
+before setting the colorscheme.
 
 
-## Preview
+## Previews
 
-![screenshot](./.assets/screenshot2021-03-27.png)
+nvim-treesitter + [IBM/plex](https://github.com/IBM/plex) Mono Light
+![melange_dark_code_screenshot](./.assets/rustbook_dark.png)
+
+![melange_light_code_screenshot](./.assets/rustbook_light.png)
+
+VimTeX + `conceallevel=2` + [cormullion/JuliaMono](https://github.com/cormullion/juliamono)
+![melange_dark_tex_screenshot](./.assets/tex_dark.png)
+
+![melange_light_tex_screenshot](./.assets/tex_light.png)

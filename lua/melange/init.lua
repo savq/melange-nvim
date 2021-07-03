@@ -61,9 +61,9 @@ palette.light = {
         bg     = hsl(30, 40, 95);
         overbg = hsl(30, 40, 90);
         sel    = hsl(30, 40, 80);
-        com    = hsl(30, 30, 50);
+        com    = hsl(30, 30, 60);
         faded  = hsl(30, 30, 40);
-        fg     = hsl(30, 30, 30);
+        fg     = hsl(30, 30, 20);
     };
 
     tints = {
@@ -155,7 +155,7 @@ Search       { fg=g.bg, bg=d.yellow };                      -- Last search patte
 Visual       { bg=g.sel, gui="bold" };                      -- Visual mode selection
 -- VisualNOS    { };                                        -- Visual mode selection when vim is "Not Owning the Selection".
 
-Conceal      { fg=d.yellow };                               -- Placeholder characters substituted for concealed text (see 'conceallevel')
+Conceal      { fg=g.faded };                                -- Placeholder characters substituted for concealed text (see 'conceallevel')
 Whitespace   { fg=g.sel };                                  -- "nbsp", "space", "tab" and "trail" in 'listchars'
 EndOfBuffer  { Whitespace };                                -- Filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
 NonText      { Whitespace };                                -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
@@ -288,10 +288,10 @@ TSStrike             { gui="strikethrough" };               -- strikethrough tex
 -- TSTitle              { };                                -- Text that is part of a title.
 -- TSLiteral            { };
 TSURI                { String, gui="underline" };           -- Any URI like a link or email.
-TSMath               { Identifier };                        -- LaTeX-like math environments.
+TSMath               { fg=b.cyan };                         -- LaTeX-like math environments.
 -- TSTextReference      { };                                -- footnotes, text references, citations.
 TSEnviroment         { Statement };                         -- text environments of markup languages.
--- TSEnviromentName     { };                                -- name/string indicating the type of text environment.
+TSEnviromentName     { TSKeywordFunction };                 -- name/string indicating the type of text environment.
 -- TSNote               { };                                -- Text representation of an informational note.
 -- TSWarning            { };                                -- Text representation of a warning note.
 -- TSDanger             { };                                -- Text representation of a danger note.
@@ -339,10 +339,12 @@ texFileArg           { Constant };
 texTitleArg          { gui="bold" };
 texRefArg            { Constant };
 
-texMathZone          { Identifier };
+texMathCmd           { Function };
+texMathSymbol        { Operator };
+texMathZone          { fg=b.cyan };
 texMathDelimZone     { TSPunctDelimiter };
 texMathDelim         { Special };
-texMathEnvArgName    { Type };
+texMathEnvArgName    { TSKeywordFunction };
 
 
 

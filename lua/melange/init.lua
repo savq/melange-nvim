@@ -152,7 +152,7 @@ Substitute   { fg=g.bg, bg=d.yellow };                      -- |:substitute| rep
 Search       { fg=g.bg, bg=d.yellow };                      -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
 -- QuickFixLine { };                                        -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
 -- IncSearch    { };                                        -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-Visual       { bg=g.sel, gui="bold" };                      -- Visual mode selection
+Visual       { bg=g.sel };                                  -- Visual mode selection
 -- VisualNOS    { };                                        -- Visual mode selection when vim is "Not Owning the Selection".
 
 Conceal      { fg=g.faded };                                -- Placeholder characters substituted for concealed text (see 'conceallevel')
@@ -300,9 +300,9 @@ TSEnviromentName     { TSKeywordFunction };                 -- name/string indic
 
 ---- :help lsp-highlight -----------------------------------
 
--- LspReferenceText                     { };                -- highlighting "text" references
--- LspReferenceRead                     { };                -- highlighting "read" references
--- LspReferenceWrite                    { };                -- highlighting "write" references
+LspReferenceText                     { Visual };            -- highlighting "text" references
+LspReferenceRead                     { Visual };            -- highlighting "read" references
+LspReferenceWrite                    { Visual };            -- highlighting "write" references
 
 LspDiagnosticsDefaultError           { fg=c.red };          -- base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
 LspDiagnosticsDefaultWarning         { fg=b.yellow };       -- base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)

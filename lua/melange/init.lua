@@ -30,7 +30,7 @@ palette.dark = {
 
     shades = {
         red     = hsl(  0, 40, 30);
-        yellow  = hsl( 40, 50, 50); -- amber
+        yellow  = hsl( 40, 50, 40); -- amber
         green   = hsl(120, 30, 20);
         cyan    = hsl(180, 30, 20);
         blue    = hsl(220, 30, 20);

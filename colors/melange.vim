@@ -43,8 +43,8 @@ highlight Number guifg=#D194BD guibg=NONE guisp=NONE gui=NONE
 highlight Operator guifg=#F7856E guibg=NONE guisp=NONE gui=NONE
 highlight PmenuSel guifg=NONE guibg=#544D45 guisp=NONE gui=NONE
 highlight PreProc guifg=#669966 guibg=NONE guisp=NONE gui=NONE
-highlight Search guifg=#2A2622 guibg=#BF9540 guisp=NONE gui=NONE
-highlight Special guifg=#BF9540 guibg=NONE guisp=NONE gui=NONE
+highlight Search guifg=#2A2622 guibg=#997733 guisp=NONE gui=NONE
+highlight Special guifg=#997733 guibg=NONE guisp=NONE gui=NONE
 highlight SpellBad guifg=#B34D4D guibg=NONE guisp=NONE gui=undercurl
 highlight SpellCap guifg=#5973A6 guibg=NONE guisp=NONE gui=undercurl
 highlight SpellLocal guifg=#E09952 guibg=NONE guisp=NONE gui=undercurl
@@ -52,7 +52,7 @@ highlight SpellRare guifg=#F7C96E guibg=NONE guisp=NONE gui=undercurl
 highlight Statement guifg=#E09952 guibg=NONE guisp=NONE gui=NONE
 highlight StatusLineNC guifg=#C9B39C guibg=#38332E guisp=NONE gui=NONE
 highlight String guifg=#94A8D1 guibg=NONE guisp=NONE gui=italic
-highlight Substitute guifg=#2A2622 guibg=#BF9540 guisp=NONE gui=NONE
+highlight Substitute guifg=#2A2622 guibg=#997733 guisp=NONE gui=NONE
 highlight TSConstBuiltin guifg=#AD85AD guibg=NONE guisp=NONE gui=italic
 highlight TSConstMacro guifg=#AD85AD guibg=NONE guisp=NONE gui=bold
 highlight TSError guifg=NONE guibg=NONE guisp=NONE gui=undercurl
@@ -61,6 +61,7 @@ highlight TSMath guifg=#94D1D1 guibg=NONE guisp=NONE gui=NONE
 highlight TSPunctDelimiter guifg=#B34D4D guibg=NONE guisp=NONE gui=NONE
 highlight TSStrike guifg=NONE guibg=NONE guisp=NONE gui=strikethrough
 highlight TSStringEscape guifg=#5973A6 guibg=NONE guisp=NONE gui=NONE
+highlight TSStrong guifg=NONE guibg=NONE guisp=NONE gui=bold
 highlight TSSymbol guifg=NONE guibg=NONE guisp=NONE gui=italic
 highlight TSURI guifg=#94A8D1 guibg=NONE guisp=NONE gui=underline
 highlight TSVariableBuiltin guifg=NONE guibg=NONE guisp=NONE gui=italic
@@ -70,7 +71,7 @@ highlight Todo guifg=#E09952 guibg=NONE guisp=NONE gui=bold
 highlight Type guifg=#85ADAD guibg=NONE guisp=NONE gui=NONE
 highlight Underlined guifg=NONE guibg=NONE guisp=NONE gui=underline
 highlight VertSplit guifg=#544D45 guibg=NONE guisp=NONE gui=NONE
-highlight Visual guifg=NONE guibg=#544D45 guisp=NONE gui=bold
+highlight Visual guifg=NONE guibg=#544D45 guisp=NONE gui=NONE
 highlight WarningMsg guifg=#B34D4D guibg=NONE guisp=NONE gui=NONE
 highlight Whitespace guifg=#544D45 guibg=NONE guisp=NONE gui=NONE
 highlight texMathZone guifg=#94D1D1 guibg=NONE guisp=NONE gui=NONE
@@ -81,6 +82,9 @@ highlight! link DiffAdded DiffAdd
 highlight! link DiffRemoved DiffDelete
 highlight! link EndOfBuffer Whitespace
 highlight! link FoldColumn LineNr
+highlight! link LspReferenceRead Visual
+highlight! link LspReferenceText Visual
+highlight! link LspReferenceWrite Visual
 highlight! link NonText Whitespace
 highlight! link Pmenu NormalFloat
 highlight! link PmenuSbar Pmenu
@@ -166,6 +170,7 @@ highlight TSMath guifg=#366363 guibg=NONE guisp=NONE gui=NONE
 highlight TSPunctDelimiter guifg=#D65C5C guibg=NONE guisp=NONE gui=NONE
 highlight TSStrike guifg=NONE guibg=NONE guisp=NONE gui=strikethrough
 highlight TSStringEscape guifg=#8CA6D9 guibg=NONE guisp=NONE gui=NONE
+highlight TSStrong guifg=NONE guibg=NONE guisp=NONE gui=bold
 highlight TSSymbol guifg=NONE guibg=NONE guisp=NONE gui=italic
 highlight TSURI guifg=#4D6EB3 guibg=NONE guisp=NONE gui=underline
 highlight TSVariableBuiltin guifg=NONE guibg=NONE guisp=NONE gui=italic
@@ -175,7 +180,7 @@ highlight Todo guifg=#CC8033 guibg=NONE guisp=NONE gui=bold
 highlight Type guifg=#669999 guibg=NONE guisp=NONE gui=NONE
 highlight Underlined guifg=NONE guibg=NONE guisp=NONE gui=underline
 highlight VertSplit guifg=#E0CCB8 guibg=NONE guisp=NONE gui=NONE
-highlight Visual guifg=NONE guibg=#E0CCB8 guisp=NONE gui=bold
+highlight Visual guifg=NONE guibg=#E0CCB8 guisp=NONE gui=NONE
 highlight WarningMsg guifg=#D65C5C guibg=NONE guisp=NONE gui=NONE
 highlight Whitespace guifg=#E0CCB8 guibg=NONE guisp=NONE gui=NONE
 highlight texMathZone guifg=#366363 guibg=NONE guisp=NONE gui=NONE
@@ -186,6 +191,9 @@ highlight! link DiffAdded DiffAdd
 highlight! link DiffRemoved DiffDelete
 highlight! link EndOfBuffer Whitespace
 highlight! link FoldColumn LineNr
+highlight! link LspReferenceRead Visual
+highlight! link LspReferenceText Visual
+highlight! link LspReferenceWrite Visual
 highlight! link NonText Whitespace
 highlight! link Pmenu NormalFloat
 highlight! link PmenuSbar Pmenu

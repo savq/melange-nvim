@@ -241,11 +241,11 @@ Todo           { fg=c.yellow, gui="bold" };
 -- TSBoolean            { };
 -- TSCharacter          { };
 -- TSComment            { };
--- TSConstructor        { };                                -- constructor calls and definitions: ` { }` in Lua, and Java constructors.
 -- TSConditional        { };                                -- keywords related to conditionnals.
 -- TSConstant           { };
 TSConstBuiltin       { Constant, gui="italic" };            -- constant that are built in the language: `nil` in Lua.
 TSConstMacro         { Constant, gui="bold" };              -- constants that are defined by macros: `NULL` in C.
+-- TSConstructor        { };                                -- constructor calls and definitions: ` { }` in Lua, and Java constructors.
 TSError              { gui="undercurl" };                   -- syntax/parser errors.
 -- TSException          { };                                -- exception related keywords.
 -- TSField              { };
@@ -255,8 +255,9 @@ TSFuncBuiltin        { Function };                          -- builtin functions
 TSFuncMacro          { Function };                          -- macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
 -- TSInclude            { };                                -- includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
 -- TSKeyword            { };                                -- keywords that don't fall in previous categories.
--- TSKeywordOperator    { };                                -- operators that are English words, e.g. `and`, `as`, `or`.
 TSKeywordFunction    { fg=b.green };                        -- keywords used to define a fuction.
+-- TSKeywordOperator    { };                                -- operators that are English words, e.g. `and`, `as`, `or`.
+-- TSKeywordReturn      { };                                -- `return` and `yield` keywords.
 -- TSLabel              { };                                -- labels: `label:` in C and `:label:` in Lua.
 -- TSMethod             { };                                -- method calls and definitions.
 -- TSNamespace          { };                                -- identifiers referring to modules and namespaces.
@@ -282,6 +283,7 @@ TSVariableBuiltin    { gui="italic" };                      -- Variable names th
 -- TSTag                { };                                -- Tags like html tag names.
 -- TSTagDelimiter       { };                                -- Tag delimiter like `<` `>` `/`
 -- TSText               { };                                -- strings considered text in a markup language.
+TSStrong             { gui="bold" };                        -- text to be represented in bold.
 TSEmphasis           { Italic };                            -- text to be represented with emphasis.
 TSUnderline          { Underlined };                        -- text to be represented with an underline.
 TSStrike             { gui="strikethrough" };               -- strikethrough text.

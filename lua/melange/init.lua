@@ -108,6 +108,22 @@ elseif bg == "light" then --tints are backgrounds, and shades foregrounds
 end
 
 
+-- Font variants:
+-- This only works when loading this file directly, not when loading with `:colorscheme`
+local bf, it, underline, undercurl;
+if vim.g.melange_enable_font_variants == 0 then
+    bf = "NONE"
+    it = "NONE"
+    underline = "NONE"
+    undercurl = "NONE"
+else
+    bf = "bold"
+    it = "italic"
+    underline = "underline"
+    undercurl = "undercurl"
+end
+
+
 return lush(function() return {
 
 ---- :help highlight-default -------------------------------
@@ -145,9 +161,9 @@ WildMenu     { NormalFloat };                               -- current match in 
 
 TabLine      { StatusLineNC };                              -- not active tab page label
 TabLineFill  { StatusLine };                                -- where there are no labels
-TabLineSel   { StatusLine, gui="bold" };                    -- active tab page label
+TabLineSel   { StatusLine, gui=bf };                        -- active tab page label
 
-MatchParen   { fg=b.yellow, bg=g.sel, gui="bold" };         -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+MatchParen   { fg=b.yellow, bg=g.sel, gui=bf };             -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
 Substitute   { fg=g.bg, bg=d.yellow };                      -- |:substitute| replacement text highlighting
 Search       { fg=g.bg, bg=d.yellow };                      -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
 -- QuickFixLine { };                                        -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
@@ -167,7 +183,7 @@ ErrorMsg     { bg=d.red };                                  -- error messages on
 ModeMsg      { fg=g.faded };                                -- 'showmode' message (e.g., "-- INSERT -- ")
 -- MsgArea      { };                                        -- Area for messages and cmdline
 -- MsgSeparator { };                                        -- Separator for scrolled messages, `msgsep` flag of 'display'
-MoreMsg      { fg=c.green, gui="bold" };                    -- |more-prompt|
+MoreMsg      { fg=c.green, gui=bf };                        -- |more-prompt|
 WarningMsg   { fg=c.red };                                  -- warning messages
 Question     { MoreMsg };                                   -- |hit-enter| prompt and yes/no questions
 
@@ -178,21 +194,21 @@ DiffRemoved  { DiffDelete };
 DiffChange   { bg=d.magenta };
 DiffText     { bg=d.blue };
 
-SpellBad     { fg=c.red,    gui="undercurl" };
-SpellCap     { fg=c.blue,   gui="undercurl" };
-SpellLocal   { fg=c.yellow, gui="undercurl" };
-SpellRare    { fg=b.yellow, gui="undercurl" };
+SpellBad     { fg=c.red,    gui=undercurl };
+SpellCap     { fg=c.blue,   gui=undercurl };
+SpellLocal   { fg=c.yellow, gui=undercurl };
+SpellRare    { fg=b.yellow, gui=undercurl };
 
 
 
 ---- :help group-name --------------------------------------
 
-Comment        { fg=g.com, gui="italic" };
+Comment        { fg=g.com, gui=it };
 Identifier     { fg=g.fg };
 Function       { fg=b.yellow };
 
 Constant       { fg=c.magenta };
-String         { fg=b.blue, gui="italic" };
+String         { fg=b.blue, gui=it };
 Character      { fg=b.blue };
 Number         { fg=b.magenta };
 Boolean        { fg=b.magenta };
@@ -224,13 +240,13 @@ Special        { fg=d.yellow };
 -- SpecialComment { };
 -- Debug          { };
 
-Underlined     { gui="underline" };
-Bold           { gui="bold" };
-Italic         { gui="italic" };
+Underlined     { gui=underline };
+Bold           { gui=bf };
+Italic         { gui=it };
 
 Ignore         { fg=g.overbg };
 Error          { bg=d.red };
-Todo           { fg=c.yellow, gui="bold" };
+Todo           { fg=c.yellow, gui=bf };
 
 
 
@@ -243,10 +259,10 @@ Todo           { fg=c.yellow, gui="bold" };
 -- TSComment            { };
 -- TSConditional        { };                                -- keywords related to conditionnals.
 -- TSConstant           { };
-TSConstBuiltin       { Constant, gui="italic" };            -- constant that are built in the language: `nil` in Lua.
-TSConstMacro         { Constant, gui="bold" };              -- constants that are defined by macros: `NULL` in C.
+TSConstBuiltin       { Constant, gui=it };                  -- constant that are built in the language: `nil` in Lua.
+TSConstMacro         { Constant, gui=bf };                  -- constants that are defined by macros: `NULL` in C.
 -- TSConstructor        { };                                -- constructor calls and definitions: ` { }` in Lua, and Java constructors.
-TSError              { gui="undercurl" };                   -- syntax/parser errors.
+TSError              { gui=undercurl };                     -- syntax/parser errors.
 -- TSException          { };                                -- exception related keywords.
 -- TSField              { };
 -- TSFloat              { };
@@ -274,22 +290,22 @@ TSPunctDelimiter     { fg=c.red };                          -- delimiters ie: `.
 -- TSString             { };
 -- TSStringRegex        { };
 TSStringEscape       { fg=c.blue };                         -- escape characters within a string.
-TSSymbol             { gui="italic" };                      -- identifiers referring to symbols or atoms.
+TSSymbol             { gui=it };                            -- identifiers referring to symbols or atoms.
 -- TSType               { };
 -- TSTypeBuiltin        { };
 -- TSVariable           { };                                -- Any variable name that does not have another highlight.
-TSVariableBuiltin    { gui="italic" };                      -- Variable names that are defined by the languages, like `this` or `self`.
+TSVariableBuiltin    { gui=it };                            -- Variable names that are defined by the languages, like `this` or `self`.
 
 -- TSTag                { };                                -- Tags like html tag names.
 -- TSTagDelimiter       { };                                -- Tag delimiter like `<` `>` `/`
 -- TSText               { };                                -- strings considered text in a markup language.
-TSStrong             { gui="bold" };                        -- text to be represented in bold.
+TSStrong             { gui=bf };                            -- text to be represented in bold.
 TSEmphasis           { Italic };                            -- text to be represented with emphasis.
 TSUnderline          { Underlined };                        -- text to be represented with an underline.
 TSStrike             { gui="strikethrough" };               -- strikethrough text.
 -- TSTitle              { };                                -- Text that is part of a title.
 -- TSLiteral            { };
-TSURI                { String, gui="underline" };           -- Any URI like a link or email.
+TSURI                { String, gui=underline };             -- Any URI like a link or email.
 TSMath               { fg=b.cyan };                         -- LaTeX-like math environments.
 -- TSTextReference      { };                                -- footnotes, text references, citations.
 TSEnviroment         { Statement };                         -- text environments of markup languages.
@@ -316,10 +332,10 @@ LspDiagnosticsDefaultHint            { fg=c.green};         -- base highlight gr
 -- LspDiagnosticsVirtualTextInformation { };                -- "Information" diagnostic virtual text
 -- LspDiagnosticsVirtualTextHint        { };                -- "Hint" diagnostic virtual text
 
-LspDiagnosticsUnderlineError         { gui="undercurl" };   -- underline "Error" diagnostics
-LspDiagnosticsUnderlineWarning       { gui="undercurl" };   -- underline "Warning" diagnostics
-LspDiagnosticsUnderlineInformation   { gui="undercurl" };   -- underline "Information" diagnostics
-LspDiagnosticsUnderlineHint          { gui="undercurl" };   -- underline "Hint" diagnostics
+LspDiagnosticsUnderlineError         { gui=undercurl };     -- underline "Error" diagnostics
+LspDiagnosticsUnderlineWarning       { gui=undercurl };     -- underline "Warning" diagnostics
+LspDiagnosticsUnderlineInformation   { gui=undercurl };     -- underline "Information" diagnostics
+LspDiagnosticsUnderlineHint          { gui=undercurl };     -- underline "Hint" diagnostics
 
 -- LspDiagnosticsFloatingError          { };                -- color "Error" diagnostic messages in diagnostics float
 -- LspDiagnosticsFloatingWarning        { };                -- color "Warning" diagnostic messages in diagnostics float
@@ -338,7 +354,7 @@ LspDiagnosticsUnderlineHint          { gui="undercurl" };   -- underline "Hint" 
 texOptSep            { TSPunctDelimiter };
 texOptEqual          { Operator };
 texFileArg           { Constant };
-texTitleArg          { gui="bold" };
+texTitleArg          { gui=bf };
 texRefArg            { Constant };
 
 texMathCmd           { Function };

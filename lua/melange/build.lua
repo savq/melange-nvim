@@ -22,9 +22,14 @@ local function concat_format(t)
     return table.concat(vim.tbl_map(function(x) return string.format(unpack(x)) end, t), "\n")
 end
 
+-- Get the directory where the melange plugin is located
+local function get_melange_dir()
+    return debug.getinfo(1).source:match("@?(.*/)"):gsub("/lua/melange/$", "")
+end
+
 -- Write the contents of a buffer to a file
 local function write_file(file, buf)
-    local fd = assert(uv.fs_open(file, 'w', 420))
+    local fd = assert(uv.fs_open(get_melange_dir() .. file, 'w', 420))
     uv.fs_write(fd, buf, -1)
     uv.fs_write(fd, '\n', -1)
     assert(uv.fs_close(fd))
@@ -49,7 +54,7 @@ local function viml_build(l)
         -- Compile lush table, concatenate to a single string, and remove blend property
         vimcolors[l] = string.gsub(table.concat(vim.fn.sort(lush.compile(get_colorscheme(l))), "\n"), "%s*blend=NONE", "")
     end
-    return write_file("./colors/melange.vim", string.format(viml_template, vimcolors.dark, vimcolors.light))
+    return write_file("/colors/melange.vim", string.format(viml_template, vimcolors.dark, vimcolors.light))
 end
 
 function terms.alacritty.build(g, c, b)
@@ -152,7 +157,7 @@ local function build()
         colors = get_colorscheme(l).Melange.lush
         for k, v in pairs(terms) do
             write_file(
-                string.format("./term/%s/melange_%s.%s", k, l, v.ext),
+                string.format("/term/%s/melange_%s.%s", k, l, v.ext),
                 v.build(colors.grays, colors.tones, colors[b])
             )
         end

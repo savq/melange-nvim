@@ -13,6 +13,7 @@
 --  "Y8P"  "Y888888P'"Y88P"`Y8P' "YY8P8P88P     `Y8
 --
 
+
 local lush = require("lush")
 local hsl = lush.hsl
 
@@ -111,12 +112,7 @@ end
 -- Font variants:
 -- This only works when loading this file directly, not when loading with `:colorscheme`
 local bf, it, underline, undercurl;
-if vim.g.melange_enable_font_variants == 0 then
-    bf = "NONE"
-    it = "NONE"
-    underline = "NONE"
-    undercurl = "NONE"
-else
+if vim.g.melange_enable_font_variants ~= 0 then
     bf = "bold"
     it = "italic"
     underline = "underline"
@@ -260,7 +256,7 @@ Todo           { fg=c.yellow, gui=bf };
 -- TSConditional        { };                                -- keywords related to conditionnals.
 -- TSConstant           { };
 TSConstBuiltin       { Constant, gui=it };                  -- constant that are built in the language: `nil` in Lua.
-TSConstMacro         { Constant, gui=bf };                  -- constants that are defined by macros: `NULL` in C.
+TSConstMacro         { Constant };                          -- constants that are defined by macros: `NULL` in C.
 -- TSConstructor        { };                                -- constructor calls and definitions: ` { }` in Lua, and Java constructors.
 TSError              { gui=undercurl };                     -- syntax/parser errors.
 -- TSException          { };                                -- exception related keywords.

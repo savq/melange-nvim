@@ -52,7 +52,7 @@ local function viml_build(l)
     local vimcolors = {}
     for _,l in ipairs{"dark", "light"} do
         -- Compile lush table, concatenate to a single string, and remove blend property
-        vimcolors[l] = string.gsub(table.concat(vim.fn.sort(lush.compile(get_colorscheme(l))), "\n"), "%s*blend=NONE", "")
+        vimcolors[l] = table.concat(vim.fn.sort(lush.compile(get_colorscheme(l), {exclude_keys={"blend"}})), "\n")
     end
     return write_file("/colors/melange.vim", string.format(viml_template, vimcolors.dark, vimcolors.light))
 end

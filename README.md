@@ -1,7 +1,7 @@
 ![logo](./.assets/melange-logo.png)
 
 ## Features
-- Works with Neovim and Vim
+- Works with Neovim stable and Vim 8
 - Dark and light variants
 - Support for:
   - LSP
@@ -20,14 +20,16 @@
 
 
 ## Installation
-You can install Melange with any Neovim/Vim8 plugin manager.
+You can install Melange with any Neovim/Vim plugin manager.
 For example, with [Packer](https://github.com/wbthomason/packer.nvim):
+
 ```lua
-use "savq/melange"
+use "savq/melange";
 ```
 
 Additionally, [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-can be used to install tree-sitter parsers.
+can be used to install tree-sitter parsers,
+and Lush can be used to extend the colorscheme (see [Contributing](./CONTRIBUTING.md)).
 
 
 ## Usage
@@ -59,7 +61,8 @@ Melange was developed with the following ideas in mind:
 
 ## Previews
 
-nvim-treesitter + [IBM/plex](https://github.com/IBM/plex) Mono Light
 ![melange_dark_code_screenshot](./.assets/rustbook_dark.png)
 
 ![melange_light_code_screenshot](./.assets/rustbook_light.png)
+
+The font is [IBM/plex](https://github.com/IBM/plex) Mono Light

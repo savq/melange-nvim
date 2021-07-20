@@ -21,16 +21,14 @@ existing ones (in `lua/melange/build.lua`) and feel free to open a PR.
 ## Build and develop
 
 Melange is made with [Lush.nvim](https://github.com/rktjmp/lush.nvim),
-which makes it very easy to modify. Either for contributing, or for making your
-own fork.
+which makes it very easy to modify. Either for extending, contributing, or for
+making your own fork. Refer to the [Lush docs](https://github.com/rktjmp/lush.nvim/blob/main/doc/lush.txt)
+for more information on extending the colorscheme.
 
-Assuming you have Lush.nvim installed, you can change the color definitions,
-and highlight group definitions in `lua/melange/init.lua`, live preview them,
-and when you're happy with them compile them to a `.vim` file. Melange provides
-a build script and a makefile for convenience.
-
-Alternatively, you can source the `.lua` file directly:
+Melange provides a build script and a makefile to compile Lush colorschemes
+to vimscript persistently. Alternatively, you can source the `.lua` file directly:
 
 ```lua
 lua require("lush")(require("melange"))
 ```
+

@@ -29,7 +29,8 @@ use "savq/melange";
 
 Additionally, [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 can be used to install tree-sitter parsers,
-and Lush can be used to extend the colorscheme (see [Contributing](./CONTRIBUTING.md)).
+and [Lush.nvim](https://github.com/rktjmp/lush.nvim)
+can be used to extend the colorscheme (see [Contributing](./CONTRIBUTING.md)).
 
 
 ## Usage

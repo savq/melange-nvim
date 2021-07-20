@@ -21,12 +21,13 @@ existing ones (in `lua/melange/build.lua`) and feel free to open a PR.
 ## Build and develop
 
 Melange is made with [Lush.nvim](https://github.com/rktjmp/lush.nvim),
-which makes it very easy to modify. Either for extending, contributing, or for
+which makes it very easy to modify; either for extending, contributing, or for
 making your own fork. Refer to the [Lush docs](https://github.com/rktjmp/lush.nvim/blob/main/doc/lush.txt)
 for more information on extending the colorscheme.
 
 Melange provides a build script and a makefile to compile Lush colorschemes
-to vimscript persistently. Alternatively, you can source the `.lua` file directly:
+to vimscript persistently. Alternatively, you can source the `melange/init.lua`
+file directly:
 
 ```lua
 lua require("lush")(require("melange"))

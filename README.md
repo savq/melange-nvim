@@ -62,8 +62,8 @@ Melange was developed with the following ideas in mind:
 
 ## Previews
 
-![melange_dark_code_screenshot](./.assets/rustbook_dark.png)
+![melange_dark_preview](./.assets/melange_dark_preview.png)
 
-![melange_light_code_screenshot](./.assets/rustbook_light.png)
+![melange_light_preview](./.assets/melange_light_preview.png)
 
 The font is [IBM/plex](https://github.com/IBM/plex) Mono Light

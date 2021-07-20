@@ -220,5 +220,5 @@ highlight! link texMathSymbol Operator
 highlight! link texOptEqual Operator
 highlight! link texOptSep TSPunctDelimiter
 highlight! link texRefArg Constant
-endif
 
+endif

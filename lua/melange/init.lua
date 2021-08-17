@@ -229,10 +229,10 @@ Type           { fg=c.cyan };
 -- Structure      { };
 -- Typedef        { };
 
-Special        { fg=d.yellow };
+Special        { fg=b.yellow };
 -- SpecialChar    { };
 -- Tag            { };
--- Delimiter      { };
+Delimiter      { fg=d.yellow };
 -- SpecialComment { };
 -- Debug          { };
 
@@ -280,8 +280,8 @@ TSKeywordFunction    { fg=b.green };                        -- keywords used to 
 -- TSParameterReference { };                                -- references to parameters of a function.
 -- TSProperty           { };                                -- Same as `TSField`.
 TSPunctDelimiter     { fg=c.red };                          -- delimiters ie: `.`
--- TSPunctBracket       { };                                -- brackets and parentheses.
--- TSPunctSpecial       { };                                -- special punctutation that does not fall in the catagories before.
+TSPunctBracket       { Delimiter };                         -- brackets and parentheses.
+TSPunctSpecial       { Delimiter };                         -- special punctutation that does not fall in the catagories before.
 -- TSRepeat             { };                                -- keywords related to loops.
 -- TSString             { };
 -- TSStringRegex        { };
@@ -357,7 +357,7 @@ texMathCmd           { Function };
 texMathSymbol        { Operator };
 texMathZone          { fg=b.cyan };
 texMathDelimZone     { TSPunctDelimiter };
-texMathDelim         { Special };
+texMathDelim         { Delimiter };
 texMathEnvArgName    { TSKeywordFunction };
 
 

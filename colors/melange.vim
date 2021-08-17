@@ -11,6 +11,7 @@ highlight Comment guifg=#998066 guibg=NONE guisp=NONE gui=italic blend=NONE
 highlight Conceal guifg=#C9B39C guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight Constant guifg=#AD85AD guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight CursorLineNr guifg=#E09952 guibg=NONE guisp=NONE gui=NONE blend=NONE
+highlight Delimiter guifg=#997733 guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight DiffAdd guifg=NONE guibg=#244224 guisp=NONE gui=NONE blend=NONE
 highlight DiffChange guifg=NONE guibg=#422438 guisp=NONE gui=NONE blend=NONE
 highlight DiffDelete guifg=NONE guibg=#6B2E2E guisp=NONE gui=NONE blend=NONE
@@ -44,7 +45,7 @@ highlight Operator guifg=#F7856E guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight PmenuSel guifg=NONE guibg=#544D45 guisp=NONE gui=NONE blend=NONE
 highlight PreProc guifg=#669966 guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight Search guifg=#2A2622 guibg=#997733 guisp=NONE gui=NONE blend=NONE
-highlight Special guifg=#997733 guibg=NONE guisp=NONE gui=NONE blend=NONE
+highlight Special guifg=#F7C96E guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight SpellBad guifg=#B34D4D guibg=NONE guisp=NONE gui=undercurl blend=NONE
 highlight SpellCap guifg=#5973A6 guibg=NONE guisp=NONE gui=undercurl blend=NONE
 highlight SpellLocal guifg=#E09952 guibg=NONE guisp=NONE gui=undercurl blend=NONE
@@ -98,13 +99,15 @@ highlight! link TSEnviroment Statement
 highlight! link TSEnviromentName TSKeywordFunction
 highlight! link TSFuncBuiltin Function
 highlight! link TSFuncMacro Function
+highlight! link TSPunctBracket Delimiter
+highlight! link TSPunctSpecial Delimiter
 highlight! link TSUnderline Underlined
 highlight! link TabLine StatusLineNC
 highlight! link TabLineFill StatusLine
 highlight! link WildMenu NormalFloat
 highlight! link texFileArg Constant
 highlight! link texMathCmd Function
-highlight! link texMathDelim Special
+highlight! link texMathDelim Delimiter
 highlight! link texMathDelimZone TSPunctDelimiter
 highlight! link texMathEnvArgName TSKeywordFunction
 highlight! link texMathSymbol Operator
@@ -120,6 +123,7 @@ highlight Comment guifg=#B8997A guibg=NONE guisp=NONE gui=italic blend=NONE
 highlight Conceal guifg=#856647 guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight Constant guifg=#B87AB8 guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight CursorLineNr guifg=#CC8033 guibg=NONE guisp=NONE gui=NONE blend=NONE
+highlight Delimiter guifg=#E0C285 guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight DiffAdd guifg=NONE guibg=#D9F2D9 guisp=NONE gui=NONE blend=NONE
 highlight DiffChange guifg=NONE guibg=#EDDEE8 guisp=NONE gui=NONE blend=NONE
 highlight DiffDelete guifg=NONE guibg=#EBB8AD guisp=NONE gui=NONE blend=NONE
@@ -153,7 +157,7 @@ highlight Operator guifg=#AD1F1F guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight PmenuSel guifg=NONE guibg=#E0CCB8 guisp=NONE gui=NONE blend=NONE
 highlight PreProc guifg=#7AB87A guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight Search guifg=#F7F2ED guibg=#E0C285 guisp=NONE gui=NONE blend=NONE
-highlight Special guifg=#E0C285 guibg=NONE guisp=NONE gui=NONE blend=NONE
+highlight Special guifg=#D99D26 guibg=NONE guisp=NONE gui=NONE blend=NONE
 highlight SpellBad guifg=#D65C5C guibg=NONE guisp=NONE gui=undercurl blend=NONE
 highlight SpellCap guifg=#8CA6D9 guibg=NONE guisp=NONE gui=undercurl blend=NONE
 highlight SpellLocal guifg=#CC8033 guibg=NONE guisp=NONE gui=undercurl blend=NONE
@@ -207,18 +211,20 @@ highlight! link TSEnviroment Statement
 highlight! link TSEnviromentName TSKeywordFunction
 highlight! link TSFuncBuiltin Function
 highlight! link TSFuncMacro Function
+highlight! link TSPunctBracket Delimiter
+highlight! link TSPunctSpecial Delimiter
 highlight! link TSUnderline Underlined
 highlight! link TabLine StatusLineNC
 highlight! link TabLineFill StatusLine
 highlight! link WildMenu NormalFloat
 highlight! link texFileArg Constant
 highlight! link texMathCmd Function
-highlight! link texMathDelim Special
+highlight! link texMathDelim Delimiter
 highlight! link texMathDelimZone TSPunctDelimiter
 highlight! link texMathEnvArgName TSKeywordFunction
 highlight! link texMathSymbol Operator
 highlight! link texOptEqual Operator
 highlight! link texOptSep TSPunctDelimiter
 highlight! link texRefArg Constant
-
 endif
+

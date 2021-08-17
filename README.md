@@ -1,4 +1,4 @@
-![logo](./.assets/melange-logo.png)
+![melange-logo](https://user-images.githubusercontent.com/30883030/129780812-8d0cfa59-40d7-4413-8fb7-efdf41b04aed.png)
 
 ## Features
 - Works with Neovim stable and Vim 8
@@ -62,8 +62,8 @@ Melange was developed with the following ideas in mind:
 
 ## Previews
 
-![melange_dark_preview](./.assets/melange_dark_preview.png)
+<img width="1326" alt="melange_dark_preview" src="https://user-images.githubusercontent.com/30883030/129780717-b97c788b-fbce-4e5a-be2d-f50c63eb7a7b.png">
 
-![melange_light_preview](./.assets/melange_light_preview.png)
+<img width="1326" alt="melange_light_preview" src="https://user-images.githubusercontent.com/30883030/129780740-48f7c4bd-a53f-4614-9fb8-f21004e76f84.png">
 
 The font is [IBM/plex](https://github.com/IBM/plex) Mono Light

@@ -16,7 +16,6 @@ function setup() {
         orange  : color( 30, 70, 60),
         yellow  : color( 40, 90, 70),
         green   : color(120, 20, 50),
-        // bgreen  : color(120, 40, 70),
         cyan    : color(180, 20, 60),
         blue    : color(220, 40, 70),
         purple  : color(300, 20, 60),
@@ -28,7 +27,7 @@ function setup() {
     textFont('Noto Serif')
     textStyle(BOLDITALIC)
     textAlign(CENTER)
-    textSize(100)
+    textSize(80)
     text('meλanʒe', width / 2, height / 2)
 
     let y = height * 2 / 3

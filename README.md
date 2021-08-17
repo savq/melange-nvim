@@ -21,11 +21,17 @@
 
 ## Installation
 You can install Melange with any Neovim/Vim plugin manager.
-For example, with [Packer](https://github.com/wbthomason/packer.nvim):
 
+[Packer](https://github.com/wbthomason/packer.nvim):
 ```lua
-use "savq/melange";
+use "savq/melange"
 ```
+
+[Paq](https://github.com/savq/paq-nvim):
+```lua
+"savq/melange";
+```
+
 
 Additionally, [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 can be used to install tree-sitter parsers,

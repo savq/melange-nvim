@@ -183,12 +183,19 @@ MoreMsg      { fg=c.green, gui=bf };                        -- |more-prompt|
 WarningMsg   { fg=c.red };                                  -- warning messages
 Question     { MoreMsg };                                   -- |hit-enter| prompt and yes/no questions
 
+
+---- :help :diff -------------------------------------------
+
 DiffAdd      { bg=d.green };
-DiffAdded    { DiffAdd };
-DiffDelete   { bg=d.red };
-DiffRemoved  { DiffDelete };
 DiffChange   { bg=d.magenta };
+DiffDelete   { bg=d.red };
 DiffText     { bg=d.blue };
+
+DiffAdded    { DiffAdd };
+DiffRemoved  { DiffDelete };
+
+
+---- :help spell -------------------------------------------
 
 SpellBad     { fg=c.red,    gui=undercurl };
 SpellCap     { fg=c.blue,   gui=undercurl };

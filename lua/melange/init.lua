@@ -292,11 +292,11 @@ TSPunctSpecial       { Delimiter };
 -- TSString             { };
 -- TSStringRegex        { };
 TSStringEscape       { fg=c.blue };
-TSSymbol             { gui=it };
+TSSymbol             { Identifier, gui=it };
 -- TSType               { };
 -- TSTypeBuiltin        { };
--- TSVariable           { };
-TSVariableBuiltin    { gui=it };
+TSVariable           { Identifier };
+TSVariableBuiltin    { Identifier, gui=it };
 
 -- TSTag                { };
 -- TSTagDelimiter       { };

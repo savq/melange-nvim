@@ -68,8 +68,7 @@ Melange was developed with the following ideas in mind:
 
 ## Previews
 
-<img width="1326" alt="melange_dark_preview" src="https://user-images.githubusercontent.com/30883030/129780717-b97c788b-fbce-4e5a-be2d-f50c63eb7a7b.png">
+<img width="1326" alt="melange-dark-preview" src="https://user-images.githubusercontent.com/30883030/131925703-ac49ae5e-fee8-49e4-bee0-3dd61e2b03a9.png">
+<img width="1326" alt="melange-light-preview" src="https://user-images.githubusercontent.com/30883030/131925704-20ce9a8a-8a63-48a2-bd24-fb739c8201f9.png">
 
-<img width="1326" alt="melange_light_preview" src="https://user-images.githubusercontent.com/30883030/129780740-48f7c4bd-a53f-4614-9fb8-f21004e76f84.png">
-
-The font is [IBM/plex](https://github.com/IBM/plex) Mono Light
+The font is [IBM/plex](https://github.com/IBM/plex) Mono

@@ -264,7 +264,7 @@ Todo           { fg=c.yellow, gui=bf };
 TSConstBuiltin       { Constant, gui=it };
 TSConstMacro         { Constant };
 -- TSConstructor        { };
-TSError              { gui=undercurl };
+-- TSError              { gui=undercurl };
 -- TSException          { };
 -- TSField              { };
 -- TSFloat              { };

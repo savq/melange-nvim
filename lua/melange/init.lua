@@ -13,6 +13,7 @@
 --  "Y8P"  "Y888888P'"Y88P"`Y8P' "YY8P8P88P     `Y8
 --
 
+-- vim.opt.keywordprg=":help"  --Jump easily to hl-groups docs.
 
 local lush = require("lush")
 local hsl = lush.hsl
@@ -31,7 +32,7 @@ palette.dark = {
 
     shades = {
         red     = hsl(  0, 40, 30);
-        yellow  = hsl( 40, 50, 40); -- amber
+        yellow  = hsl( 40, 50, 40);
         green   = hsl(120, 30, 20);
         cyan    = hsl(180, 30, 20);
         blue    = hsl(220, 30, 20);
@@ -40,7 +41,7 @@ palette.dark = {
 
     tones = {
         red     = hsl(  0, 40, 50);
-        yellow  = hsl( 30, 70, 60); -- orange
+        yellow  = hsl( 30, 70, 60);  --orange
         green   = hsl(120, 20, 50);
         cyan    = hsl(180, 20, 60);
         blue    = hsl(220, 30, 50);
@@ -48,7 +49,7 @@ palette.dark = {
     };
 
     tints = {
-        red     = hsl( 10, 90, 70); -- salmon
+        red     = hsl( 10, 90, 70);
         yellow  = hsl( 40, 90, 70);
         green   = hsl(120, 40, 70);
         cyan    = hsl(180, 40, 70);
@@ -99,11 +100,11 @@ local bg = vim.opt.background:get()
 local g = palette[bg].grays
 local c = palette[bg].tones
 
-local d, b; -- TODO: Rename
-if bg == "dark" then --shades are backgrounds, and tints foregrounds
+local d, b;  --TODO: REname
+if bg == "dark" then  --shades are backgrounds, and tints foregrounds
     d = palette[bg].shades
     b = palette[bg].tints
-elseif bg == "light" then --tints are backgrounds, and shades foregrounds
+elseif bg == "light" then  --tints are backgrounds, and shades foregrounds
     d = palette[bg].tints
     b = palette[bg].shades
 end
@@ -124,77 +125,83 @@ return lush(function() return {
 
 ---- :help highlight-default -------------------------------
 
-Normal       { fg=g.fg, bg=g.bg };                          -- Normal text
-NormalFloat  { bg=g.overbg };                               -- Normal text in floating windows
--- NormalNC     { };                                        -- Normal text in non-current windows
+Normal       { fg=g.fg, bg=g.bg };
+NormalFloat  { bg=g.overbg };
+-- NormalNC     { };
 
--- Cursor       { };                                        -- Character under the cursor
--- lCursor      { };                                        -- The character under the cursor when |language-mapping| is used (see 'guicursor')
--- CursorIM     { };                                        -- Like Cursor, but used when in IME mode |CursorIM|
--- TermCursor   { };                                        -- Cursor in a focused terminal
--- TermCursorNC { };                                        -- Cursor in an unfocused terminal
+-- Cursor       { };
+-- lCursor      { };
+-- CursorIM     { };
+-- TermCursor   { };
+-- TermCursorNC { };
 
-ColorColumn  { bg=g.overbg };                               -- Used for the columns set with 'colorcolumn'
-CursorColumn { ColorColumn };                               -- Screen-column at the cursor, when 'cursorcolumn' is set
-CursorLine   { ColorColumn };                               -- Screen-line at the cursor, when 'cursorline' is set
-VertSplit    { fg=g.sel };                                  -- The column separating vertically split windows
+ColorColumn  { bg=g.overbg };
+CursorColumn { ColorColumn };
+CursorLine   { ColorColumn };
+VertSplit    { fg=g.sel };
 
-LineNr       { fg=g.sel };                                  -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set
-CursorLineNr { fg=c.yellow };                               -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line
+LineNr       { fg=g.sel };
+CursorLineNr { fg=c.yellow };
 
-Folded       { fg=g.com, bg=g.overbg };                     -- Line used for closed folds
-FoldColumn   { LineNr };                                    -- 'foldcolumn'
-SignColumn   { LineNr };                                    -- Column where |signs| are displayed
+Folded       { fg=g.com, bg=g.overbg };
+FoldColumn   { LineNr };
+SignColumn   { LineNr };
 
-Pmenu        { NormalFloat };                               -- normal item
-PmenuSel     { bg=g.sel };                                  -- selected item
-PmenuSbar    { Pmenu };                                     -- scrollbar
-PmenuThumb   { PmenuSel };                                  -- Thumb of the scrollbar
+Pmenu        { NormalFloat };
+PmenuSel     { bg=g.sel };
+PmenuSbar    { Pmenu };
+PmenuThumb   { PmenuSel };
 
-StatusLine   { NormalFloat };                               -- status line of current window
-StatusLineNC { StatusLine, fg=g.faded };                    -- status lines of not-current windows
-WildMenu     { NormalFloat };                               -- current match in 'wildmenu' completion
+StatusLine   { NormalFloat };
+StatusLineNC { StatusLine, fg=g.faded };
+WildMenu     { NormalFloat };
 
-TabLine      { StatusLineNC };                              -- not active tab page label
-TabLineFill  { StatusLine };                                -- where there are no labels
-TabLineSel   { StatusLine, gui=bf };                        -- active tab page label
+TabLine      { StatusLineNC };
+TabLineFill  { StatusLine };
+TabLineSel   { StatusLine, gui=bf };
 
-MatchParen   { fg=b.yellow, bg=g.sel, gui=bf };             -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
-Substitute   { fg=g.bg, bg=d.yellow };                      -- |:substitute| replacement text highlighting
-Search       { fg=g.bg, bg=d.yellow };                      -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
--- QuickFixLine { };                                        -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
--- IncSearch    { };                                        -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-Visual       { bg=g.sel };                                  -- Visual mode selection
--- VisualNOS    { };                                        -- Visual mode selection when vim is "Not Owning the Selection".
+MatchParen   { fg=b.yellow, bg=g.sel, gui=bf };
+Substitute   { fg=g.bg, bg=d.yellow };
+Search       { fg=g.bg, bg=d.yellow };
+-- QuickFixLine { };
+-- IncSearch    { };
+Visual       { bg=g.sel };
+-- VisualNOS    { };
 
-Conceal      { fg=g.faded };                                -- Placeholder characters substituted for concealed text (see 'conceallevel')
-Whitespace   { fg=g.sel };                                  -- "nbsp", "space", "tab" and "trail" in 'listchars'
-EndOfBuffer  { Whitespace };                                -- Filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
-NonText      { Whitespace };                                -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-SpecialKey   { Whitespace };                                -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
+Conceal      { fg=g.faded };
+Whitespace   { fg=g.sel };
+EndOfBuffer  { Whitespace };
+NonText      { Whitespace };
+SpecialKey   { Whitespace };
 
-Directory    { fg=c.yellow };                               -- directory names (and other special names in listings)
-Title        { fg=c.yellow };                               -- titles for output from ":set all", ":autocmd" etc.
-ErrorMsg     { bg=d.red };                                  -- error messages on the command line
-ModeMsg      { fg=g.faded };                                -- 'showmode' message (e.g., "-- INSERT -- ")
--- MsgArea      { };                                        -- Area for messages and cmdline
--- MsgSeparator { };                                        -- Separator for scrolled messages, `msgsep` flag of 'display'
-MoreMsg      { fg=c.green, gui=bf };                        -- |more-prompt|
-WarningMsg   { fg=c.red };                                  -- warning messages
-Question     { MoreMsg };                                   -- |hit-enter| prompt and yes/no questions
+Directory    { fg=c.yellow };
+Title        { fg=c.yellow };
+ErrorMsg     { bg=d.red };
+ModeMsg      { fg=g.faded };
+-- MsgArea      { };
+-- MsgSeparator { };
+MoreMsg      { fg=c.green, gui=bf };
+WarningMsg   { fg=c.red };
+Question     { MoreMsg };
+
+
+---- :help :diff -------------------------------------------
 
 DiffAdd      { bg=d.green };
-DiffAdded    { DiffAdd };
-DiffDelete   { bg=d.red };
-DiffRemoved  { DiffDelete };
 DiffChange   { bg=d.magenta };
+DiffDelete   { bg=d.red };
 DiffText     { bg=d.blue };
+
+DiffAdded    { DiffAdd };
+DiffRemoved  { DiffDelete };
+
+
+---- :help spell -------------------------------------------
 
 SpellBad     { fg=c.red,    gui=undercurl };
 SpellCap     { fg=c.blue,   gui=undercurl };
 SpellLocal   { fg=c.yellow, gui=undercurl };
 SpellRare    { fg=b.yellow, gui=undercurl };
-
 
 
 ---- :help group-name --------------------------------------
@@ -218,7 +225,7 @@ Operator       { fg=b.red };
 -- Keyword        { };
 -- Exception      { };
 
-PreProc        { fg=c.green };
+PreProc        { fg=b.green };
 -- Include        { };
 -- Define         { };
 -- Macro          { };
@@ -245,107 +252,104 @@ Error          { bg=d.red };
 Todo           { fg=c.yellow, gui=bf };
 
 
+---- :help nvim-treesitter-highlights (external plugin) ----
 
----- :help nvim-treesitter-highlights ----------------------
-
--- TSAnnotation         { };                                -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
--- TSAttribute          { };                                -- (unstable) TODO: docs
+-- TSAnnotation         { };
+-- TSAttribute          { };
 -- TSBoolean            { };
 -- TSCharacter          { };
 -- TSComment            { };
--- TSConditional        { };                                -- keywords related to conditionnals.
+-- TSConditional        { };
 -- TSConstant           { };
-TSConstBuiltin       { Constant, gui=it };                  -- constant that are built in the language: `nil` in Lua.
-TSConstMacro         { Constant };                          -- constants that are defined by macros: `NULL` in C.
--- TSConstructor        { };                                -- constructor calls and definitions: ` { }` in Lua, and Java constructors.
-TSError              { gui=undercurl };                     -- syntax/parser errors.
--- TSException          { };                                -- exception related keywords.
+TSConstBuiltin       { Constant, gui=it };
+TSConstMacro         { Constant };
+-- TSConstructor        { };
+-- TSError              { gui=undercurl };
+-- TSException          { };
 -- TSField              { };
 -- TSFloat              { };
--- TSFunction           { };                                -- function (calls and definitions).
-TSFuncBuiltin        { Function };                          -- builtin functions: `table.insert` in Lua.
-TSFuncMacro          { Function };                          -- macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
--- TSInclude            { };                                -- includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
--- TSKeyword            { };                                -- keywords that don't fall in previous categories.
-TSKeywordFunction    { fg=b.green };                        -- keywords used to define a fuction.
--- TSKeywordOperator    { };                                -- operators that are English words, e.g. `and`, `as`, `or`.
--- TSKeywordReturn      { };                                -- `return` and `yield` keywords.
--- TSLabel              { };                                -- labels: `label:` in C and `:label:` in Lua.
--- TSMethod             { };                                -- method calls and definitions.
--- TSNamespace          { };                                -- identifiers referring to modules and namespaces.
--- TSNone               { };                                -- no highlighting.
+-- TSFunction           { };
+TSFuncBuiltin        { Function };
+TSFuncMacro          { Function };
+-- TSInclude            { };
+-- TSKeyword            { };
+TSKeywordFunction    { PreProc };
+-- TSKeywordOperator    { };
+-- TSKeywordReturn      { };
+-- TSLabel              { };
+-- TSMethod             { };
+TSNamespace          { fg=c.green };
+-- TSNone               { };
 -- TSNumber             { };
--- TSOperator           { };                                -- any operator: `+`, but also `->` and `*` in C.
--- TSParameter          { };                                -- parameters of a function.
--- TSParameterReference { };                                -- references to parameters of a function.
--- TSProperty           { };                                -- Same as `TSField`.
-TSPunctDelimiter     { fg=c.red };                          -- delimiters ie: `.`
-TSPunctBracket       { Delimiter };                         -- brackets and parentheses.
-TSPunctSpecial       { Delimiter };                         -- special punctutation that does not fall in the catagories before.
--- TSRepeat             { };                                -- keywords related to loops.
+-- TSOperator           { };
+-- TSParameter          { };
+-- TSParameterReference { };
+-- TSProperty           { };
+TSPunctDelimiter     { fg=c.red };
+TSPunctBracket       { Delimiter };
+TSPunctSpecial       { Delimiter };
+-- TSRepeat             { };
 -- TSString             { };
 -- TSStringRegex        { };
-TSStringEscape       { fg=c.blue };                         -- escape characters within a string.
-TSSymbol             { gui=it };                            -- identifiers referring to symbols or atoms.
+TSStringEscape       { fg=c.blue };
+TSSymbol             { Identifier, gui=it };
 -- TSType               { };
 -- TSTypeBuiltin        { };
--- TSVariable           { };                                -- Any variable name that does not have another highlight.
-TSVariableBuiltin    { gui=it };                            -- Variable names that are defined by the languages, like `this` or `self`.
+TSVariable           { Identifier };
+TSVariableBuiltin    { Identifier, gui=it };
 
--- TSTag                { };                                -- Tags like html tag names.
--- TSTagDelimiter       { };                                -- Tag delimiter like `<` `>` `/`
--- TSText               { };                                -- strings considered text in a markup language.
-TSStrong             { gui=bf };                            -- text to be represented in bold.
-TSEmphasis           { Italic };                            -- text to be represented with emphasis.
-TSUnderline          { Underlined };                        -- text to be represented with an underline.
-TSStrike             { gui="strikethrough" };               -- strikethrough text.
--- TSTitle              { };                                -- Text that is part of a title.
+-- TSTag                { };
+-- TSTagDelimiter       { };
+-- TSText               { };
+TSStrong             { gui=bf };
+TSEmphasis           { Italic };
+TSUnderline          { Underlined };
+TSStrike             { gui="strikethrough" };
+-- TSTitle              { };
 -- TSLiteral            { };
-TSURI                { String, gui=underline };             -- Any URI like a link or email.
-TSMath               { fg=b.cyan };                         -- LaTeX-like math environments.
--- TSTextReference      { };                                -- footnotes, text references, citations.
-TSEnviroment         { Statement };                         -- text environments of markup languages.
-TSEnviromentName     { TSKeywordFunction };                 -- name/string indicating the type of text environment.
--- TSNote               { };                                -- Text representation of an informational note.
--- TSWarning            { };                                -- Text representation of a warning note.
--- TSDanger             { };                                -- Text representation of a danger note.
-
+TSURI                { String, gui=underline };
+TSMath               { fg=b.cyan };
+-- TSTextReference      { };
+TSEnvironment        { Statement };
+TSEnvironmentName    { PreProc };
+-- TSNote               { };
+-- TSWarning            { };
+-- TSDanger             { };
 
 
 ---- :help lsp-highlight -----------------------------------
 
-LspReferenceText                     { Visual };            -- highlighting "text" references
-LspReferenceRead                     { Visual };            -- highlighting "read" references
-LspReferenceWrite                    { Visual };            -- highlighting "write" references
+LspReferenceText                     { Visual };
+LspReferenceRead                     { Visual };
+LspReferenceWrite                    { Visual };
 
-LspDiagnosticsDefaultError           { fg=c.red };          -- base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-LspDiagnosticsDefaultWarning         { fg=b.yellow };       -- base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-LspDiagnosticsDefaultInformation     { fg=b.blue };         -- base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-LspDiagnosticsDefaultHint            { fg=c.green};         -- base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+LspDiagnosticsDefaultError           { fg=c.red };
+LspDiagnosticsDefaultWarning         { fg=b.yellow };
+LspDiagnosticsDefaultInformation     { fg=b.blue };
+LspDiagnosticsDefaultHint            { fg=c.green};
 
--- LspDiagnosticsVirtualTextError       { };                -- "Error" diagnostic virtual text
--- LspDiagnosticsVirtualTextWarning     { };                -- "Warning" diagnostic virtual text
--- LspDiagnosticsVirtualTextInformation { };                -- "Information" diagnostic virtual text
--- LspDiagnosticsVirtualTextHint        { };                -- "Hint" diagnostic virtual text
+-- LspDiagnosticsVirtualTextError       { };
+-- LspDiagnosticsVirtualTextWarning     { };
+-- LspDiagnosticsVirtualTextInformation { };
+-- LspDiagnosticsVirtualTextHint        { };
 
-LspDiagnosticsUnderlineError         { gui=undercurl };     -- underline "Error" diagnostics
-LspDiagnosticsUnderlineWarning       { gui=undercurl };     -- underline "Warning" diagnostics
-LspDiagnosticsUnderlineInformation   { gui=undercurl };     -- underline "Information" diagnostics
-LspDiagnosticsUnderlineHint          { gui=undercurl };     -- underline "Hint" diagnostics
+LspDiagnosticsUnderlineError         { gui=undercurl };
+LspDiagnosticsUnderlineWarning       { gui=undercurl };
+LspDiagnosticsUnderlineInformation   { gui=undercurl };
+LspDiagnosticsUnderlineHint          { gui=undercurl };
 
--- LspDiagnosticsFloatingError          { };                -- color "Error" diagnostic messages in diagnostics float
--- LspDiagnosticsFloatingWarning        { };                -- color "Warning" diagnostic messages in diagnostics float
--- LspDiagnosticsFloatingInformation    { };                -- color "Information" diagnostic messages in diagnostics float
--- LspDiagnosticsFloatingHint           { };                -- color "Hint" diagnostic messages in diagnostics float
+-- LspDiagnosticsFloatingError          { };
+-- LspDiagnosticsFloatingWarning        { };
+-- LspDiagnosticsFloatingInformation    { };
+-- LspDiagnosticsFloatingHint           { };
 
--- LspDiagnosticsSignError              { };                -- "Error" signs in sign column
--- LspDiagnosticsSignWarning            { };                -- "Warning" signs in sign column
--- LspDiagnosticsSignInformation        { };                -- "Information" signs in sign column
--- LspDiagnosticsSignHint               { };                -- "Hint" signs in sign column
+-- LspDiagnosticsSignError              { };
+-- LspDiagnosticsSignWarning            { };
+-- LspDiagnosticsSignInformation        { };
+-- LspDiagnosticsSignHint               { };
 
 
-
---- :help vimtex-syntax-reference --------------------------
+--- :help vimtex-syntax-reference (external plugin) --------
 
 texOptSep            { TSPunctDelimiter };
 texOptEqual          { Operator };
@@ -355,19 +359,17 @@ texRefArg            { Constant };
 
 texMathCmd           { Function };
 texMathSymbol        { Operator };
-texMathZone          { fg=b.cyan };
+texMathZone          { TSMath };
 texMathDelimZone     { TSPunctDelimiter };
 texMathDelim         { Delimiter };
-texMathEnvArgName    { TSKeywordFunction };
+texMathEnvArgName    { PreProc };
 
 
-
----- Other Vim groups --------------------------------------
+---- Misc. -------------------------------------------------
 HelpHyperTextJump    { fg=c.yellow };
 
 
-
----- Metagroup (basically a hack for builds) ---------------
+---- Metagroup (hack for builds) ---------------------------
 Melange { lush = palette[bg] };
 
 }end)

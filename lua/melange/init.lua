@@ -225,7 +225,7 @@ Operator       { fg=b.red };
 -- Keyword        { };
 -- Exception      { };
 
-PreProc        { fg=c.green };
+PreProc        { fg=b.green };
 -- Include        { };
 -- Define         { };
 -- Macro          { };
@@ -273,12 +273,12 @@ TSFuncBuiltin        { Function };
 TSFuncMacro          { Function };
 -- TSInclude            { };
 -- TSKeyword            { };
-TSKeywordFunction    { fg=b.green };
+TSKeywordFunction    { PreProc };
 -- TSKeywordOperator    { };
 -- TSKeywordReturn      { };
 -- TSLabel              { };
 -- TSMethod             { };
--- TSNamespace          { };
+TSNamespace          { fg=c.green };
 -- TSNone               { };
 -- TSNumber             { };
 -- TSOperator           { };
@@ -310,8 +310,8 @@ TSStrike             { gui="strikethrough" };
 TSURI                { String, gui=underline };
 TSMath               { fg=b.cyan };
 -- TSTextReference      { };
-TSEnviroment         { Statement };
-TSEnviromentName     { TSKeywordFunction };
+TSEnvironment        { Statement };
+TSEnvironmentName    { PreProc };
 -- TSNote               { };
 -- TSWarning            { };
 -- TSDanger             { };
@@ -359,10 +359,10 @@ texRefArg            { Constant };
 
 texMathCmd           { Function };
 texMathSymbol        { Operator };
-texMathZone          { fg=b.cyan };
+texMathZone          { TSMath };
 texMathDelimZone     { TSPunctDelimiter };
 texMathDelim         { Delimiter };
-texMathEnvArgName    { TSKeywordFunction };
+texMathEnvArgName    { PreProc };
 
 
 ---- Misc. -------------------------------------------------

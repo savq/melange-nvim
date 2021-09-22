@@ -174,7 +174,7 @@ EndOfBuffer  { Whitespace };
 NonText      { Whitespace };
 SpecialKey   { Whitespace };
 
-Directory    { fg=c.yellow };
+Directory    { fg=c.cyan };
 Title        { fg=c.yellow };
 ErrorMsg     { bg=d.red };
 ModeMsg      { fg=g.faded };
@@ -363,6 +363,15 @@ texMathZone          { TSMath };
 texMathDelimZone     { TSPunctDelimiter };
 texMathDelim         { Delimiter };
 texMathEnvArgName    { PreProc };
+
+
+--- netrw: there's no comprehensive list of highlights... --
+
+netrwClassify        { Delimiter };
+netrwTreeBar         { Delimiter };
+
+netrwExe             { fg=c.red };
+netrwSymLink         { fg=c.magenta };
 
 
 ---- Misc. -------------------------------------------------

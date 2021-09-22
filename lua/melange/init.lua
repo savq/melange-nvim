@@ -100,7 +100,7 @@ local bg = vim.opt.background:get()
 local g = palette[bg].grays
 local c = palette[bg].tones
 
-local d, b;  --TODO: REname
+local d, b;  --TODO: Rename
 if bg == "dark" then  --shades are backgrounds, and tints foregrounds
     d = palette[bg].shades
     b = palette[bg].tints
@@ -247,9 +247,9 @@ Underlined     { gui=underline };
 Bold           { gui=bf };
 Italic         { gui=it };
 
-Ignore         { fg=g.overbg };
+Ignore         { fg=g.com };
 Error          { bg=d.red };
-Todo           { fg=c.yellow, gui=bf };
+Todo           { Comment, fg=g.faded };
 
 
 ---- :help nvim-treesitter-highlights (external plugin) ----

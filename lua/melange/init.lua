@@ -65,7 +65,7 @@ palette.light = {
         sel    = hsl(30, 40, 80);
         com    = hsl(30, 30, 60);
         faded  = hsl(30, 30, 40);
-        fg     = hsl(30, 30, 20);
+        fg     = hsl(30, 30, 30);
     };
 
     tints = {

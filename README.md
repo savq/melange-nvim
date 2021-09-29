@@ -9,18 +9,18 @@
   - [VimTeX](https://github.com/lervag/vimtex)
 - Support for various terminal emulators:
   - [Alacritty](https://github.com/alacritty/alacritty)
-  - [iTerm2](https://github.com/gnachman/iTerm2)
   - [Kitty](https://github.com/kovidgoyal/kitty)
   - [Wezterm](https://github.com/wez/wezterm)
+  - [iTerm2](https://github.com/gnachman/iTerm2)
 
 
 ## Requirements
-* A terminal or GUI with true color and font variants support (italics, bold, etc).
+* Terminal emulator or GUI with true color and font variants support (italics, bold, etc).
 * `termguicolors` enabled
 
 
 ## Installation
-You can install Melange with any Neovim/Vim plugin manager.
+You can install Melange with any (Neo)Vim plugin manager.
 
 [Packer](https://github.com/wbthomason/packer.nvim):
 ```lua
@@ -61,8 +61,9 @@ before setting the colorscheme.
 ## Design
 Melange was developed with the following ideas in mind:
 
-* _Control flow_ should use warmer colors and _data_ should use colder colors.
-* No configuration. It's open source, fork it if you don't like something.
+* _Control flow_ should use warm colors and _data_ should use cold colors.
+* No runtime configuration. If you want to modify anything, you should do it
+  statically.  See [Build and develop](./CONTRIBUTING.md#Build-and-develop).
 * Ayu and Gruvbox were the main inspirations.
 
 
@@ -71,4 +72,4 @@ Melange was developed with the following ideas in mind:
 <img width="1326" alt="melange-dark-preview" src="https://user-images.githubusercontent.com/30883030/131925703-ac49ae5e-fee8-49e4-bee0-3dd61e2b03a9.png">
 <img width="1326" alt="melange-light-preview" src="https://user-images.githubusercontent.com/30883030/131925704-20ce9a8a-8a63-48a2-bd24-fb739c8201f9.png">
 
-The font is [IBM/plex](https://github.com/IBM/plex) Mono
+The font is [IBM/plex](https://github.com/IBM/plex) Mono.

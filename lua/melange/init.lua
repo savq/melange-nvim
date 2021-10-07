@@ -17,82 +17,83 @@
 
 local lush = require("lush")
 local hsl = lush.hsl
+local hsluv = lush.hsluv
 
 local palette = {}
 
 palette.dark = {
     grays = {
-        bg     = hsl(30, 10, 15);
-        overbg = hsl(30, 10, 20);
-        sel    = hsl(30, 10, 30);
-        com    = hsl(30, 20, 50);
-        faded  = hsl(30, 30, 70);
-        fg     = hsl(30, 30, 90);
+        bg     = hsluv(53,   17, 15); -- hsl(30,  10, 15);
+        overbg = hsluv(53,   17, 21); -- hsl(30,  10, 20);
+        sel    = hsluv(55,   19, 33); -- hsl(30,  10, 30);
+        com    = hsluv(50,   38, 55); -- hsl(30,  20, 50);
+        faded  = hsluv(52,   26, 74); -- hsl(30,  30, 70);
+        fg     = hsluv(57,   22, 91); -- hsl(30,  30, 90);
     };
 
     shades = {
-        red     = hsl(  0, 40, 30);
-        yellow  = hsl( 40, 50, 40);
-        green   = hsl(120, 30, 20);
-        cyan    = hsl(180, 30, 20);
-        blue    = hsl(220, 30, 20);
-        magenta = hsl(320, 30, 20);
+        red     = hsluv( 12, 45, 27); -- hsl(  0, 40, 30);
+        yellow  = hsluv( 57, 81, 52); -- hsl( 40, 50, 40);
+        green   = hsluv(127, 55, 24); -- hsl(120, 30, 20);
+        cyan    = hsluv(192, 62, 25); -- hsl(180, 30, 20);
+        blue    = hsluv(252, 43, 18); -- hsl(220, 30, 20);
+        magenta = hsluv(327, 39, 18); -- hsl(320, 30, 20);
     };
 
     tones = {
-        red     = hsl(  0, 40, 50);
-        yellow  = hsl( 30, 70, 60);  --orange
-        green   = hsl(120, 20, 50);
-        cyan    = hsl(180, 20, 60);
-        blue    = hsl(220, 30, 50);
-        magenta = hsl(300, 20, 60);
+        red     = hsluv( 12, 49, 46); -- hsl(  0, 40, 50);
+        yellow  = hsluv( 42, 75, 68); -- hsl( 30, 70, 60);
+        green   = hsluv(127, 45, 58); -- hsl(120, 20, 50);
+        cyan    = hsluv(192, 38, 67); -- hsl(180, 20, 60);
+        blue    = hsluv(253, 50, 48); -- hsl(220, 30, 50);
+        magenta = hsluv(307, 24, 60); -- hsl(300, 20, 60);
     };
 
     tints = {
-        red     = hsl( 10, 90, 70);
-        yellow  = hsl( 40, 90, 70);
-        green   = hsl(120, 40, 70);
-        cyan    = hsl(180, 40, 70);
-        blue    = hsl(220, 40, 70);
-        magenta = hsl(320, 40, 70);
+        red     = hsluv( 20, 87, 67); -- hsl( 10, 90, 70);
+        yellow  = hsluv( 59, 78, 83); -- hsl( 40, 90, 70);
+        green   = hsluv(127, 40, 78); -- hsl(120, 40, 70);
+        cyan    = hsluv(192, 48, 79); -- hsl(180, 40, 70);
+        blue    = hsluv(251, 45, 68); -- hsl(220, 40, 70);
+        magenta = hsluv(325, 44, 68); -- hsl(320, 40, 70);
     };
 }
 
 palette.light = {
     grays = {
-        bg     = hsl(30, 40, 95);
-        overbg = hsl(30, 40, 90);
-        sel    = hsl(30, 40, 80);
-        com    = hsl(30, 30, 60);
-        faded  = hsl(30, 30, 40);
-        fg     = hsl(30, 30, 30);
+        bg     = hsluv(54,   33, 95); -- hsl(30,  40, 95);
+        overbg = hsluv(56,   33, 91); -- hsl(30,  40, 90);
+        sel    = hsluv(52,   29, 83); -- hsl(30,  40, 80);
+        com    = hsluv(49,   39, 65); -- hsl(30,  30, 60);
+        faded  = hsluv(47,   54, 45); -- hsl(30,  30, 40);
+        fg     = hsluv(48,   51, 34); -- hsl(30,  30, 30);
     };
 
     tints = {
-        red     = hsl( 10, 60, 80);
-        yellow  = hsl( 40, 60, 70);
-        green   = hsl(120, 50, 90);
-        cyan    = hsl(180, 50, 90);
-        blue    = hsl(220, 50, 90);
-        magenta = hsl(320, 30, 90);
+        red     = hsluv( 24, 61, 79); -- hsl( 10, 60, 80);
+        yellow  = hsluv( 63, 54, 79); -- hsl( 40, 60, 70);
+        green   = hsluv(127, 31, 93); -- hsl(120, 50, 90);
+        cyan    = hsluv(192, 27, 93); -- hsl(180, 50, 90);
+        blue    = hsluv(249, 56, 89); -- hsl(220, 50, 90);
+        magenta = hsluv(323, 36, 89); -- hsl(320, 30, 90);
     };
 
     tones = {
-        red     = hsl(  0, 60, 60);
-        yellow  = hsl( 30, 60, 50);
-        green   = hsl(120, 30, 60);
-        cyan    = hsl(180, 20, 50);
-        blue    = hsl(220, 50, 70);
-        magenta = hsl(300, 30, 60);
+        red     = hsluv( 12, 55, 54); -- hsl(  0, 60, 60);
+        yellow  = hsluv( 39, 86, 60); -- hsl( 30, 60, 50);
+        green   = hsluv(127, 46, 69); -- hsl(120, 30, 60);
+        cyan    = hsluv(192, 53, 59); -- hsl(180, 20, 50);
+        blue    = hsluv(251, 56, 67); -- hsl(220, 50, 70);
+        magenta = hsluv(307, 37, 59); -- hsl(300, 30, 60);
     };
 
     shades = {
-        red     = hsl(  0, 70, 40);
-        yellow  = hsl( 40, 70, 50);
-        green   = hsl(120, 50, 40);
-        cyan    = hsl(180, 30, 30);
-        blue    = hsl(220, 40, 50);
-        magenta = hsl(320, 40, 50);
+        red     = hsluv( 12, 84, 37); -- hsl(  0, 70, 40);
+        yellow  = hsluv( 53, 94, 68); -- hsl( 40, 70, 50);
+        green   = hsluv(127, 83, 55); -- hsl(120, 50, 40);
+        cyan    = hsluv(192, 65, 38); -- hsl(180, 30, 30);
+        blue    = hsluv(255, 63, 46); -- hsl(220, 40, 50);
+        magenta = hsluv(330, 60, 48); -- hsl(320, 40, 50);
     };
 }
 

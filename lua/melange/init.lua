@@ -317,16 +317,40 @@ TSEnvironmentName    { PreProc };
 -- TSDanger             { };
 
 
+---- :help diagnostic-highlight ----------------------------
+
+DiagnosticError            { fg=c.red  };
+DiagnosticWarn             { fg=b.yellow };
+DiagnosticInfo             { fg=b.blue };
+DiagnosticHint             { fg=c.green };
+-- DiagnosticVirtualTextError { DiagnosticError };
+-- DiagnosticVirtualTextWarn  { DiagnosticWarn  };
+-- DiagnosticVirtualTextInfo  { DiagnosticInfo  };
+-- DiagnosticVirtualTextHint  { DiagnosticHint  };
+DiagnosticUnderlineError   { gui=undercurl };
+DiagnosticUnderlineWarn    { gui=undercurl };
+DiagnosticUnderlineInfo    { gui=undercurl };
+DiagnosticUnderlineHint    { gui=undercurl };
+-- DiagnosticFloatingError    { DiagnosticError };
+-- DiagnosticFloatingWarn     { DiagnosticWarn  };
+-- DiagnosticFloatingInfo     { DiagnosticInfo  };
+-- DiagnosticFloatingHint     { DiagnosticHint  };
+-- DiagnosticSignError        { DiagnosticError };
+-- DiagnosticSignWarn         { DiagnosticWarn  };
+-- DiagnosticSignInfo         { DiagnosticInfo  };
+-- DiagnosticSignHint         { DiagnosticHint  };
+
+
 ---- :help lsp-highlight -----------------------------------
 
 LspReferenceText                     { Visual };
 LspReferenceRead                     { Visual };
 LspReferenceWrite                    { Visual };
 
-LspDiagnosticsDefaultError           { fg=c.red };
-LspDiagnosticsDefaultWarning         { fg=b.yellow };
-LspDiagnosticsDefaultInformation     { fg=b.blue };
-LspDiagnosticsDefaultHint            { fg=c.green};
+LspDiagnosticsDefaultError           { DiagnosticError };
+LspDiagnosticsDefaultWarning         { DiagnosticWarn  };
+LspDiagnosticsDefaultInformation     { DiagnosticInfo  };
+LspDiagnosticsDefaultHint            { DiagnosticHint  };
 
 -- LspDiagnosticsVirtualTextError       { };
 -- LspDiagnosticsVirtualTextWarning     { };

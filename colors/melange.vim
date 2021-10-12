@@ -12,6 +12,14 @@ highlight Conceal guifg=#C9B39C guibg=NONE guisp=NONE gui=NONE
 highlight Constant guifg=#AD85AD guibg=NONE guisp=NONE gui=NONE
 highlight CursorLineNr guifg=#E09952 guibg=NONE guisp=NONE gui=NONE
 highlight Delimiter guifg=#997733 guibg=NONE guisp=NONE gui=NONE
+highlight DiagnosticError guifg=#B34D4D guibg=NONE guisp=NONE gui=NONE
+highlight DiagnosticHint guifg=#669966 guibg=NONE guisp=NONE gui=NONE
+highlight DiagnosticInfo guifg=#94A8D1 guibg=NONE guisp=NONE gui=NONE
+highlight DiagnosticUnderlineError guifg=NONE guibg=NONE guisp=NONE gui=undercurl
+highlight DiagnosticUnderlineHint guifg=NONE guibg=NONE guisp=NONE gui=undercurl
+highlight DiagnosticUnderlineInfo guifg=NONE guibg=NONE guisp=NONE gui=undercurl
+highlight DiagnosticUnderlineWarn guifg=NONE guibg=NONE guisp=NONE gui=undercurl
+highlight DiagnosticWarn guifg=#F7C96E guibg=NONE guisp=NONE gui=NONE
 highlight DiffAdd guifg=NONE guibg=#244224 guisp=NONE gui=NONE
 highlight DiffChange guifg=NONE guibg=#422438 guisp=NONE gui=NONE
 highlight DiffDelete guifg=NONE guibg=#6B2E2E guisp=NONE gui=NONE
@@ -26,10 +34,6 @@ highlight Identifier guifg=#EDE6DE guibg=NONE guisp=NONE gui=NONE
 highlight Ignore guifg=#998066 guibg=NONE guisp=NONE gui=NONE
 highlight Italic guifg=NONE guibg=NONE guisp=NONE gui=italic
 highlight LineNr guifg=#544D45 guibg=NONE guisp=NONE gui=NONE
-highlight LspDiagnosticsDefaultError guifg=#B34D4D guibg=NONE guisp=NONE gui=NONE
-highlight LspDiagnosticsDefaultHint guifg=#669966 guibg=NONE guisp=NONE gui=NONE
-highlight LspDiagnosticsDefaultInformation guifg=#94A8D1 guibg=NONE guisp=NONE gui=NONE
-highlight LspDiagnosticsDefaultWarning guifg=#F7C96E guibg=NONE guisp=NONE gui=NONE
 highlight LspDiagnosticsUnderlineError guifg=NONE guibg=NONE guisp=NONE gui=undercurl
 highlight LspDiagnosticsUnderlineHint guifg=NONE guibg=NONE guisp=NONE gui=undercurl
 highlight LspDiagnosticsUnderlineInformation guifg=NONE guibg=NONE guisp=NONE gui=undercurl
@@ -82,6 +86,10 @@ highlight! link DiffAdded DiffAdd
 highlight! link DiffRemoved DiffDelete
 highlight! link EndOfBuffer Whitespace
 highlight! link FoldColumn LineNr
+highlight! link LspDiagnosticsDefaultError DiagnosticError
+highlight! link LspDiagnosticsDefaultHint DiagnosticHint
+highlight! link LspDiagnosticsDefaultInformation DiagnosticInfo
+highlight! link LspDiagnosticsDefaultWarning DiagnosticWarn
 highlight! link LspReferenceRead Visual
 highlight! link LspReferenceText Visual
 highlight! link LspReferenceWrite Visual
@@ -129,6 +137,14 @@ highlight Conceal guifg=#856647 guibg=NONE guisp=NONE gui=NONE
 highlight Constant guifg=#B87AB8 guibg=NONE guisp=NONE gui=NONE
 highlight CursorLineNr guifg=#CC8033 guibg=NONE guisp=NONE gui=NONE
 highlight Delimiter guifg=#E0C285 guibg=NONE guisp=NONE gui=NONE
+highlight DiagnosticError guifg=#D65C5C guibg=NONE guisp=NONE gui=NONE
+highlight DiagnosticHint guifg=#7AB87A guibg=NONE guisp=NONE gui=NONE
+highlight DiagnosticInfo guifg=#4D6EB3 guibg=NONE guisp=NONE gui=NONE
+highlight DiagnosticUnderlineError guifg=NONE guibg=NONE guisp=NONE gui=undercurl
+highlight DiagnosticUnderlineHint guifg=NONE guibg=NONE guisp=NONE gui=undercurl
+highlight DiagnosticUnderlineInfo guifg=NONE guibg=NONE guisp=NONE gui=undercurl
+highlight DiagnosticUnderlineWarn guifg=NONE guibg=NONE guisp=NONE gui=undercurl
+highlight DiagnosticWarn guifg=#D99D26 guibg=NONE guisp=NONE gui=NONE
 highlight DiffAdd guifg=NONE guibg=#D9F2D9 guisp=NONE gui=NONE
 highlight DiffChange guifg=NONE guibg=#EDDEE8 guisp=NONE gui=NONE
 highlight DiffDelete guifg=NONE guibg=#EBB8AD guisp=NONE gui=NONE
@@ -143,10 +159,6 @@ highlight Identifier guifg=#634D36 guibg=NONE guisp=NONE gui=NONE
 highlight Ignore guifg=#B8997A guibg=NONE guisp=NONE gui=NONE
 highlight Italic guifg=NONE guibg=NONE guisp=NONE gui=italic
 highlight LineNr guifg=#E0CCB8 guibg=NONE guisp=NONE gui=NONE
-highlight LspDiagnosticsDefaultError guifg=#D65C5C guibg=NONE guisp=NONE gui=NONE
-highlight LspDiagnosticsDefaultHint guifg=#7AB87A guibg=NONE guisp=NONE gui=NONE
-highlight LspDiagnosticsDefaultInformation guifg=#4D6EB3 guibg=NONE guisp=NONE gui=NONE
-highlight LspDiagnosticsDefaultWarning guifg=#D99D26 guibg=NONE guisp=NONE gui=NONE
 highlight LspDiagnosticsUnderlineError guifg=NONE guibg=NONE guisp=NONE gui=undercurl
 highlight LspDiagnosticsUnderlineHint guifg=NONE guibg=NONE guisp=NONE gui=undercurl
 highlight LspDiagnosticsUnderlineInformation guifg=NONE guibg=NONE guisp=NONE gui=undercurl
@@ -199,6 +211,10 @@ highlight! link DiffAdded DiffAdd
 highlight! link DiffRemoved DiffDelete
 highlight! link EndOfBuffer Whitespace
 highlight! link FoldColumn LineNr
+highlight! link LspDiagnosticsDefaultError DiagnosticError
+highlight! link LspDiagnosticsDefaultHint DiagnosticHint
+highlight! link LspDiagnosticsDefaultInformation DiagnosticInfo
+highlight! link LspDiagnosticsDefaultWarning DiagnosticWarn
 highlight! link LspReferenceRead Visual
 highlight! link LspReferenceText Visual
 highlight! link LspReferenceWrite Visual

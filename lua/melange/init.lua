@@ -30,7 +30,7 @@ palette.dark = {
         fg      = hsluv( 50, 20, 90);
     };
     shades = {
-        red     = hsluv( 10, 40, 30);
+        red     = hsluv( 10, 60, 30);
         yellow  = hsluv( 60, 70, 50);
         green   = hsluv(130, 50, 20);
         cyan    = hsluv(190, 50, 20);
@@ -40,8 +40,8 @@ palette.dark = {
     tones = {
         red     = hsluv( 10, 40, 50);
         yellow  = hsluv( 40, 70, 70);
-        green   = hsluv(130, 40, 60);
-        cyan    = hsluv(190, 40, 65);
+        green   = hsluv(130, 30, 60);
+        cyan    = hsluv(190, 30, 65);
         blue    = hsluv(250, 30, 50);
         magenta = hsluv(310, 30, 60);
     };
@@ -49,7 +49,7 @@ palette.dark = {
         red     = hsluv( 20, 80, 65);
         yellow  = hsluv( 60, 70, 80);
         green   = hsluv(130, 40, 80);
-        cyan    = hsluv(190, 40, 80);
+        cyan    = hsluv(190, 40, 70);
         blue    = hsluv(250, 40, 70);
         magenta = hsluv(310, 40, 70);
     };
@@ -65,29 +65,28 @@ palette.light = {
         fg      = hsluv( 50, 40, 40);
     };
     tints = {
-        red     = hsluv( 20, 50, 80);
+        red     = hsluv( 20, 40, 80);
         yellow  = hsluv( 60, 50, 80);
         green   = hsluv(130, 30, 90);
         cyan    = hsluv(190, 30, 90);
         blue    = hsluv(250, 30, 90);
         magenta = hsluv(310, 30, 90);
     };
-
     tones = {
-        red     = hsluv( 10, 50, 60);
+        red     = hsluv( 10, 40, 65);
         yellow  = hsluv( 40, 90, 60);
         green   = hsluv(130, 40, 70);
         cyan    = hsluv(180, 40, 60);
-        blue    = hsluv(250, 40, 70);
+        blue    = hsluv(250, 40, 75);
         magenta = hsluv(310, 40, 60);
     };
     shades = {
         red     = hsluv( 20, 80, 50);
         yellow  = hsluv( 60, 90, 65);
-        green   = hsluv(130, 60, 60);
-        cyan    = hsluv(180, 60, 40);
-        blue    = hsluv(250, 60, 40);
-        magenta = hsluv(310, 60, 40);
+        green   = hsluv(130, 50, 60);
+        cyan    = hsluv(180, 50, 40);
+        blue    = hsluv(250, 50, 40);
+        magenta = hsluv(310, 50, 40);
     };
 }
 

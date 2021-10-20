@@ -73,7 +73,7 @@ palette.light = {
         magenta = hsluv(310, 50, 40);
     };
     c = {
-        red     = hsluv( 10, 40, 65);
+        red     = hsluv( 10, 50, 65);
         yellow  = hsluv( 40, 90, 60);
         green   = hsluv(130, 40, 70);
         cyan    = hsluv(180, 40, 60);

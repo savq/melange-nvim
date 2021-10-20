@@ -1,14 +1,8 @@
--- Templates to compile Melange colors to different terminal config formats
+-- Templates for various terminal configuration formats
 
 vim.cmd("packadd lush.nvim")
 local lush = require("lush")
 local uv = vim.loop
-
-local terms = {
-    alacritty = {ext="yml"},
-    kitty     = {ext="conf"},
-    wezterm   = {ext="toml"},
-}
 
 -- Reload melange module
 local function get_colorscheme(variant)
@@ -17,24 +11,22 @@ local function get_colorscheme(variant)
     return require("melange")
 end
 
--- Format each entry in a table, and concatenate them into a single string
-local function concat_format(t)
-    return table.concat(vim.tbl_map(function(x) return string.format(unpack(x)) end, t), "\n")
-end
-
 -- Get the directory where the melange plugin is located
 local function get_melange_dir()
     return debug.getinfo(1).source:match("@?(.*/)"):gsub("/lua/melange/$", "")
 end
 
--- Write the contents of a buffer to a file
-local function write_file(file, buf)
+-- Write a string to a file
+local function write_file(file, str)
     local fd = assert(uv.fs_open(get_melange_dir() .. file, 'w', 420))
-    uv.fs_write(fd, buf, -1)
-    uv.fs_write(fd, '\n', -1)
+    uv.fs_write(fd, str, -1)
     assert(uv.fs_close(fd))
 end
 
+-- Perl-like interpolation
+local function interpolate(str, tbl)
+    return str:gsub("($%a%w*)", function(k) return tostring(tbl[k:sub(2, -1)]) end)
+end
 
 local viml_template = [[
 hi clear
@@ -57,113 +49,118 @@ local function viml_build(l)
     return write_file("/colors/melange.vim", string.format(viml_template, vimcolors.dark, vimcolors.light))
 end
 
-function terms.alacritty.build(g, c, b)
-    return concat_format {
-        {"colors:"};
-        {"  primary:"};
-        {"    foreground: '%s'", g.fg};
-        {"    background: '%s'", g.bg};
-        {"  normal:"};
-        {"    black:   '%s'", g.overbg};
-        {"    red:     '%s'", c.red};
-        {"    green:   '%s'", c.green};
-        {"    yellow:  '%s'", b.yellow};
-        {"    blue:    '%s'", b.blue};
-        {"    magenta: '%s'", c.magenta};
-        {"    cyan:    '%s'", c.cyan};
-        {"    white:   '%s'", g.faded};
-        {"  bright:"};
-        {"    black:   '%s'", g.sel};
-        {"    red:     '%s'", b.red};
-        {"    green:   '%s'", b.green};
-        {"    yellow:  '%s'", b.yellow};
-        {"    blue:    '%s'", b.blue};
-        {"    magenta: '%s'", b.magenta};
-        {"    cyan:    '%s'", b.cyan};
-        {"    white:   '%s'", g.fg};
-    }
-end
-
-function terms.kitty.build(g, c, b)
-    return concat_format {
-        {"background %s", g.bg};
-        {"foreground %s", g.fg};
-        {"cursor     %s", g.fg};
-        {"url_color  %s", b.blue};
-
-        {"selection_background    %s", g.sel};
-        {"selection_foreground    %s", g.fg};
-        {"tab_bar_background      %s", g.overbg};
-        {"active_tab_background   %s", g.overbg};
-        {"active_tab_foreground   %s", c.yellow};
-        {"inactive_tab_background %s", g.overbg};
-        {"inactive_tab_foreground %s", g.faded};
-
-        -- normal
-        {"color0  %s",  g.overbg};
-        {"color1  %s",  c.red};
-        {"color2  %s",  c.green};
-        {"color3  %s",  b.yellow};
-        {"color4  %s",  b.blue};
-        {"color5  %s",  c.magenta};
-        {"color6  %s",  c.cyan};
-        {"color7  %s",  g.faded};
-        -- bright
-        {"color8  %s", g.sel};
-        {"color9  %s", b.red};
-        {"color10 %s", b.green};
-        {"color11 %s", b.yellow};
-        {"color12 %s", b.blue};
-        {"color13 %s", b.magenta};
-        {"color14 %s", b.cyan};
-        {"color15 %s", g.fg};
-    }
-end
-
-function terms.wezterm.build(g, c, b)
-    return concat_format {
-        {'[colors]'};
-        {'foreground    = "%s"', g.fg};
-        {'background    = "%s"', g.bg};
-        {'cursor_bg     = "%s"', g.fg};
-        {'cursor_border = "%s"', g.fg};
-        {'cursor_fg     = "%s"', g.bg};
-        {'selection_bg  = "%s"', g.sel};
-        {'selection_fg  = "%s"', g.fg};
-        {'ansi = ["%s","%s","%s","%s","%s","%s","%s","%s"]',
-            g.overbg,
-            c.red,
-            c.green,
-            b.yellow,
-            b.blue,
-            c.magenta,
-            c.cyan,
-            g.fg};
-        {'brights = ["%s","%s","%s","%s","%s","%s","%s","%s"]',
-            g.sel,
-            b.red,
-            b.green,
-            b.yellow,
-            b.blue,
-            b.magenta,
-            b.cyan,
-            g.fg};
-    }
-end
-
-local function build()
+local function build(terminals)
     local colors;
-    for l, b in pairs{dark="tints", light="shades"} do
+    for _, l in ipairs{"dark", "light"} do
         colors = get_colorscheme(l).Melange.lush
-        for k, v in pairs(terms) do
+        for term, attrs in pairs(terminals) do
             write_file(
-                string.format("/term/%s/melange_%s.%s", k, l, v.ext),
-                v.build(colors.grays, colors.tones, colors[b])
+                string.format("/term/%s/melange_%s.%s", term, l, attrs.ext),
+                interpolate(attrs.template,
+                    {
+                        bg        = colors.a.bg,
+                        overbg    = colors.a.overbg,
+                        sel       = colors.a.sel,
+                        com       = colors.a.com,
+                        faded     = colors.a.faded,
+                        fg        = colors.a.fg,
+
+                        black     = colors.a.overbg,
+                        red       = colors.c.red,
+                        green     = colors.c.green,
+                        yellow    = colors.b.yellow,
+                        blue      = colors.b.blue,
+                        magenta   = colors.c.magenta,
+                        cyan      = colors.c.cyan,
+                        white     = colors.a.com,
+
+                        brblack   = colors.a.sel,
+                        brred     = colors.b.red,
+                        brgreen   = colors.b.green,
+                        bryellow  = colors.b.yellow,
+                        brblue    = colors.b.blue,
+                        brmagenta = colors.b.magenta,
+                        brcyan    = colors.b.cyan,
+                        brwhite   = colors.a.faded,
+                    }
+                )
             )
         end
     end
-    viml_build()
 end
 
-return {build = build}
+local terms = {
+    alacritty = {ext="yml"},
+    kitty     = {ext="conf"},
+    wezterm   = {ext="toml"},
+}
 
+terms.alacritty.template = [[
+colors:
+  primary:
+    foreground: '$fg'
+    background: '$bg'
+  normal:
+    black:   '$black'
+    red:     '$red'
+    green:   '$green'
+    yellow:  '$yellow'
+    blue:    '$blue'
+    magenta: '$magenta'
+    cyan:    '$cyan'
+    white:   '$white'
+  bright:
+    black:   '$brblack'
+    red:     '$brred'
+    green:   '$brgreen'
+    yellow:  '$bryellow'
+    blue:    '$brblue'
+    magenta: '$brmagenta'
+    cyan:    '$brcyan'
+    white:   '$brwhite'
+]]
+
+terms.kitty.template = [[
+background $bg
+foreground $fg
+cursor     $fg
+url_color  $blue
+selection_background    $sel
+selection_foreground    $fg
+tab_bar_background      $overbg
+active_tab_background   $overbg
+active_tab_foreground   $yellow
+inactive_tab_background $overbg
+inactive_tab_foreground $faded
+color0  $black
+color1  $red
+color2  $green
+color3  $yellow
+color4  $blue
+color5  $magenta
+color6  $cyan
+color7  $white
+color8  $brblack
+color9  $brred
+color10 $brgreen
+color11 $bryellow
+color12 $brblue
+color13 $brmagenta
+color14 $brcyan
+color15 $brwhite
+]]
+
+terms.wezterm.template = [[
+[colors]
+foreground    = "$fg"
+background    = "$bg"
+cursor_bg     = "$fg"
+cursor_border = "$fg"
+cursor_fg     = "$bg"
+selection_bg  = "$sel"
+selection_fg  = "$fg"
+ansi = ["$black", "$red", "$green", "$yellow", "$blue", "$magenta", "$cyan", "$white"]
+brights = ["$brblack", "$brred", "$brgreen", "$bryellow", "$brblue", "$brmagenta", "$brcyan", "$brwhite"]
+]]
+
+return {build = function() build(terms); viml_build() end}

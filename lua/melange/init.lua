@@ -22,12 +22,12 @@ local palette = {}
 
 palette.dark = {
     a = {
-        bg      = hsluv( 50, 15, 15);
-        overbg  = hsluv( 50, 15, 20);
-        sel     = hsluv( 50, 15, 30);
-        com     = hsluv( 50, 20, 60);
-        faded   = hsluv( 50, 20, 70);
-        fg      = hsluv( 50, 20, 90);
+        bg      = hsluv( 50, 20, 15);
+        overbg  = hsluv( 50, 20, 20);
+        sel     = hsluv( 50, 20, 30);
+        com     = hsluv( 50, 30, 60);
+        faded   = hsluv( 50, 30, 70);
+        fg      = hsluv( 50, 30, 90);
     };
     b = {
         red     = hsluv( 20, 80, 65);

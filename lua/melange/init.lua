@@ -16,99 +16,85 @@
 -- vim.opt.keywordprg=":help"  --Jump easily to hl-groups docs.
 
 local lush = require("lush")
-local hsl = lush.hsl
+local hsluv = lush.hsluv
 
 local palette = {}
 
 palette.dark = {
-    grays = {
-        bg     = hsl(30, 10, 15);
-        overbg = hsl(30, 10, 20);
-        sel    = hsl(30, 10, 30);
-        com    = hsl(30, 20, 50);
-        faded  = hsl(30, 30, 70);
-        fg     = hsl(30, 30, 90);
+    a = {
+        bg      = hsluv( 50, 20, 15);
+        overbg  = hsluv( 50, 20, 20);
+        sel     = hsluv( 50, 20, 30);
+        com     = hsluv( 50, 30, 60);
+        faded   = hsluv( 50, 30, 70);
+        fg      = hsluv( 50, 30, 90);
     };
-
-    shades = {
-        red     = hsl(  0, 40, 30);
-        yellow  = hsl( 40, 50, 40);
-        green   = hsl(120, 30, 20);
-        cyan    = hsl(180, 30, 20);
-        blue    = hsl(220, 30, 20);
-        magenta = hsl(320, 30, 20);
+    b = {
+        red     = hsluv( 20, 80, 65);
+        yellow  = hsluv( 60, 70, 80);
+        green   = hsluv(130, 40, 80);
+        cyan    = hsluv(190, 40, 70);
+        blue    = hsluv(250, 40, 70);
+        magenta = hsluv(310, 40, 70);
     };
-
-    tones = {
-        red     = hsl(  0, 40, 50);
-        yellow  = hsl( 30, 70, 60);  --orange
-        green   = hsl(120, 20, 50);
-        cyan    = hsl(180, 20, 60);
-        blue    = hsl(220, 30, 50);
-        magenta = hsl(300, 20, 60);
+    c = {
+        red     = hsluv( 10, 40, 50);
+        yellow  = hsluv( 40, 70, 70);
+        green   = hsluv(130, 30, 60);
+        cyan    = hsluv(190, 30, 65);
+        blue    = hsluv(250, 30, 50);
+        magenta = hsluv(310, 30, 60);
     };
-
-    tints = {
-        red     = hsl( 10, 90, 70);
-        yellow  = hsl( 40, 90, 70);
-        green   = hsl(120, 40, 70);
-        cyan    = hsl(180, 40, 70);
-        blue    = hsl(220, 40, 70);
-        magenta = hsl(320, 40, 70);
+    d = {
+        red     = hsluv( 10, 60, 30);
+        yellow  = hsluv( 60, 70, 50);
+        green   = hsluv(130, 50, 20);
+        cyan    = hsluv(190, 50, 20);
+        blue    = hsluv(250, 50, 20);
+        magenta = hsluv(310, 50, 20);
     };
 }
 
 palette.light = {
-    grays = {
-        bg     = hsl(30, 40, 95);
-        overbg = hsl(30, 40, 90);
-        sel    = hsl(30, 40, 80);
-        com    = hsl(30, 30, 60);
-        faded  = hsl(30, 30, 40);
-        fg     = hsl(30, 30, 30);
+    a = {
+        bg      = hsluv( 50, 30, 95);
+        overbg  = hsluv( 50, 30, 90);
+        sel     = hsluv( 50, 30, 85);
+        com     = hsluv( 50, 40, 60);
+        faded   = hsluv( 50, 40, 50);
+        fg      = hsluv( 50, 40, 40);
     };
-
-    tints = {
-        red     = hsl( 10, 60, 80);
-        yellow  = hsl( 40, 60, 70);
-        green   = hsl(120, 50, 90);
-        cyan    = hsl(180, 50, 90);
-        blue    = hsl(220, 50, 90);
-        magenta = hsl(320, 30, 90);
+    b = {
+        red     = hsluv( 20, 80, 50);
+        yellow  = hsluv( 60, 90, 65);
+        green   = hsluv(130, 50, 60);
+        cyan    = hsluv(180, 50, 40);
+        blue    = hsluv(250, 50, 40);
+        magenta = hsluv(310, 50, 40);
     };
-
-    tones = {
-        red     = hsl(  0, 60, 60);
-        yellow  = hsl( 30, 60, 50);
-        green   = hsl(120, 30, 60);
-        cyan    = hsl(180, 20, 50);
-        blue    = hsl(220, 50, 70);
-        magenta = hsl(300, 30, 60);
+    c = {
+        red     = hsluv( 10, 50, 65);
+        yellow  = hsluv( 40, 90, 60);
+        green   = hsluv(130, 40, 70);
+        cyan    = hsluv(180, 40, 60);
+        blue    = hsluv(250, 40, 75);
+        magenta = hsluv(310, 40, 60);
     };
-
-    shades = {
-        red     = hsl(  0, 70, 40);
-        yellow  = hsl( 40, 70, 50);
-        green   = hsl(120, 50, 40);
-        cyan    = hsl(180, 30, 30);
-        blue    = hsl(220, 40, 50);
-        magenta = hsl(320, 40, 50);
+    d = {
+        red     = hsluv( 20, 40, 80);
+        yellow  = hsluv( 60, 50, 80);
+        green   = hsluv(130, 30, 90);
+        cyan    = hsluv(190, 30, 90);
+        blue    = hsluv(250, 30, 90);
+        magenta = hsluv(310, 30, 90);
     };
 }
 
 local bg = vim.opt.background:get()
-local g = palette[bg].grays
-local c = palette[bg].tones
-
-local d, b;  --TODO: Rename
-if bg == "dark" then  --shades are backgrounds, and tints foregrounds
-    d = palette[bg].shades
-    b = palette[bg].tints
-elseif bg == "light" then  --tints are backgrounds, and shades foregrounds
-    d = palette[bg].tints
-    b = palette[bg].shades
-end
-
+local a = palette[bg].a
+local b = palette[bg].b
+local c = palette[bg].c
+local d = palette[bg].d
 
 -- Font variants:
 -- This only works when loading this file directly, not when loading with `:colorscheme`
@@ -125,8 +111,8 @@ return lush(function() return {
 
 ---- :help highlight-default -------------------------------
 
-Normal       { fg=g.fg, bg=g.bg };
-NormalFloat  { bg=g.overbg };
+Normal       { fg=a.fg, bg=a.bg };
+NormalFloat  { bg=a.overbg };
 -- NormalNC     { };
 
 -- Cursor       { };
@@ -135,41 +121,41 @@ NormalFloat  { bg=g.overbg };
 -- TermCursor   { };
 -- TermCursorNC { };
 
-ColorColumn  { bg=g.overbg };
+ColorColumn  { bg=a.overbg };
 CursorColumn { ColorColumn };
 CursorLine   { ColorColumn };
-VertSplit    { fg=g.sel };
+VertSplit    { fg=a.sel };
 
-LineNr       { fg=g.sel };
+LineNr       { fg=a.sel };
 CursorLineNr { fg=c.yellow };
 
-Folded       { fg=g.com, bg=g.overbg };
+Folded       { fg=a.com, bg=a.overbg };
 FoldColumn   { LineNr };
 SignColumn   { LineNr };
 
 Pmenu        { NormalFloat };
-PmenuSel     { bg=g.sel };
+PmenuSel     { bg=a.sel };
 PmenuSbar    { Pmenu };
 PmenuThumb   { PmenuSel };
 
 StatusLine   { NormalFloat };
-StatusLineNC { StatusLine, fg=g.faded };
+StatusLineNC { StatusLine, fg=a.faded };
 WildMenu     { NormalFloat };
 
 TabLine      { StatusLineNC };
 TabLineFill  { StatusLine };
 TabLineSel   { StatusLine, gui=bf };
 
-MatchParen   { fg=b.yellow, bg=g.sel, gui=bf };
-Substitute   { fg=g.bg, bg=d.yellow };
-Search       { fg=g.bg, bg=d.yellow };
+MatchParen   { fg=b.yellow, bg=a.sel, gui=bf };
+Substitute   { fg=a.bg, bg=d.yellow };
+Search       { fg=a.bg, bg=d.yellow };
 -- QuickFixLine { };
 -- IncSearch    { };
-Visual       { bg=g.sel };
+Visual       { bg=a.sel };
 -- VisualNOS    { };
 
-Conceal      { fg=g.faded };
-Whitespace   { fg=g.sel };
+Conceal      { fg=a.faded };
+Whitespace   { fg=a.sel };
 EndOfBuffer  { Whitespace };
 NonText      { Whitespace };
 SpecialKey   { Whitespace };
@@ -177,7 +163,7 @@ SpecialKey   { Whitespace };
 Directory    { fg=c.cyan };
 Title        { fg=c.yellow };
 ErrorMsg     { bg=d.red };
-ModeMsg      { fg=g.faded };
+ModeMsg      { fg=a.faded };
 -- MsgArea      { };
 -- MsgSeparator { };
 MoreMsg      { fg=c.green, gui=bf };
@@ -206,8 +192,8 @@ SpellRare    { fg=b.yellow, gui=undercurl };
 
 ---- :help group-name --------------------------------------
 
-Comment        { fg=g.com, gui=it };
-Identifier     { fg=g.fg };
+Comment        { fg=a.com, gui=it };
+Identifier     { fg=a.fg };
 Function       { fg=b.yellow };
 
 Constant       { fg=c.magenta };
@@ -247,9 +233,9 @@ Underlined     { gui=underline };
 Bold           { gui=bf };
 Italic         { gui=it };
 
-Ignore         { fg=g.com };
+Ignore         { fg=a.com };
 Error          { bg=d.red };
-Todo           { Comment, fg=g.faded };
+Todo           { Comment, fg=a.faded };
 
 
 ---- :help nvim-treesitter-highlights (external plugin) ----
@@ -322,7 +308,7 @@ TSEnvironmentName    { PreProc };
 DiagnosticError            { fg=c.red  };
 DiagnosticWarn             { fg=b.yellow };
 DiagnosticInfo             { fg=b.blue };
-DiagnosticHint             { fg=c.green };
+DiagnosticHint             { fg=b.green };
 -- DiagnosticVirtualTextError { DiagnosticError };
 -- DiagnosticVirtualTextWarn  { DiagnosticWarn  };
 -- DiagnosticVirtualTextInfo  { DiagnosticInfo  };

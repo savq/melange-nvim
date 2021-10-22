@@ -1,22 +1,22 @@
 colors:
   primary:
-    foreground: '#6E5B47'
-    background: '#F5F0EB'
+    foreground: '#6B5C4D'
+    background: '#F4F0ED'
   normal:
-    black:   '#ECE1D7'
+    black:   '#E9E1DB'
     red:     '#D7898C'
     green:   '#83B887'
     yellow:  '#C29830'
     blue:    '#485F84'
     magenta: '#BE79BB'
     cyan:    '#729893'
-    white:   '#A88C6F'
+    white:   '#A38D78'
   bright:
-    black:   '#E3D1C2'
+    black:   '#DED2C8'
     red:     '#C65333'
     green:   '#659E69'
     yellow:  '#C29830'
     blue:    '#485F84'
     magenta: '#854882'
     cyan:    '#436460'
-    white:   '#8B735B'
+    white:   '#867462'

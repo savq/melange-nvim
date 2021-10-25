@@ -55,7 +55,7 @@ local function build(terminals)
         colors = get_colorscheme(l).Melange.lush
         for term, attrs in pairs(terminals) do
             write_file(
-                string.format("/term/%s/melange_%s.%s", term, l, attrs.ext),
+                string.format("/term/%s/melange_%s%s", term, l, attrs.ext),
                 interpolate(attrs.template,
                     {
                         bg        = colors.a.bg,
@@ -90,9 +90,10 @@ local function build(terminals)
 end
 
 local terms = {
-    alacritty = {ext="yml"},
-    kitty     = {ext="conf"},
-    wezterm   = {ext="toml"},
+    alacritty = {ext=".yml"},
+    kitty     = {ext=".conf"},
+    termite   = {ext=""},
+    wezterm   = {ext=".toml"},
 }
 
 terms.alacritty.template = [[
@@ -148,6 +149,29 @@ color12 $brblue
 color13 $brmagenta
 color14 $brcyan
 color15 $brwhite
+]]
+
+terms.termite.template = [[
+[colors]
+foreground = $fg
+background = $bg
+color0     = $black
+color1     = $red
+color2     = $green
+color3     = $yellow
+color4     = $blue
+color5     = $magenta
+color6     = $cyan
+color7     = $white
+color8     = $brblack
+color9     = $brred
+color10    = $brgreen
+color11    = $bryellow
+color12    = $brblue
+color13    = $brmagenta
+color14    = $brcyan
+color15    = $brwhite
+highlight  = $sel
 ]]
 
 terms.wezterm.template = [[

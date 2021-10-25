@@ -57,12 +57,12 @@ palette.dark = {
 
 palette.light = {
     a = {
-        bg      = hsluv( 50, 30, 95);
-        overbg  = hsluv( 50, 30, 90);
-        sel     = hsluv( 50, 30, 85);
-        com     = hsluv( 50, 40, 60);
-        faded   = hsluv( 50, 40, 50);
-        fg      = hsluv( 50, 40, 40);
+        bg      = hsluv( 50, 20, 95);
+        overbg  = hsluv( 50, 20, 90);
+        sel     = hsluv( 50, 20, 85);
+        com     = hsluv( 50, 30, 60);
+        faded   = hsluv( 50, 30, 50);
+        fg      = hsluv( 50, 30, 40);
     };
     b = {
         red     = hsluv( 20, 80, 50);

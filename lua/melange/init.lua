@@ -389,10 +389,10 @@ HelpHyperTextJump    { fg=c.yellow };
 
 ---- :h gitsigns (external plugin) -------------------------
 
-GitSignsAdd              { fg = a.bg, bg = c.green, gui = "reverse" };
-GitSignsChange           { fg = a.bg, bg = c.yellow, gui = "reverse" };
-GitSignsDelete           { fg = a.bg, bg = c.red, gui = "reverse" };
-GitSignsCurrentLineBlame { fg = a.bg, bg = c.blue, gui = "reverse" };
+GitSignsAdd              { fg = a.bg, bg = d.green, gui = "reverse" };
+GitSignsChange           { fg = a.bg, bg = d.magenta, gui = "reverse" };
+GitSignsDelete           { fg = a.bg, bg = d.red, gui = "reverse" };
+GitSignsCurrentLineBlame { fg = a.bg, bg = d.blue, gui = "reverse" };
 
 SignifySignAdd           { GitSignsAdd };
 SignifySignChange        { GitSignsChange };

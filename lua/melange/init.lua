@@ -387,6 +387,16 @@ netrwSymLink         { fg=c.magenta };
 ---- Misc. -------------------------------------------------
 HelpHyperTextJump    { fg=c.yellow };
 
+---- :h gitsigns (external plugin) -------------------------
+
+GitSignsAdd              { fg = a.bg, bg = d.green, gui = "reverse" };
+GitSignsChange           { fg = a.bg, bg = d.magenta, gui = "reverse" };
+GitSignsDelete           { fg = a.bg, bg = d.red, gui = "reverse" };
+GitSignsCurrentLineBlame { fg = a.bg, bg = d.blue, gui = "reverse" };
+
+SignifySignAdd           { GitSignsAdd };
+SignifySignChange        { GitSignsChange };
+SignifySignDelete        { GitSignsDelete };
 
 ---- Metagroup (hack for builds) ---------------------------
 Melange { lush = palette[bg] };

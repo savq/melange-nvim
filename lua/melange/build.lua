@@ -76,17 +76,17 @@ local function build(terminals)
         for term, attrs in pairs(terminals) do
             fwrite(
                 interpolate(attrs.template, map),
-                string.format("/term/%s/melange_%s.%s", term, l, attrs.ext)
+                string.format("/term/%s/melange_%s%s", term, l, attrs.ext)
             )
         end
     end
 end
 
 local terminals = {
-    alacritty = {ext="yml"},
-    kitty     = {ext="conf"},
+    alacritty = {ext=".yml"},
+    kitty     = {ext=".conf"},
     termite   = {ext=""},
-    wezterm   = {ext="toml"},
+    wezterm   = {ext=".toml"},
 }
 
 terminals.alacritty.template = [[

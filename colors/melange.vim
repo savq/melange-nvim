@@ -29,6 +29,10 @@ highlight Error guifg=NONE guibg=#7D2A2F guisp=NONE gui=NONE
 highlight ErrorMsg guifg=NONE guibg=#7D2A2F guisp=NONE gui=NONE
 highlight Folded guifg=#A38D78 guibg=#352F2A guisp=NONE gui=NONE
 highlight Function guifg=#EBC06D guibg=NONE guisp=NONE gui=NONE
+highlight GitSignsAdd guifg=#2A2520 guibg=#1F3521 guisp=NONE gui=reverse
+highlight GitSignsChange guifg=#2A2520 guibg=#462445 guisp=NONE gui=reverse
+highlight GitSignsCurrentLineBlame guifg=#2A2520 guibg=#243146 guisp=NONE gui=reverse
+highlight GitSignsDelete guifg=#2A2520 guibg=#7D2A2F guisp=NONE gui=reverse
 highlight HelpHyperTextJump guifg=#E49B5D guibg=NONE guisp=NONE gui=NONE
 highlight Identifier guifg=#ECE1D7 guibg=NONE guisp=NONE gui=NONE
 highlight Ignore guifg=#A38D78 guibg=NONE guisp=NONE gui=NONE
@@ -99,6 +103,9 @@ highlight! link PmenuSbar Pmenu
 highlight! link PmenuThumb PmenuSel
 highlight! link Question MoreMsg
 highlight! link SignColumn LineNr
+highlight! link SignifySignAdd GitSignsAdd
+highlight! link SignifySignChange GitSignsChange
+highlight! link SignifySignDelete GitSignsDelete
 highlight! link SpecialKey Whitespace
 highlight! link StatusLine NormalFloat
 highlight! link TSConstMacro Constant
@@ -154,6 +161,10 @@ highlight Error guifg=NONE guibg=#E0BFBB guisp=NONE gui=NONE
 highlight ErrorMsg guifg=NONE guibg=#E0BFBB guisp=NONE gui=NONE
 highlight Folded guifg=#A38D78 guibg=#E9E1DB guisp=NONE gui=NONE
 highlight Function guifg=#C29830 guibg=NONE guisp=NONE gui=NONE
+highlight GitSignsAdd guifg=#F4F0ED guibg=#C6ECC8 guisp=NONE gui=reverse
+highlight GitSignsChange guifg=#F4F0ED guibg=#EBDFEA guisp=NONE gui=reverse
+highlight GitSignsCurrentLineBlame guifg=#F4F0ED guibg=#DFE3EB guisp=NONE gui=reverse
+highlight GitSignsDelete guifg=#F4F0ED guibg=#E0BFBB guisp=NONE gui=reverse
 highlight HelpHyperTextJump guifg=#CC7F2B guibg=NONE guisp=NONE gui=NONE
 highlight Identifier guifg=#6B5C4D guibg=NONE guisp=NONE gui=NONE
 highlight Ignore guifg=#A38D78 guibg=NONE guisp=NONE gui=NONE
@@ -224,6 +235,9 @@ highlight! link PmenuSbar Pmenu
 highlight! link PmenuThumb PmenuSel
 highlight! link Question MoreMsg
 highlight! link SignColumn LineNr
+highlight! link SignifySignAdd GitSignsAdd
+highlight! link SignifySignChange GitSignsChange
+highlight! link SignifySignDelete GitSignsDelete
 highlight! link SpecialKey Whitespace
 highlight! link StatusLine NormalFloat
 highlight! link TSConstMacro Constant

@@ -1,0 +1,20 @@
+[colors]
+foreground = #ECE1D7
+background = #2A2520
+color0     = #352F2A
+color1     = #B65C60
+color2     = #78997A
+color3     = #EBC06D
+color4     = #9AACCE
+color5     = #B380B0
+color6     = #86A3A3
+color7     = #A38D78
+color8     = #4D453E
+color9     = #F17C64
+color10    = #99D59D
+color11    = #EBC06D
+color12    = #9AACCE
+color13    = #CE9BCB
+color14    = #88B3B2
+color15    = #C1A78E
+highlight  = nil

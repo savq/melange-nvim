@@ -144,7 +144,7 @@ color14 $brcyan
 color15 $brwhite
 ]]
 
-terms.termite.template = [[
+terminals.termite.template = [[
 [colors]
 foreground = $fg
 background = $bg

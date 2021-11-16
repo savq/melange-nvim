@@ -1,4 +1,4 @@
--- Templates for various terminal configuration formats
+--- Templates for various terminal configuration formats
 
 vim.cmd("packadd lush.nvim")
 local lush = require("lush")
@@ -17,7 +17,7 @@ local function get_melange_dir()
 end
 
 -- Write a string to a file
-local function write_file(file, str)
+local function fwrite(str, file)
     local fd = assert(uv.fs_open(get_melange_dir() .. file, 'w', 420))
     uv.fs_write(fd, str, -1)
     assert(uv.fs_close(fd))
@@ -25,8 +25,9 @@ end
 
 -- Perl-like interpolation
 local function interpolate(str, tbl)
-    return str:gsub("($%a%w*)", function(k) return tostring(tbl[k:sub(2, -1)]) end)
+    return str:gsub("%$([%w_]+)", function(k) return tostring(tbl[k]) end)
 end
+
 
 local viml_template = [[
 hi clear
@@ -34,9 +35,9 @@ syntax reset
 set t_Co=256
 let g:colors_name = 'melange'
 if &background == 'dark'
-%s
+$dark
 else
-%s
+$light
 endif
 ]]
 
@@ -46,57 +47,49 @@ local function viml_build(l)
         -- Compile lush table, concatenate to a single string, and remove blend property
         vimcolors[l] = table.concat(vim.fn.sort(lush.compile(get_colorscheme(l), {exclude_keys={"blend"}})), "\n")
     end
-    return write_file("/colors/melange.vim", string.format(viml_template, vimcolors.dark, vimcolors.light))
+    return fwrite(interpolate(viml_template, vimcolors), "/colors/melange.vim")
 end
 
 local function build(terminals)
-    local colors;
     for _, l in ipairs{"dark", "light"} do
-        colors = get_colorscheme(l).Melange.lush
+        local palette = get_colorscheme(l).Melange.lush
+        local map = {
+            bg        = palette.a.bg,
+            fg        = palette.a.fg,
+            black     = palette.a.overbg,
+            red       = palette.c.red,
+            green     = palette.c.green,
+            yellow    = palette.b.yellow,
+            blue      = palette.b.blue,
+            magenta   = palette.c.magenta,
+            cyan      = palette.c.cyan,
+            white     = palette.a.com,
+            brblack   = palette.a.sel,
+            brred     = palette.b.red,
+            brgreen   = palette.b.green,
+            bryellow  = palette.b.yellow,
+            brblue    = palette.b.blue,
+            brmagenta = palette.b.magenta,
+            brcyan    = palette.b.cyan,
+            brwhite   = palette.a.faded,
+        }
         for term, attrs in pairs(terminals) do
-            write_file(
-                string.format("/term/%s/melange_%s%s", term, l, attrs.ext),
-                interpolate(attrs.template,
-                    {
-                        bg        = colors.a.bg,
-                        overbg    = colors.a.overbg,
-                        sel       = colors.a.sel,
-                        com       = colors.a.com,
-                        faded     = colors.a.faded,
-                        fg        = colors.a.fg,
-
-                        black     = colors.a.overbg,
-                        red       = colors.c.red,
-                        green     = colors.c.green,
-                        yellow    = colors.b.yellow,
-                        blue      = colors.b.blue,
-                        magenta   = colors.c.magenta,
-                        cyan      = colors.c.cyan,
-                        white     = colors.a.com,
-
-                        brblack   = colors.a.sel,
-                        brred     = colors.b.red,
-                        brgreen   = colors.b.green,
-                        bryellow  = colors.b.yellow,
-                        brblue    = colors.b.blue,
-                        brmagenta = colors.b.magenta,
-                        brcyan    = colors.b.cyan,
-                        brwhite   = colors.a.faded,
-                    }
-                )
+            fwrite(
+                interpolate(attrs.template, map),
+                string.format("/term/%s/melange_%s.%s", term, l, attrs.ext)
             )
         end
     end
 end
 
-local terms = {
-    alacritty = {ext=".yml"},
-    kitty     = {ext=".conf"},
+local terminals = {
+    alacritty = {ext="yml"},
+    kitty     = {ext="conf"},
     termite   = {ext=""},
-    wezterm   = {ext=".toml"},
+    wezterm   = {ext="toml"},
 }
 
-terms.alacritty.template = [[
+terminals.alacritty.template = [[
 colors:
   primary:
     foreground: '$fg'
@@ -121,18 +114,18 @@ colors:
     white:   '$brwhite'
 ]]
 
-terms.kitty.template = [[
+terminals.kitty.template = [[
 background $bg
 foreground $fg
 cursor     $fg
 url_color  $blue
-selection_background    $sel
+selection_background    $brblack
 selection_foreground    $fg
-tab_bar_background      $overbg
-active_tab_background   $overbg
+tab_bar_background      $black
+active_tab_background   $black
 active_tab_foreground   $yellow
-inactive_tab_background $overbg
-inactive_tab_foreground $faded
+inactive_tab_background $black
+inactive_tab_foreground $brwhite
 color0  $black
 color1  $red
 color2  $green
@@ -174,17 +167,17 @@ color15    = $brwhite
 highlight  = $sel
 ]]
 
-terms.wezterm.template = [[
+terminals.wezterm.template = [[
 [colors]
 foreground    = "$fg"
 background    = "$bg"
 cursor_bg     = "$fg"
 cursor_border = "$fg"
 cursor_fg     = "$bg"
-selection_bg  = "$sel"
+selection_bg  = "$brblack"
 selection_fg  = "$fg"
 ansi = ["$black", "$red", "$green", "$yellow", "$blue", "$magenta", "$cyan", "$white"]
 brights = ["$brblack", "$brred", "$brgreen", "$bryellow", "$brblue", "$brmagenta", "$brcyan", "$brwhite"]
 ]]
 
-return {build = function() build(terms); viml_build() end}
+return {build = function() build(terminals); viml_build() end}

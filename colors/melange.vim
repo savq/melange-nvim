@@ -1,8 +1,26 @@
+" THIS FILE WAS AUTOMATICALLY GENERATED
 hi clear
 syntax reset
 set t_Co=256
 let g:colors_name = 'melange'
 if &background == 'dark'
+let g:terminal_color_0  = '#352F2A'
+let g:terminal_color_1  = '#B65C60'
+let g:terminal_color_2  = '#78997A'
+let g:terminal_color_3  = '#EBC06D'
+let g:terminal_color_4  = '#9AACCE'
+let g:terminal_color_5  = '#B380B0'
+let g:terminal_color_6  = '#86A3A3'
+let g:terminal_color_7  = '#A38D78'
+let g:terminal_color_8  = '#4D453E'
+let g:terminal_color_9  = '#F17C64'
+let g:terminal_color_10 = '#99D59D'
+let g:terminal_color_11 = '#EBC06D'
+let g:terminal_color_12 = '#9AACCE'
+let g:terminal_color_13 = '#CE9BCB'
+let g:terminal_color_14 = '#88B3B2'
+let g:terminal_color_15 = '#C1A78E'
+
 highlight Bold guifg=NONE guibg=NONE guisp=NONE gui=bold
 highlight Boolean guifg=#CE9BCB guibg=NONE guisp=NONE gui=NONE
 highlight Character guifg=#9AACCE guibg=NONE guisp=NONE gui=NONE
@@ -135,6 +153,23 @@ highlight! link texOptEqual Operator
 highlight! link texOptSep TSPunctDelimiter
 highlight! link texRefArg Constant
 else
+let g:terminal_color_0  = '#E9E1DB'
+let g:terminal_color_1  = '#D7898C'
+let g:terminal_color_2  = '#83B887'
+let g:terminal_color_3  = '#C29830'
+let g:terminal_color_4  = '#485F84'
+let g:terminal_color_5  = '#BE79BB'
+let g:terminal_color_6  = '#729893'
+let g:terminal_color_7  = '#A38D78'
+let g:terminal_color_8  = '#DED2C8'
+let g:terminal_color_9  = '#C65333'
+let g:terminal_color_10 = '#659E69'
+let g:terminal_color_11 = '#C29830'
+let g:terminal_color_12 = '#485F84'
+let g:terminal_color_13 = '#854882'
+let g:terminal_color_14 = '#436460'
+let g:terminal_color_15 = '#867462'
+
 highlight Bold guifg=NONE guibg=NONE guisp=NONE gui=bold
 highlight Boolean guifg=#854882 guibg=NONE guisp=NONE gui=NONE
 highlight Character guifg=#485F84 guibg=NONE guisp=NONE gui=NONE

@@ -28,15 +28,61 @@ local function interpolate(str, tbl)
     return str:gsub("%$([%w_]+)", function(k) return tostring(tbl[k]) end)
 end
 
+-- Turn melange naming conventions into more common ANSI names
+local function get_palette16(variant)
+        local colors = get_colorscheme(variant).Melange.lush
+        return {
+            bg        = colors.a.bg,
+            fg        = colors.a.fg,
+            black     = colors.a.overbg,
+            red       = colors.c.red,
+            green     = colors.c.green,
+            yellow    = colors.b.yellow,
+            blue      = colors.b.blue,
+            magenta   = colors.c.magenta,
+            cyan      = colors.c.cyan,
+            white     = colors.a.com,
+            brblack   = colors.a.sel,
+            brred     = colors.b.red,
+            brgreen   = colors.b.green,
+            bryellow  = colors.b.yellow,
+            brblue    = colors.b.blue,
+            brmagenta = colors.b.magenta,
+            brcyan    = colors.b.cyan,
+            brwhite   = colors.a.faded,
+        }
+end
+
+local vim_term_colors = [[
+let g:terminal_color_0  = '$black'
+let g:terminal_color_1  = '$red'
+let g:terminal_color_2  = '$green'
+let g:terminal_color_3  = '$yellow'
+let g:terminal_color_4  = '$blue'
+let g:terminal_color_5  = '$magenta'
+let g:terminal_color_6  = '$cyan'
+let g:terminal_color_7  = '$white'
+let g:terminal_color_8  = '$brblack'
+let g:terminal_color_9  = '$brred'
+let g:terminal_color_10 = '$brgreen'
+let g:terminal_color_11 = '$bryellow'
+let g:terminal_color_12 = '$brblue'
+let g:terminal_color_13 = '$brmagenta'
+let g:terminal_color_14 = '$brcyan'
+let g:terminal_color_15 = '$brwhite'
+]]
 
 local viml_template = [[
+" THIS FILE WAS AUTOMATICALLY GENERATED
 hi clear
 syntax reset
 set t_Co=256
 let g:colors_name = 'melange'
 if &background == 'dark'
+$dark_term
 $dark
 else
+$light_term
 $light
 endif
 ]]
@@ -46,36 +92,19 @@ local function viml_build(l)
     for _,l in ipairs{"dark", "light"} do
         -- Compile lush table, concatenate to a single string, and remove blend property
         vimcolors[l] = table.concat(vim.fn.sort(lush.compile(get_colorscheme(l), {exclude_keys={"blend"}})), "\n")
+        vimcolors[l .. '_term'] = interpolate(vim_term_colors, get_palette16(l))
     end
     return fwrite(interpolate(viml_template, vimcolors), "/colors/melange.vim")
 end
 
+
+
 local function build(terminals)
     for _, l in ipairs{"dark", "light"} do
-        local palette = get_colorscheme(l).Melange.lush
-        local map = {
-            bg        = palette.a.bg,
-            fg        = palette.a.fg,
-            black     = palette.a.overbg,
-            red       = palette.c.red,
-            green     = palette.c.green,
-            yellow    = palette.b.yellow,
-            blue      = palette.b.blue,
-            magenta   = palette.c.magenta,
-            cyan      = palette.c.cyan,
-            white     = palette.a.com,
-            brblack   = palette.a.sel,
-            brred     = palette.b.red,
-            brgreen   = palette.b.green,
-            bryellow  = palette.b.yellow,
-            brblue    = palette.b.blue,
-            brmagenta = palette.b.magenta,
-            brcyan    = palette.b.cyan,
-            brwhite   = palette.a.faded,
-        }
+        local palette = get_palette16(l)
         for term, attrs in pairs(terminals) do
             fwrite(
-                interpolate(attrs.template, map),
+                interpolate(attrs.template, palette),
                 string.format("/term/%s/melange_%s%s", term, l, attrs.ext)
             )
         end

@@ -3,10 +3,10 @@
 ## Features
 - Works with Neovim stable and Vim 8
 - Dark and light variants
-- Support for:
-  - LSP
-  - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- Special support for various plugins, including:
   - [VimTeX](https://github.com/lervag/vimtex)
+  - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+  - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - Support for various terminal emulators:
   - [Alacritty](https://github.com/alacritty/alacritty)
   - [Kitty](https://github.com/kovidgoyal/kitty)

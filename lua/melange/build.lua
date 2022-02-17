@@ -112,10 +112,11 @@ local function build(terminals)
 end
 
 local terminals = {
-    alacritty = {ext=".yml"},
-    kitty     = {ext=".conf"},
-    termite   = {ext=""},
-    wezterm   = {ext=".toml"},
+    alacritty  = {ext=".yml"},
+    kitty      = {ext=".conf"},
+    terminator = {ext=".config"},
+    termite    = {ext=""},
+    wezterm    = {ext=".toml"},
 }
 
 terminals.alacritty.template = [[
@@ -172,6 +173,14 @@ color13 $brmagenta
 color14 $brcyan
 color15 $brwhite
 ]]
+
+terminals.terminator.template = [=[
+ [[melange]]
+    background_color = "$bg"
+    cursor_color = "$fg"
+    foreground_color = "$fg"
+    palette = "$black:$red:$green:$yellow:$blue:$magenta:$cyan:$white:$brblack:$brred:$brgreen:$bryellow:$brblue:$brmagenta:$brcyan:$brwhite"
+]=]
 
 terminals.termite.template = [[
 [colors]

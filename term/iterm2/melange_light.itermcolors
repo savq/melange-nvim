@@ -219,9 +219,9 @@
 		<key>Color Space</key>
 		<string>sRGB</string>
 		<key>Green Component</key>
-		<real>0.94901961088180542</real>
+		<real>0.94117647409439087</real>
 		<key>Red Component</key>
-		<real>0.9686274528503418</real>
+		<real>0.95686274766921997</real>
 	</dict>
 	<key>Badge Color</key>
 	<dict>

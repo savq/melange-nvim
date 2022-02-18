@@ -18,9 +18,13 @@ end
 
 -- Write a string to a file
 local function fwrite(str, file)
-    local fd = assert(uv.fs_open(get_melange_dir() .. file, 'w', 420))
+    local fd = assert(uv.fs_open(file, 'w', 420), "Failed  to write to file " .. file) -- 0o644
     uv.fs_write(fd, str, -1)
     assert(uv.fs_close(fd))
+end
+
+local function mkdir(dir)
+    return assert(uv.fs_mkdir(dir, 493), "Failed to create directory " .. dir) -- 0o755
 end
 
 -- Perl-like interpolation
@@ -94,7 +98,7 @@ local function viml_build(l)
         vimcolors[l] = table.concat(vim.fn.sort(lush.compile(get_colorscheme(l), {exclude_keys={"blend"}})), "\n")
         vimcolors[l .. '_term'] = interpolate(vim_term_colors, get_palette16(l))
     end
-    return fwrite(interpolate(viml_template, vimcolors), "/colors/melange.vim")
+    return fwrite(interpolate(viml_template, vimcolors), get_melange_dir() .. "/colors/melange.vim")
 end
 
 
@@ -103,9 +107,13 @@ local function build(terminals)
     for _, l in ipairs{"dark", "light"} do
         local palette = get_palette16(l)
         for term, attrs in pairs(terminals) do
+            local dir = get_melange_dir() .. "/term/" .. term
+            if not uv.fs_stat(dir) then
+                mkdir(dir)
+            end
             fwrite(
                 interpolate(attrs.template, palette),
-                string.format("/term/%s/melange_%s%s", term, l, attrs.ext)
+                string.format("%s/melange_%s%s", dir, l, attrs.ext)
             )
         end
     end

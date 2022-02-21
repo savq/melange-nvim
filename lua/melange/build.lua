@@ -18,7 +18,7 @@ end
 
 -- Write a string to a file
 local function fwrite(str, file)
-    local fd = assert(uv.fs_open(file, 'w', 420), "Failed  to write to file " .. file) -- 0o644
+    local fd = assert(uv.fs_open(file, "w", 420), "Failed  to write to file " .. file) -- 0o644
     uv.fs_write(fd, str, -1)
     assert(uv.fs_close(fd))
 end
@@ -29,32 +29,81 @@ end
 
 -- Perl-like interpolation
 local function interpolate(str, tbl)
-    return str:gsub("%$([%w_]+)", function(k) return tostring(tbl[k]) end)
+    return str:gsub("%$([%w_]+)", function(k)
+        return tostring(tbl[k])
+    end)
 end
 
 -- Turn melange naming conventions into more common ANSI names
 local function get_palette16(variant)
-        local colors = get_colorscheme(variant).Melange.lush
-        return {
-            bg        = colors.a.bg,
-            fg        = colors.a.fg,
-            black     = colors.a.overbg,
-            red       = colors.c.red,
-            green     = colors.c.green,
-            yellow    = colors.b.yellow,
-            blue      = colors.b.blue,
-            magenta   = colors.c.magenta,
-            cyan      = colors.c.cyan,
-            white     = colors.a.com,
-            brblack   = colors.a.sel,
-            brred     = colors.b.red,
-            brgreen   = colors.b.green,
-            bryellow  = colors.b.yellow,
-            brblue    = colors.b.blue,
-            brmagenta = colors.b.magenta,
-            brcyan    = colors.b.cyan,
-            brwhite   = colors.a.faded,
-        }
+    local colors = get_colorscheme(variant).Melange.lush
+    -- stylua: ignore
+    return {
+        bg        = colors.a.bg,
+        fg        = colors.a.fg,
+        black     = colors.a.overbg,
+        red       = colors.c.red,
+        green     = colors.c.green,
+        yellow    = colors.b.yellow,
+        blue      = colors.b.blue,
+        magenta   = colors.c.magenta,
+        cyan      = colors.c.cyan,
+        white     = colors.a.com,
+        brblack   = colors.a.sel,
+        brred     = colors.b.red,
+        brgreen   = colors.b.green,
+        bryellow  = colors.b.yellow,
+        brblue    = colors.b.blue,
+        brmagenta = colors.b.magenta,
+        brcyan    = colors.b.cyan,
+        brwhite   = colors.a.faded,
+    }
+end
+
+local function get_palette24(variant)
+    local colors = get_colorscheme(variant).Melange.lush
+    -- stylua: ignore
+    return {
+        bg             = colors.a.bg,
+        fg             = colors.a.fg,
+        dark_black     = colors.a.bg,
+        dark_red       = colors.d.red,
+        dark_green     = colors.d.green,
+        dark_yellow    = colors.d.yellow,
+        dark_blue      = colors.d.blue,
+        dark_magenta   = colors.d.magenta,
+        dark_cyan      = colors.d.cyan,
+        dark_white     = colors.a.com,
+        black          = colors.a.overbg,
+        red            = colors.c.red,
+        green          = colors.c.green,
+        yellow         = colors.c.yellow,
+        blue           = colors.c.blue,
+        magenta        = colors.c.magenta,
+        cyan           = colors.c.cyan,
+        white          = colors.a.faded,
+        bright_black   = colors.a.sel,
+        bright_red     = colors.b.red,
+        bright_green   = colors.b.green,
+        bright_yellow  = colors.b.yellow,
+        bright_blue    = colors.b.blue,
+        bright_magenta = colors.b.magenta,
+        bright_cyan    = colors.b.cyan,
+        bright_white   = colors.a.fg,
+    }
+end
+
+local function build_json(l)
+    for _, l in pairs({ "dark", "light" }) do
+        fwrite(
+            vim.json.encode(vim.tbl_map(tostring, get_palette16(l))),
+            get_melange_dir() .. string.format("/palette/melange_%s16.json", l)
+        )
+        fwrite(
+            vim.json.encode(vim.tbl_map(tostring, get_palette16(l))),
+            get_melange_dir() .. string.format("/palette/melange_%s24.json", l)
+        )
+    end
 end
 
 local vim_term_colors = [[
@@ -91,40 +140,35 @@ $light
 endif
 ]]
 
-local function viml_build(l)
+local function build_viml(l)
     local vimcolors = {}
-    for _,l in ipairs{"dark", "light"} do
+    for _, l in ipairs({ "dark", "light" }) do
         -- Compile lush table, concatenate to a single string, and remove blend property
-        vimcolors[l] = table.concat(vim.fn.sort(lush.compile(get_colorscheme(l), {exclude_keys={"blend"}})), "\n")
-        vimcolors[l .. '_term'] = interpolate(vim_term_colors, get_palette16(l))
+        vimcolors[l] = table.concat(vim.fn.sort(lush.compile(get_colorscheme(l), { exclude_keys = { "blend" } })), "\n")
+        vimcolors[l .. "_term"] = interpolate(vim_term_colors, get_palette16(l))
     end
     return fwrite(interpolate(viml_template, vimcolors), get_melange_dir() .. "/colors/melange.vim")
 end
 
-
-
 local function build(terminals)
-    for _, l in ipairs{"dark", "light"} do
+    for _, l in ipairs({ "dark", "light" }) do
         local palette = get_palette16(l)
         for term, attrs in pairs(terminals) do
             local dir = get_melange_dir() .. "/term/" .. term
             if not uv.fs_stat(dir) then
                 mkdir(dir)
             end
-            fwrite(
-                interpolate(attrs.template, palette),
-                string.format("%s/melange_%s%s", dir, l, attrs.ext)
-            )
+            fwrite(interpolate(attrs.template, palette), string.format("%s/melange_%s%s", dir, l, attrs.ext))
         end
     end
 end
 
 local terminals = {
-    alacritty  = {ext=".yml"},
-    kitty      = {ext=".conf"},
-    terminator = {ext=".config"},
-    termite    = {ext=""},
-    wezterm    = {ext=".toml"},
+    alacritty = { ext = ".yml" },
+    kitty = { ext = ".conf" },
+    terminator = { ext = ".config" },
+    termite = { ext = "" },
+    wezterm = { ext = ".toml" },
 }
 
 terminals.alacritty.template = [[
@@ -226,4 +270,10 @@ ansi = ["$black", "$red", "$green", "$yellow", "$blue", "$magenta", "$cyan", "$w
 brights = ["$brblack", "$brred", "$brgreen", "$bryellow", "$brblue", "$brmagenta", "$brcyan", "$brwhite"]
 ]]
 
-return {build = function() build(terminals); viml_build() end}
+return {
+    build = function()
+        build(terminals)
+        build_viml()
+        build_json()
+    end,
+}

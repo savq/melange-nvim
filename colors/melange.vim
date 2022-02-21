@@ -47,10 +47,10 @@ highlight Error guifg=NONE guibg=#7D2A2F guisp=NONE gui=NONE
 highlight ErrorMsg guifg=NONE guibg=#7D2A2F guisp=NONE gui=NONE
 highlight Folded guifg=#A38D78 guibg=#352F2A guisp=NONE gui=NONE
 highlight Function guifg=#EBC06D guibg=NONE guisp=NONE gui=NONE
-highlight GitSignsAdd guifg=#2A2520 guibg=#1F3521 guisp=NONE gui=reverse
-highlight GitSignsChange guifg=#2A2520 guibg=#462445 guisp=NONE gui=reverse
-highlight GitSignsCurrentLineBlame guifg=#2A2520 guibg=#243146 guisp=NONE gui=reverse
-highlight GitSignsDelete guifg=#2A2520 guibg=#7D2A2F guisp=NONE gui=reverse
+highlight GitSignsAdd guifg=#78997A guibg=NONE guisp=NONE gui=NONE
+highlight GitSignsChange guifg=#B380B0 guibg=NONE guisp=NONE gui=NONE
+highlight GitSignsCurrentLineBlame guifg=#697893 guibg=NONE guisp=NONE gui=NONE
+highlight GitSignsDelete guifg=#B65C60 guibg=NONE guisp=NONE gui=NONE
 highlight HelpHyperTextJump guifg=#E49B5D guibg=NONE guisp=NONE gui=NONE
 highlight Identifier guifg=#ECE1D7 guibg=NONE guisp=NONE gui=NONE
 highlight Ignore guifg=#A38D78 guibg=NONE guisp=NONE gui=NONE
@@ -72,6 +72,7 @@ highlight PmenuSel guifg=NONE guibg=#4D453E guisp=NONE gui=NONE
 highlight PreProc guifg=#99D59D guibg=NONE guisp=NONE gui=NONE
 highlight Search guifg=#2A2520 guibg=#8E733F guisp=NONE gui=NONE
 highlight Special guifg=#EBC06D guibg=NONE guisp=NONE gui=NONE
+highlight SpecialChar guifg=#88B3B2 guibg=NONE guisp=NONE gui=NONE
 highlight SpellBad guifg=#B65C60 guibg=NONE guisp=NONE gui=undercurl
 highlight SpellCap guifg=#697893 guibg=NONE guisp=NONE gui=undercurl
 highlight SpellLocal guifg=#E49B5D guibg=NONE guisp=NONE gui=undercurl
@@ -81,6 +82,7 @@ highlight StatusLineNC guifg=#C1A78E guibg=#352F2A guisp=NONE gui=NONE
 highlight String guifg=#9AACCE guibg=NONE guisp=NONE gui=italic
 highlight Substitute guifg=#2A2520 guibg=#8E733F guisp=NONE gui=NONE
 highlight TSConstBuiltin guifg=#B380B0 guibg=NONE guisp=NONE gui=italic
+highlight TSLabel guifg=#88B3B2 guibg=NONE guisp=NONE gui=NONE
 highlight TSMath guifg=#88B3B2 guibg=NONE guisp=NONE gui=NONE
 highlight TSNamespace guifg=#78997A guibg=NONE guisp=NONE gui=NONE
 highlight TSPunctDelimiter guifg=#B65C60 guibg=NONE guisp=NONE gui=NONE
@@ -133,8 +135,6 @@ highlight! link TSEnvironmentName PreProc
 highlight! link TSFuncBuiltin Function
 highlight! link TSFuncMacro Function
 highlight! link TSKeywordFunction PreProc
-highlight! link TSPunctBracket Delimiter
-highlight! link TSPunctSpecial Delimiter
 highlight! link TSUnderline Underlined
 highlight! link TSVariable Identifier
 highlight! link TabLine StatusLineNC
@@ -196,10 +196,10 @@ highlight Error guifg=NONE guibg=#E0BFBB guisp=NONE gui=NONE
 highlight ErrorMsg guifg=NONE guibg=#E0BFBB guisp=NONE gui=NONE
 highlight Folded guifg=#A38D78 guibg=#E9E1DB guisp=NONE gui=NONE
 highlight Function guifg=#C29830 guibg=NONE guisp=NONE gui=NONE
-highlight GitSignsAdd guifg=#F4F0ED guibg=#C6ECC8 guisp=NONE gui=reverse
-highlight GitSignsChange guifg=#F4F0ED guibg=#EBDFEA guisp=NONE gui=reverse
-highlight GitSignsCurrentLineBlame guifg=#F4F0ED guibg=#DFE3EB guisp=NONE gui=reverse
-highlight GitSignsDelete guifg=#F4F0ED guibg=#E0BFBB guisp=NONE gui=reverse
+highlight GitSignsAdd guifg=#83B887 guibg=NONE guisp=NONE gui=NONE
+highlight GitSignsChange guifg=#BE79BB guibg=NONE guisp=NONE gui=NONE
+highlight GitSignsCurrentLineBlame guifg=#ABB9D6 guibg=NONE guisp=NONE gui=NONE
+highlight GitSignsDelete guifg=#D7898C guibg=NONE guisp=NONE gui=NONE
 highlight HelpHyperTextJump guifg=#CC7F2B guibg=NONE guisp=NONE gui=NONE
 highlight Identifier guifg=#6B5C4D guibg=NONE guisp=NONE gui=NONE
 highlight Ignore guifg=#A38D78 guibg=NONE guisp=NONE gui=NONE
@@ -221,6 +221,7 @@ highlight PmenuSel guifg=NONE guibg=#DED2C8 guisp=NONE gui=NONE
 highlight PreProc guifg=#659E69 guibg=NONE guisp=NONE gui=NONE
 highlight Search guifg=#F4F0ED guibg=#E2C28C guisp=NONE gui=NONE
 highlight Special guifg=#C29830 guibg=NONE guisp=NONE gui=NONE
+highlight SpecialChar guifg=#436460 guibg=NONE guisp=NONE gui=NONE
 highlight SpellBad guifg=#D7898C guibg=NONE guisp=NONE gui=undercurl
 highlight SpellCap guifg=#ABB9D6 guibg=NONE guisp=NONE gui=undercurl
 highlight SpellLocal guifg=#CC7F2B guibg=NONE guisp=NONE gui=undercurl
@@ -230,6 +231,7 @@ highlight StatusLineNC guifg=#867462 guibg=#E9E1DB guisp=NONE gui=NONE
 highlight String guifg=#485F84 guibg=NONE guisp=NONE gui=italic
 highlight Substitute guifg=#F4F0ED guibg=#E2C28C guisp=NONE gui=NONE
 highlight TSConstBuiltin guifg=#BE79BB guibg=NONE guisp=NONE gui=italic
+highlight TSLabel guifg=#436460 guibg=NONE guisp=NONE gui=NONE
 highlight TSMath guifg=#436460 guibg=NONE guisp=NONE gui=NONE
 highlight TSNamespace guifg=#83B887 guibg=NONE guisp=NONE gui=NONE
 highlight TSPunctDelimiter guifg=#D7898C guibg=NONE guisp=NONE gui=NONE
@@ -282,8 +284,6 @@ highlight! link TSEnvironmentName PreProc
 highlight! link TSFuncBuiltin Function
 highlight! link TSFuncMacro Function
 highlight! link TSKeywordFunction PreProc
-highlight! link TSPunctBracket Delimiter
-highlight! link TSPunctSpecial Delimiter
 highlight! link TSUnderline Underlined
 highlight! link TSVariable Identifier
 highlight! link TabLine StatusLineNC

@@ -61,7 +61,6 @@ highlight LspDiagnosticsUnderlineHint guifg=NONE guibg=NONE guisp=NONE gui=under
 highlight LspDiagnosticsUnderlineInformation guifg=NONE guibg=NONE guisp=NONE gui=undercurl
 highlight LspDiagnosticsUnderlineWarning guifg=NONE guibg=NONE guisp=NONE gui=undercurl
 highlight MatchParen guifg=#EBC06D guibg=#4D453E guisp=NONE gui=bold
-highlight Melange guifg=NONE guibg=NONE guisp=NONE gui=NONE
 highlight ModeMsg guifg=#C1A78E guibg=NONE guisp=NONE gui=NONE
 highlight MoreMsg guifg=#78997A guibg=NONE guisp=NONE gui=bold
 highlight Normal guifg=#ECE1D7 guibg=#2A2520 guisp=NONE gui=NONE
@@ -210,7 +209,6 @@ highlight LspDiagnosticsUnderlineHint guifg=NONE guibg=NONE guisp=NONE gui=under
 highlight LspDiagnosticsUnderlineInformation guifg=NONE guibg=NONE guisp=NONE gui=undercurl
 highlight LspDiagnosticsUnderlineWarning guifg=NONE guibg=NONE guisp=NONE gui=undercurl
 highlight MatchParen guifg=#C29830 guibg=#DED2C8 guisp=NONE gui=bold
-highlight Melange guifg=NONE guibg=NONE guisp=NONE gui=NONE
 highlight ModeMsg guifg=#867462 guibg=NONE guisp=NONE gui=NONE
 highlight MoreMsg guifg=#83B887 guibg=NONE guisp=NONE gui=bold
 highlight Normal guifg=#6B5C4D guibg=#F4F0ED guisp=NONE gui=NONE

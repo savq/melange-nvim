@@ -1,36 +1,39 @@
-local hsluv = require('lush').hsluv
-
+-- stylua: ignore
 return {
+  -- Grays
   a = {
-    bg = hsluv(50, 20, 15),
-    overbg = hsluv(50, 20, 20),
-    sel = hsluv(50, 20, 30),
-    com = hsluv(50, 30, 60),
-    faded = hsluv(50, 30, 70),
-    fg = hsluv(50, 30, 90),
+    bg      = "#2A2520",
+    overbg  = "#352F2A",
+    sel     = "#4D453E",
+    com     = "#A38D78",
+    faded   = "#C1A78E",
+    fg      = "#ECE1D7",
   },
+  -- Bright colors
   b = {
-    red = hsluv(20, 80, 65),
-    yellow = hsluv(60, 70, 80),
-    green = hsluv(130, 40, 80),
-    cyan = hsluv(190, 40, 70),
-    blue = hsluv(250, 40, 70),
-    magenta = hsluv(310, 40, 70),
+    red     = "#F17C64",
+    yellow  = "#EBC06D",
+    green   = "#99D59D",
+    cyan    = "#88B3B2",
+    blue    = "#9AACCE",
+    magenta = "#CE9BCB",
   },
+  -- "regular" colors
   c = {
-    red = hsluv(10, 40, 50),
-    yellow = hsluv(40, 70, 70),
-    green = hsluv(130, 30, 60),
-    cyan = hsluv(190, 30, 65),
-    blue = hsluv(250, 30, 50),
-    magenta = hsluv(310, 30, 60),
+    red     = "#B65C60",
+    yellow  = "#E49B5D",
+    green   = "#78997A",
+    cyan    = "#86A3A3",
+    blue    = "#697893",
+    magenta = "#B380B0",
   },
+  -- dark colors (mainly for backgrounds)
   d = {
-    red = hsluv(10, 60, 30),
-    yellow = hsluv(60, 70, 50),
-    green = hsluv(130, 50, 20),
-    cyan = hsluv(190, 50, 20),
-    blue = hsluv(250, 50, 20),
-    magenta = hsluv(310, 50, 20),
+    red     = "#7D2A2F",
+    yellow  = "#8E733F",
+    green   = "#1F3521",
+    cyan    = "#213433",
+    blue    = "#243146",
+    magenta = "#462445",
   },
 }

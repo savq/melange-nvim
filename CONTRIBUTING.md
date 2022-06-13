@@ -29,10 +29,10 @@ Melange provides a [build script](./lua/melange/build.lua) and a makefile to
 compile Lush colorschemes to vimscript persistently, this improves load times
 and it means you don't need to load Lush during startup.
 
-Alternatively, you can source `./lua/melange/init.lua` with Lush directly. In Lua:
+Alternatively, you can source `./lua/melange/hl_groups.lua` with Lush directly. In Lua:
 
 ```lua
 package.loaded.melange = nil  -- Clear cache.
-require("lush")(require("melange"))
+require("lush")(require("melange.hl_groups"))
 ```
 

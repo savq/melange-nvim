@@ -234,30 +234,8 @@ return function(palette, enable_font_variants)
     LspReferenceRead = 'Visual',
     LspReferenceWrite = 'Visual',
 
-    LspDiagnosticsDefaultError = 'DiagnosticError',
-    LspDiagnosticsDefaultWarning = 'DiagnosticWarn',
-    LspDiagnosticsDefaultInformation = 'DiagnosticInfo',
-    LspDiagnosticsDefaultHint = 'DiagnosticHint',
-
-    -- LspDiagnosticsVirtualTextError       = { },
-    -- LspDiagnosticsVirtualTextWarning     = { },
-    -- LspDiagnosticsVirtualTextInformation = { },
-    -- LspDiagnosticsVirtualTextHint        = { },
-
-    LspDiagnosticsUnderlineError = { undercurl = ucurl },
-    LspDiagnosticsUnderlineWarning = { undercurl = ucurl },
-    LspDiagnosticsUnderlineInformation = { undercurl = ucurl },
-    LspDiagnosticsUnderlineHint = { undercurl = ucurl },
-
-    -- LspDiagnosticsFloatingError          = { },
-    -- LspDiagnosticsFloatingWarning        = { },
-    -- LspDiagnosticsFloatingInformation    = { },
-    -- LspDiagnosticsFloatingHint           = { },
-
-    -- LspDiagnosticsSignError              = { },
-    -- LspDiagnosticsSignWarning            = { },
-    -- LspDiagnosticsSignInformation        = { },
-    -- LspDiagnosticsSignHint               = { },
+    -- LspCodeLens = { },
+    -- LspCodeLensSeparator = { },
 
     --- :help vimtex-syntax-reference (external plugin) --------
 

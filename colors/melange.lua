@@ -14,6 +14,12 @@ for name, attrs in pairs(hl_groups) do
   if type(attrs) == 'string' then
     vim.api.nvim_set_hl(0, name, { link = attrs })
   else
+    -- Extend manually (`nvim_set_hl` replaces definitions, instead of extending)
+    if attrs.link then
+      local link_attrs = vim.api.nvim_get_hl_by_name(attrs.link, true)
+      attrs = vim.tbl_extend('force', link_attrs, attrs)
+      attrs.link = nil
+    end
     vim.api.nvim_set_hl(0, name, attrs)
   end
 end

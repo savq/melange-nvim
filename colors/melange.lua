@@ -2,8 +2,8 @@ vim.cmd 'hi clear | syntax reset'
 vim.g.colors_name = 'melange'
 local bg = vim.opt.background:get()
 
--- package.loaded['melange/palettes'] = nil
--- package.loaded['melange/hl_groups/' .. bg] = nil
+-- package.loaded['melange/palettes/' .. bg] = nil
+-- package.loaded['melange/hl_groups'] = nil
 
 local palette = require('melange/palettes/' .. bg)
 local font_vars = vim.g.melange_enable_font_variants ~= 0

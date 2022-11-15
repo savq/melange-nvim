@@ -19,6 +19,8 @@ for name, attrs in pairs(hl_groups) do
       local link_attrs = vim.api.nvim_get_hl_by_name(attrs.link, true)
       attrs = vim.tbl_extend('force', link_attrs, attrs)
       attrs.link = nil
+      attrs.foreground = attrs.fg or attrs.foreground
+      attrs.background = attrs.bg or attrs.background
     end
     vim.api.nvim_set_hl(0, name, attrs)
   end

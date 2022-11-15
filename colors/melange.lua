@@ -2,8 +2,8 @@ vim.cmd 'hi clear | syntax reset'
 vim.g.colors_name = 'melange'
 local bg = vim.opt.background:get()
 
--- package.loaded['melange/palettes/' .. bg] = nil
--- package.loaded['melange/hl_groups'] = nil
+package.loaded['melange/palettes/' .. bg] = nil
+package.loaded['melange/hl_groups'] = nil
 
 local palette = require('melange/palettes/' .. bg)
 local font_vars = vim.g.melange_enable_font_variants ~= 0
@@ -14,14 +14,6 @@ for name, attrs in pairs(hl_groups) do
   if type(attrs) == 'string' then
     vim.api.nvim_set_hl(0, name, { link = attrs })
   else
-    -- Extend manually (`nvim_set_hl` replaces definitions, instead of extending)
-    if attrs.link then
-      local link_attrs = vim.api.nvim_get_hl_by_name(attrs.link, true)
-      attrs = vim.tbl_extend('force', link_attrs, attrs)
-      attrs.link = nil
-      attrs.foreground = attrs.fg or attrs.foreground
-      attrs.background = attrs.bg or attrs.background
-    end
     vim.api.nvim_set_hl(0, name, attrs)
   end
 end

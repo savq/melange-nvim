@@ -50,7 +50,7 @@ return function(palette, enable_font_variants)
 
     TabLine = 'StatusLineNC',
     TabLineFill = 'StatusLine',
-    TabLineSel = { link = 'StatusLine', bold = bf },
+    TabLineSel = { bg = a.overbg, bold = bf },
 
     MatchParen = { fg = b.yellow, bg = a.sel, bold = bf },
     Substitute = { fg = a.bg, bg = d.yellow },
@@ -149,7 +149,7 @@ return function(palette, enable_font_variants)
     -- ['@comment']             = { },
     -- ['@conditional']         = { },
     -- ['@constant']            = { },
-    ['@constant.builtin']       = { link = 'Constant', italic = it },
+    ['@constant.builtin']       = { fg = c.magenta, italic = it },
     ['@constant.macro']         = 'Constant',
     -- ['@constructor']         = { },
     ['@error']               = { undercurl=ucurl },

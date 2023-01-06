@@ -1,7 +1,6 @@
 ![melange-logo](https://user-images.githubusercontent.com/30883030/129780812-8d0cfa59-40d7-4413-8fb7-efdf41b04aed.png)
 
 ## Features
-- Works with Neovim stable and Vim 8
 - Dark and light variants
 - Special support for various plugins, including:
   - [VimTeX](https://github.com/lervag/vimtex)
@@ -17,21 +16,22 @@
 
 
 ## Requirements
-* Terminal emulator or GUI with true color and font variants support (italics, bold, etc).
+* Neovim ≥ 0.8
 * `termguicolors` enabled
+* A terminal emulator or GUI with true color and font variants support (italics, bold, etc).
 
 
 ## Installation
 You can install Melange with any (Neo)Vim plugin manager.
 
-[Packer](https://github.com/wbthomason/packer.nvim):
-```lua
-use "savq/melange"
-```
-
 [Paq](https://github.com/savq/paq-nvim):
 ```lua
 "savq/melange";
+```
+
+[Packer](https://github.com/wbthomason/packer.nvim):
+```lua
+use "savq/melange"
 ```
 
 
@@ -44,16 +44,16 @@ can be used to extend the colorscheme (see [Contributing](./CONTRIBUTING.md)).
 ## Usage
 Enable `termguicolors` and load the `colorscheme`.
 
-In your `init.vim`:
+In your `init.lua`:
+```lua
+vim.opt.termguicolors = true
+vim.cmd.colorscheme 'melange'
+```
+
+Or in your `init.vim`:
 ```vim
 set termguicolors
 colorscheme melange
-```
-
-Or in your `init.lua`:
-```lua
-vim.opt.termguicolors = true
-vim.cmd("colorscheme melange")
 ```
 
 To enable the light variant, set the `background` (or let your terminal do it for you)
@@ -74,4 +74,4 @@ Melange was developed with the following ideas in mind:
 <img width="1326" alt="melange-dark" src="https://user-images.githubusercontent.com/30883030/138142670-3344cbfb-641d-4d14-9173-ce039a83e2ba.png">
 <img width="1326" alt="melange-light" src="https://user-images.githubusercontent.com/30883030/138520116-2c6ad1d8-ac4a-45d3-86f7-1307ee2ab6ed.png">
 
-The font is [IBM/plex](https://github.com/IBM/plex) Mono.
+(The font in the screenshots is [IBM/plex](https://github.com/IBM/plex) Mono.)

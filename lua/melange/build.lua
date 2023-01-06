@@ -24,37 +24,11 @@ local function interpolate(str, tbl)
 end
 
 -- Turn melange naming conventions into more common ANSI names
-local function get_palette16(variant)
+local function get_palette(variant)
   package.loaded['melange/palettes/' .. variant] = nil
   local colors = require('melange/palettes/' .. variant)
   -- stylua: ignore
-  return vim.tbl_map(tostring, {
-    bg        = colors.a.bg,
-    fg        = colors.a.fg,
-    black     = colors.a.overbg,
-    red       = colors.c.red,
-    green     = colors.c.green,
-    yellow    = colors.b.yellow,
-    blue      = colors.b.blue,
-    magenta   = colors.c.magenta,
-    cyan      = colors.c.cyan,
-    white     = colors.a.com,
-    brblack   = colors.a.sel,
-    brred     = colors.b.red,
-    brgreen   = colors.b.green,
-    bryellow  = colors.b.yellow,
-    brblue    = colors.b.blue,
-    brmagenta = colors.b.magenta,
-    brcyan    = colors.b.cyan,
-    brwhite   = colors.a.faded,
-  })
-end
-
-local function get_palette24(variant)
-  package.loaded['melange/palettes/' .. variant] = nil
-  local colors = require('melange/palettes/' .. variant)
-  -- stylua: ignore
-  return vim.tbl_map(tostring, {
+  return {
     bg             = colors.a.bg,
     fg             = colors.a.fg,
     dark_black     = colors.a.bg,
@@ -81,22 +55,23 @@ local function get_palette24(variant)
     bright_magenta = colors.b.magenta,
     bright_cyan    = colors.b.cyan,
     bright_white   = colors.a.fg,
-  })
+  }
 end
 
 local function build(terminals)
-  for _, l in ipairs { 'dark', 'light' } do
-    local palette = get_palette16(l)
+  for _, variant in ipairs { 'dark', 'light' } do
+    local palette = get_palette(variant)
+
     for term, attrs in pairs(terminals) do
       local dir = get_plugin_dir() .. '/term/' .. term
       if not uv.fs_stat(dir) then
         mkdir(dir)
       end
-      fwrite(interpolate(attrs.template, palette), string.format('%s/melange_%s%s', dir, l, attrs.ext))
+
+      fwrite(interpolate(attrs.template, palette), string.format('%s/melange_%s%s', dir, variant, attrs.ext))
     end
 
-    fwrite(vim.json.encode(get_palette16(l)), get_plugin_dir() .. ('/palette/melange_%s16.json'):format(l))
-    fwrite(vim.json.encode(get_palette24(l)), get_plugin_dir() .. ('/palette/melange_%s24.json'):format(l))
+    fwrite(vim.json.encode(palette), get_plugin_dir() .. string.format('/melange_%s.json', variant))
   end
 end
 
@@ -124,21 +99,21 @@ colors:
     cyan:    '$cyan'
     white:   '$white'
   bright:
-    black:   '$brblack'
-    red:     '$brred'
-    green:   '$brgreen'
-    yellow:  '$bryellow'
-    blue:    '$brblue'
-    magenta: '$brmagenta'
-    cyan:    '$brcyan'
-    white:   '$brwhite'
+    black:   '$bright_black'
+    red:     '$bright_red'
+    green:   '$bright_green'
+    yellow:  '$bright_yellow'
+    blue:    '$bright_blue'
+    magenta: '$bright_magenta'
+    cyan:    '$bright_cyan'
+    white:   '$bright_white'
 ]]
 
-terminals.foot.template = [[
+terminals.foot.template = [=[
 [colors]
 foreground = $fg
 background = $bg
-selection-background = $brblack
+selection-background = $bright_black
 selection-foreground = $fg
 regular0   = $black
 regular1   = $red
@@ -148,28 +123,28 @@ regular4   = $blue
 regular5   = $magenta
 regular6   = $cyan
 regular7   = $white
-bright0    = $brblack
-bright1    = $brred
-bright2    = $brgreen
-bright3    = $bryellow
-bright4    = $brblue
-bright5    = $brmagenta
-bright6    = $brcyan
-bright7    = $brwhite
-]]
+bright0    = $bright_black
+bright1    = $bright_red
+bright2    = $bright_green
+bright3    = $bright_yellow
+bright4    = $bright_blue
+bright5    = $bright_magenta
+bright6    = $bright_cyan
+bright7    = $bright_white
+]=]
 
-terminals.kitty.template = [[
+terminals.kitty.template = [=[
 background $bg
 foreground $fg
 cursor     $fg
 url_color  $blue
-selection_background    $brblack
+selection_background    $bright_black
 selection_foreground    $fg
 tab_bar_background      $black
 active_tab_background   $black
 active_tab_foreground   $yellow
 inactive_tab_background $black
-inactive_tab_foreground $brwhite
+inactive_tab_foreground $bright_white
 color0  $black
 color1  $red
 color2  $green
@@ -178,25 +153,25 @@ color4  $blue
 color5  $magenta
 color6  $cyan
 color7  $white
-color8  $brblack
-color9  $brred
-color10 $brgreen
-color11 $bryellow
-color12 $brblue
-color13 $brmagenta
-color14 $brcyan
-color15 $brwhite
-]]
+color8  $bright_black
+color9  $bright_red
+color10 $bright_green
+color11 $bright_yellow
+color12 $bright_blue
+color13 $bright_magenta
+color14 $bright_cyan
+color15 $bright_white
+]=]
 
 terminals.terminator.template = [=[
  [[melange]]
     background_color = "$bg"
     cursor_color = "$fg"
     foreground_color = "$fg"
-    palette = "$black:$red:$green:$yellow:$blue:$magenta:$cyan:$white:$brblack:$brred:$brgreen:$bryellow:$brblue:$brmagenta:$brcyan:$brwhite"
+    palette = "$black:$red:$green:$yellow:$blue:$magenta:$cyan:$white:$bright_black:$bright_red:$bright_green:$bright_yellow:$bright_blue:$bright_magenta:$bright_cyan:$bright_white"
 ]=]
 
-terminals.termite.template = [[
+terminals.termite.template = [=[
 [colors]
 foreground = $fg
 background = $bg
@@ -208,29 +183,47 @@ color4     = $blue
 color5     = $magenta
 color6     = $cyan
 color7     = $white
-color8     = $brblack
-color9     = $brred
-color10    = $brgreen
-color11    = $bryellow
-color12    = $brblue
-color13    = $brmagenta
-color14    = $brcyan
-color15    = $brwhite
-highlight  = $brblack
-]]
+color8     = $bright_black
+color9     = $bright_red
+color10    = $bright_green
+color11    = $bright_yellow
+color12    = $bright_blue
+color13    = $bright_magenta
+color14    = $bright_cyan
+color15    = $bright_white
+highlight  = $bright_black
+]=]
 
-terminals.wezterm.template = [[
+terminals.wezterm.template = [=[
 [colors]
 foreground    = "$fg"
 background    = "$bg"
 cursor_bg     = "$fg"
 cursor_border = "$fg"
 cursor_fg     = "$bg"
-selection_bg  = "$brblack"
+selection_bg  = "$bright_black"
 selection_fg  = "$fg"
-ansi = ["$black", "$red", "$green", "$yellow", "$blue", "$magenta", "$cyan", "$white"]
-brights = ["$brblack", "$brred", "$brgreen", "$bryellow", "$brblue", "$brmagenta", "$brcyan", "$brwhite"]
-]]
+ansi = [
+  "$black",
+  "$red",
+  "$green",
+  "$yellow",
+  "$blue",
+  "$magenta",
+  "$cyan",
+  "$white"
+]
+brights = [
+  "$bright_black",
+  "$bright_red",
+  "$bright_green",
+  "$bright_yellow",
+  "$bright_blue",
+  "$bright_magenta",
+  "$bright_cyan",
+  "$bright_white"
+]
+]=]
 
 return {
   build = function()

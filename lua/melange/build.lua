@@ -1,7 +1,5 @@
 --- Templates for various terminal configuration formats
 
-vim.cmd 'packadd lush.nvim'
-local lush = require 'lush'
 local uv = vim.loop
 
 -- Get the directory where the melange plugin is located
@@ -23,13 +21,6 @@ end
 -- Perl-like interpolation
 local function interpolate(str, tbl)
   return str:gsub('%$([%w_]+)', tbl)
-end
-
--- Reload melange module
-local function get_hl_groups(variant)
-  package.loaded['melange/hl_groups'] = nil
-  vim.opt.background = variant or vim.opt.background:get()
-  return require 'melange/hl_groups'
 end
 
 -- Turn melange naming conventions into more common ANSI names
@@ -91,50 +82,6 @@ local function get_palette24(variant)
     bright_cyan    = colors.b.cyan,
     bright_white   = colors.a.fg,
   })
-end
-
-local vim_term_colors = [[
-let g:terminal_color_0  = '$black'
-let g:terminal_color_1  = '$red'
-let g:terminal_color_2  = '$green'
-let g:terminal_color_3  = '$yellow'
-let g:terminal_color_4  = '$blue'
-let g:terminal_color_5  = '$magenta'
-let g:terminal_color_6  = '$cyan'
-let g:terminal_color_7  = '$white'
-let g:terminal_color_8  = '$brblack'
-let g:terminal_color_9  = '$brred'
-let g:terminal_color_10 = '$brgreen'
-let g:terminal_color_11 = '$bryellow'
-let g:terminal_color_12 = '$brblue'
-let g:terminal_color_13 = '$brmagenta'
-let g:terminal_color_14 = '$brcyan'
-let g:terminal_color_15 = '$brwhite'
-]]
-
-local viml_template = [[
-" THIS FILE WAS AUTOMATICALLY GENERATED
-hi clear
-syntax reset
-set t_Co=256
-let g:colors_name = 'melange'
-if &background == 'dark'
-$dark_term
-$dark
-else
-$light_term
-$light
-endif
-]]
-
-local function build_viml(l)
-  local vimcolors = {}
-  for _, l in ipairs { 'dark', 'light' } do
-    -- Compile lush table, concatenate to a single string, and remove blend property
-    vimcolors[l] = table.concat(vim.fn.sort(lush.compile(get_hl_groups(l), { exclude_keys = { 'blend' } })), '\n')
-    vimcolors[l .. '_term'] = interpolate(vim_term_colors, get_palette16(l))
-  end
-  return fwrite(interpolate(viml_template, vimcolors), get_plugin_dir() .. '/colors/melange.vim')
 end
 
 local function build(terminals)
@@ -288,6 +235,5 @@ brights = ["$brblack", "$brred", "$brgreen", "$bryellow", "$brblue", "$brmagenta
 return {
   build = function()
     build(terminals)
-    build_viml()
   end,
 }

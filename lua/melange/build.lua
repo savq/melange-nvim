@@ -155,6 +155,7 @@ end
 
 local terminals = {
   alacritty = { ext = '.yml' },
+  foot = { ext = '.ini' },
   kitty = { ext = '.conf' },
   terminator = { ext = '.config' },
   termite = { ext = '' },
@@ -184,6 +185,30 @@ colors:
     magenta: '$brmagenta'
     cyan:    '$brcyan'
     white:   '$brwhite'
+]]
+
+terminals.foot.template = [[
+[colors]
+foreground = $fg
+background = $bg
+selection-background = $brblack
+selection-foreground = $fg
+regular0   = $black
+regular1   = $red
+regular2   = $green
+regular3   = $yellow
+regular4   = $blue
+regular5   = $magenta
+regular6   = $cyan
+regular7   = $white
+bright0    = $brblack
+bright1    = $brred
+bright2    = $brgreen
+bright3    = $bryellow
+bright4    = $brblue
+bright5    = $brmagenta
+bright6    = $brcyan
+bright7    = $brwhite
 ]]
 
 terminals.kitty.template = [[

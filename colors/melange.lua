@@ -3,12 +3,14 @@ vim.cmd 'syntax reset'
 vim.g.colors_name = 'melange'
 
 local bg = vim.opt.background:get()
+
+-- package.loaded['melange/palettes/' .. bg] = nil -- Only needed for development
 local palette = require('melange/palettes/' .. bg)
 
-local a = palette.a
-local b = palette.b
-local c = palette.c
-local d = palette.d
+local a = palette.a -- Grays
+local b = palette.b -- Bright foreground colors
+local c = palette.c -- Foreground colors
+local d = palette.d -- Background colors
 
 -- Font variants (TODO Deprecate global variable)
 local bf, it, underline, undercurl, strikethrough
@@ -25,7 +27,7 @@ local highlight_groups = {
   ---- :help highlight-default -------------------------------
 
   Normal = { fg = a.fg, bg = a.bg },
-  NormalFloat = { bg = a.overbg },
+  NormalFloat = { bg = a.float },
   -- NormalNC = { },
 
   -- Cursor = { },
@@ -34,15 +36,15 @@ local highlight_groups = {
   -- TermCursor = { },
   -- TermCursorNC = { },
 
-  ColorColumn = { bg = a.overbg },
+  ColorColumn = { bg = a.float },
   CursorColumn = 'ColorColumn',
   CursorLine = 'ColorColumn',
-  VertSplit = { fg = a.sel },
+  VertSplit = { fg = a.ui },
 
-  LineNr = { fg = a.sel },
+  LineNr = { fg = a.ui },
   CursorLineNr = { fg = c.yellow },
 
-  Folded = { fg = a.com, bg = a.overbg },
+  Folded = { fg = a.com, bg = d.cyan },
   FoldColumn = 'LineNr',
   SignColumn = 'LineNr',
 
@@ -52,23 +54,23 @@ local highlight_groups = {
   PmenuThumb = 'PmenuSel',
 
   StatusLine = 'NormalFloat',
-  StatusLineNC = { bg = a.overbg, fg = a.faded },
+  StatusLineNC = { fg = a.com, bg = a.float },
   WildMenu = 'NormalFloat',
 
   TabLine = 'StatusLineNC',
   TabLineFill = 'StatusLine',
-  TabLineSel = { bg = a.overbg, bold = bold },
+  TabLineSel = { bg = a.float, bold = bold },
 
   MatchParen = { fg = b.yellow, bg = a.sel, bold = bold },
-  Substitute = { fg = a.bg, bg = d.yellow },
-  Search = { fg = a.bg, bg = d.yellow },
+  Search = { fg = a.bg, bg = d.yellow, bold = bold },
+  Substitute = { bg = d.red, bold = bold },
   -- QuickFixLine = { },
   -- IncSearch = { },
   Visual = { bg = a.sel },
   -- VisualNOS = { },
 
-  Conceal = { fg = a.faded },
-  Whitespace = { fg = a.sel },
+  Conceal = { fg = a.com },
+  Whitespace = { fg = a.ui },
   EndOfBuffer = 'Whitespace',
   NonText = 'Whitespace',
   SpecialKey = 'Whitespace',
@@ -76,7 +78,7 @@ local highlight_groups = {
   Directory = { fg = c.cyan },
   Title = { fg = c.yellow },
   ErrorMsg = { bg = d.red },
-  ModeMsg = { fg = a.faded },
+  ModeMsg = { fg = a.com },
   -- MsgArea = { },
   -- MsgSeparator = { },
   MoreMsg = { fg = c.green, bold = bold },
@@ -143,9 +145,9 @@ local highlight_groups = {
   Bold = { bold = bold },
   Italic = { italic = italic },
 
-  Ignore = { fg = a.com },
+  Ignore = { fg = a.ui },
   Error = { bg = d.red },
-  Todo = { fg = a.faded, bold = bold },
+  Todo = { fg = a.com, bold = bold },
 
   ---- :help nvim-treesitter-highlights (external plugin) ----
 
@@ -188,14 +190,15 @@ local highlight_groups = {
   -- ['@type'] = { },
   -- ['@type.builtin'] = { },
   -- ['@type.definition'] = { },
-  ['@type.qualifier'] = 'Keyword',
-  -- ['@storageclass'] = { },
+  ['@type.qualifier'] = 'Statement',
+  ['@storageclass'] = 'Statement',
+  ['@storageclass.lifetime'] = '@label',
   -- ['@attribute'] = { }, -- unused
   -- ['@field'] = { },
   -- ['@property'] = { },
 
-  ['@punctuation.delimiter'] = { fg = c.red },
   -- ['@punctuation.bracket'] = { },
+  ['@punctuation.delimiter'] = { fg = c.red },
   -- ['@punctuation.special'] = { },
 
   -- ['@text'] = {},
@@ -218,8 +221,8 @@ local highlight_groups = {
   -- ['@text.diff.delete'] = {},
 
   -- ['@tag'] = {},
-  -- ['@tag.attribute'] = {},
-  -- ['@tag.delimiter'] = {},
+  ['@tag.attribute'] = '@label',
+  ['@tag.delimiter'] = 'Delimiter',
 
   ---- :help diagnostic-highlight ----------------------------
 

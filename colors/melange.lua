@@ -296,4 +296,22 @@ for name, attrs in pairs(highlight_groups) do
   end
 end
 
+-- See https://github.com/neovim/neovim/pull/7406
+vim.g.terminal_color_0  = a.float
+vim.g.terminal_color_1  = c.red
+vim.g.terminal_color_2  = c.green
+vim.g.terminal_color_3  = c.yellow
+vim.g.terminal_color_4  = c.blue
+vim.g.terminal_color_5  = c.magenta
+vim.g.terminal_color_6  = c.cyan
+vim.g.terminal_color_7  = a.com
+vim.g.terminal_color_8  = a.ui
+vim.g.terminal_color_9  = b.red
+vim.g.terminal_color_10 = b.green
+vim.g.terminal_color_11 = b.yellow
+vim.g.terminal_color_12 = b.blue
+vim.g.terminal_color_13 = b.magenta
+vim.g.terminal_color_14 = b.cyan
+vim.g.terminal_color_15 = a.fg
+
 -- vi:nowrap

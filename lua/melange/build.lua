@@ -38,16 +38,16 @@ local function get_palette(variant)
     dark_blue      = colors.d.blue,
     dark_magenta   = colors.d.magenta,
     dark_cyan      = colors.d.cyan,
-    dark_white     = colors.a.com,
-    black          = colors.a.overbg,
+    dark_white     = colors.a.sel,
+    black          = colors.a.float,
     red            = colors.c.red,
     green          = colors.c.green,
     yellow         = colors.c.yellow,
     blue           = colors.c.blue,
     magenta        = colors.c.magenta,
     cyan           = colors.c.cyan,
-    white          = colors.a.faded,
-    bright_black   = colors.a.sel,
+    white          = colors.a.com,
+    bright_black   = colors.a.ui,
     bright_red     = colors.b.red,
     bright_green   = colors.b.green,
     bright_yellow  = colors.b.yellow,
@@ -113,7 +113,7 @@ terminals.foot.template = [=[
 [colors]
 foreground = $fg
 background = $bg
-selection-background = $bright_black
+selection-background = $dark_white
 selection-foreground = $fg
 regular0   = $black
 regular1   = $red
@@ -138,7 +138,7 @@ background $bg
 foreground $fg
 cursor     $fg
 url_color  $blue
-selection_background    $bright_black
+selection_background    $dark_white
 selection_foreground    $fg
 tab_bar_background      $black
 active_tab_background   $black
@@ -201,7 +201,7 @@ background    = "$bg"
 cursor_bg     = "$fg"
 cursor_border = "$fg"
 cursor_fg     = "$bg"
-selection_bg  = "$bright_black"
+selection_bg  = "$dark_white"
 selection_fg  = "$fg"
 ansi = [
   "$black",

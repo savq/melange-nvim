@@ -1,4 +1,4 @@
-![melange-logo](https://user-images.githubusercontent.com/30883030/129780812-8d0cfa59-40d7-4413-8fb7-efdf41b04aed.png)
+![melange-logo](logo.svg)
 
 ## Features
 - Dark and light variants

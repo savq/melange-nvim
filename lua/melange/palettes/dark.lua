@@ -1,39 +1,35 @@
 -- stylua: ignore
 return {
-  -- Grays
   a = {
-    bg      = "#2A2520",
-    overbg  = "#352F2A",
-    sel     = "#4D453E",
-    com     = "#A38D78",
-    faded   = "#C1A78E",
+    bg      = "#292522",
+    float   = "#34302C",
+    sel     = "#403A36",
+    ui      = "#867462",
+    com     = "#C1A78E",
     fg      = "#ECE1D7",
   },
-  -- Bright colors
   b = {
-    red     = "#F17C64",
+    red     = "#D47766",
     yellow  = "#EBC06D",
-    green   = "#99D59D",
-    cyan    = "#88B3B2",
-    blue    = "#9AACCE",
-    magenta = "#CE9BCB",
+    green   = "#85B695",
+    cyan    = "#89B3B6",
+    blue    = "#A3A9CE",
+    magenta = "#CF9BC2",
   },
-  -- "regular" colors
   c = {
-    red     = "#B65C60",
+    red     = "#BD8183",
     yellow  = "#E49B5D",
     green   = "#78997A",
-    cyan    = "#86A3A3",
-    blue    = "#697893",
+    cyan    = "#7B9695",
+    blue    = "#7F91B2",
     magenta = "#B380B0",
   },
-  -- dark colors (mainly for backgrounds)
   d = {
     red     = "#7D2A2F",
-    yellow  = "#8E733F",
-    green   = "#1F3521",
-    cyan    = "#213433",
-    blue    = "#243146",
-    magenta = "#462445",
+    yellow  = "#8B7449",
+    green   = "#233524",
+    cyan    = "#253333",
+    blue    = "#273142",
+    magenta = "#422741",
   },
 }

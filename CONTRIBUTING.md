@@ -5,34 +5,34 @@ Good plugins should make this easy, defining their own highlight groups (with
 sensible defaults) and letting the colorscheme override them when necessary.
 I don't use many plugins myself, so I've limited myself to defining the basics.
 
-Highlight groups for specific programming languages won't be accepted though.
+Melange is focused on tree-sitter based highlighting,
+so highlight groups for specific programming languages won't be accepted.
 Your favorite language likely has a tree-sitter grammar already available.
 See the [supported languages](https://github.com/nvim-treesitter/nvim-treesitter#supported-languages).
 
-Many markup languages don't have a good tree-sitter grammar yet.
+Many markup languages don't have a good tree-sitter grammar yet (LaTeX, Org, etc).
 Improved highlights for plugins that support these formats are welcome.
 
-It's possible to auto-generate colors schemes for different terminal emulators.
-This is done in a very ad hoc way, defining some template-like format strings.
-If you want to add support for another terminal emulator, take a look at the
-existing ones (in `lua/melange/build.lua`) and feel free to open a PR.
+
+## Terminal emulator support
+
+Melange has files defining syntax highlights for many terminal emulators.
+These are made in a very ad-hoc way, defining some template-like format strings.
+If you want to add support for another terminal emulator,
+take a look at the existing ones (in `lua/melange/build.lua`) and feel free to open a PR.
 
 
-## Build and develop
+## Code structure
 
-Melange is made with [Lush.nvim](https://github.com/rktjmp/lush.nvim),
-which makes it very easy to modify; either for extending, contributing, or for
-making your own fork. Refer to the [Lush docs](https://github.com/rktjmp/lush.nvim/blob/main/doc/lush.txt)
-for more information on extending the colorscheme.
+Like most colorschemes, Melange is structured as a set of color palettes
+and a list of highlight groups those palettes are applied to.
 
-Melange provides a [build script](./lua/melange/build.lua) and a makefile to
-compile Lush colorschemes to vimscript persistently, this improves load times
-and it means you don't need to load Lush during startup.
+A color palette is a table with some color definitions.
+Each color is a hex triplet string like `"#FFFFFF"`.
+The color palettes are in `lua/melange/palettes/`,
+and you can import them to extend other plugins as you see fit.
 
-Alternatively, you can source `./lua/melange/hl_groups.lua` with Lush directly. In Lua:
-
-```lua
-package.loaded.melange = nil  -- Clear cache.
-require("lush")(require("melange.hl_groups"))
-```
+A highlight group is mapping from a name (like `String`) to a group of attributes (like `{fg = blue}`).
+The file `colors/melange.lua` defines the list of highlight groups,
+and then applies it to set the appereance of Neovim.
 

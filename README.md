@@ -26,12 +26,12 @@ You can install Melange with any (Neo)Vim plugin manager.
 
 [Paq](https://github.com/savq/paq-nvim):
 ```lua
-"savq/melange";
+"savq/melange-nvim";
 ```
 
 [Packer](https://github.com/wbthomason/packer.nvim):
 ```lua
-use "savq/melange"
+use "savq/melange-nvim"
 ```
 
 

@@ -68,7 +68,11 @@ local function build(terminals)
         mkdir(dir)
       end
 
-      fwrite(interpolate(attrs.template, palette), string.format('%s/melange_%s%s', dir, variant, attrs.ext))
+      local fmt = interpolate(attrs.template, palette)
+      if term == 'foot' then
+        fmt = fmt:gsub('#', '')
+      end
+      fwrite(fmt, string.format('%s/melange_%s%s', dir, variant, attrs.ext))
     end
 
     fwrite(vim.json.encode(palette), get_plugin_dir() .. string.format('/melange_%s.json', variant))

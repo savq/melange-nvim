@@ -71,7 +71,7 @@ local highlight_groups = {
 
   Conceal = { fg = a.com },
   Whitespace = { fg = a.ui },
-  EndOfBuffer = 'Whitespace',
+  -- EndOfBuffer = { },
   NonText = 'Whitespace',
   SpecialKey = 'Whitespace',
 
@@ -286,6 +286,9 @@ local highlight_groups = {
   SignifySignAdd = 'GitSignsAdd',
   SignifySignChange = 'GitSignsChange',
   SignifySignDelete = 'GitSignsDelete',
+
+  ---- :h indent-blankline-highlights (external plugin) ------
+  IndentBlanklineChar  = { fg = a.sel },
 }
 
 for name, attrs in pairs(highlight_groups) do

@@ -5,6 +5,7 @@
 - Special support for various plugins, including:
   - [VimTeX](https://github.com/lervag/vimtex)
   - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+  - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
   - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - Support for various terminal emulators (see [`term/`](term/)):
   - [Alacritty](https://github.com/alacritty/alacritty)

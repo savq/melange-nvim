@@ -288,7 +288,9 @@ local highlight_groups = {
   SignifySignDelete = 'GitSignsDelete',
 
   ---- :h indent-blankline-highlights (external plugin) ------
-  IndentBlanklineChar  = { fg = a.sel },
+  IndentBlanklineChar = { fg = a.sel, nocombine = true },
+  IndentBlanklineSpaceChar = 'IndentBlanklineChar',
+  IndentBlanklineSpaceCharBlankline = 'IndentBlanklineChar',
 }
 
 for name, attrs in pairs(highlight_groups) do

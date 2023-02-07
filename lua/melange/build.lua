@@ -79,13 +79,13 @@ local function build(terminals)
   end
 end
 
+-- stylua: ignore
 local terminals = {
-  alacritty = { ext = '.yml' },
-  foot = { ext = '.ini' },
-  kitty = { ext = '.conf' },
-  terminator = { ext = '.config' },
-  termite = { ext = '' },
-  wezterm = { ext = '.toml' },
+  alacritty  = { ext = '.yml' },    -- https://github.com/alacritty/alacritty/blob/master/alacritty.yml
+  foot       = { ext = '.ini' },    -- https://codeberg.org/dnkl/foot/src/branch/master/themes
+  kitty      = { ext = '.conf' },   -- https://sw.kovidgoyal.net/kitty/conf/#the-color-table
+  terminator = { ext = '.config' }, -- TODO: Find docs or remove support
+  wezterm    = { ext = '.toml' },   -- https://wezfurlong.org/wezterm/config/appearance.html
 }
 
 terminals.alacritty.template = [[
@@ -173,29 +173,6 @@ terminals.terminator.template = [=[
     cursor_color = "$fg"
     foreground_color = "$fg"
     palette = "$black:$red:$green:$yellow:$blue:$magenta:$cyan:$white:$bright_black:$bright_red:$bright_green:$bright_yellow:$bright_blue:$bright_magenta:$bright_cyan:$bright_white"
-]=]
-
-terminals.termite.template = [=[
-[colors]
-foreground = $fg
-background = $bg
-color0     = $black
-color1     = $red
-color2     = $green
-color3     = $yellow
-color4     = $blue
-color5     = $magenta
-color6     = $cyan
-color7     = $white
-color8     = $bright_black
-color9     = $bright_red
-color10    = $bright_green
-color11    = $bright_yellow
-color12    = $bright_blue
-color13    = $bright_magenta
-color14    = $bright_cyan
-color15    = $bright_white
-highlight  = $bright_black
 ]=]
 
 terminals.wezterm.template = [=[

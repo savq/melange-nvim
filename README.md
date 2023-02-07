@@ -9,11 +9,10 @@
   - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - Support for various terminal emulators (see [`term/`](term/)):
   - [Alacritty](https://github.com/alacritty/alacritty)
-  - [foot](https://codeberg.org/dnkl/foot)
+  - [Foot](https://codeberg.org/dnkl/foot)
   - [Kitty](https://github.com/kovidgoyal/kitty)
+  - [Terminator](https://github.com/gnome-terminator/terminator)
   - [Wezterm](https://github.com/wez/wezterm)
-  - [iTerm2](https://github.com/gnachman/iTerm2)
-  - [terminator](https://github.com/gnome-terminator/terminator)
 
 
 ## Requirements

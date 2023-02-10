@@ -6,9 +6,8 @@ Support for plugins, status-lines and the like are welcome.
 Good plugins should make this easy, defining their own highlight groups (with sensible defaults)
 and letting the color scheme override them when necessary.
 
-If you want to add support for a plugin,
-take a look at the existing highlight groups in [`colors/melange.lua`](colors/melange.lua)
-and open a PR using the plugin support template.
+If you want to add support for a plugin, take a look at the existing highlight
+groups in [`colors/melange.lua`](colors/melange.lua) and open a PR.
 
 **NOTE:**
 Melange is focused on tree-sitter based highlighting,
@@ -24,9 +23,8 @@ so improved highlights for these filetypes are welcome.
 Melange has files with color schemes for many terminal emulators.
 These are made in an ad-hoc way, defining some template-like format strings.
 
-If you want to add support for a terminal emulator,
-take a look at the existing ones in [`lua/melange/build.lua`](lua/melange/build.lua),
-and open a PR using the terminal emulator support template.
+If you want to add support for a terminal emulator, take a look at the existing
+ones in [`lua/melange/build.lua`](lua/melange/build.lua) and open a PR.
 
 
 ## Code structure

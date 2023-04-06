@@ -140,7 +140,7 @@ bright7    = $bright_white
 terminals.kitty.template = [=[
 background $bg
 foreground $fg
-cursor     $fg
+cursor     none
 url_color  $blue
 selection_background    $dark_white
 selection_foreground    $fg

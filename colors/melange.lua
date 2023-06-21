@@ -28,13 +28,13 @@ local highlight_groups = {
 
   Normal = { fg = a.fg, bg = a.bg },
   NormalFloat = { bg = a.float },
-  -- NormalNC = { },
+  -- NormalNC = {},
 
-  -- Cursor = { },
-  -- lCursor = { },
-  -- CursorIM = { },
-  -- TermCursor = { },
-  -- TermCursorNC = { },
+  -- Cursor = {},
+  -- lCursor = {},
+  -- CursorIM = {},
+  -- TermCursor = {},
+  -- TermCursorNC = {},
 
   ColorColumn = { bg = a.float },
   CursorColumn = 'ColorColumn',
@@ -64,14 +64,14 @@ local highlight_groups = {
   MatchParen = { fg = b.yellow, bg = a.sel, bold = bold },
   Search = { fg = a.bg, bg = d.yellow, bold = bold },
   Substitute = { bg = d.red, bold = bold },
-  -- QuickFixLine = { },
-  -- IncSearch = { },
+  -- QuickFixLine = {},
+  -- IncSearch = {},
   Visual = { bg = a.sel },
-  -- VisualNOS = { },
+  -- VisualNOS = {},
 
   Conceal = { fg = a.com },
   Whitespace = { fg = a.ui },
-  -- EndOfBuffer = { },
+  -- EndOfBuffer = {},
   NonText = 'Whitespace',
   SpecialKey = 'Whitespace',
 
@@ -79,8 +79,8 @@ local highlight_groups = {
   Title = { fg = c.yellow },
   ErrorMsg = { bg = d.red },
   ModeMsg = { fg = a.com },
-  -- MsgArea = { },
-  -- MsgSeparator = { },
+  -- MsgArea = {},
+  -- MsgSeparator = {},
   MoreMsg = { fg = c.green, bold = bold },
   WarningMsg = { fg = c.red },
   Question = 'MoreMsg',
@@ -113,33 +113,33 @@ local highlight_groups = {
   Character = { fg = b.blue },
   Number = { fg = b.magenta },
   Boolean = { fg = b.magenta },
-  -- Float = { },
+  -- Float = {},
 
   Statement = { fg = c.yellow },
-  -- Conditional = { },
-  -- Repeat = { },
-  -- Label = { },
+  -- Conditional = {},
+  -- Repeat = {},
+  -- Label = {},
   Operator = { fg = b.red },
-  -- Keyword = { },
-  -- Exception = { },
+  -- Keyword = {},
+  -- Exception = {},
 
   PreProc = { fg = b.green },
-  -- Include = { },
-  -- Define = { },
-  -- Macro = { },
-  -- PreCondit = { },
+  -- Include = {},
+  -- Define = {},
+  -- Macro = {},
+  -- PreCondit = {},
 
   Type = { fg = c.cyan },
-  -- StorageClass = { },
-  -- Structure = { },
-  -- Typedef = { },
+  -- StorageClass = {},
+  -- Structure = {},
+  -- Typedef = {},
 
   Special = { fg = b.yellow },
   SpecialChar = { fg = b.cyan },
-  -- Tag = { },
+  -- Tag = {},
   Delimiter = { fg = d.yellow },
-  -- SpecialComment = { },
-  -- Debug = { },
+  -- SpecialComment = {},
+  -- Debug = {},
 
   Underlined = { underline = underline },
   Bold = { bold = bold },
@@ -151,55 +151,55 @@ local highlight_groups = {
 
   ---- :help nvim-treesitter-highlights (external plugin) ----
 
-  -- ['@boolean'] = { },
-  -- ['@float'] = { },
-  -- ['@number'] = { },
-  -- ['@character'] = { },
-  -- ['@character.special'] = { },
-  -- ['@string'] = { },
-  -- ['@string.regex'] = { },
+  -- ['@boolean'] = {},
+  -- ['@float'] = {},
+  -- ['@number'] = {},
+  -- ['@character'] = {},
+  -- ['@character.special'] = {},
+  -- ['@string'] = {},
+  -- ['@string.regex'] = {},
   ['@string.escape'] = { fg = c.blue },
-  -- ['@string.special'] = { },
+  -- ['@string.special'] = {},
 
-  -- ['@keyword'] = { },
+  -- ['@keyword'] = {},
   ['@keyword.function'] = 'PreProc',
-  -- ['@keyword.operator'] = { },
-  -- ['@keyword.return'] = { },
-  -- ['@conditional'] = { },
-  -- ['@conditional.ternary'] = { },
-  -- ['@exception'] = { },
-  -- ['@include'] = { },
-  -- ['@repeat'] = { },
+  -- ['@keyword.operator'] = {},
+  -- ['@keyword.return'] = {},
+  -- ['@conditional'] = {},
+  -- ['@conditional.ternary'] = {},
+  -- ['@exception'] = {},
+  -- ['@include'] = {},
+  -- ['@repeat'] = {},
 
-  -- ['@constant'] = { },
-  ['@constant.builtin'] = { fg=c.magenta, italic = italic },
+  -- ['@constant'] = {},
+  ['@constant.builtin'] = { fg = c.magenta, italic = italic },
   ['@constant.macro'] = 'Constant',
   ['@label'] = { fg = b.cyan },
   ['@symbol'] = { fg = a.fg, italic = italic },
-  -- ['@namespace'] = { },
-  -- ['@variable'] = { },
+  -- ['@namespace'] = {},
+  -- ['@variable'] = {},
   ['@variable.builtin'] = '@symbol',
 
-  -- ['@function'] = { },
-  -- ['@function.builtin'] = { },
+  -- ['@function'] = {},
+  -- ['@function.builtin'] = {},
   ['@function.macro'] = 'Function',
   ['@constructor'] = 'Function',
-  -- ['@method'] = { },
-  -- ['@parameter'] = { },
+  -- ['@method'] = {},
+  -- ['@parameter'] = {},
 
-  -- ['@type'] = { },
-  -- ['@type.builtin'] = { },
-  -- ['@type.definition'] = { },
+  -- ['@type'] = {},
+  -- ['@type.builtin'] = {},
+  -- ['@type.definition'] = {},
   ['@type.qualifier'] = 'Statement',
   ['@storageclass'] = 'Statement',
   ['@storageclass.lifetime'] = '@label',
-  -- ['@attribute'] = { }, -- unused
-  -- ['@field'] = { },
-  -- ['@property'] = { },
+  -- ['@attribute'] = {}, -- unused
+  -- ['@field'] = {},
+  -- ['@property'] = {},
 
-  -- ['@punctuation.bracket'] = { },
+  -- ['@punctuation.bracket'] = {},
   ['@punctuation.delimiter'] = { fg = c.red },
-  -- ['@punctuation.special'] = { },
+  -- ['@punctuation.special'] = {},
 
   -- ['@text'] = {},
   ['@text.strong'] = { bold = bold },
@@ -231,21 +231,21 @@ local highlight_groups = {
   DiagnosticInfo = { fg = b.blue },
   DiagnosticHint = { fg = b.green },
   -- DiagnosticVirtualTextError = 'DiagnosticError',
-  -- DiagnosticVirtualTextWarn = { DiagnosticWarn  },
-  -- DiagnosticVirtualTextInfo = { DiagnosticInfo  },
-  -- DiagnosticVirtualTextHint = { DiagnosticHint  },
+  -- DiagnosticVirtualTextWarn = 'DiagnosticWarn',
+  -- DiagnosticVirtualTextInfo = 'DiagnosticInfo',
+  -- DiagnosticVirtualTextHint = 'DiagnosticHint',
   DiagnosticUnderlineError = { undercurl = undercurl },
   DiagnosticUnderlineWarn = { undercurl = undercurl },
   DiagnosticUnderlineInfo = { undercurl = undercurl },
   DiagnosticUnderlineHint = { undercurl = undercurl },
   -- DiagnosticFloatingError = 'DiagnosticError',
-  -- DiagnosticFloatingWarn = { DiagnosticWarn  },
-  -- DiagnosticFloatingInfo = { DiagnosticInfo  },
-  -- DiagnosticFloatingHint = { DiagnosticHint  },
+  -- DiagnosticFloatingWarn = 'DiagnosticWarn',
+  -- DiagnosticFloatingInfo = 'DiagnosticInfo',
+  -- DiagnosticFloatingHint = 'DiagnosticHint',
   -- DiagnosticSignError = 'DiagnosticError',
-  -- DiagnosticSignWarn = { DiagnosticWarn  },
-  -- DiagnosticSignInfo = { DiagnosticInfo  },
-  -- DiagnosticSignHint = { DiagnosticHint  },
+  -- DiagnosticSignWarn = 'DiagnosticWarn',
+  -- DiagnosticSignInfo = 'DiagnosticInfo',
+  -- DiagnosticSignHint = 'DiagnosticHint',
 
   ---- :help lsp-highlight -----------------------------------
 
@@ -302,16 +302,16 @@ for name, attrs in pairs(highlight_groups) do
 end
 
 -- See https://github.com/neovim/neovim/pull/7406
-vim.g.terminal_color_0  = a.float
-vim.g.terminal_color_1  = c.red
-vim.g.terminal_color_2  = c.green
-vim.g.terminal_color_3  = c.yellow
-vim.g.terminal_color_4  = c.blue
-vim.g.terminal_color_5  = c.magenta
-vim.g.terminal_color_6  = c.cyan
-vim.g.terminal_color_7  = a.com
-vim.g.terminal_color_8  = a.ui
-vim.g.terminal_color_9  = b.red
+vim.g.terminal_color_0 = a.float
+vim.g.terminal_color_1 = c.red
+vim.g.terminal_color_2 = c.green
+vim.g.terminal_color_3 = c.yellow
+vim.g.terminal_color_4 = c.blue
+vim.g.terminal_color_5 = c.magenta
+vim.g.terminal_color_6 = c.cyan
+vim.g.terminal_color_7 = a.com
+vim.g.terminal_color_8 = a.ui
+vim.g.terminal_color_9 = b.red
 vim.g.terminal_color_10 = b.green
 vim.g.terminal_color_11 = b.yellow
 vim.g.terminal_color_12 = b.blue

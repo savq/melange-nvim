@@ -110,9 +110,9 @@ local highlight_groups = {
 
   Constant = { fg = c.magenta },
   String = { fg = b.blue, italic = italic },
-  Character = { fg = b.blue },
+  Character = { fg = c.blue },
   Number = { fg = b.magenta },
-  Boolean = { fg = b.magenta },
+  Boolean = 'Number',
   -- Float = {},
 
   Statement = { fg = c.yellow },
@@ -135,7 +135,7 @@ local highlight_groups = {
   -- Typedef = {},
 
   Special = { fg = b.yellow },
-  SpecialChar = { fg = b.cyan },
+  -- SpecialChar = {},
   -- Tag = {},
   Delimiter = { fg = d.yellow },
   -- SpecialComment = {},
@@ -151,15 +151,19 @@ local highlight_groups = {
 
   ---- :help nvim-treesitter-highlights (external plugin) ----
 
+  -- ['@comment'] = {},
+  ['@comment.documentation'] = { fg = a.com, nocombine = true },
+
   -- ['@boolean'] = {},
   -- ['@float'] = {},
   -- ['@number'] = {},
   -- ['@character'] = {},
   -- ['@character.special'] = {},
   -- ['@string'] = {},
-  -- ['@string.regex'] = {},
+  ['@string.documentation'] = { fg = b.blue, nocombine = true },
   ['@string.escape'] = { fg = c.blue },
-  -- ['@string.special'] = {},
+  ['@string.regex'] = { fg = b.blue },
+  ['@string.special'] = { fg = b.cyan },
 
   -- ['@keyword'] = {},
   ['@keyword.function'] = 'PreProc',
@@ -171,8 +175,8 @@ local highlight_groups = {
   -- ['@include'] = {},
   -- ['@repeat'] = {},
 
-  -- ['@constant'] = {},
-  ['@constant.builtin'] = { fg = c.magenta, italic = italic },
+  ['@constant'] = 'Identifier', -- Highlighting all caps identifiers is dumb
+  ['@constant.builtin'] = 'Constant',
   ['@constant.macro'] = 'Constant',
   ['@label'] = { fg = b.cyan },
   ['@symbol'] = { fg = a.fg, italic = italic },

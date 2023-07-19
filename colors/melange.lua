@@ -107,7 +107,6 @@ local highlight_groups = {
   Comment = { fg = a.com, italic = italic },
   Identifier = { fg = a.fg },
   Function = { fg = b.yellow },
-
   Constant = { fg = c.magenta },
   String = { fg = b.blue, italic = italic },
   Character = { fg = c.blue },
@@ -283,6 +282,37 @@ local highlight_groups = {
   NeoTreeWinSeparator = 'NeoTreeVertSplit',
 
   NeoTreeCursorLine = { bg = pallete.a.sel },
+
+  --- nvim navic icon highlights  :help navic-highlights ---
+
+  NavicIconsFile = "Identifier",
+  NavicIconsModule = "PreProc",
+  NavicIconsNamespace = "PreProc",
+  NavicIconsPackage = "PreProc",
+  NavicIconsClass = "PreProc",
+  NavicIconsMethod = "Function",
+  NavicIconsProperty = "Constant",
+  NavicIconsField = "Constant",
+  NavicIconsConstructor = "PreProc",
+  NavicIconsEnum = "PreProc",
+  NavicIconsInterface = "PreProc",
+  NavicIconsFunction = "Function",
+  NavicIconsVariable = "PreProc",
+  NavicIconsConstant = "Constant",
+  NavicIconsString = "String",
+  NavicIconsNumber = "Number",
+  NavicIconsBoolean = "Boolean",
+  NavicIconsArray = "Delimeter",
+  NavicIconsObject = "Delimeter",
+  NavicIconsKey = "Delimeter",
+  NavicIconsNull = "Number",
+  NavicIconsEnumMember = "Delimeter",
+  NavicIconsStruct = "PreProc",
+  NavicIconsEvent = "PreProc",
+  NavicIconsOperator = "Operator",
+  NavicIconsTypeParameter = "Delimeter",
+  NavicText = "Identifier",
+  NavicSeparator = "Delimeter",
 
   --- netrw: there's no comprehensive list of highlights... --
 

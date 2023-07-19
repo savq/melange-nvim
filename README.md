@@ -7,6 +7,8 @@
   - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
   - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
   - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+  - [nvim-navic](https://github.com/SmiteshP/nvim-navic/tree/master)
+  - [nvim-neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
 - Support for various terminal emulators (see [`term/`](term/)):
   - [Alacritty](https://github.com/alacritty/alacritty)
   - [Foot](https://codeberg.org/dnkl/foot)

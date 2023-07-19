@@ -275,6 +275,15 @@ local highlight_groups = {
   texMathDelim = 'Delimiter',
   texMathEnvArgName = 'PreProc',
 
+  --- neo-tree highlights  :help neo-tree-highlights ---
+
+  NeoTreeNormal = { bg = pallete.a.float, fg = pallete.a.fg },
+  NeoTreeNormalNC = 'NeoTreeNormal',
+  NeoTreeVertSplit = { bg = pallete.a.bg, fg = pallete.a.bg },
+  NeoTreeWinSeparator = 'NeoTreeVertSplit',
+
+  NeoTreeCursorLine = { bg = pallete.a.sel },
+
   --- netrw: there's no comprehensive list of highlights... --
 
   netrwClassify = 'Delimiter',

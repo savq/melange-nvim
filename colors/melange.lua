@@ -278,41 +278,10 @@ local highlight_groups = {
 
   NeoTreeNormal = 'NormalFloat',
   NeoTreeNormalNC = 'NeoTreeNormal',
-  NeoTreeVertSplit = { bg = pallete.a.bg, fg = pallete.a.bg },
+  NeoTreeVertSplit = { bg = a.bg, fg = a.bg },
   NeoTreeWinSeparator = 'NeoTreeVertSplit',
 
-  NeoTreeCursorLine = { bg = pallete.a.sel },
-
-  --- nvim navic icon highlights  :help navic-highlights ---
-
-  NavicIconsFile = "Identifier",
-  NavicIconsModule = "PreProc",
-  NavicIconsNamespace = "PreProc",
-  NavicIconsPackage = "PreProc",
-  NavicIconsClass = "PreProc",
-  NavicIconsMethod = "Function",
-  NavicIconsProperty = "Constant",
-  NavicIconsField = "Constant",
-  NavicIconsConstructor = "PreProc",
-  NavicIconsEnum = "PreProc",
-  NavicIconsInterface = "PreProc",
-  NavicIconsFunction = "Function",
-  NavicIconsVariable = "PreProc",
-  NavicIconsConstant = "Constant",
-  NavicIconsString = "String",
-  NavicIconsNumber = "Number",
-  NavicIconsBoolean = "Boolean",
-  NavicIconsArray = "Delimeter",
-  NavicIconsObject = "Delimeter",
-  NavicIconsKey = "Delimeter",
-  NavicIconsNull = "Number",
-  NavicIconsEnumMember = "Delimeter",
-  NavicIconsStruct = "PreProc",
-  NavicIconsEvent = "PreProc",
-  NavicIconsOperator = "Operator",
-  NavicIconsTypeParameter = "Delimeter",
-  NavicText = "Identifier",
-  NavicSeparator = "Delimeter",
+  NeoTreeCursorLine = { bg = a.sel },
 
   --- netrw: there's no comprehensive list of highlights... --
 

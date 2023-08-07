@@ -276,7 +276,7 @@ local highlight_groups = {
 
   --- neo-tree highlights  :help neo-tree-highlights ---
 
-  NeoTreeNormal = { bg = pallete.a.float, fg = pallete.a.fg },
+  NeoTreeNormal = 'NormalFloat',
   NeoTreeNormalNC = 'NeoTreeNormal',
   NeoTreeVertSplit = { bg = pallete.a.bg, fg = pallete.a.bg },
   NeoTreeWinSeparator = 'NeoTreeVertSplit',

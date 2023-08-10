@@ -3,12 +3,11 @@
 ## Features
 - Dark and light variants
 - Special support for various plugins, including:
+  - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
   - [VimTeX](https://github.com/lervag/vimtex)
   - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
   - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
-  - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-  - [nvim-navic](https://github.com/SmiteshP/nvim-navic/tree/master)
-  - [nvim-neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
+  - [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)
 - Support for various terminal emulators (see [`term/`](term/)):
   - [Alacritty](https://github.com/alacritty/alacritty)
   - [Foot](https://codeberg.org/dnkl/foot)
@@ -19,7 +18,7 @@
 
 ## Requirements
 * Neovim ≥ 0.8
-* `termguicolors` enabled
+* [`termguicolors`](https://neovim.io/doc/user/options.html#'termguicolors') enabled
 * A terminal emulator or GUI with true color and font variants support (italics, bold, etc).
 
 
@@ -34,6 +33,11 @@ You can install Melange with any (Neo)Vim plugin manager.
 [Packer](https://github.com/wbthomason/packer.nvim):
 ```lua
 use "savq/melange-nvim"
+```
+
+[Lazy](https://github.com/folke/lazy.nvim):
+```
+{ "savq/melange-nvim" }
 ```
 
 

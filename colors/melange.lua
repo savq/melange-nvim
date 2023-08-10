@@ -259,12 +259,32 @@ for name, attrs in pairs {
 
   ---- :help lsp-highlight -----------------------------------
 
-  LspReferenceText = 'Visual',
-  LspReferenceRead = 'Visual',
-  LspReferenceWrite = 'Visual',
+  -- LspReferenceText = 'Visual',
+  -- LspReferenceRead = 'Visual',
+  -- LspReferenceWrite = 'Visual',
+
   -- TODO: lsp-highlight-codelens
 
-  --- :help vimtex-syntax-reference (external plugin) --------
+  ---- :help lsp-semantic-highlight --------------------------
+
+  -- ['@lsp.type.class'] = 'Structure',
+  -- ['@lsp.type.comment'] = 'Comment',
+  -- ['@lsp.type.decorator'] = 'Function',
+  -- ['@lsp.type.enum'] = 'Structure',
+  -- ['@lsp.type.enumMember'] = 'Constant',
+  -- ['@lsp.type.function'] = 'Function',
+  -- ['@lsp.type.interface'] = 'Structure',
+  ['@lsp.type.macro'] = 'Function',
+  -- ['@lsp.type.method'] = 'Function',
+  ['@lsp.type.namespace'] = { fg = c.green },
+  ['@lsp.type.parameter'] = { fg = a.fg, bold = bold },
+  -- ['@lsp.type.property'] = 'Identifier',
+  -- ['@lsp.type.struct'] = 'Structure',
+  -- ['@lsp.type.type'] = 'Type',
+  -- ['@lsp.type.typeParameter'] = 'TypeDef',
+  ['@lsp.type.variable'] = 'Identifier',
+
+  ---- :help vimtex-syntax-reference (external plugin) -------
 
   texOptSep = '@punctuation.delimiter',
   texOptEqual = 'Operator',

@@ -27,35 +27,15 @@ M.config = {
   }
 }
 
-local config_set = false
-
---[[ Call:
-    require("melange").setup({
-      font_variants = {
-        bold = false|true,
-        italic = false|true,
-        underline = false|true,
-        undercurl = false|true,
-        strikethrough = false|true,
-      }
-    }) 
-    vim.cmd("colo melange")
---]]
+M.config_set = false
 
 function M.setup(config)
-  if config ~= nil and type(config.font_variants) == "boolean" then
-    vim.notify(
-      "[melange] font_variants config has changed.",
-      vim.log.levels.WARN
-    )
-    config.font_variants = M.config.font_variants
-    config_set = true
-  end
+  M.config_set = true
   M.config = vim.tbl_deep_extend("force", M.config, config or {})
 end
 
 function M.load() 
-    if config_set then
+    if M.config_set then
         bold = M.config.font_variants.bold
         italic = M.config.font_variants.italic
         underline = M.config.font_variants.underline

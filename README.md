@@ -70,3 +70,18 @@ and it's been inspired by many colorschemes, in particular Ayu and Gruvbox.
 <img width="1326" alt="melange light screenshot" src="https://user-images.githubusercontent.com/30883030/212500082-b67699c7-09dd-42f5-ac7e-ee71ca41c5c6.png">
 
 (The font in the screenshots is [IBM/plex](https://github.com/IBM/plex) Mono.)
+
+## Configuration
+Optionally, call the setup function to set font variants:
+```lua
+    require("melange").setup({
+      font_variants = {
+        bold = false,
+        italic = false,
+        underline = false,
+        undercurl = false,
+        strikethrough = false,
+      }
+    }) 
+    vim.cmd("colorscheme melange")
+```

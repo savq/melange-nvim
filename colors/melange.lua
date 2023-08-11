@@ -12,15 +12,13 @@ local b = palette.b -- Bright foreground colors
 local c = palette.c -- Foreground colors
 local d = palette.d -- Background colors
 
--- Font variants (TODO Deprecate global variable)
-local bf, it, underline, undercurl, strikethrough
-if vim.g.melange_enable_font_variants ~= 0 then
-  bold = true
-  italic = true
-  underline = true
-  undercurl = true
-  strikethrough = true
-end
+local enable_font_variants = vim.g.melange_enable_font_variants == nil or vim.g.melange_enable_font_variants
+
+local bold = enable_font_variants
+local italic = enable_font_variants
+local underline = enable_font_variants
+local undercurl = enable_font_variants
+local strikethrough = enable_font_variants
 
 local highlight_groups = {
 

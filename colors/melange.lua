@@ -20,8 +20,7 @@ local underline = enable_font_variants
 local undercurl = enable_font_variants
 local strikethrough = enable_font_variants
 
-local highlight_groups = {
-
+for name, attrs in pairs {
   ---- :help highlight-default -------------------------------
 
   Normal = { fg = a.fg, bg = a.bg },
@@ -303,12 +302,10 @@ local highlight_groups = {
   IndentBlanklineChar = { fg = a.sel, nocombine = true },
   IndentBlanklineSpaceChar = 'IndentBlanklineChar',
   IndentBlanklineSpaceCharBlankline = 'IndentBlanklineChar',
-}
-
-for name, attrs in pairs(highlight_groups) do
+} do
   if type(attrs) == 'table' then
     vim.api.nvim_set_hl(0, name, attrs)
-  elseif type(attrs) == 'string' then
+  else
     vim.api.nvim_set_hl(0, name, { link = attrs })
   end
 end

@@ -31,7 +31,7 @@ for name, attrs in pairs {
   -- lCursor = {},
   -- CursorIM = {},
   -- TermCursor = {},
-  -- TermCursorNC = {},
+  TermCursorNC = { bg = a.sel },
 
   ColorColumn = { bg = a.float },
   CursorColumn = 'ColorColumn',

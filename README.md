@@ -18,7 +18,7 @@
 
 ## Requirements
 * Neovim ≥ 0.8
-* [`termguicolors`](https://neovim.io/doc/user/options.html#'termguicolors') enabled
+* `termguicolors` enabled
 * A terminal emulator or GUI with true color and font variants support (italics, bold, etc).
 
 
@@ -45,7 +45,8 @@ Additionally, [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitt
 can be used to install tree-sitter parsers.
 
 ## Usage
-Enable `termguicolors` and load the `colorscheme`.
+Enable [`termguicolors`](https://neovim.io/doc/user/options.html#'termguicolors')
+and load the [`colorscheme`](https://neovim.io/doc/user/syntax.html#%3Acolorscheme).
 
 In your `init.lua`:
 ```lua
@@ -59,8 +60,8 @@ set termguicolors
 colorscheme melange
 ```
 
-To enable the light variant, set the `background` (or let your terminal do it for you)
-before setting the colorscheme.
+To enable the light variant, set the [`background`](https://neovim.io/doc/user/options.html#'background')
+(or let your terminal do it for you) before setting the colorscheme.
 
 
 ## Design
@@ -73,4 +74,4 @@ and it's been inspired by many colorschemes, in particular Ayu and Gruvbox.
 <img width="1326" alt="melange dark screenshot" src="https://user-images.githubusercontent.com/30883030/212500086-a6709213-c82a-4eca-8f3f-67fdc5c26f23.png">
 <img width="1326" alt="melange light screenshot" src="https://user-images.githubusercontent.com/30883030/212500082-b67699c7-09dd-42f5-ac7e-ee71ca41c5c6.png">
 
-(The font in the screenshots is [IBM/plex](https://github.com/IBM/plex) Mono.)
+<!-- The font in the screenshots is [IBM Plex Mono](https://github.com/IBM/plex) -->

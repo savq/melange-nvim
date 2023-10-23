@@ -326,12 +326,12 @@ for name, attrs in pairs {
   SignifySignChange = 'GitSignsChange',
   SignifySignDelete = 'GitSignsDelete',
 
-  ---- :h indent-blankline-highlights (external plugin) ------
-  IndentBlanklineChar = { fg = a.sel, nocombine = true },
-  IndentBlanklineSpaceChar = 'IndentBlanklineChar',
-  IndentBlanklineSpaceCharBlankline = 'IndentBlanklineChar',
+  ---- :h ibl.highlights (external plugin) -------------------
   IblIndent = { fg = a.sel, nocombine = true },
   IblWhitespace = 'IblIndent',
+  IndentBlanklineChar = 'IblIndent', -- Deprecated?
+  IndentBlanklineSpaceChar = 'IndentBlanklineChar',
+  IndentBlanklineSpaceCharBlankline = 'IndentBlanklineChar',
 } do
   if type(attrs) == 'table' then
     vim.api.nvim_set_hl(0, name, attrs)

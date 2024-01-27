@@ -17,7 +17,7 @@
 
 
 ## Requirements
-* Neovim ≥ 0.8
+* Neovim ≥ 0.9.2
 * `termguicolors` enabled
 * A terminal emulator or GUI with true color and font variants support (italics, bold, etc).
 
@@ -28,11 +28,6 @@ You can install Melange with any (Neo)Vim plugin manager.
 [Paq](https://github.com/savq/paq-nvim):
 ```lua
 "savq/melange-nvim";
-```
-
-[Packer](https://github.com/wbthomason/packer.nvim):
-```lua
-use "savq/melange-nvim"
 ```
 
 [Lazy](https://github.com/folke/lazy.nvim):

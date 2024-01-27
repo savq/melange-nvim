@@ -37,6 +37,7 @@ for name, attrs in pairs {
   CursorColumn = 'ColorColumn',
   CursorLine = 'ColorColumn',
   VertSplit = { fg = a.ui },
+  WinSeparator = { fg = a.ui },
 
   LineNr = { fg = a.ui },
   CursorLineNr = { fg = c.yellow },

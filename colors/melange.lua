@@ -191,14 +191,14 @@ for name, attrs in pairs {
   -- ['@variable.parameter'] = {},
   -- ['@variable.member'] = {},
 
-  ['@type'] = 'Identifier',
+  -- ['@type'] = {},
   -- ['@type.builtin'] = {},
   -- ['@type.definition'] = {},
   ['@type.qualifier'] = 'Statement',
   -- ['@attribute'] = {},
   -- ['@property'] = {},
 
-  ['@function'] = 'Identifier',
+  -- ['@function'] = {},
   -- ['@function.builtin'] = {},
   -- ['@function.macro'] = {},
   -- ['@function.method'] = {},

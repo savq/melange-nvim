@@ -14,11 +14,11 @@ local d = palette.d -- Background colors
 
 local enable_font_variants = vim.g.melange_enable_font_variants == nil or vim.g.melange_enable_font_variants
 
-local bold = enable_font_variants
-local italic = enable_font_variants
-local underline = enable_font_variants
-local undercurl = enable_font_variants
-local strikethrough = enable_font_variants
+local bold = enable_font_variants and (vim.g.melange_enable_bold == nil or vim.g.melange_enable_bold)
+local italic = enable_font_variants and (vim.g.melange_enable_italic == nil or vim.g.melange_enable_italic)
+local underline = enable_font_variants and (vim.g.melange_enable_underline == nil or vim.g.melange_enable_underline)
+local undercurl = enable_font_variants and (vim.g.melange_enable_undercurl == nil or vim.g.melange_enable_undercurl)
+local strikethrough = enable_font_variants and (vim.g.melange_enable_strikethrough == nil or vim.g.melange_enable_strikethrough)
 
 for name, attrs in pairs {
   ---- :help highlight-default -------------------------------

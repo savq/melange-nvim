@@ -12,13 +12,29 @@ local b = palette.b -- Bright foreground colors
 local c = palette.c -- Foreground colors
 local d = palette.d -- Background colors
 
-local enable_font_variants = vim.g.melange_enable_font_variants == nil or vim.g.melange_enable_font_variants
-
-local bold = enable_font_variants and (vim.g.melange_enable_bold == nil or vim.g.melange_enable_bold)
-local italic = enable_font_variants and (vim.g.melange_enable_italic == nil or vim.g.melange_enable_italic)
-local underline = enable_font_variants and (vim.g.melange_enable_underline == nil or vim.g.melange_enable_underline)
-local undercurl = enable_font_variants and (vim.g.melange_enable_undercurl == nil or vim.g.melange_enable_undercurl)
-local strikethrough = enable_font_variants and (vim.g.melange_enable_strikethrough == nil or vim.g.melange_enable_strikethrough)
+local fv
+if vim.g.melange_enable_font_variants == true or
+   vim.g.melange_enable_font_variants == nil
+then
+  fv = {
+    bold = true,
+    italic = true,
+    underline = true,
+    undercurl = true,
+    strikethrough = true,
+  }
+elseif vim.g.melange_enable_font_variants == false
+then
+  fv = {
+    bold = false,
+    italic = false,
+    underline = false,
+    undercurl = false,
+    strikethrough = false,
+  }
+else
+  fv = vim.g.melange_enable_font_variants
+end
 
 for name, attrs in pairs {
   ---- :help highlight-default -------------------------------
@@ -57,11 +73,11 @@ for name, attrs in pairs {
 
   TabLine = 'StatusLineNC',
   TabLineFill = 'StatusLine',
-  TabLineSel = { bg = a.float, bold = bold },
+  TabLineSel = { bg = a.float, bold = fv.bold },
 
-  MatchParen = { fg = b.yellow, bg = a.sel, bold = bold },
-  Search = { fg = a.bg, bg = d.yellow, bold = bold },
-  Substitute = { bg = d.red, bold = bold },
+  MatchParen = { fg = b.yellow, bg = a.sel, bold = fv.bold },
+  Search = { fg = a.bg, bg = d.yellow, bold = fv.bold },
+  Substitute = { bg = d.red, bold = fv.bold },
   -- QuickFixLine = {},
   -- IncSearch = {},
   Visual = { bg = a.sel },
@@ -79,7 +95,7 @@ for name, attrs in pairs {
   ModeMsg = { fg = a.com },
   -- MsgArea = {},
   -- MsgSeparator = {},
-  MoreMsg = { fg = c.green, bold = bold },
+  MoreMsg = { fg = c.green, bold = fv.bold },
   WarningMsg = { fg = c.red },
   Question = 'MoreMsg',
 
@@ -95,18 +111,18 @@ for name, attrs in pairs {
 
   ---- :help spell -------------------------------------------
 
-  SpellBad = { fg = c.red, undercurl = undercurl },
-  SpellCap = { fg = c.blue, undercurl = undercurl },
-  SpellLocal = { fg = c.yellow, undercurl = undercurl },
-  SpellRare = { fg = b.yellow, undercurl = undercurl },
+  SpellBad = { fg = c.red, undercurl = fv.undercurl },
+  SpellCap = { fg = c.blue, undercurl = fv.undercurl },
+  SpellLocal = { fg = c.yellow, undercurl = fv.undercurl },
+  SpellRare = { fg = b.yellow, undercurl = fv.undercurl },
 
   ---- :help group-name --------------------------------------
 
-  Comment = { fg = a.com, italic = italic },
+  Comment = { fg = a.com, italic = fv.italic },
   Identifier = { fg = a.fg },
   Function = { fg = b.yellow },
   Constant = { fg = c.magenta },
-  String = { fg = b.blue, italic = italic },
+  String = { fg = b.blue, italic = fv.italic },
   Character = { fg = c.blue },
   Number = { fg = b.magenta },
   Boolean = 'Number',
@@ -138,13 +154,13 @@ for name, attrs in pairs {
   -- SpecialComment = {},
   -- Debug = {},
 
-  Underlined = { underline = underline },
-  Bold = { bold = bold },
-  Italic = { italic = italic },
+  Underlined = { underline = fv.underline },
+  Bold = { bold = fv.bold },
+  Italic = { italic = fv.italic },
 
   Ignore = { fg = a.ui },
   Error = { bg = d.red },
-  Todo = { fg = a.com, bold = bold },
+  Todo = { fg = a.com, bold = fv.bold },
 
   ---- :help nvim-treesitter-highlights (external plugin) ----
 
@@ -159,7 +175,7 @@ for name, attrs in pairs {
   ['@string.escape'] = { fg = c.blue },
   ['@string.regexp'] = { fg = b.blue },
   ['@string.special'] = { fg = b.cyan },
-  ['@string.special.symbol'] = { fg = a.fg, italic = italic },
+  ['@string.special.symbol'] = { fg = a.fg, italic = fv.italic },
   ['@string.special.path'] = { fg = c.blue },
   ['@string.special.url'] = '@string.special.path',
 
@@ -217,14 +233,14 @@ for name, attrs in pairs {
 
   -- ['@markup'] = {},
   ['@markup.heading'] = 'Title',
-  ['@markup.italic'] = { italic = italic },
-  ['@markup.strong'] = { bold = bold },
-  ['@markup.strike'] = { strikethrough = strikethrough },
-  ['@markup.underline'] = { underline = underline },
+  ['@markup.italic'] = { italic = fv.italic },
+  ['@markup.strong'] = { bold = fv.bold },
+  ['@markup.strike'] = { strikethrough = fv.strikethrough },
+  ['@markup.underline'] = { underline = fv.underline },
   ['@markup.quote'] = 'Comment',
   -- ['@markup.math'] = {}, -- TODO
   -- ['@markup.environment'] = {},
-  ['@markup.link'] = { underline = underline },
+  ['@markup.link'] = { underline = fv.underline },
   -- ['@markup.link.label'] = {},
   ['@markup.link.url'] = '@string.special.url',
   ['@markup.raw'] = { fg = a.com },
@@ -248,11 +264,11 @@ for name, attrs in pairs {
   DiagnosticInfo = { fg = c.blue },
   DiagnosticHint = { fg = c.cyan },
   DiagnosticOk = { fg = c.green },
-  DiagnosticUnderlineError = { undercurl = undercurl, sp = c.red },
-  DiagnosticUnderlineWarn = { undercurl = undercurl, sp = b.yellow },
-  DiagnosticUnderlineInfo = { undercurl = undercurl, sp = c.blue },
-  DiagnosticUnderlineHint = { undercurl = undercurl, sp = c.cyan },
-  DiagnosticUnderlineOk = { undercurl = undercurl, sp = c.green },
+  DiagnosticUnderlineError = { undercurl = fv.undercurl, sp = c.red },
+  DiagnosticUnderlineWarn = { undercurl = fv.undercurl, sp = b.yellow },
+  DiagnosticUnderlineInfo = { undercurl = fv.undercurl, sp = c.blue },
+  DiagnosticUnderlineHint = { undercurl = fv.undercurl, sp = c.cyan },
+  DiagnosticUnderlineOk = { undercurl = fv.undercurl, sp = c.green },
   -- DiagnosticVirtualTextError = {},
   -- DiagnosticVirtualTextWarn = {},
   -- DiagnosticVirtualTextInfo = {},
@@ -270,7 +286,7 @@ for name, attrs in pairs {
   -- DiagnosticSignOk = {},
 
   DiagnosticDeprecated = { DiagnosticUnderlineError },
-  DiagnosticUnnecessary = { fg = a.com, undercurl = undercurl },
+  DiagnosticUnnecessary = { fg = a.com, undercurl = fv.undercurl },
 
   ---- :help lsp-highlight -----------------------------------
 
@@ -292,7 +308,7 @@ for name, attrs in pairs {
   ['@lsp.type.macro'] = 'Function',
   -- ['@lsp.type.method'] = 'Function',
   ['@lsp.type.namespace'] = { fg = c.green },
-  ['@lsp.type.parameter'] = { fg = a.fg, bold = bold },
+  ['@lsp.type.parameter'] = { fg = a.fg, bold = fv.bold },
   -- ['@lsp.type.property'] = 'Identifier',
   -- ['@lsp.type.struct'] = 'Structure',
   -- ['@lsp.type.type'] = 'Type',
@@ -304,7 +320,7 @@ for name, attrs in pairs {
   texOptSep = '@punctuation.delimiter',
   texOptEqual = 'Operator',
   texFileArg = 'Constant',
-  texTitleArg = { bold = bold },
+  texTitleArg = { bold = fv.bold },
   texRefArg = 'Constant',
 
   texMathCmd = 'Function',

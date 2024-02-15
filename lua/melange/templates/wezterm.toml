@@ -1,0 +1,28 @@
+[colors]
+foreground    = "$fg"
+background    = "$bg"
+cursor_bg     = "$fg"
+cursor_border = "$fg"
+cursor_fg     = "$bg"
+selection_bg  = "$dark_white"
+selection_fg  = "$fg"
+ansi = [
+  "$black",
+  "$red",
+  "$green",
+  "$yellow",
+  "$blue",
+  "$magenta",
+  "$cyan",
+  "$white"
+]
+brights = [
+  "$bright_black",
+  "$bright_red",
+  "$bright_green",
+  "$bright_yellow",
+  "$bright_blue",
+  "$bright_magenta",
+  "$bright_cyan",
+  "$bright_white"
+]

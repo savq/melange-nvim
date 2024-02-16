@@ -216,7 +216,7 @@ for name, attrs in pairs {
 
   -- ['@function'] = {},
   -- ['@function.builtin'] = {},
-  -- ['@function.macro'] = {},
+  ['@function.macro'] = 'Function',
   -- ['@function.method'] = {},
   -- ['@constructor'] = {},
 

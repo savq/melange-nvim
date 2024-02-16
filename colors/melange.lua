@@ -233,10 +233,15 @@ for name, attrs in pairs {
 
   -- ['@markup'] = {},
   ['@markup.heading'] = 'Title',
+  ['@markup.heading.2'] = { fg = b.yellow },
+  ['@markup.heading.3'] = { fg = b.green },
+  ['@markup.heading.4'] = { fg = b.cyan },
+
   ['@markup.italic'] = { italic = fv.italic },
   ['@markup.strong'] = { bold = fv.bold },
   ['@markup.strike'] = { strikethrough = fv.strikethrough },
   ['@markup.underline'] = { underline = fv.underline },
+
   ['@markup.quote'] = 'Comment',
   -- ['@markup.math'] = {}, -- TODO
   -- ['@markup.environment'] = {},

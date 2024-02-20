@@ -108,7 +108,7 @@ $bg
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-$fg
+$dark_black
 	</dict>
 	<key>Cursor Guide Color</key>
 	<dict>
@@ -138,13 +138,19 @@ $fg
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-$fg
+$dark_white
 	</dict>
 	<key>Selection Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-$bg
+$fg
+  </dict>
+	<key>Link Color</key>
+	<dict>
+		<key>Alpha Component</key>
+		<real>1</real>
+$blue
 	</dict>
 </dict>
 </plist>

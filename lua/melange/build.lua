@@ -72,18 +72,21 @@ local function iterm_color(color)
     tonumber(string.sub(color, 4, 5), 16),
     tonumber(string.sub(color, 6, 7), 16),
   }
+
   local rgb_table = {
     red = tbl[1] / 255,
     green = tbl[2] / 255,
     blue = tbl[3] / 255,
   }
   local rgb_template = [[
-    <key>Red Component</key>
-    <real>$red</real>
     <key>Blue Component</key>
-    <real>$green</real>
+    <real>$blue</real>
+  	<key>Color Space</key>
+		<string>sRGB</string>
     <key>Green Component</key>
-    <real>$blue</real>]]
+    <real>$green</real>
+    <key>Red Component</key>
+    <real>$red</real>]]
   return interpolate(rgb_template, rgb_table)
 end
 

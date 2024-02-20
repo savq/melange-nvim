@@ -6,194 +6,145 @@
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $black
 	</dict>
 	<key>Ansi 1 Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $red
 	</dict>
 	<key>Ansi 10 Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $bright_green
 	</dict>
 	<key>Ansi 11 Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $bright_yellow
 	</dict>
 	<key>Ansi 12 Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $bright_blue
 	</dict>
 	<key>Ansi 13 Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $bright_magenta
 	</dict>
 	<key>Ansi 14 Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $bright_cyan
 	</dict>
 	<key>Ansi 15 Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $bright_white
 	</dict>
 	<key>Ansi 2 Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $green
 	</dict>
 	<key>Ansi 3 Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $yellow
 	</dict>
 	<key>Ansi 4 Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $blue
 	</dict>
 	<key>Ansi 5 Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $magenta
 	</dict>
 	<key>Ansi 6 Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Blue Component</key>
-		<string>sRGB</string>
 $cyan
 	</dict>
 	<key>Ansi 7 Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $white
 	</dict>
 	<key>Ansi 8 Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $bright_black
 	</dict>
 	<key>Ansi 9 Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $bright_red
   </dict>
 	<key>Background Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $bg
 	</dict>
 	<key>Bold Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $fg
 	</dict>
 	<key>Cursor Guide Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $fg
 	</dict>
 	<key>Cursor Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $fg
 	</dict>
 	<key>Cursor Text Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $bg
   </dict>
 	<key>Foreground Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $fg
 	</dict>
 	<key>Selected Text Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $fg
 	</dict>
 	<key>Selection Color</key>
 	<dict>
 		<key>Alpha Component</key>
 		<real>1</real>
-		<key>Color Space</key>
-		<string>sRGB</string>
 $bg
 	</dict>
 </dict>
 </plist>
-

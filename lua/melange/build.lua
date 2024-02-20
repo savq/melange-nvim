@@ -67,18 +67,13 @@ local function get_palette(variant)
 end
 
 local function iterm_color(color)
-  local tbl = {
-    tonumber(string.sub(color, 2, 3), 16),
-    tonumber(string.sub(color, 4, 5), 16),
-    tonumber(string.sub(color, 6, 7), 16),
+  local srgb_table = {
+    red = tonumber(string.sub(color, 2, 3), 16) / 255,
+    green = tonumber(string.sub(color, 4, 5), 16) / 255,
+    blue = tonumber(string.sub(color, 6, 7), 16) / 255,
   }
 
-  local rgb_table = {
-    red = tbl[1] / 255,
-    green = tbl[2] / 255,
-    blue = tbl[3] / 255,
-  }
-  local rgb_template = [[
+  local srgb_template = [[
     <key>Blue Component</key>
     <real>$blue</real>
   	<key>Color Space</key>
@@ -87,18 +82,19 @@ local function iterm_color(color)
     <real>$green</real>
     <key>Red Component</key>
     <real>$red</real>]]
-  return interpolate(rgb_template, rgb_table)
+
+  return interpolate(srgb_template, srgb_table)
 end
 
 local function build(terminals)
   for _, variant in ipairs { 'dark', 'light' } do
-    local palette = get_palette(variant)
-
     -- check if term folder exists. If not create
     local term_dir = get_plugin_dir() .. '/term/'
     if not uv.fs_stat(term_dir) then
       mkdir(term_dir)
     end
+
+    local palette = get_palette(variant)
 
     for term, attrs in pairs(terminals) do
       local dir = get_plugin_dir() .. '/term/' .. term
@@ -108,18 +104,17 @@ local function build(terminals)
 
       local fmt
       if term == 'iterm' then
-        local iterm_pallete = {}
+        local iterm_palette = {}
         for k, v in pairs(palette) do
-          iterm_pallete[k] = iterm_color(v)
+          iterm_palette[k] = iterm_color(v)
         end
-        fmt = interpolate(attrs.template, iterm_pallete)
+        fmt = interpolate(attrs.template, iterm_palette)
+      elseif term == 'foot' then
+        fmt = interpolate(attrs.template, palette):gsub('#', '')
       else
         fmt = interpolate(attrs.template, palette)
       end
 
-      if term == 'foot' then
-        fmt = fmt:gsub('#', '')
-      end
       fwrite(fmt, string.format('%s/melange_%s%s', dir, variant, attrs.ext))
     end
 

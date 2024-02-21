@@ -14,6 +14,7 @@
   - [Kitty](https://github.com/kovidgoyal/kitty)
   - [Terminator](https://github.com/gnome-terminator/terminator)
   - [Wezterm](https://github.com/wez/wezterm)
+  - [Iterm](https://github.com/gnachman/iTerm2)
 
 
 ## Requirements

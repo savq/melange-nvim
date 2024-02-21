@@ -67,23 +67,20 @@ local function get_palette(variant)
 end
 
 local function iterm_color(color)
-  local srgb_table = {
+  local rgb_table = {
     red = tonumber(string.sub(color, 2, 3), 16) / 255,
     green = tonumber(string.sub(color, 4, 5), 16) / 255,
     blue = tonumber(string.sub(color, 6, 7), 16) / 255,
   }
 
-  local srgb_template = [[
-    <key>Blue Component</key>
-    <real>$blue</real>
-  	<key>Color Space</key>
-		<string>sRGB</string>
+  local rgb_template = [[
+    <key>Red Component</key>
+    <real>$red</real>
     <key>Green Component</key>
     <real>$green</real>
-    <key>Red Component</key>
-    <real>$red</real>]]
-
-  return interpolate(srgb_template, srgb_table)
+    <key>Blue Component</key>
+    <real>$blue</real>]]
+  return interpolate(rgb_template, rgb_table)
 end
 
 local function build(terminals)

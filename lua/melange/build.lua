@@ -58,6 +58,69 @@ local function get_palette(variant)
   }
 end
 
+-- Convert a hex string into a table with r, g, b values in range [0, 1]
+local function hex2rgb(color)
+  local x = tonumber(string.sub(color, 2), 16)
+  return {
+    r = bit.band(x, 0xFF0000) / 0xFF0000,
+    g = bit.band(x, 0x00FF00) / 0x00FF00,
+    b = bit.band(x, 0x0000FF) / 0x0000FF,
+  }
+end
+
+local function generate_iterm2(palette)
+  local template = {
+    [[
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>]],
+  }
+  for _, name_color in pairs {
+    { 'Background Color', palette.bg },
+    { 'Foreground Color', palette.fg },
+    { 'Cursor Color', palette.fg },
+    { 'Cursor Text Color', palette.bg },
+    { 'Bold Color', palette.dark_black },
+    { 'Selected Text Color', palette.dark_white },
+    { 'Selection Color', palette.fg },
+    { 'Ansi 0 Color', palette.black },
+    { 'Ansi 1 Color', palette.red },
+    { 'Ansi 2 Color', palette.green },
+    { 'Ansi 3 Color', palette.yellow },
+    { 'Ansi 4 Color', palette.blue },
+    { 'Ansi 5 Color', palette.magenta },
+    { 'Ansi 6 Color', palette.cyan },
+    { 'Ansi 7 Color', palette.white },
+    { 'Ansi 8 Color', palette.bright_black },
+    { 'Ansi 9 Color', palette.bright_red },
+    { 'Ansi 10 Color', palette.bright_green },
+    { 'Ansi 11 Color', palette.bright_yellow },
+    { 'Ansi 12 Color', palette.bright_blue },
+    { 'Ansi 13 Color', palette.bright_magenta },
+    { 'Ansi 14 Color', palette.bright_cyan },
+    { 'Ansi 15 Color', palette.bright_white },
+  } do
+    local dict = interpolate(
+      [[
+	<dict>
+		<key>Color Space</key>
+		<string>sRGB</string>
+		<key>Red Component</key>
+		<real>$r</real>
+		<key>Green Component</key>
+		<real>$g</real>
+		<key>Blue Component</key>
+		<real>$b</real>
+	</dict>]],
+      hex2rgb(name_color[2])
+    )
+    table.insert(template, ('\t<key>%s</key>\n%s'):format(name_color[1], dict))
+  end
+  table.insert(template, '</dict>\n</plist>\n')
+  return table.concat(template, '\n')
+end
+
 local function build(terminals)
   for _, variant in ipairs { 'dark', 'light' } do
     local palette = get_palette(variant)
@@ -75,6 +138,7 @@ local function build(terminals)
       fwrite(fmt, string.format('%s/melange_%s%s', dir, variant, attrs.ext))
     end
 
+    fwrite(generate_iterm2(palette), string.format('%s/term/melange_%s.itermcolors', get_plugin_dir(), variant))
     fwrite(vim.json.encode(palette), get_plugin_dir() .. string.format('/melange_%s.json', variant))
   end
 end

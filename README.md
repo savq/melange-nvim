@@ -8,6 +8,7 @@
   - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
   - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
   - [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)
+  - [lightline.vim](https://github.com/itchyny/lightline.vim)
 - Support for various terminal emulators (see [`term/`](term/)):
   - [Alacritty](https://github.com/alacritty/alacritty)
   - [Foot](https://codeberg.org/dnkl/foot)

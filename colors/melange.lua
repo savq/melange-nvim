@@ -362,6 +362,35 @@ for name, attrs in pairs {
   IndentBlanklineChar = 'IblIndent', -- Deprecated?
   IndentBlanklineSpaceChar = 'IndentBlanklineChar',
   IndentBlanklineSpaceCharBlankline = 'IndentBlanklineChar',
+
+  ---- :h cmp-highlight (external plugin) -------------------
+  CmpItemAbbrMatch = { fg = b.yellow },
+  CmpItemAbbrMatchFuzzy = { fg = b.yellow },
+  CmpItemKindVariable = '@variable',
+  CmpItemKindValue = '@constant',
+  CmpItemKindUnit = '@constant',
+  CmpItemKindTypeParameter = '@type',
+  CmpItemKindText = '@text',
+  CmpItemKindStruct = '@type',
+  CmpItemKindSnippet = '@string.special',
+  CmpItemKindReference = '@type',
+  CmpItemKindProperty = '@property',
+  CmpItemKindOperator = '@operator',
+  CmpItemKindModule = '@namespace',
+  CmpItemKindMethod = '@method',
+  CmpItemKindKeyword = '@keyword',
+  CmpItemKindInterface = '@type',
+  CmpItemKindFunction = '@function',
+  CmpItemKindFolder = '@string.special.path',
+  CmpItemKindFile = '@string.special.path',
+  CmpItemKindField = '@field',
+  CmpItemKindEvent = '@type',
+  CmpItemKindEnumMember = '@field',
+  CmpItemKindEnum = '@type',
+  CmpItemKindConstructor = '@constructor',
+  CmpItemKindConstant = '@constant',
+  CmpItemKindColor = '@constant',
+  CmpItemKindClass = '@type',
 } do
   if type(attrs) == 'table' then
     vim.api.nvim_set_hl(0, name, attrs)

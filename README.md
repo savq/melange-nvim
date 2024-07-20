@@ -10,6 +10,7 @@
   - [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)
   - [lightline.vim](https://github.com/itchyny/lightline.vim)
   - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+  - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - Support for various terminal emulators (see [`term/`](term/)):
   - [Alacritty](https://github.com/alacritty/alacritty)
   - [Foot](https://codeberg.org/dnkl/foot)

@@ -364,8 +364,8 @@ for name, attrs in pairs {
   IndentBlanklineSpaceCharBlankline = 'IndentBlanklineChar',
 
   ---- :h cmp-highlight (external plugin) -------------------
-  CmpItemAbbrMatch = { fg = b.yellow },
-  CmpItemAbbrMatchFuzzy = { fg = b.yellow },
+  CmpItemAbbrMatch = { fg = b.yellow, bold = bold },
+  CmpItemAbbrMatchFuzzy = { fg = b.yellow, bold = bold },
   CmpItemKindVariable = '@variable',
   CmpItemKindValue = '@constant',
   CmpItemKindUnit = '@constant',

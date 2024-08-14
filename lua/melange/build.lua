@@ -145,7 +145,7 @@ end
 
 -- stylua: ignore
 local terminals = {
-  alacritty  = { ext = '.yml' },    -- https://github.com/alacritty/alacritty/blob/master/alacritty.yml
+  alacritty  = { ext = '.toml' },    -- https://github.com/alacritty/alacritty/blob/master/alacritty.yml
   foot       = { ext = '.ini' },    -- https://codeberg.org/dnkl/foot/src/branch/master/themes
   kitty      = { ext = '.conf' },   -- https://sw.kovidgoyal.net/kitty/conf/#the-color-table
   terminator = { ext = '.config' }, -- TODO: Find docs or remove support
@@ -153,28 +153,27 @@ local terminals = {
 }
 
 terminals.alacritty.template = [[
-colors:
-  primary:
-    foreground: '$fg'
-    background: '$bg'
-  normal:
-    black:   '$black'
-    red:     '$red'
-    green:   '$green'
-    yellow:  '$yellow'
-    blue:    '$blue'
-    magenta: '$magenta'
-    cyan:    '$cyan'
-    white:   '$white'
-  bright:
-    black:   '$bright_black'
-    red:     '$bright_red'
-    green:   '$bright_green'
-    yellow:  '$bright_yellow'
-    blue:    '$bright_blue'
-    magenta: '$bright_magenta'
-    cyan:    '$bright_cyan'
-    white:   '$bright_white'
+[colors.primary]
+foreground = "$fg"
+background = "$bg"
+[colors.normal]
+black = "$black"
+red = "$red"
+green = "$green"
+yellow = "$yellow"
+blue = "$blue"
+magenta = "$magenta"
+cyan = "$cyan"
+white = "$white"
+[colors.bright]
+black = "$bright_black"
+red = "$bright_red"
+green = "$bright_green"
+yellow = "$bright_yellow"
+blue = "$bright_blue"
+magenta = "$bright_magenta"
+cyan = "$bright_cyan"
+white = "$bright_white"
 ]]
 
 terminals.foot.template = [=[

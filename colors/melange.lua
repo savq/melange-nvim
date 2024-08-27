@@ -34,6 +34,8 @@ for name, attrs in pairs {
 
   Normal = { fg = a.fg, bg = a.bg },
   NormalFloat = { bg = a.float },
+  FloatTitle = { fg = c.yellow, bg = a.float },
+  FloatFooter = { fg = c.yellow, bg = a.float },
   -- NormalNC = {},
 
   -- Cursor = {},

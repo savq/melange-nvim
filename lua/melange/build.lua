@@ -121,6 +121,33 @@ local function generate_iterm2(palette)
   return table.concat(template, '\n')
 end
 
+local function generate_windows_terminal_theme(variant, palette)
+  local template = [=[
+{
+"name": "melange $variant",
+"tab": 
+{
+  "background": "$bg",
+  "unfocusedBackground": null
+},
+"tabRow": 
+{
+  "background": "$black",
+  "unfocusedBackground": "$black"
+},
+"window": 
+{
+  "applicationTheme": "$variant"
+}
+}
+  ]=]
+
+  -- Append "FF" to color replacements to account for alpha
+  return template:gsub("$variant", variant)
+    :gsub("$black", palette.black .. "FF")
+    :gsub("$bg", palette.bg .. "FF")
+end
+
 local function build(terminals)
   for _, variant in ipairs { 'dark', 'light' } do
     local palette = get_palette(variant)
@@ -131,11 +158,19 @@ local function build(terminals)
         mkdir(dir)
       end
 
-      local fmt = interpolate(attrs.template, palette)
-      if term == 'foot' then
-        fmt = fmt:gsub('#', '')
+      if term == 'windows_terminal' then
+        local template = attrs.colorscheme_template:gsub("$variant", variant)
+        local cs_fmt = interpolate(template, palette)
+        local tm_fmt = generate_windows_terminal_theme(variant, palette)
+        fwrite(cs_fmt, string.format('%s/melange_%s_colorscheme%s', dir, variant, attrs.ext))
+        fwrite(tm_fmt, string.format('%s/melange_%s_theme%s', dir, variant, attrs.ext))
+      else
+        local fmt = interpolate(attrs.template, palette)
+        if term == 'foot' then
+          fmt = fmt:gsub('#', '')
+        end
+        fwrite(fmt, string.format('%s/melange_%s%s', dir, variant, attrs.ext))
       end
-      fwrite(fmt, string.format('%s/melange_%s%s', dir, variant, attrs.ext))
     end
 
     fwrite(generate_iterm2(palette), string.format('%s/term/melange_%s.itermcolors', get_plugin_dir(), variant))
@@ -150,7 +185,35 @@ local terminals = {
   kitty      = { ext = '.conf' },   -- https://sw.kovidgoyal.net/kitty/conf/#the-color-table
   terminator = { ext = '.config' }, -- TODO: Find docs or remove support
   wezterm    = { ext = '.toml' },   -- https://wezfurlong.org/wezterm/config/appearance.html
+  windows_terminal = { ext = '.json' }, -- https://learn.microsoft.com/en-us/windows/terminal/customize-settings/color-schemes
+                                        -- https://learn.microsoft.com/en-us/windows/terminal/customize-settings/themes
 }
+
+terminals.windows_terminal.colorscheme_template = [=[
+{
+  "background": "$bg",
+  "black": "$black",
+  "blue": "$blue",
+  "brightBlack": "$bright_black",
+  "brightBlue": "$bright_blue",
+  "brightCyan": "$bright_cyan",
+  "brightGreen": "$bright_green",
+  "brightPurple": "$bright_magenta",
+  "brightRed": "$bright_red",
+  "brightWhite": "$bright_white",
+  "brightYellow": "$bright_yellow",
+  "cursorColor": "$fg",
+  "cyan": "$cyan",
+  "foreground": "$fg",
+  "green": "$green",
+  "name": "melange $variant",
+  "purple": "$magenta",
+  "red": "$red",
+  "selectionBackground": "$dark_white",
+  "white": "$white",
+  "yellow": "$yellow"
+}
+]=]
 
 terminals.alacritty.template = [[
 [colors.primary]

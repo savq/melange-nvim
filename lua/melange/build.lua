@@ -123,23 +123,23 @@ end
 
 local function generate_windows_terminal_theme(variant, palette)
   local template = [=[
-{
-"name": "melange $variant",
-"tab": 
-{
-  "background": "$bg",
-  "unfocusedBackground": null
-},
-"tabRow": 
-{
-  "background": "$black",
-  "unfocusedBackground": "$black"
-},
-"window": 
-{
-  "applicationTheme": "$variant"
-}
-}
+  {
+    "name": "melange $variant",
+    "tab": 
+    {
+      "background": "$bg",
+      "unfocusedBackground": null
+    },
+    "tabRow": 
+    {
+      "background": "$black",
+      "unfocusedBackground": "$black"
+    },
+    "window": 
+      {
+      "applicationTheme": "$variant"
+    }
+  }
   ]=]
 
   -- Append "FF" to color replacements to account for alpha

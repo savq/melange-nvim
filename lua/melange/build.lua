@@ -142,10 +142,11 @@ local function generate_windows_terminal_theme(variant, palette)
   }
   ]=]
 
-  -- Append "FF" to color replacements to account for alpha
-  return template:gsub("$variant", variant)
-    :gsub("$black", palette.black .. "FF")
-    :gsub("$bg", palette.bg .. "FF")
+  return interpolate(template, {
+    bg = palette.bg .. "FF"
+    black = palette.black .. "FF",
+    variant = variant,
+  })
 end
 
 local function build(terminals)

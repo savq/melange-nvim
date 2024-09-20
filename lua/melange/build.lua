@@ -143,7 +143,7 @@ local function generate_windows_terminal_theme(variant, palette)
   ]=]
 
   return interpolate(template, {
-    bg = palette.bg .. "FF"
+    bg = palette.bg .. "FF",
     black = palette.black .. "FF",
     variant = variant,
   })

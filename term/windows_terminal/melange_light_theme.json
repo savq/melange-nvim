@@ -1,0 +1,18 @@
+  {
+    "name": "melange light",
+    "tab": 
+    {
+      "background": "#F1F1F1FF",
+      "unfocusedBackground": null
+    },
+    "tabRow": 
+    {
+      "background": "#E9E1DBFF",
+      "unfocusedBackground": "#E9E1DBFF"
+    },
+    "window": 
+      {
+      "applicationTheme": "light"
+    }
+  }
+  

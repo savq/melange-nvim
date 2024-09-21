@@ -1,0 +1,23 @@
+{
+  "background": "#F1F1F1",
+  "black": "#E9E1DB",
+  "blue": "#7892BD",
+  "brightBlack": "#A98A78",
+  "brightBlue": "#465AA4",
+  "brightCyan": "#3D6568",
+  "brightGreen": "#3A684A",
+  "brightPurple": "#904180",
+  "brightRed": "#BF0021",
+  "brightWhite": "#54433A",
+  "brightYellow": "#A06D00",
+  "cursorColor": "#54433A",
+  "cyan": "#739797",
+  "foreground": "#54433A",
+  "green": "#6E9B72",
+  "name": "melange light",
+  "purple": "#BE79BB",
+  "red": "#C77B8B",
+  "selectionBackground": "#D9D3CE",
+  "white": "#7D6658",
+  "yellow": "#BC5C00"
+}

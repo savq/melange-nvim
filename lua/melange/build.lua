@@ -174,7 +174,7 @@ local function build(terminals)
       end
     end
 
-    fwrite(generate_iterm2(palette), string.format('%s/term/melange_%s.itermcolors', get_plugin_dir(), variant))
+    fwrite(generate_iterm2(palette), string.format('%s/term/iterm2/melange_%s.itermcolors', get_plugin_dir(), variant))
     fwrite(vim.json.encode(palette), get_plugin_dir() .. string.format('/melange_%s.json', variant))
   end
 end

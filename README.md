@@ -70,7 +70,5 @@ and it's been inspired by many colorschemes, in particular Ayu and Gruvbox.
 
 ## Previews
 
-<img width="1326" alt="melange dark screenshot" src="https://user-images.githubusercontent.com/30883030/212500086-a6709213-c82a-4eca-8f3f-67fdc5c26f23.png">
-<img width="1326" alt="melange light screenshot" src="https://user-images.githubusercontent.com/30883030/212500082-b67699c7-09dd-42f5-ac7e-ee71ca41c5c6.png">
-
-<!-- The font in the screenshots is [IBM Plex Mono](https://github.com/IBM/plex) -->
+<img width="1326" title="Melange Dark with IBM Plex Mono" alt="Screenshot of code listing using melange dark" src="https://user-images.githubusercontent.com/30883030/212500086-a6709213-c82a-4eca-8f3f-67fdc5c26f23.png">
+<img width="1326" title="Melange Light with IBM Plex Mono" alt="Screenshot of code listing using melange light" src="https://user-images.githubusercontent.com/30883030/212500082-b67699c7-09dd-42f5-ac7e-ee71ca41c5c6.png">

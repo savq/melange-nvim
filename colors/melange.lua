@@ -335,6 +335,7 @@ for name, attrs in pairs {
 
   --- neo-tree highlights  :help neo-tree-highlights ---
 
+  NeoTreeFloatBorder = 'Normal',
   NeoTreeNormal = 'NormalFloat',
   NeoTreeNormalNC = 'NeoTreeNormal',
   NeoTreeVertSplit = { bg = a.bg, fg = a.bg },

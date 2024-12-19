@@ -96,6 +96,8 @@ for name, attrs in pairs {
   WarningMsg = { fg = c.red },
   Question = 'MoreMsg',
 
+  ComplMatchIns = 'Comment',
+
   ---- :help :diff -------------------------------------------
 
   DiffAdd = { bg = d.green },

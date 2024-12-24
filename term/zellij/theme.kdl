@@ -1,0 +1,27 @@
+ melange-dark {
+    fg 236 225 215
+    bg 41 37 34
+    black 52 48 44
+    red 189 129 131
+    green 120 153 122
+    yellow 228 155 93
+    blue 127 145 178
+    magenta 179 128 176
+    cyan 123 150 149
+    white 193 167 142
+    orange 228 155 93
+  }
+
+ melange-light {
+    fg 84 67 58
+    bg 241 241 241
+    black 233 225 219
+    red 199 123 139
+    green 110 155 114
+    yellow 188 92 0
+    blue 120 146 189
+    magenta 190 121 187
+    cyan 115 151 151
+    white 125 102 88
+    orange 169 138 120
+  }

@@ -11,13 +11,14 @@
   - [lightline.vim](https://github.com/itchyny/lightline.vim)
   - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
   - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
-- Support for various terminal emulators (see [`term/`](term/)):
+- Support for various terminal emulators/multiplexers (see [`term/`](term/)):
   - [Alacritty](https://github.com/alacritty/alacritty)
   - [Foot](https://codeberg.org/dnkl/foot)
   - [Kitty](https://github.com/kovidgoyal/kitty)
   - [Terminator](https://github.com/gnome-terminator/terminator)
   - [Wezterm](https://github.com/wez/wezterm)
   - [iTerm2](https://github.com/gnachman/iTerm2)
+  - [Zellij](https://github.com/zellij-org/zellij)
 
 
 ## Requirements

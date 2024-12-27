@@ -64,6 +64,9 @@ for name, attrs in pairs {
   PmenuMatch = { fg = b.yellow, bold = bold, bg = a.float },
   PmenuMatchSel = { fg = b.yellow, bold = bold, bg = a.sel },
 
+  qfFileName = '@string.special.path',
+  QuickFixLine = 'PmenuMatch',
+
   StatusLine = 'NormalFloat',
   StatusLineNC = { fg = a.com, bg = a.float },
   WildMenu = 'NormalFloat',

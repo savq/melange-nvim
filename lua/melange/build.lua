@@ -181,8 +181,9 @@ end
 
 -- stylua: ignore
 local terminals = {
-  alacritty  = { ext = '.toml' },    -- https://github.com/alacritty/alacritty/blob/master/alacritty.yml
+  alacritty  = { ext = '.toml' },   -- https://github.com/alacritty/alacritty/blob/master/alacritty.yml
   foot       = { ext = '.ini' },    -- https://codeberg.org/dnkl/foot/src/branch/master/themes
+  ghostty    = { ext = '' },        -- https://ghostty.org/docs/features/theme
   kitty      = { ext = '.conf' },   -- https://sw.kovidgoyal.net/kitty/conf/#the-color-table
   terminator = { ext = '.config' }, -- TODO: Find docs or remove support
   wezterm    = { ext = '.toml' },   -- https://wezfurlong.org/wezterm/config/appearance.html
@@ -262,6 +263,30 @@ bright4    = $bright_blue
 bright5    = $bright_magenta
 bright6    = $bright_cyan
 bright7    = $bright_white
+]=]
+
+terminals.ghostty.template = [=[
+background = $bg
+foreground = $fg
+cursor-color = $fg
+selection-background = $dark_white
+selection-foreground = $fg
+palette = 0=$black
+palette = 1=$red
+palette = 2=$green
+palette = 3=$yellow
+palette = 4=$blue
+palette = 5=$magenta
+palette = 6=$cyan
+palette = 7=$white
+palette = 8=$bright_black
+palette = 9=$bright_red
+palette = 10=$bright_green
+palette = 11=$bright_yellow
+palette = 12=$bright_blue
+palette = 13=$bright_magenta
+palette = 14=$bright_cyan
+palette = 15=$bright_white
 ]=]
 
 terminals.kitty.template = [=[

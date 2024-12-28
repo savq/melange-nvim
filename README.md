@@ -14,6 +14,7 @@
 - Support for various terminal emulators (see [`term/`](term/)):
   - [Alacritty](https://github.com/alacritty/alacritty)
   - [Foot](https://codeberg.org/dnkl/foot)
+  - [Ghostty](https://ghostty.org/docs)
   - [Kitty](https://github.com/kovidgoyal/kitty)
   - [Terminator](https://github.com/gnome-terminator/terminator)
   - [Wezterm](https://github.com/wez/wezterm)

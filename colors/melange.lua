@@ -64,6 +64,9 @@ for name, attrs in pairs {
   PmenuMatch = { fg = b.yellow, bold = bold, bg = a.float },
   PmenuMatchSel = { fg = b.yellow, bold = bold, bg = a.sel },
 
+  qfFileName = '@string.special.path',
+  QuickFixLine = 'PmenuMatch',
+
   StatusLine = 'NormalFloat',
   StatusLineNC = { fg = a.com, bg = a.float },
   WildMenu = 'NormalFloat',
@@ -95,6 +98,8 @@ for name, attrs in pairs {
   MoreMsg = { fg = c.green, bold = bold },
   WarningMsg = { fg = c.red },
   Question = 'MoreMsg',
+
+  ComplMatchIns = 'Comment',
 
   ---- :help :diff -------------------------------------------
 
@@ -335,6 +340,7 @@ for name, attrs in pairs {
 
   --- neo-tree highlights  :help neo-tree-highlights ---
 
+  NeoTreeFloatBorder = 'Normal',
   NeoTreeNormal = 'NormalFloat',
   NeoTreeNormalNC = 'NeoTreeNormal',
   NeoTreeVertSplit = { bg = a.bg, fg = a.bg },

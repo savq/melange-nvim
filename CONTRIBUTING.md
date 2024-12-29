@@ -40,4 +40,3 @@ A highlight group is mapping from a name (like `String`) to a group of
 attributes (like `{fg = blue}`).
 The file [`colors/melange.lua`](colors/melange.lua) defines the list of
 highlight groups, and then applies them to set the appereance of Neovim.
-

@@ -143,8 +143,8 @@ local function generate_windows_terminal_theme(variant, palette)
   ]=]
 
   return interpolate(template, {
-    bg = palette.bg .. "FF",
-    black = palette.black .. "FF",
+    bg = palette.bg .. 'FF',
+    black = palette.black .. 'FF',
     variant = variant,
   })
 end
@@ -160,7 +160,7 @@ local function build(terminals)
       end
 
       if term == 'windows_terminal' then
-        local template = attrs.colorscheme_template:gsub("$variant", variant)
+        local template = attrs.colorscheme_template:gsub('$variant', variant)
         local cs_fmt = interpolate(template, palette)
         local tm_fmt = generate_windows_terminal_theme(variant, palette)
         fwrite(cs_fmt, string.format('%s/melange_%s_colorscheme%s', dir, variant, attrs.ext))
@@ -188,6 +188,7 @@ local terminals = {
   wezterm    = { ext = '.toml' },   -- https://wezfurlong.org/wezterm/config/appearance.html
   windows_terminal = { ext = '.json' }, -- https://learn.microsoft.com/en-us/windows/terminal/customize-settings/color-schemes
                                         -- https://learn.microsoft.com/en-us/windows/terminal/customize-settings/themes
+  zellij = { ext = '.kdl' },   -- https://github.com/zellij-org/zellij/blob/main/example/config.kdl
 }
 
 terminals.windows_terminal.colorscheme_template = [=[
@@ -331,6 +332,22 @@ brights = [
   "$bright_cyan",
   "$bright_white"
 ]
+]=]
+
+terminals.zellij.template = [=[
+{
+  fg $fg
+  bg $bg
+  black $black
+  white $white
+  red $red
+  green $green
+  yellow $yellow
+  blue $blue
+  magenta $magenta
+  cyan $cyan
+  orange $dark_yellow
+}
 ]=]
 
 return {

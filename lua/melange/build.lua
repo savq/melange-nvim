@@ -55,6 +55,7 @@ local function get_palette(variant)
     bright_magenta = colors.b.magenta,
     bright_cyan    = colors.b.cyan,
     bright_white   = colors.a.fg,
+    variant        = variant,
   }
 end
 
@@ -360,7 +361,7 @@ brights = [
 ]=]
 
 terminals.zellij.template = [=[
-{
+melange-$variant {
   fg $fg
   bg $bg
   black $black

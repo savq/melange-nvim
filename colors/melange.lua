@@ -58,6 +58,7 @@ for name, attrs in pairs {
   SignColumn = 'LineNr',
 
   Pmenu = 'NormalFloat',
+  PmenuKind = { fg = b.yellow },
   PmenuSel = { bg = a.sel },
   PmenuSbar = 'Pmenu',
   PmenuThumb = 'PmenuSel',

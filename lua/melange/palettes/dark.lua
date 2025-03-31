@@ -7,6 +7,7 @@ return {
     ui      = "#867462",
     com     = "#C1A78E",
     fg      = "#ECE1D7",
+    fg2     = "#EAC9A4",
   },
   b = {
     red     = "#D47766",

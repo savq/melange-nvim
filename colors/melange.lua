@@ -240,7 +240,7 @@ for name, attrs in pairs {
   ['@markup.underline'] = { underline = underline },
 
   ['@markup.quote'] = 'Comment',
-  -- ['@markup.math'] = {}, -- TODO
+  ['@markup.math'] = { fg = a.fg2 },
   -- ['@markup.environment'] = {},
   ['@markup.link'] = { underline = underline },
   -- ['@markup.link.label'] = {},
@@ -328,8 +328,8 @@ for name, attrs in pairs {
 
   texMathCmd = 'Function',
   texMathSymbol = 'Operator',
-  texMathZone = 'TSMath',
-  texMathDelimZone = 'TSPunctDelimiter',
+  texMathZone = '@markup.math',
+  texMathDelimZone = 'texCmd',
   texMathDelim = 'Delimiter',
   texMathEnvArgName = 'PreProc',
 

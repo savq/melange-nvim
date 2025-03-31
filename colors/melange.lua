@@ -338,6 +338,8 @@ for name, attrs in pairs {
   texMathDelim = 'Delimiter',
   texMathEnvArgName = 'PreProc',
 
+  texItemLabelConcealed = '@label',
+
   --- neo-tree highlights  :help neo-tree-highlights ---
 
   NeoTreeFloatBorder = 'Normal',

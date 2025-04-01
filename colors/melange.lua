@@ -395,6 +395,16 @@ for name, attrs in pairs {
   CmpItemKindConstant = '@constant',
   CmpItemKindColor = '@constant',
   CmpItemKindClass = '@type',
+
+  ---- :help rb-delimiters-colors (rainbow-delimiters.nvim) --
+
+  RainbowDelimiterRed = { fg = b.red },
+  RainbowDelimiterYellow = { fg = b.yellow },
+  RainbowDelimiterBlue = { fg = b.blue },
+  RainbowDelimiterOrange = { fg = c.yellow },
+  RainbowDelimiterGreen = { fg = b.green },
+  RainbowDelimiterViolet = { fg = c.magenta },
+  RainbowDelimiterCyan = { fg = b.cyan },
 } do
   if type(attrs) == 'table' then
     vim.api.nvim_set_hl(0, name, attrs)

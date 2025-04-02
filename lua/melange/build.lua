@@ -187,7 +187,7 @@ local terminals = {
   ghostty    = { ext = '' },        -- https://ghostty.org/docs/features/theme
   kitty      = { ext = '.conf' },   -- https://sw.kovidgoyal.net/kitty/conf/#the-color-table
   terminator = { ext = '.config' }, -- TODO: Find docs or remove support
-  wezterm    = { ext = '.toml' },   -- https://wezfurlong.org/wezterm/config/appearance.html
+  wezterm    = { ext = '.lua' },   -- https://wezfurlong.org/wezterm/config/appearance.html
   windows_terminal = { ext = '.json' }, -- https://learn.microsoft.com/en-us/windows/terminal/customize-settings/color-schemes
                                         -- https://learn.microsoft.com/en-us/windows/terminal/customize-settings/themes
   zellij = { ext = '.kdl' },   -- https://github.com/zellij-org/zellij/blob/main/example/config.kdl
@@ -330,15 +330,16 @@ terminals.terminator.template = [=[
 ]=]
 
 terminals.wezterm.template = [=[
-[colors]
-foreground    = "$fg"
-background    = "$bg"
-cursor_bg     = "$fg"
-cursor_border = "$fg"
-cursor_fg     = "$bg"
-selection_bg  = "$dark_white"
-selection_fg  = "$fg"
-ansi = [
+local config = {}
+config.colors = {
+foreground    = "$fg",
+background    = "$bg",
+cursor_bg     = "$fg",
+cursor_border = "$fg",
+cursor_fg     = "$bg",
+selection_bg  = "$dark_white",
+selection_fg  = "$fg",
+ansi = {
   "$black",
   "$red",
   "$green",
@@ -347,8 +348,8 @@ ansi = [
   "$magenta",
   "$cyan",
   "$white"
-]
-brights = [
+},
+brights = {
   "$bright_black",
   "$bright_red",
   "$bright_green",
@@ -357,7 +358,8 @@ brights = [
   "$bright_magenta",
   "$bright_cyan",
   "$bright_white"
-]
+}}
+return config
 ]=]
 
 terminals.zellij.template = [=[

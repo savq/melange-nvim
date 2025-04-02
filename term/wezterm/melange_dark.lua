@@ -1,4 +1,5 @@
-local melange_dark = {
+local config = {}
+config.colors = {
   foreground = '#ECE1D7',
   background = '#292522',
   cursor_bg = '#ECE1D7',
@@ -27,3 +28,4 @@ local melange_dark = {
     '#ECE1D7',
   },
 }
+return config

@@ -418,6 +418,7 @@ for name, attrs in pairs {
   -- MiniClueTitle = {},
 
   -- MiniCompletionActiveParameter = {},
+  -- MiniCompletionInfoBorderOutdated = {},
 
   -- MiniCursorword = {},
   -- MiniCursorwordCurrent = {},
@@ -438,7 +439,9 @@ for name, attrs in pairs {
   MiniDiffSignDelete = { fg = b.red },
   -- MiniDiffOverAdd = {},
   -- MiniDiffOverChange = {},
+  -- MiniDiffOverChangeBuf = {},
   -- MiniDiffOverContext = {},
+  -- MiniDiffOverContextBuf = {},
   -- MiniDiffOverDelete = {},
 
   -- MiniFilesBorder = {},
@@ -482,6 +485,7 @@ for name, attrs in pairs {
 
   -- MiniNotifyBorder = {},
   -- MiniNotifyNormal = {},
+  -- MiniNotifyLspProgress = {},
   -- MiniNotifyTitle = {},
 
   -- MiniOperatorsExchangeFrom = {},
@@ -489,6 +493,7 @@ for name, attrs in pairs {
   -- MiniPickBorder = {},
   -- MiniPickBorderBusy = {},
   -- MiniPickBorderText = {},
+  -- MiniPickCursor = {},
   MiniPickIconDirectory = { fg = b.cyan },
   -- MiniPickIconFile = {},
   -- MiniPickHeader = {},
@@ -499,6 +504,8 @@ for name, attrs in pairs {
   -- MiniPickPreviewLine = {},
   -- MiniPickPreviewRegion = {},
   MiniPickPrompt = { fg = b.yellow, bg = a.float },
+  -- MiniPickPromptCaret = {},
+  -- MiniPickPromptPrefix = {},
 
   -- MiniSnippetsCurrent = {},
   -- MiniSnippetsCurrentReplace = {},
@@ -536,6 +543,7 @@ for name, attrs in pairs {
   -- MiniTablineModifiedVisible = {},
   -- MiniTablineModifiedHidden = {},
   -- MiniTablineTabpagesection = {},
+  -- MiniTablineTrunc = {},
   MiniTablineFill = { link = 'TabLineFill' },
 
   -- MiniTestEmphasis = {},

@@ -11,6 +11,7 @@
   - [lightline.vim](https://github.com/itchyny/lightline.vim)
   - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
   - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+  - [rainbow-delimiters.nvim](https://github.com/hiphish/rainbow-delimiters.nvim)
 - Support for various terminal emulators (see [`term/`](term/)):
   - [Alacritty](https://github.com/alacritty/alacritty)
   - [Foot](https://codeberg.org/dnkl/foot)

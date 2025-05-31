@@ -175,14 +175,24 @@ for name, attrs in pairs {
   Error = { bg = d.red },
   Todo = { fg = a.com, bold = bold },
 
-  ---- :help nvim-treesitter-highlights (external plugin) ----
+  ---- :help treesitter-highlight-groups  --------------------
 
-  -- ['@boolean'] = {},
-  -- ['@number'] = {},
-  -- ['@number.float'] = {},
+  ['@variable'] = 'Identifier',
+  ['@variable.builtin'] = '@string.special.symbol',
+  -- ['@variable.parameter'] = {},
+  -- ['@variable.parameter.builtin'] = {},
+  -- ['@variable.member'] = {},
 
-  -- ['@character'] = {},
-  -- ['@character.special'] = {},
+  --- NOTE: Queries for these highlight groups are really hacky.
+  --- Inaccurate syntax highlighting is worse than no highlighting at all,
+  ['@constant'] = 'Identifier',
+  ['@constant.builtin'] = 'Constant',
+  ['@constant.macro'] = 'Constant',
+
+  ['@module'] = 'Identifier',
+  ['@module.builtin'] = '@module',
+  ['@label'] = { fg = b.cyan },
+
   -- ['@string'] = {},
   ['@string.documentation'] = { fg = b.blue, nocombine = true },
   ['@string.escape'] = { fg = c.blue },
@@ -192,46 +202,43 @@ for name, attrs in pairs {
   ['@string.special.path'] = { fg = c.blue },
   ['@string.special.url'] = '@string.special.path',
 
-  -- ['@keyword'] = {},
-  -- ['@keyword.conditional'] = {},
-  -- ['@keyword.conditional.ternary'] = {},
-  -- ['@keyword.coroutine'] = {},
-  -- ['@keyword.debug'] = {},
-  ['@keyword.directive'] = 'PreProc',
-  -- ['@keyword.directive.define'] = {},
-  -- ['@keyword.exception'] = {},
-  ['@keyword.function'] = 'PreProc',
-  ['@keyword.import'] = 'PreProc',
-  -- ['@keyword.operator'] = {},
-  -- ['@keyword.repeat'] = {},
-  -- ['@keyword.return'] = {},
-  -- ['@keyword.storage'] = {},
+  -- ['@character'] = {},
+  -- ['@character.special'] = {},
 
-  --- NOTE: Queries for these highlight groups are really hacky.
-  --- Inaccurate syntax highlighting is worse than no highlighting at all,
-  ['@constant'] = 'Identifier',
-  ['@constant.builtin'] = 'Constant',
-  ['@constant.macro'] = 'Constant',
-  ['@module'] = 'Identifier',
-  ['@module.builtin'] = '@module',
-  ['@label'] = { fg = b.cyan },
-  ['@variable'] = 'Identifier',
-  ['@variable.builtin'] = '@string.special.symbol',
-  -- ['@variable.parameter'] = {},
-  -- ['@variable.member'] = {},
+  -- ['@boolean'] = {},
+  -- ['@number'] = {},
+  -- ['@number.float'] = {},
 
   -- ['@type'] = {},
-  -- ['@type.builtin'] = {},
+  ['@type.builtin'] = '@type',
   -- ['@type.definition'] = {},
-  ['@type.qualifier'] = 'Statement',
+
   -- ['@attribute'] = {},
+  -- ['@attribute.builtin'] = {},
   -- ['@property'] = {},
 
   -- ['@function'] = {},
-  -- ['@function.builtin'] = {},
-  ['@function.macro'] = 'Function',
+  ['@function.builtin'] = '@function',
+  ['@function.macro'] = '@function',
   -- ['@function.method'] = {},
-  -- ['@constructor'] = {},
+  ['@constructor'] = '@function',
+  -- ['@operator'] = {},
+
+  -- ['@keyword'] = {},
+  -- ['@keyword.coroutine'] = {},
+  ['@keyword.function'] = 'PreProc',
+  -- ['@keyword.operator'] = {},
+  ['@keyword.import'] = 'PreProc',
+  -- ['@keyword.type'] = {},
+  -- ['@keyword.modifier'] = {},
+  -- ['@keyword.repeat'] = {},
+  -- ['@keyword.return'] = {},
+  -- ['@keyword.debug'] = {},
+  -- ['@keyword.exception'] = {},
+  -- ['@keyword.conditional'] = {},
+  -- ['@keyword.conditional.ternary'] = {},
+  ['@keyword.directive'] = 'PreProc',
+  -- ['@keyword.directive.define'] = {},
 
   -- ['@punctuation.bracket'] = {},
   ['@punctuation.delimiter'] = { fg = c.red },
@@ -244,25 +251,29 @@ for name, attrs in pairs {
   ['@comment.todo'] = 'Todo',
   ['@comment.warning'] = 'Todo',
 
-  -- ['@markup'] = {},
-  ['@markup.heading'] = 'Title',
-  ['@markup.heading.2'] = { fg = b.yellow },
-  ['@markup.heading.3'] = { fg = b.green },
-  ['@markup.heading.4'] = { fg = b.cyan },
-
   ['@markup.italic'] = { italic = italic },
   ['@markup.strong'] = { bold = bold },
   ['@markup.strikethrough'] = { strikethrough = strikethrough },
   ['@markup.underline'] = { underline = underline },
 
+  ['@markup.heading'] = 'Title',
+  -- ['@markup.heading.1'] = {},
+  ['@markup.heading.2'] = { fg = b.yellow },
+  ['@markup.heading.3'] = { fg = b.green },
+  ['@markup.heading.4'] = { fg = b.cyan },
+  -- ['@markup.heading.5'] = {},
+  -- ['@markup.heading.6'] = {},
+
   ['@markup.quote'] = 'Comment',
   -- ['@markup.math'] = {}, -- TODO
-  -- ['@markup.environment'] = {},
+
   ['@markup.link'] = { underline = underline },
   -- ['@markup.link.label'] = {},
   ['@markup.link.url'] = '@string.special.url',
+
   ['@markup.raw'] = { fg = a.com },
   -- ['@markup.raw.block'] = {},
+
   ['@markup.list'] = 'Delimiter',
   -- ['@markup.list.checked'] = {},
   -- ['@markup.list.unchecked'] = {},
@@ -272,6 +283,7 @@ for name, attrs in pairs {
   ['@diff.delta'] = 'DiffChange',
 
   -- ['@tag'] = {},
+  -- ['@tag.builtin'] = {},
   ['@tag.attribute'] = '@label',
   ['@tag.delimiter'] = 'Delimiter',
 

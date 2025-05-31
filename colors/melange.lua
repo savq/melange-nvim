@@ -338,6 +338,11 @@ for name, attrs in pairs {
   texMathDelim = 'Delimiter',
   texMathEnvArgName = 'PreProc',
 
+  --- markdown syntax highlights (builtin) ---
+
+  markdownCode = { link = 'String' },
+  markdownCodeBlock = { link = 'String' },
+
   --- neo-tree highlights  :help neo-tree-highlights ---
 
   NeoTreeFloatBorder = 'Normal',

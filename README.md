@@ -12,6 +12,7 @@
   - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
   - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
   - [mini.nvim](https://github.com/echasnovski/mini.nvim)
+  - [blink.cmp](https://github.com/Saghen/blink.cmp)
 - Support for various terminal emulators/multiplexers (see [`term/`](term/)):
   - [Alacritty](https://github.com/alacritty/alacritty)
   - [Foot](https://codeberg.org/dnkl/foot)

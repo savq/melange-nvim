@@ -34,6 +34,7 @@ for name, attrs in pairs {
 
   Normal = { fg = a.fg, bg = a.bg },
   NormalFloat = { bg = a.float },
+  -- FloatBorder = { },
   FloatTitle = { fg = c.yellow, bg = a.float },
   FloatFooter = { fg = c.yellow, bg = a.float },
   -- NormalNC = {},
@@ -42,16 +43,18 @@ for name, attrs in pairs {
   -- lCursor = {},
   -- CursorIM = {},
   -- TermCursor = {},
-  TermCursorNC = { bg = a.sel },
 
   ColorColumn = { bg = a.float },
   CursorColumn = 'ColorColumn',
   CursorLine = 'ColorColumn',
-  VertSplit = { fg = a.ui },
   WinSeparator = { fg = a.ui },
 
   LineNr = { fg = a.ui },
+  -- LineNrAbove = {},
+  -- LineNrBelow = {},
   CursorLineNr = { fg = c.yellow },
+  -- CursorLineFold = {},
+  -- CursorLineSign = {},
 
   Folded = { fg = a.com, bg = d.cyan },
   FoldColumn = 'LineNr',
@@ -59,27 +62,32 @@ for name, attrs in pairs {
 
   Pmenu = 'NormalFloat',
   PmenuSel = { bg = a.sel },
-  PmenuSbar = 'Pmenu',
+  -- PmenuKind = {},
+  -- PmenuKindSel = {},
+  -- PmenuExtra = {},
+  -- PmenuExtraSel = {},
+  -- PmenuSbar = {},
   PmenuThumb = 'PmenuSel',
   PmenuMatch = { fg = b.yellow, bold = bold, bg = a.float },
   PmenuMatchSel = { fg = b.yellow, bold = bold, bg = a.sel },
-
-  qfFileName = '@string.special.path',
-  QuickFixLine = 'PmenuMatch',
+  ComplMatchIns = 'Comment',
+  WildMenu = 'NormalFloat',
 
   StatusLine = 'NormalFloat',
   StatusLineNC = { fg = a.com, bg = a.float },
-  WildMenu = 'NormalFloat',
-
+  -- StatusLineTerm = {},
+  -- StatusLineTermNC = {},
   TabLine = 'StatusLineNC',
   TabLineFill = 'StatusLine',
   TabLineSel = { bg = a.float, bold = bold },
+  -- WinBar = {},
+  -- WinBarNC = {},
 
+  -- CurSearch = {},
+  -- IncSearch = {},
   MatchParen = { fg = b.yellow, bg = a.sel, bold = bold },
   Search = { fg = a.bg, bg = d.yellow, bold = bold },
   Substitute = { bg = d.red, bold = bold },
-  -- QuickFixLine = {},
-  -- IncSearch = {},
   Visual = { bg = a.sel },
   -- VisualNOS = {},
 
@@ -99,7 +107,10 @@ for name, attrs in pairs {
   WarningMsg = { fg = c.red },
   Question = 'MoreMsg',
 
-  ComplMatchIns = 'Comment',
+  QuickFixLine = 'PmenuMatch',
+  qfFileName = '@string.special.path',
+
+  -- SnippetTabstop = {},
 
   ---- :help :diff -------------------------------------------
 

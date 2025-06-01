@@ -338,6 +338,8 @@ for name, attrs in pairs {
   texMathDelim = 'Delimiter',
   texMathEnvArgName = 'PreProc',
 
+  texItemLabelConcealed = '@label',
+
   --- markdown syntax highlights (builtin) ---
 
   markdownCode = { link = 'String' },
@@ -453,6 +455,16 @@ for name, attrs in pairs {
   CmpItemKindConstant = '@constant',
   CmpItemKindColor = '@constant',
   CmpItemKindClass = '@type',
+
+  ---- :help rb-delimiters-colors (rainbow-delimiters.nvim) --
+
+  RainbowDelimiterRed = { fg = b.red },
+  RainbowDelimiterYellow = { fg = b.yellow },
+  RainbowDelimiterBlue = { fg = b.blue },
+  RainbowDelimiterOrange = { fg = c.yellow },
+  RainbowDelimiterGreen = { fg = b.green },
+  RainbowDelimiterViolet = { fg = c.magenta },
+  RainbowDelimiterCyan = { fg = b.cyan },
 
   --- mini.nvim highlights  :help mini.nvim ------------------
   --- Highlight groups from the contributing guide:

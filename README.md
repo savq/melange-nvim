@@ -11,6 +11,7 @@
   - [lightline.vim](https://github.com/itchyny/lightline.vim)
   - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
   - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+  - [rainbow-delimiters.nvim](https://github.com/hiphish/rainbow-delimiters.nvim)
   - [mini.nvim](https://github.com/echasnovski/mini.nvim)
   - [blink.cmp](https://github.com/Saghen/blink.cmp)
 - Support for various terminal emulators/multiplexers (see [`term/`](term/)):

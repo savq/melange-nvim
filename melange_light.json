@@ -24,5 +24,6 @@
   "magenta":"#BE79BB",
   "red":"#C77B8B",
   "white":"#7D6658",
-  "yellow":"#BC5C00"
+  "yellow":"#BC5C00",
+  "variant":"light"
 }

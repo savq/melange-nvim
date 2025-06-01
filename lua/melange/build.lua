@@ -55,6 +55,7 @@ local function get_palette(variant)
     bright_magenta = colors.b.magenta,
     bright_cyan    = colors.b.cyan,
     bright_white   = colors.a.fg,
+    variant        = variant,
   }
 end
 
@@ -143,8 +144,8 @@ local function generate_windows_terminal_theme(variant, palette)
   ]=]
 
   return interpolate(template, {
-    bg = palette.bg .. "FF",
-    black = palette.black .. "FF",
+    bg = palette.bg .. 'FF',
+    black = palette.black .. 'FF',
     variant = variant,
   })
 end
@@ -160,7 +161,7 @@ local function build(terminals)
       end
 
       if term == 'windows_terminal' then
-        local template = attrs.colorscheme_template:gsub("$variant", variant)
+        local template = attrs.colorscheme_template:gsub('$variant', variant)
         local cs_fmt = interpolate(template, palette)
         local tm_fmt = generate_windows_terminal_theme(variant, palette)
         fwrite(cs_fmt, string.format('%s/melange_%s_colorscheme%s', dir, variant, attrs.ext))
@@ -181,13 +182,15 @@ end
 
 -- stylua: ignore
 local terminals = {
-  alacritty  = { ext = '.toml' },    -- https://github.com/alacritty/alacritty/blob/master/alacritty.yml
+  alacritty  = { ext = '.toml' },   -- https://github.com/alacritty/alacritty/blob/master/alacritty.yml
   foot       = { ext = '.ini' },    -- https://codeberg.org/dnkl/foot/src/branch/master/themes
+  ghostty    = { ext = '' },        -- https://ghostty.org/docs/features/theme
   kitty      = { ext = '.conf' },   -- https://sw.kovidgoyal.net/kitty/conf/#the-color-table
   terminator = { ext = '.config' }, -- TODO: Find docs or remove support
   wezterm    = { ext = '.toml' },   -- https://wezfurlong.org/wezterm/config/appearance.html
   windows_terminal = { ext = '.json' }, -- https://learn.microsoft.com/en-us/windows/terminal/customize-settings/color-schemes
                                         -- https://learn.microsoft.com/en-us/windows/terminal/customize-settings/themes
+  zellij = { ext = '.kdl' },   -- https://github.com/zellij-org/zellij/blob/main/example/config.kdl
 }
 
 terminals.windows_terminal.colorscheme_template = [=[
@@ -264,6 +267,30 @@ bright6    = $bright_cyan
 bright7    = $bright_white
 ]=]
 
+terminals.ghostty.template = [=[
+background = $bg
+foreground = $fg
+cursor-color = $fg
+selection-background = $dark_white
+selection-foreground = $fg
+palette = 0=$black
+palette = 1=$red
+palette = 2=$green
+palette = 3=$yellow
+palette = 4=$blue
+palette = 5=$magenta
+palette = 6=$cyan
+palette = 7=$white
+palette = 8=$bright_black
+palette = 9=$bright_red
+palette = 10=$bright_green
+palette = 11=$bright_yellow
+palette = 12=$bright_blue
+palette = 13=$bright_magenta
+palette = 14=$bright_cyan
+palette = 15=$bright_white
+]=]
+
 terminals.kitty.template = [=[
 background $bg
 foreground $fg
@@ -331,6 +358,22 @@ brights = [
   "$bright_cyan",
   "$bright_white"
 ]
+]=]
+
+terminals.zellij.template = [=[
+melange-$variant {
+  fg $fg
+  bg $bg
+  black $black
+  white $white
+  red $red
+  green $green
+  yellow $yellow
+  blue $blue
+  magenta $magenta
+  cyan $cyan
+  orange $dark_yellow
+}
 ]=]
 
 return {

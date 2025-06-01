@@ -315,36 +315,45 @@ for name, attrs in pairs {
   -- DiagnosticSignHint = {},
   -- DiagnosticSignOk = {},
 
-  DiagnosticDeprecated = { DiagnosticUnderlineError },
+  DiagnosticDeprecated = 'DiagnosticUnderlineError',
   DiagnosticUnnecessary = { undercurl = undercurl, sp = a.com },
 
   ---- :help lsp-highlight -----------------------------------
 
+  --- TODO: Check
   -- LspReferenceText = 'Visual',
-  -- LspReferenceRead = 'Visual',
-  -- LspReferenceWrite = 'Visual',
-
-  -- TODO: lsp-highlight-codelens
+  -- LspReferenceRead = {},
+  -- LspReferenceWrite = {},
+  -- LspReferenceTarget = {},
+  -- LspInlayHint = {},
+  -- LspCodeLens = {},
+  -- LspCodeLensSeparator = {},
+  -- LspSignatureActiveParameter = {},
 
   ---- :help lsp-semantic-highlight --------------------------
 
-  ['@lsp.mod.GlobalScope'] = { italic = italic },
-  -- ['@lsp.type.class'] = 'Structure',
-  -- ['@lsp.type.comment'] = 'Comment',
-  -- ['@lsp.type.decorator'] = 'Function',
-  -- ['@lsp.type.enum'] = 'Structure',
-  -- ['@lsp.type.enumMember'] = 'Constant',
-  -- ['@lsp.type.function'] = 'Function',
-  -- ['@lsp.type.interface'] = 'Structure',
+  -- ['@lsp.type.class'] = {},
+  -- ['@lsp.type.comment'] = {},
+  -- ['@lsp.type.decorator'] = {},
+  -- ['@lsp.type.enum'] = {},
+  ['@lsp.type.enumMember'] = 'Constant',
+  -- ['@lsp.type.function'] = {},
+  -- ['@lsp.type.interface'] = {},
   ['@lsp.type.macro'] = {},
-  -- ['@lsp.type.method'] = 'Function',
+  -- ['@lsp.type.method'] = {},
   ['@lsp.type.namespace'] = { fg = c.green },
+  -- ['@lsp.type.number'] = {},
+  -- ['@lsp.type.operator'] = {},
   ['@lsp.type.parameter'] = { fg = a.fg, bold = bold },
-  -- ['@lsp.type.property'] = 'Identifier',
-  -- ['@lsp.type.struct'] = 'Structure',
-  -- ['@lsp.type.type'] = 'Type',
-  -- ['@lsp.type.typeParameter'] = 'TypeDef',
-  ['@lsp.type.variable'] = 'Identifier',
+  -- ['@lsp.type.property'] = {},
+  -- ['@lsp.type.struct'] = {},
+  -- ['@lsp.type.type'] = {},
+  -- ['@lsp.type.typeParameter'] = {},
+  -- ['@lsp.type.variable'] = {},
+
+  ['@lsp.typemod.comment.documentation'] = '@comment.documentation',
+  -- ['@lsp.typemod.variable.functionScope'] = {},
+  ['@lsp.typemod.variable.globalScope'] = { italic = italic },
 
   ---- :help vimtex-syntax-reference (external plugin) -------
 

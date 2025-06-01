@@ -98,7 +98,7 @@ for name, attrs in pairs {
   SpecialKey = 'Whitespace',
 
   Directory = { fg = c.green },
-  Title = { fg = c.yellow },
+  Title = { fg = c.yellow, bold = bold },
   ErrorMsg = { bg = d.red },
   ModeMsg = { fg = a.com },
   -- MsgArea = {},
@@ -258,21 +258,21 @@ for name, attrs in pairs {
 
   ['@markup.heading'] = 'Title',
   -- ['@markup.heading.1'] = {},
-  ['@markup.heading.2'] = { fg = b.yellow },
-  ['@markup.heading.3'] = { fg = b.green },
-  ['@markup.heading.4'] = { fg = b.cyan },
-  -- ['@markup.heading.5'] = {},
-  -- ['@markup.heading.6'] = {},
+  ['@markup.heading.2'] = { fg = b.yellow, bold = bold },
+  ['@markup.heading.3'] = { fg = b.green, bold = bold },
+  -- ['@markup.heading.4'] = '@markup.heading',
+  ['@markup.heading.5'] = '@markup.heading.2',
+  ['@markup.heading.6'] = '@markup.heading.3',
 
   ['@markup.quote'] = 'Comment',
-  -- ['@markup.math'] = {}, -- TODO
+  ['@markup.math'] = '@markup.raw',
 
   ['@markup.link'] = { underline = underline },
   -- ['@markup.link.label'] = {},
   ['@markup.link.url'] = '@string.special.url',
 
-  ['@markup.raw'] = { fg = a.com },
-  -- ['@markup.raw.block'] = {},
+  ['@markup.raw'] = '@string.special',
+  ['@markup.raw.block'] = { fg = a.com },
 
   ['@markup.list'] = 'Delimiter',
   -- ['@markup.list.checked'] = {},
@@ -363,27 +363,26 @@ for name, attrs in pairs {
   netrwExe = { fg = c.red },
   netrwSymLink = { fg = c.magenta },
 
-  ---- :help vimtex-syntax-reference (external plugin) -------
+  ---- Markdown ----------------------------------------------
+
+  markdownCode = '@markup.raw',
+  markdownCodeBlock = '@markup.raw.block',
+
+  ---- "lervag/vimtex" :h vimtex-syntax-reference ------------
 
   texOptSep = '@punctuation.delimiter',
   texOptEqual = 'Operator',
   texFileArg = 'Constant',
   texTitleArg = { bold = bold },
+  -- texEnvArgName = 'PreCondit',
   texRefArg = 'Constant',
-
+  texMathZone = '@markup.math',
+  texMathDelimZone = 'Statement',
+  texMathEnvArgName = 'texEnvArgName',
   texMathCmd = 'Function',
-  texMathSymbol = 'Operator',
-  texMathZone = 'TSMath',
-  texMathDelimZone = 'TSPunctDelimiter',
   texMathDelim = 'Delimiter',
-  texMathEnvArgName = 'PreProc',
-
+  texMathSymbol = 'Operator',
   texItemLabelConcealed = '@label',
-
-  --- markdown syntax highlights (builtin) ---
-
-  markdownCode = { link = 'String' },
-  markdownCodeBlock = { link = 'String' },
 
   --- neo-tree highlights  :help neo-tree-highlights ---
 

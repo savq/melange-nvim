@@ -97,7 +97,7 @@ for name, attrs in pairs {
   NonText = 'Whitespace',
   SpecialKey = 'Whitespace',
 
-  Directory = { fg = c.cyan },
+  Directory = { fg = c.green },
   Title = { fg = c.yellow },
   ErrorMsg = { bg = d.red },
   ModeMsg = { fg = a.com },
@@ -108,7 +108,7 @@ for name, attrs in pairs {
   Question = 'MoreMsg',
 
   QuickFixLine = 'PmenuMatch',
-  qfFileName = '@string.special.path',
+  qfFileName = 'Directory',
 
   -- SnippetTabstop = {},
 
@@ -199,8 +199,8 @@ for name, attrs in pairs {
   ['@string.regexp'] = { fg = b.blue },
   ['@string.special'] = { fg = b.cyan },
   ['@string.special.symbol'] = { fg = a.fg, italic = italic },
-  ['@string.special.path'] = { fg = c.blue },
-  ['@string.special.url'] = '@string.special.path',
+  ['@string.special.path'] = 'Directory',
+  ['@string.special.url'] = { fg = c.blue },
 
   -- ['@character'] = {},
   -- ['@character.special'] = {},
@@ -341,7 +341,7 @@ for name, attrs in pairs {
   -- ['@lsp.type.interface'] = {},
   ['@lsp.type.macro'] = {},
   -- ['@lsp.type.method'] = {},
-  ['@lsp.type.namespace'] = { fg = c.green },
+  ['@lsp.type.namespace'] = 'Directory',
   -- ['@lsp.type.number'] = {},
   -- ['@lsp.type.operator'] = {},
   ['@lsp.type.parameter'] = { fg = a.fg, bold = bold },
@@ -354,6 +354,14 @@ for name, attrs in pairs {
   ['@lsp.typemod.comment.documentation'] = '@comment.documentation',
   -- ['@lsp.typemod.variable.functionScope'] = {},
   ['@lsp.typemod.variable.globalScope'] = { italic = italic },
+
+  ---- netrw -------------------------------------------------
+
+  -- netrwDir = 'Directory',
+  netrwClassify = 'Delimiter',
+  netrwTreeBar = 'Delimiter',
+  netrwExe = { fg = c.red },
+  netrwSymLink = { fg = c.magenta },
 
   ---- :help vimtex-syntax-reference (external plugin) -------
 
@@ -386,13 +394,6 @@ for name, attrs in pairs {
   NeoTreeWinSeparator = 'NeoTreeVertSplit',
 
   NeoTreeCursorLine = { bg = a.sel },
-
-  --- netrw: there's no comprehensive list of highlights... --
-
-  netrwClassify = 'Delimiter',
-  netrwTreeBar = 'Delimiter',
-  netrwExe = { fg = c.red },
-  netrwSymLink = { fg = c.magenta },
 
   ---- :h gitsigns (external plugin) -------------------------
 

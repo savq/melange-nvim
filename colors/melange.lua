@@ -116,8 +116,8 @@ for name, attrs in pairs {
 
   DiffAdd = { bg = d.green },
   DiffChange = { bg = d.magenta },
-  DiffDelete = { bg = d.red },
-  DiffText = { bg = d.blue },
+  DiffDelete = { fg = a.com, bg = d.red },
+  DiffText = 'DiffAdd',
 
   DiffAdded = 'DiffAdd',
   DiffRemoved = 'DiffDelete',
@@ -394,17 +394,6 @@ for name, attrs in pairs {
 
   NeoTreeCursorLine = { bg = a.sel },
 
-  ---- :h gitsigns (external plugin) -------------------------
-
-  GitSignsAdd = { fg = c.green },
-  GitSignsChange = { fg = c.magenta },
-  GitSignsDelete = { fg = c.red },
-  GitSignsCurrentLineBlame = { fg = c.blue },
-
-  SignifySignAdd = 'GitSignsAdd',
-  SignifySignChange = 'GitSignsChange',
-  SignifySignDelete = 'GitSignsDelete',
-
   ---- :h ibl.highlights (external plugin) -------------------
   IblIndent = { fg = a.sel, nocombine = true },
   IblWhitespace = 'IblIndent',
@@ -498,9 +487,8 @@ for name, attrs in pairs {
   RainbowDelimiterViolet = { fg = c.magenta },
   RainbowDelimiterCyan = { fg = b.cyan },
 
-  --- mini.nvim highlights  :help mini.nvim ------------------
-  --- Highlight groups from the contributing guide:
-  --- https://github.com/echasnovski/mini.nvim/blob/main/CONTRIBUTING.md
+  ---- "echasnovski/mini.nvim" -------------------------------
+  ---- https://github.com/echasnovski/mini.nvim/blob/main/CONTRIBUTING.md#list-of-highlight-groups
 
   -- MiniAnimateCursor = {},
   -- MiniAnimateNormalFloat = {},
@@ -530,9 +518,9 @@ for name, attrs in pairs {
   -- MiniDepsTitleSame = {},
   -- MiniDepsTitleUpdate = {},
 
-  MiniDiffSignAdd = { fg = b.green },
-  MiniDiffSignChange = { fg = b.magenta },
-  MiniDiffSignDelete = { fg = b.red },
+  MiniDiffSignAdd = { fg = c.green },
+  MiniDiffSignChange = { fg = c.magenta },
+  MiniDiffSignDelete = { fg = c.red },
   -- MiniDiffOverAdd = {},
   -- MiniDiffOverChange = {},
   -- MiniDiffOverChangeBuf = {},
@@ -647,6 +635,13 @@ for name, attrs in pairs {
   MiniTestPass = { fg = d.green, bold = true },
 
   MiniTrailspace = { link = 'DiffRemoved' },
+
+  ---- "lewis6991/gitsigns.nvim" :h gitsigns-highlight-groups
+
+  GitSignsAdd = 'MiniDiffSignAdd',
+  GitSignsChange = 'MiniDiffSignChange',
+  GitSignsDelete = 'MiniDiffSignDelete',
+  GitSignsCurrentLineBlame = { fg = c.blue },
 } do
   if type(attrs) == 'table' then
     vim.api.nvim_set_hl(0, name, attrs)

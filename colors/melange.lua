@@ -394,13 +394,6 @@ for name, attrs in pairs {
 
   NeoTreeCursorLine = { bg = a.sel },
 
-  ---- :h ibl.highlights (external plugin) -------------------
-  IblIndent = { fg = a.sel, nocombine = true },
-  IblWhitespace = 'IblIndent',
-  IndentBlanklineChar = 'IblIndent', -- Deprecated?
-  IndentBlanklineSpaceChar = 'IndentBlanklineChar',
-  IndentBlanklineSpaceCharBlankline = 'IndentBlanklineChar',
-
   ---- :h blink-cmp-config-appearance (external plugin) ------
   -- BlinkCmpLabel = {},
   BlinkCmpLabelMatch = { fg = b.yellow, bold = bold },
@@ -552,7 +545,7 @@ for name, attrs in pairs {
   MiniIconsRed = { fg = b.red },
   MiniIconsYellow = { fg = b.yellow },
 
-  MiniIndentscopeSymbol = { fg = a.sel },
+  MiniIndentscopeSymbol = { fg = a.sel, nocombine = true },
   -- MiniIndentscopeSymbolOff = {},
 
   -- MiniJump = {},
@@ -642,6 +635,12 @@ for name, attrs in pairs {
   GitSignsChange = 'MiniDiffSignChange',
   GitSignsDelete = 'MiniDiffSignDelete',
   GitSignsCurrentLineBlame = { fg = c.blue },
+
+  ---- "lukas-reineke/indent-blankline.nvim" :h ibl.highlights
+
+  IblIndent = 'MiniIndentscopeSymbol',
+  IblWhitespace = 'IblIndent',
+  -- IblScope = {},
 } do
   if type(attrs) == 'table' then
     vim.api.nvim_set_hl(0, name, attrs)

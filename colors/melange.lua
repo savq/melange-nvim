@@ -384,16 +384,6 @@ for name, attrs in pairs {
   texMathSymbol = 'Operator',
   texItemLabelConcealed = '@label',
 
-  --- neo-tree highlights  :help neo-tree-highlights ---
-
-  NeoTreeFloatBorder = 'Normal',
-  NeoTreeNormal = 'NormalFloat',
-  NeoTreeNormalNC = 'NeoTreeNormal',
-  NeoTreeVertSplit = { bg = a.bg, fg = a.bg },
-  NeoTreeWinSeparator = 'NeoTreeVertSplit',
-
-  NeoTreeCursorLine = { bg = a.sel },
-
   ---- :h blink-cmp-config-appearance (external plugin) ------
   -- BlinkCmpLabel = {},
   BlinkCmpLabelMatch = { fg = b.yellow, bold = bold },
@@ -523,12 +513,12 @@ for name, attrs in pairs {
 
   -- MiniFilesBorder = {},
   -- MiniFilesBorderModified = {},
-  MiniFilesCursorLine = { bg = a.sel },
-  MiniFilesDirectory = { fg = b.cyan },
-  MiniFilesFile = { fg = a.fg },
+  MiniFilesCursorLine = 'PmenuSel',
+  -- MiniFilesDirectory = {},
+  -- MiniFilesFile = {},
   -- MiniFilesNormal = {},
-  MiniFilesTitle = { fg = a.ui, bg = a.float },
-  MiniFilesTitleFocused = { fg = c.yellow, bg = a.float },
+  MiniFilesTitle = { fg = a.com, bg = a.float },
+  -- MiniFilesTitleFocused = {},
 
   -- MiniHipatternsFixme = {},
   -- MiniHipatternsHack = {},
@@ -641,6 +631,14 @@ for name, attrs in pairs {
   IblIndent = 'MiniIndentscopeSymbol',
   IblWhitespace = 'IblIndent',
   -- IblScope = {},
+
+  ---- "nvim-neo-tree/neo-tree.nvim" :h neo-tree-highlights
+
+  NeoTreeFloatBorder = 'Normal',
+  NeoTreeNormal = 'Pmenu',
+  NeoTreeNormalNC = 'NeoTreeNormal',
+  NeoTreeCursorLine = 'PmenuSel',
+  NeoTreeWinSeparator = { fg = a.bg, bg = a.bg }, -- hide
 } do
   if type(attrs) == 'table' then
     vim.api.nvim_set_hl(0, name, attrs)

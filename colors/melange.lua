@@ -83,9 +83,9 @@ for name, attrs in pairs {
   -- WinBar = {},
   -- WinBarNC = {},
 
-  -- CurSearch = {},
+  CurSearch = { fg = a.bg, bg = b.yellow, bold = bold },
   -- IncSearch = {},
-  MatchParen = { fg = b.yellow, bg = a.sel, bold = bold },
+  MatchParen = 'CurSearch',
   Search = { fg = a.bg, bg = d.yellow, bold = bold },
   Substitute = { bg = d.red, bold = bold },
   Visual = { bg = a.sel },
@@ -320,8 +320,7 @@ for name, attrs in pairs {
 
   ---- :help lsp-highlight -----------------------------------
 
-  --- TODO: Check
-  -- LspReferenceText = 'Visual',
+  LspReferenceText = { bg = a.float, underline = underline },
   -- LspReferenceRead = {},
   -- LspReferenceWrite = {},
   -- LspReferenceTarget = {},

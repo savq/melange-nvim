@@ -83,7 +83,7 @@ for name, attrs in pairs {
   -- WinBar = {},
   -- WinBarNC = {},
 
-  -- CurSearch = {},
+  CurSearch = { fg = a.bg, bg = b.yellow, bold = bold },
   -- IncSearch = {},
   MatchParen = { fg = b.yellow, bg = a.sel, bold = bold },
   Search = { fg = a.bg, bg = d.yellow, bold = bold },
@@ -320,8 +320,7 @@ for name, attrs in pairs {
 
   ---- :help lsp-highlight -----------------------------------
 
-  --- TODO: Check
-  -- LspReferenceText = 'Visual',
+  LspReferenceText = { bg = a.float, underline = underline },
   -- LspReferenceRead = {},
   -- LspReferenceWrite = {},
   -- LspReferenceTarget = {},

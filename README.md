@@ -1,19 +1,23 @@
 ![melange-logo](logo.svg)
 
 ## Features
+
 - Dark and light variants
+- Support for all Neovim highlight groups, including:
+  - [Default highlight groups](https://neovim.io/doc/user/syntax.html#highlight-default)
+  - [tree-sitter highlight groups](https://neovim.io/doc/user/treesitter.html#treesitter-highlight-groups)
+  - [LSP semantic highlight groups](https://neovim.io/doc/user/lsp.html#lsp-semantic-highlight)
 - Special support for various plugins, including:
-  - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-  - [VimTeX](https://github.com/lervag/vimtex)
-  - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
-  - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
-  - [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)
-  - [lightline.vim](https://github.com/itchyny/lightline.vim)
-  - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-  - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
-  - [rainbow-delimiters.nvim](https://github.com/hiphish/rainbow-delimiters.nvim)
   - [mini.nvim](https://github.com/echasnovski/mini.nvim)
   - [blink.cmp](https://github.com/Saghen/blink.cmp)
+  - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+  - [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+  - [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
+  - [lightline.vim](https://github.com/itchyny/lightline.vim)
+  - [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+  - [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)
+  - [rainbow-delimiters.nvim](https://github.com/hiphish/rainbow-delimiters.nvim)
+  - [VimTeX](https://github.com/lervag/vimtex)
 - Support for various terminal emulators/multiplexers (see [`term/`](term/)):
   - [Alacritty](https://github.com/alacritty/alacritty)
   - [Foot](https://codeberg.org/dnkl/foot)
@@ -26,12 +30,13 @@
 
 
 ## Requirements
-* Neovim ≥ 0.9.2
-* `termguicolors` enabled
-* A terminal emulator or GUI with true color and font variants support (italics, bold, etc).
+
+- Neovim ≥ 0.9.2
+- A terminal emulator with true color and font variants support (italics, bold, etc).
 
 
 ## Installation
+
 You can install Melange with any (Neo)Vim plugin manager.
 
 [Paq](https://github.com/savq/paq-nvim):
@@ -44,34 +49,34 @@ You can install Melange with any (Neo)Vim plugin manager.
 { "savq/melange-nvim" }
 ```
 
-
 Additionally, [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 can be used to install tree-sitter parsers.
 
-## Usage
-Enable [`termguicolors`](https://neovim.io/doc/user/options.html#'termguicolors')
-and load the [`colorscheme`](https://neovim.io/doc/user/syntax.html#%3Acolorscheme).
 
-In your `init.lua`:
+## Usage
+
+Load the [`colorscheme`](https://neovim.io/doc/user/syntax.html#%3Acolorscheme)
+in your `init.lua`:
 ```lua
-vim.opt.termguicolors = true
 vim.cmd.colorscheme 'melange'
 ```
-
-Or in your `init.vim`:
+or in your `init.vim`:
 ```vim
-set termguicolors
 colorscheme melange
 ```
 
-To enable the light variant, set the [`background`](https://neovim.io/doc/user/options.html#'background')
-(or let your terminal do it for you) before setting the colorscheme.
+Since Neovim 0.10,
+Neovim will enable [`termguicolors`](https://neovim.io/doc/user/options.html#'termguicolors') automatically if your terminal supports it.
+It will also set the [`background`](https://neovim.io/doc/user/options.html#'background') according to your terminal background.
+It's not necessary to set these options manually.
 
 
 ## Design
+
 Melange was designed with one idea in mind: _Control flow_ should use warm colors and _data_ should use cold colors;
 It was originally developed using [Lush.nvim](https://github.com/rktjmp/lush.nvim);
 and it's been inspired by many colorschemes, in particular Ayu and Gruvbox.
+
 
 ## Previews
 

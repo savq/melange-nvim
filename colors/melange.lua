@@ -68,9 +68,9 @@ for name, attrs in pairs {
   -- PmenuExtraSel = {},
   -- PmenuSbar = {},
   PmenuThumb = 'PmenuSel',
-  PmenuMatch = { fg = b.yellow, bold = bold, bg = a.float },
-  PmenuMatchSel = { fg = b.yellow, bold = bold, bg = a.sel },
-  ComplMatchIns = 'Comment',
+  PmenuMatch = { fg = b.yellow, bold = bold },
+  PmenuMatchSel = { reverse = true },
+  ComplMatchIns = { fg = a.com },
   WildMenu = 'NormalFloat',
 
   StatusLine = 'NormalFloat',

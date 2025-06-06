@@ -4,7 +4,7 @@ vim.g.colors_name = 'melange'
 
 local bg = vim.opt.background:get()
 
--- package.loaded['melange/palettes/' .. bg] = nil -- Only needed for development
+package.loaded['melange/palettes/' .. bg] = nil -- Only needed for development
 local palette = require('melange/palettes/' .. bg)
 
 local a = palette.a -- Grays
@@ -56,7 +56,7 @@ for name, attrs in pairs {
   -- CursorLineFold = {},
   -- CursorLineSign = {},
 
-  Folded = { fg = a.com, bg = d.cyan },
+  Folded = { fg = a.com, bg = a.float },
   FoldColumn = 'LineNr',
   SignColumn = 'LineNr',
 
@@ -115,7 +115,7 @@ for name, attrs in pairs {
   ---- :help :diff -------------------------------------------
 
   DiffAdd = { bg = d.green },
-  DiffChange = { bg = d.magenta },
+  DiffChange = { bg = d.blue },
   DiffDelete = { fg = a.com, bg = d.red },
   DiffText = 'DiffAdd',
 
@@ -131,17 +131,17 @@ for name, attrs in pairs {
 
   ---- :help group-name --------------------------------------
 
-  Comment = { fg = a.com, italic = italic },
+  Comment = { fg = a.ui },
   Identifier = { fg = a.fg },
-  Function = { fg = b.yellow },
+  Function = { bold = true },
   Constant = { fg = c.magenta },
-  String = { fg = b.blue, italic = italic },
+  String = { fg = b.blue },
   Character = { fg = c.blue },
   Number = { fg = b.magenta },
   Boolean = 'Number',
   -- Float = {},
 
-  Statement = { fg = c.yellow },
+  Statement = { italic = true },
   -- Conditional = {},
   -- Repeat = {},
   -- Label = {},
@@ -160,10 +160,10 @@ for name, attrs in pairs {
   -- Structure = {},
   -- Typedef = {},
 
-  Special = { fg = b.yellow },
+  Special = 'Statement',
   -- SpecialChar = {},
   -- Tag = {},
-  Delimiter = { fg = d.yellow },
+  Delimiter = { fg = c.yellow },
   -- SpecialComment = {},
   -- Debug = {},
 
@@ -226,9 +226,9 @@ for name, attrs in pairs {
 
   -- ['@keyword'] = {},
   -- ['@keyword.coroutine'] = {},
-  ['@keyword.function'] = 'PreProc',
+  ['@keyword.function'] = { fg = b.green, italic = true },
   -- ['@keyword.operator'] = {},
-  ['@keyword.import'] = 'PreProc',
+  ['@keyword.import'] = '@keyword.function',
   -- ['@keyword.type'] = {},
   -- ['@keyword.modifier'] = {},
   -- ['@keyword.repeat'] = {},
@@ -241,11 +241,11 @@ for name, attrs in pairs {
   -- ['@keyword.directive.define'] = {},
 
   -- ['@punctuation.bracket'] = {},
-  ['@punctuation.delimiter'] = { fg = c.red },
-  -- ['@punctuation.special'] = {},
+  -- ['@punctuation.delimiter'] = { fg = c.red },
+  ['@punctuation.special'] = '@punctuation',
 
   -- ['@comment'] = {},
-  ['@comment.documentation'] = { fg = a.com, nocombine = true },
+  -- ['@comment.documentation'] = { fg = a.com, nocombine = true },
   ['@comment.error'] = 'Todo',
   ['@comment.note'] = 'Todo',
   ['@comment.todo'] = 'Todo',
@@ -340,19 +340,19 @@ for name, attrs in pairs {
   -- ['@lsp.type.interface'] = {},
   ['@lsp.type.macro'] = {},
   -- ['@lsp.type.method'] = {},
-  ['@lsp.type.namespace'] = 'Directory',
+  -- ['@lsp.type.namespace'] = 'Directory',
   -- ['@lsp.type.number'] = {},
   -- ['@lsp.type.operator'] = {},
-  ['@lsp.type.parameter'] = { fg = a.fg, bold = bold },
+  -- ['@lsp.type.parameter'] = { fg = a.fg, bold = bold },
   -- ['@lsp.type.property'] = {},
   -- ['@lsp.type.struct'] = {},
   -- ['@lsp.type.type'] = {},
   -- ['@lsp.type.typeParameter'] = {},
   -- ['@lsp.type.variable'] = {},
 
-  ['@lsp.typemod.comment.documentation'] = '@comment.documentation',
+  -- ['@lsp.typemod.comment.documentation'] = '@comment.documentation',
   -- ['@lsp.typemod.variable.functionScope'] = {},
-  ['@lsp.typemod.variable.globalScope'] = { italic = italic },
+  -- ['@lsp.typemod.variable.globalScope'] = { italic = italic },
 
   ---- netrw -------------------------------------------------
 
@@ -414,9 +414,9 @@ for name, attrs in pairs {
   -- MiniDepsTitleSame = {},
   -- MiniDepsTitleUpdate = {},
 
-  MiniDiffSignAdd = { fg = c.green },
-  MiniDiffSignChange = { fg = c.magenta },
-  MiniDiffSignDelete = { fg = c.red },
+  MiniDiffSignAdd = 'DiffAdd',
+  MiniDiffSignChange = 'DiffChange',
+  MiniDiffSignDelete = 'DiffDelete',
   -- MiniDiffOverAdd = {},
   -- MiniDiffOverChange = {},
   -- MiniDiffOverChangeBuf = {},

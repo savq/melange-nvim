@@ -590,15 +590,15 @@ for name, attrs in pairs {
   MiniStarterQuery = { fg = c.blue },
 
   MiniStatuslineDevinfo = { fg = a.fg, bg = a.sel },
-  MiniStatuslineFileinfo = { fg = a.fg, bg = a.sel },
-  MiniStatuslineFilename = { fg = a.ui, bg = a.bg },
+  MiniStatuslineFileinfo = 'MiniStatuslineDevinfo',
+  MiniStatuslineFilename = { fg = a.com, bg = a.float },
   -- MiniStatuslineInactive = {},
-  MiniStatuslineModeCommand = { fg = a.float, bg = b.green, bold = true },
-  MiniStatuslineModeInsert = { fg = a.float, bg = b.red, bold = true },
-  MiniStatuslineModeNormal = { fg = a.float, bg = a.com, bold = true },
-  MiniStatuslineModeOther = { fg = a.float, bg = b.red, bold = true },
-  MiniStatuslineModeReplace = { fg = a.float, bg = b.magenta, bold = true },
-  MiniStatuslineModeVisual = { fg = a.float, bg = b.yellow, bold = true },
+  MiniStatuslineModeNormal = { bg = a.com, fg = a.bg, bold = bold },
+  MiniStatuslineModeInsert = { bg = b.yellow, fg = a.bg, bold = bold },
+  MiniStatuslineModeReplace = { bg = b.red, fg = a.bg, bold = bold },
+  MiniStatuslineModeCommand = { bg = b.cyan, fg = a.bg, bold = bold },
+  MiniStatuslineModeOther = { bg = c.green, fg = a.bg, bold = bold },
+  MiniStatuslineModeVisual = { bg = b.magenta, fg = a.bg, bold = bold },
 
   -- MiniSurround = {},
 

@@ -34,6 +34,7 @@ for name, attrs in pairs {
 
   Normal = { fg = a.fg, bg = a.bg },
   NormalFloat = { bg = a.float },
+  -- FloatBorder = { },
   FloatTitle = { fg = c.yellow, bg = a.float },
   FloatFooter = { fg = c.yellow, bg = a.float },
   -- NormalNC = {},
@@ -42,16 +43,18 @@ for name, attrs in pairs {
   -- lCursor = {},
   -- CursorIM = {},
   -- TermCursor = {},
-  TermCursorNC = { bg = a.sel },
 
   ColorColumn = { bg = a.float },
   CursorColumn = 'ColorColumn',
   CursorLine = 'ColorColumn',
-  VertSplit = { fg = a.ui },
   WinSeparator = { fg = a.ui },
 
   LineNr = { fg = a.ui },
+  -- LineNrAbove = {},
+  -- LineNrBelow = {},
   CursorLineNr = { fg = c.yellow },
+  -- CursorLineFold = {},
+  -- CursorLineSign = {},
 
   Folded = { fg = a.com, bg = d.cyan },
   FoldColumn = 'LineNr',
@@ -59,27 +62,32 @@ for name, attrs in pairs {
 
   Pmenu = 'NormalFloat',
   PmenuSel = { bg = a.sel },
-  PmenuSbar = 'Pmenu',
+  -- PmenuKind = {},
+  -- PmenuKindSel = {},
+  -- PmenuExtra = {},
+  -- PmenuExtraSel = {},
+  -- PmenuSbar = {},
   PmenuThumb = 'PmenuSel',
-  PmenuMatch = { fg = b.yellow, bold = bold, bg = a.float },
-  PmenuMatchSel = { fg = b.yellow, bold = bold, bg = a.sel },
-
-  qfFileName = '@string.special.path',
-  QuickFixLine = 'PmenuMatch',
+  PmenuMatch = { fg = b.yellow, bold = bold },
+  PmenuMatchSel = { reverse = true },
+  ComplMatchIns = { fg = a.com },
+  WildMenu = 'NormalFloat',
 
   StatusLine = 'NormalFloat',
   StatusLineNC = { fg = a.com, bg = a.float },
-  WildMenu = 'NormalFloat',
-
+  -- StatusLineTerm = {},
+  -- StatusLineTermNC = {},
   TabLine = 'StatusLineNC',
   TabLineFill = 'StatusLine',
   TabLineSel = { bg = a.float, bold = bold },
+  -- WinBar = {},
+  -- WinBarNC = {},
 
+  CurSearch = { fg = a.bg, bg = b.yellow, bold = bold },
+  -- IncSearch = {},
   MatchParen = { fg = b.yellow, bg = a.sel, bold = bold },
   Search = { fg = a.bg, bg = d.yellow, bold = bold },
   Substitute = { bg = d.red, bold = bold },
-  -- QuickFixLine = {},
-  -- IncSearch = {},
   Visual = { bg = a.sel },
   -- VisualNOS = {},
 
@@ -89,8 +97,8 @@ for name, attrs in pairs {
   NonText = 'Whitespace',
   SpecialKey = 'Whitespace',
 
-  Directory = { fg = c.cyan },
-  Title = { fg = c.yellow },
+  Directory = { fg = c.green },
+  Title = { fg = c.yellow, bold = bold },
   ErrorMsg = { bg = d.red },
   ModeMsg = { fg = a.com },
   -- MsgArea = {},
@@ -99,14 +107,17 @@ for name, attrs in pairs {
   WarningMsg = { fg = c.red },
   Question = 'MoreMsg',
 
-  ComplMatchIns = 'Comment',
+  QuickFixLine = 'PmenuMatch',
+  qfFileName = 'Directory',
+
+  -- SnippetTabstop = {},
 
   ---- :help :diff -------------------------------------------
 
   DiffAdd = { bg = d.green },
   DiffChange = { bg = d.magenta },
-  DiffDelete = { bg = d.red },
-  DiffText = { bg = d.blue },
+  DiffDelete = { fg = a.com, bg = d.red },
+  DiffText = 'DiffAdd',
 
   DiffAdded = 'DiffAdd',
   DiffRemoved = 'DiffDelete',
@@ -164,63 +175,70 @@ for name, attrs in pairs {
   Error = { bg = d.red },
   Todo = { fg = a.com, bold = bold },
 
-  ---- :help nvim-treesitter-highlights (external plugin) ----
+  ---- :help treesitter-highlight-groups  --------------------
 
-  -- ['@boolean'] = {},
-  -- ['@number'] = {},
-  -- ['@number.float'] = {},
-
-  -- ['@character'] = {},
-  -- ['@character.special'] = {},
-  -- ['@string'] = {},
-  ['@string.documentation'] = { fg = b.blue, nocombine = true },
-  ['@string.escape'] = { fg = c.blue },
-  ['@string.regexp'] = { fg = b.blue },
-  ['@string.special'] = { fg = b.cyan },
-  ['@string.special.symbol'] = { fg = a.fg, italic = italic },
-  ['@string.special.path'] = { fg = c.blue },
-  ['@string.special.url'] = '@string.special.path',
-
-  -- ['@keyword'] = {},
-  -- ['@keyword.conditional'] = {},
-  -- ['@keyword.conditional.ternary'] = {},
-  -- ['@keyword.coroutine'] = {},
-  -- ['@keyword.debug'] = {},
-  ['@keyword.directive'] = 'PreProc',
-  -- ['@keyword.directive.define'] = {},
-  -- ['@keyword.exception'] = {},
-  ['@keyword.function'] = 'PreProc',
-  ['@keyword.import'] = 'PreProc',
-  -- ['@keyword.operator'] = {},
-  -- ['@keyword.repeat'] = {},
-  -- ['@keyword.return'] = {},
-  -- ['@keyword.storage'] = {},
+  ['@variable'] = 'Identifier',
+  ['@variable.builtin'] = '@string.special.symbol',
+  -- ['@variable.parameter'] = {},
+  -- ['@variable.parameter.builtin'] = {},
+  -- ['@variable.member'] = {},
 
   --- NOTE: Queries for these highlight groups are really hacky.
   --- Inaccurate syntax highlighting is worse than no highlighting at all,
   ['@constant'] = 'Identifier',
   ['@constant.builtin'] = 'Constant',
   ['@constant.macro'] = 'Constant',
+
   ['@module'] = 'Identifier',
   ['@module.builtin'] = '@module',
   ['@label'] = { fg = b.cyan },
-  ['@variable'] = 'Identifier',
-  ['@variable.builtin'] = '@string.special.symbol',
-  -- ['@variable.parameter'] = {},
-  -- ['@variable.member'] = {},
+
+  -- ['@string'] = {},
+  ['@string.documentation'] = { fg = b.blue, nocombine = true },
+  ['@string.escape'] = { fg = c.blue },
+  ['@string.regexp'] = { fg = b.blue },
+  ['@string.special'] = { fg = b.cyan },
+  ['@string.special.symbol'] = { fg = a.fg, italic = italic },
+  ['@string.special.path'] = 'Directory',
+  ['@string.special.url'] = { fg = c.blue },
+
+  -- ['@character'] = {},
+  -- ['@character.special'] = {},
+
+  -- ['@boolean'] = {},
+  -- ['@number'] = {},
+  -- ['@number.float'] = {},
 
   -- ['@type'] = {},
-  -- ['@type.builtin'] = {},
+  ['@type.builtin'] = '@type',
   -- ['@type.definition'] = {},
-  ['@type.qualifier'] = 'Statement',
+
   -- ['@attribute'] = {},
+  -- ['@attribute.builtin'] = {},
   -- ['@property'] = {},
 
   -- ['@function'] = {},
-  -- ['@function.builtin'] = {},
-  ['@function.macro'] = 'Function',
+  ['@function.builtin'] = '@function',
+  ['@function.macro'] = '@function',
   -- ['@function.method'] = {},
-  -- ['@constructor'] = {},
+  ['@constructor'] = '@function',
+  -- ['@operator'] = {},
+
+  -- ['@keyword'] = {},
+  -- ['@keyword.coroutine'] = {},
+  ['@keyword.function'] = 'PreProc',
+  -- ['@keyword.operator'] = {},
+  ['@keyword.import'] = 'PreProc',
+  -- ['@keyword.type'] = {},
+  -- ['@keyword.modifier'] = {},
+  -- ['@keyword.repeat'] = {},
+  -- ['@keyword.return'] = {},
+  -- ['@keyword.debug'] = {},
+  -- ['@keyword.exception'] = {},
+  -- ['@keyword.conditional'] = {},
+  -- ['@keyword.conditional.ternary'] = {},
+  ['@keyword.directive'] = 'PreProc',
+  -- ['@keyword.directive.define'] = {},
 
   -- ['@punctuation.bracket'] = {},
   ['@punctuation.delimiter'] = { fg = c.red },
@@ -233,25 +251,29 @@ for name, attrs in pairs {
   ['@comment.todo'] = 'Todo',
   ['@comment.warning'] = 'Todo',
 
-  -- ['@markup'] = {},
-  ['@markup.heading'] = 'Title',
-  ['@markup.heading.2'] = { fg = b.yellow },
-  ['@markup.heading.3'] = { fg = b.green },
-  ['@markup.heading.4'] = { fg = b.cyan },
-
   ['@markup.italic'] = { italic = italic },
   ['@markup.strong'] = { bold = bold },
   ['@markup.strikethrough'] = { strikethrough = strikethrough },
   ['@markup.underline'] = { underline = underline },
 
+  ['@markup.heading'] = 'Title',
+  -- ['@markup.heading.1'] = {},
+  ['@markup.heading.2'] = { fg = b.yellow, bold = bold },
+  ['@markup.heading.3'] = { fg = b.green, bold = bold },
+  -- ['@markup.heading.4'] = '@markup.heading',
+  ['@markup.heading.5'] = '@markup.heading.2',
+  ['@markup.heading.6'] = '@markup.heading.3',
+
   ['@markup.quote'] = 'Comment',
-  -- ['@markup.math'] = {}, -- TODO
-  -- ['@markup.environment'] = {},
+  ['@markup.math'] = '@markup.raw',
+
   ['@markup.link'] = { underline = underline },
   -- ['@markup.link.label'] = {},
   ['@markup.link.url'] = '@string.special.url',
-  ['@markup.raw'] = { fg = a.com },
-  -- ['@markup.raw.block'] = {},
+
+  ['@markup.raw'] = '@string.special',
+  ['@markup.raw.block'] = { fg = a.com },
+
   ['@markup.list'] = 'Delimiter',
   -- ['@markup.list.checked'] = {},
   -- ['@markup.list.unchecked'] = {},
@@ -261,6 +283,7 @@ for name, attrs in pairs {
   ['@diff.delta'] = 'DiffChange',
 
   -- ['@tag'] = {},
+  -- ['@tag.builtin'] = {},
   ['@tag.attribute'] = '@label',
   ['@tag.delimiter'] = 'Delimiter',
 
@@ -292,183 +315,76 @@ for name, attrs in pairs {
   -- DiagnosticSignHint = {},
   -- DiagnosticSignOk = {},
 
-  DiagnosticDeprecated = { DiagnosticUnderlineError },
+  DiagnosticDeprecated = 'DiagnosticUnderlineError',
   DiagnosticUnnecessary = { undercurl = undercurl, sp = a.com },
 
   ---- :help lsp-highlight -----------------------------------
 
-  -- LspReferenceText = 'Visual',
-  -- LspReferenceRead = 'Visual',
-  -- LspReferenceWrite = 'Visual',
-
-  -- TODO: lsp-highlight-codelens
+  LspReferenceText = { bg = a.float, underline = underline },
+  -- LspReferenceRead = {},
+  -- LspReferenceWrite = {},
+  -- LspReferenceTarget = {},
+  -- LspInlayHint = {},
+  -- LspCodeLens = {},
+  -- LspCodeLensSeparator = {},
+  -- LspSignatureActiveParameter = {},
 
   ---- :help lsp-semantic-highlight --------------------------
 
-  ['@lsp.mod.GlobalScope'] = { italic = italic },
-  -- ['@lsp.type.class'] = 'Structure',
-  -- ['@lsp.type.comment'] = 'Comment',
-  -- ['@lsp.type.decorator'] = 'Function',
-  -- ['@lsp.type.enum'] = 'Structure',
-  -- ['@lsp.type.enumMember'] = 'Constant',
-  -- ['@lsp.type.function'] = 'Function',
-  -- ['@lsp.type.interface'] = 'Structure',
+  -- ['@lsp.type.class'] = {},
+  -- ['@lsp.type.comment'] = {},
+  -- ['@lsp.type.decorator'] = {},
+  -- ['@lsp.type.enum'] = {},
+  ['@lsp.type.enumMember'] = 'Constant',
+  -- ['@lsp.type.function'] = {},
+  -- ['@lsp.type.interface'] = {},
   ['@lsp.type.macro'] = {},
-  -- ['@lsp.type.method'] = 'Function',
-  ['@lsp.type.namespace'] = { fg = c.green },
+  -- ['@lsp.type.method'] = {},
+  ['@lsp.type.namespace'] = 'Directory',
+  -- ['@lsp.type.number'] = {},
+  -- ['@lsp.type.operator'] = {},
   ['@lsp.type.parameter'] = { fg = a.fg, bold = bold },
-  -- ['@lsp.type.property'] = 'Identifier',
-  -- ['@lsp.type.struct'] = 'Structure',
-  -- ['@lsp.type.type'] = 'Type',
-  -- ['@lsp.type.typeParameter'] = 'TypeDef',
-  ['@lsp.type.variable'] = 'Identifier',
+  -- ['@lsp.type.property'] = {},
+  -- ['@lsp.type.struct'] = {},
+  -- ['@lsp.type.type'] = {},
+  -- ['@lsp.type.typeParameter'] = {},
+  -- ['@lsp.type.variable'] = {},
 
-  ---- :help vimtex-syntax-reference (external plugin) -------
+  ['@lsp.typemod.comment.documentation'] = '@comment.documentation',
+  -- ['@lsp.typemod.variable.functionScope'] = {},
+  ['@lsp.typemod.variable.globalScope'] = { italic = italic },
 
-  texOptSep = '@punctuation.delimiter',
-  texOptEqual = 'Operator',
-  texFileArg = 'Constant',
-  texTitleArg = { bold = bold },
-  texRefArg = 'Constant',
+  ---- netrw -------------------------------------------------
 
-  texMathCmd = 'Function',
-  texMathSymbol = 'Operator',
-  texMathZone = 'TSMath',
-  texMathDelimZone = 'TSPunctDelimiter',
-  texMathDelim = 'Delimiter',
-  texMathEnvArgName = 'PreProc',
-
-  texItemLabelConcealed = '@label',
-
-  --- markdown syntax highlights (builtin) ---
-
-  markdownCode = { link = 'String' },
-  markdownCodeBlock = { link = 'String' },
-
-  --- neo-tree highlights  :help neo-tree-highlights ---
-
-  NeoTreeFloatBorder = 'Normal',
-  NeoTreeNormal = 'NormalFloat',
-  NeoTreeNormalNC = 'NeoTreeNormal',
-  NeoTreeVertSplit = { bg = a.bg, fg = a.bg },
-  NeoTreeWinSeparator = 'NeoTreeVertSplit',
-
-  NeoTreeCursorLine = { bg = a.sel },
-
-  --- netrw: there's no comprehensive list of highlights... --
-
+  -- netrwDir = 'Directory',
   netrwClassify = 'Delimiter',
   netrwTreeBar = 'Delimiter',
   netrwExe = { fg = c.red },
   netrwSymLink = { fg = c.magenta },
 
-  ---- :h gitsigns (external plugin) -------------------------
+  ---- Markdown ----------------------------------------------
 
-  GitSignsAdd = { fg = c.green },
-  GitSignsChange = { fg = c.magenta },
-  GitSignsDelete = { fg = c.red },
-  GitSignsCurrentLineBlame = { fg = c.blue },
+  markdownCode = '@markup.raw',
+  markdownCodeBlock = '@markup.raw.block',
 
-  SignifySignAdd = 'GitSignsAdd',
-  SignifySignChange = 'GitSignsChange',
-  SignifySignDelete = 'GitSignsDelete',
+  ---- "lervag/vimtex" :h vimtex-syntax-reference ------------
 
-  ---- :h ibl.highlights (external plugin) -------------------
-  IblIndent = { fg = a.sel, nocombine = true },
-  IblWhitespace = 'IblIndent',
-  IndentBlanklineChar = 'IblIndent', -- Deprecated?
-  IndentBlanklineSpaceChar = 'IndentBlanklineChar',
-  IndentBlanklineSpaceCharBlankline = 'IndentBlanklineChar',
+  texOptSep = '@punctuation.delimiter',
+  texOptEqual = 'Operator',
+  texFileArg = 'Constant',
+  texTitleArg = { bold = bold },
+  -- texEnvArgName = 'PreCondit',
+  texRefArg = 'Constant',
+  texMathZone = '@markup.math',
+  texMathDelimZone = 'Statement',
+  texMathEnvArgName = 'texEnvArgName',
+  texMathCmd = 'Function',
+  texMathDelim = 'Delimiter',
+  texMathSymbol = 'Operator',
+  texItemLabelConcealed = '@label',
 
-  ---- :h blink-cmp-config-appearance (external plugin) ------
-  -- BlinkCmpLabel = {},
-  BlinkCmpLabelMatch = { fg = b.yellow, bold = bold },
-  -- BlinkCmpLabelDeprecated = {},
-  -- BlinkCmpLabelDetail = {},
-  -- BlinkCmpLabelDescription = {},
-  -- BlinkCmpSource = {},
-  -- BlinkCmpKind = {},
-  BlinkCmpKindText = '@text',
-  BlinkCmpKindMethod = '@method',
-  BlinkCmpKindFunction = '@function',
-  BlinkCmpKindConstructor = '@constructor',
-  BlinkCmpKindField = '@field',
-  BlinkCmpKindVariable = '@variable',
-  BlinkCmpKindClass = '@type',
-  BlinkCmpKindInterface = '@type',
-  BlinkCmpKindModule = '@namespace',
-  BlinkCmpKindProperty = '@property',
-  BlinkCmpKindUnit = '@constant',
-  BlinkCmpKindValue = '@constant',
-  BlinkCmpKindEnum = '@field',
-  BlinkCmpKindKeyword = '@keyword',
-  BlinkCmpKindSnippet = '@string.special',
-  BlinkCmpKindColor = '@constant',
-  BlinkCmpKindFile = '@string.special.path',
-  BlinkCmpKindReference = '@type',
-  BlinkCmpKindFolder = '@string.special.path',
-  BlinkCmpKindEnumMember = '@field',
-  BlinkCmpKindConstant = '@constant',
-  BlinkCmpKindStruct = '@type',
-  BlinkCmpKindEvent = '@type',
-  BlinkCmpKindOperator = '@operator',
-  BlinkCmpKindTypeParameter = '@type',
-  -- BlinkCmpScrollBarThumb = {},
-  -- BlinkCmpScrollBarGutter = {},
-  -- BlinkCmpGhostText = {},
-  -- BlinkCmpMenu = {},
-  -- BlinkCmpMenuBorder = {},
-  -- BlinkCmpMenuSelection = {},
-  -- BlinkCmpDoc = {},
-  -- BlinkCmpDocBorder = {},
-  -- BlinkCmpDocSeparator = {},
-  -- BlinkCmpDocCursorLine = {},
-  -- BlinkCmpSignatureHelp = {},
-  -- BlinkCmpSignatureHelpBorder = {},
-  -- BlinkCmpSignatureHelpActiveParameter = {},
-
-  ---- :h cmp-highlight (external plugin) -------------------
-  CmpItemAbbrMatch = { fg = b.yellow, bold = bold },
-  CmpItemAbbrMatchFuzzy = { fg = b.yellow, bold = bold },
-  CmpItemKindVariable = '@variable',
-  CmpItemKindValue = '@constant',
-  CmpItemKindUnit = '@constant',
-  CmpItemKindTypeParameter = '@type',
-  CmpItemKindText = '@text',
-  CmpItemKindStruct = '@type',
-  CmpItemKindSnippet = '@string.special',
-  CmpItemKindReference = '@type',
-  CmpItemKindProperty = '@property',
-  CmpItemKindOperator = '@operator',
-  CmpItemKindModule = '@namespace',
-  CmpItemKindMethod = '@method',
-  CmpItemKindKeyword = '@keyword',
-  CmpItemKindInterface = '@type',
-  CmpItemKindFunction = '@function',
-  CmpItemKindFolder = '@string.special.path',
-  CmpItemKindFile = '@string.special.path',
-  CmpItemKindField = '@field',
-  CmpItemKindEvent = '@type',
-  CmpItemKindEnumMember = '@field',
-  CmpItemKindEnum = '@type',
-  CmpItemKindConstructor = '@constructor',
-  CmpItemKindConstant = '@constant',
-  CmpItemKindColor = '@constant',
-  CmpItemKindClass = '@type',
-
-  ---- :help rb-delimiters-colors (rainbow-delimiters.nvim) --
-
-  RainbowDelimiterRed = { fg = b.red },
-  RainbowDelimiterYellow = { fg = b.yellow },
-  RainbowDelimiterBlue = { fg = b.blue },
-  RainbowDelimiterOrange = { fg = c.yellow },
-  RainbowDelimiterGreen = { fg = b.green },
-  RainbowDelimiterViolet = { fg = c.magenta },
-  RainbowDelimiterCyan = { fg = b.cyan },
-
-  --- mini.nvim highlights  :help mini.nvim ------------------
-  --- Highlight groups from the contributing guide:
-  --- https://github.com/echasnovski/mini.nvim/blob/main/CONTRIBUTING.md
+  ---- "echasnovski/mini.nvim" -------------------------------
+  ---- https://github.com/echasnovski/mini.nvim/blob/main/CONTRIBUTING.md#list-of-highlight-groups
 
   -- MiniAnimateCursor = {},
   -- MiniAnimateNormalFloat = {},
@@ -498,9 +414,9 @@ for name, attrs in pairs {
   -- MiniDepsTitleSame = {},
   -- MiniDepsTitleUpdate = {},
 
-  MiniDiffSignAdd = { fg = b.green },
-  MiniDiffSignChange = { fg = b.magenta },
-  MiniDiffSignDelete = { fg = b.red },
+  MiniDiffSignAdd = { fg = c.green },
+  MiniDiffSignChange = { fg = c.magenta },
+  MiniDiffSignDelete = { fg = c.red },
   -- MiniDiffOverAdd = {},
   -- MiniDiffOverChange = {},
   -- MiniDiffOverChangeBuf = {},
@@ -510,12 +426,12 @@ for name, attrs in pairs {
 
   -- MiniFilesBorder = {},
   -- MiniFilesBorderModified = {},
-  MiniFilesCursorLine = { bg = a.sel },
-  MiniFilesDirectory = { fg = b.cyan },
-  MiniFilesFile = { fg = a.fg },
+  MiniFilesCursorLine = 'PmenuSel',
+  -- MiniFilesDirectory = {},
+  -- MiniFilesFile = {},
   -- MiniFilesNormal = {},
-  MiniFilesTitle = { fg = a.ui, bg = a.float },
-  MiniFilesTitleFocused = { fg = c.yellow, bg = a.float },
+  MiniFilesTitle = { fg = a.com, bg = a.float },
+  -- MiniFilesTitleFocused = {},
 
   -- MiniHipatternsFixme = {},
   -- MiniHipatternsHack = {},
@@ -532,7 +448,7 @@ for name, attrs in pairs {
   MiniIconsRed = { fg = b.red },
   MiniIconsYellow = { fg = b.yellow },
 
-  MiniIndentscopeSymbol = { fg = a.sel },
+  MiniIndentscopeSymbol = { fg = a.sel, nocombine = true },
   -- MiniIndentscopeSymbolOff = {},
 
   -- MiniJump = {},
@@ -588,15 +504,15 @@ for name, attrs in pairs {
   MiniStarterQuery = { fg = c.blue },
 
   MiniStatuslineDevinfo = { fg = a.fg, bg = a.sel },
-  MiniStatuslineFileinfo = { fg = a.fg, bg = a.sel },
-  MiniStatuslineFilename = { fg = a.ui, bg = a.bg },
+  MiniStatuslineFileinfo = 'MiniStatuslineDevinfo',
+  MiniStatuslineFilename = { fg = a.com, bg = a.float },
   -- MiniStatuslineInactive = {},
-  MiniStatuslineModeCommand = { fg = a.float, bg = b.green, bold = true },
-  MiniStatuslineModeInsert = { fg = a.float, bg = b.red, bold = true },
-  MiniStatuslineModeNormal = { fg = a.float, bg = a.com, bold = true },
-  MiniStatuslineModeOther = { fg = a.float, bg = b.red, bold = true },
-  MiniStatuslineModeReplace = { fg = a.float, bg = b.magenta, bold = true },
-  MiniStatuslineModeVisual = { fg = a.float, bg = b.yellow, bold = true },
+  MiniStatuslineModeNormal = { bg = a.com, fg = a.bg, bold = bold },
+  MiniStatuslineModeInsert = { bg = b.yellow, fg = a.bg, bold = bold },
+  MiniStatuslineModeReplace = { bg = b.red, fg = a.bg, bold = bold },
+  MiniStatuslineModeCommand = { bg = b.cyan, fg = a.bg, bold = bold },
+  MiniStatuslineModeOther = { bg = c.green, fg = a.bg, bold = bold },
+  MiniStatuslineModeVisual = { bg = b.magenta, fg = a.bg, bold = bold },
 
   -- MiniSurround = {},
 
@@ -615,6 +531,115 @@ for name, attrs in pairs {
   MiniTestPass = { fg = d.green, bold = true },
 
   MiniTrailspace = { link = 'DiffRemoved' },
+
+  ---- "Saghen/blink.cmp" :h blink-cmp-config-appearance -----
+
+  -- BlinkCmpLabel = {},
+  BlinkCmpLabelMatch = { fg = b.yellow, bold = bold },
+  -- BlinkCmpLabelDeprecated = {},
+  -- BlinkCmpLabelDetail = {},
+  -- BlinkCmpLabelDescription = {},
+  -- BlinkCmpSource = {},
+  -- BlinkCmpKind = {},
+  BlinkCmpKindText = '@text',
+  BlinkCmpKindMethod = '@method',
+  BlinkCmpKindFunction = '@function',
+  BlinkCmpKindConstructor = '@constructor',
+  BlinkCmpKindField = '@field',
+  BlinkCmpKindVariable = '@variable',
+  BlinkCmpKindClass = '@type',
+  BlinkCmpKindInterface = '@type',
+  BlinkCmpKindModule = '@namespace',
+  BlinkCmpKindProperty = '@property',
+  BlinkCmpKindUnit = '@constant',
+  BlinkCmpKindValue = '@constant',
+  BlinkCmpKindEnum = '@field',
+  BlinkCmpKindKeyword = '@keyword',
+  BlinkCmpKindSnippet = '@string.special',
+  BlinkCmpKindColor = '@constant',
+  BlinkCmpKindFile = '@string.special.path',
+  BlinkCmpKindReference = '@type',
+  BlinkCmpKindFolder = '@string.special.path',
+  BlinkCmpKindEnumMember = '@field',
+  BlinkCmpKindConstant = '@constant',
+  BlinkCmpKindStruct = '@type',
+  BlinkCmpKindEvent = '@type',
+  BlinkCmpKindOperator = '@operator',
+  BlinkCmpKindTypeParameter = '@type',
+  -- BlinkCmpScrollBarThumb = {},
+  -- BlinkCmpScrollBarGutter = {},
+  -- BlinkCmpGhostText = {},
+  -- BlinkCmpMenu = {},
+  -- BlinkCmpMenuBorder = {},
+  -- BlinkCmpMenuSelection = {},
+  -- BlinkCmpDoc = {},
+  -- BlinkCmpDocBorder = {},
+  -- BlinkCmpDocSeparator = {},
+  -- BlinkCmpDocCursorLine = {},
+  -- BlinkCmpSignatureHelp = {},
+  -- BlinkCmpSignatureHelpBorder = {},
+  -- BlinkCmpSignatureHelpActiveParameter = {},
+
+  ---- "hrsh7th/nvim-cmp" :h cmp-highlight -------------------
+
+  CmpItemAbbrMatch = { fg = b.yellow, bold = bold },
+  CmpItemAbbrMatchFuzzy = { fg = b.yellow, bold = bold },
+  CmpItemKindVariable = '@variable',
+  CmpItemKindValue = '@constant',
+  CmpItemKindUnit = '@constant',
+  CmpItemKindTypeParameter = '@type',
+  CmpItemKindText = '@text',
+  CmpItemKindStruct = '@type',
+  CmpItemKindSnippet = '@string.special',
+  CmpItemKindReference = '@type',
+  CmpItemKindProperty = '@property',
+  CmpItemKindOperator = '@operator',
+  CmpItemKindModule = '@namespace',
+  CmpItemKindMethod = '@method',
+  CmpItemKindKeyword = '@keyword',
+  CmpItemKindInterface = '@type',
+  CmpItemKindFunction = '@function',
+  CmpItemKindFolder = '@string.special.path',
+  CmpItemKindFile = '@string.special.path',
+  CmpItemKindField = '@field',
+  CmpItemKindEvent = '@type',
+  CmpItemKindEnumMember = '@field',
+  CmpItemKindEnum = '@type',
+  CmpItemKindConstructor = '@constructor',
+  CmpItemKindConstant = '@constant',
+  CmpItemKindColor = '@constant',
+  CmpItemKindClass = '@type',
+
+  ---- "lewis6991/gitsigns.nvim" :h gitsigns-highlight-groups
+
+  GitSignsAdd = 'MiniDiffSignAdd',
+  GitSignsChange = 'MiniDiffSignChange',
+  GitSignsDelete = 'MiniDiffSignDelete',
+  GitSignsCurrentLineBlame = { fg = c.blue },
+
+  ---- "lukas-reineke/indent-blankline.nvim" :h ibl.highlights
+
+  IblIndent = 'MiniIndentscopeSymbol',
+  IblWhitespace = 'IblIndent',
+  -- IblScope = {},
+
+  ---- "nvim-neo-tree/neo-tree.nvim" :h neo-tree-highlights
+
+  NeoTreeFloatBorder = 'Normal',
+  NeoTreeNormal = 'Pmenu',
+  NeoTreeNormalNC = 'NeoTreeNormal',
+  NeoTreeCursorLine = 'PmenuSel',
+  NeoTreeWinSeparator = { fg = a.bg, bg = a.bg }, -- hide
+
+  ---- "hiphish/rainbow-delimiters.nvim" :h rb-delimiters-colors
+
+  RainbowDelimiterRed = { fg = b.red },
+  RainbowDelimiterYellow = { fg = b.yellow },
+  RainbowDelimiterBlue = { fg = b.blue },
+  RainbowDelimiterOrange = { fg = c.yellow },
+  RainbowDelimiterGreen = { fg = b.green },
+  RainbowDelimiterViolet = { fg = c.magenta },
+  RainbowDelimiterCyan = { fg = b.cyan },
 } do
   if type(attrs) == 'table' then
     vim.api.nvim_set_hl(0, name, attrs)

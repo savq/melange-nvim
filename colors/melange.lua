@@ -85,7 +85,7 @@ for name, attrs in pairs {
 
   CurSearch = { fg = a.bg, bg = b.yellow, bold = bold },
   -- IncSearch = {},
-  MatchParen = 'CurSearch',
+  MatchParen = 'Substitute',
   Search = { fg = a.bg, bg = d.yellow, bold = bold },
   Substitute = { bg = d.red, bold = bold },
   Visual = { bg = a.sel },

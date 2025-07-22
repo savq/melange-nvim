@@ -18,6 +18,7 @@
   - [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)
   - [rainbow-delimiters.nvim](https://github.com/hiphish/rainbow-delimiters.nvim)
   - [VimTeX](https://github.com/lervag/vimtex)
+  - [nvim-notify](https://github.com/rcarriga/nvim-notify.git)
 - Support for various terminal emulators/multiplexers (see [`term/`](term/)):
   - [Alacritty](https://github.com/alacritty/alacritty)
   - [Foot](https://codeberg.org/dnkl/foot)

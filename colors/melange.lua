@@ -640,6 +640,29 @@ for name, attrs in pairs {
   RainbowDelimiterGreen = { fg = b.green },
   RainbowDelimiterViolet = { fg = c.magenta },
   RainbowDelimiterCyan = { fg = b.cyan },
+
+  ---- "rcarriga/nvim-notify" https://github.com/rcarriga/nvim-notify?tab=readme-ov-file#highlights
+
+  NotifyERRORBorder = { fg = c.red },
+  NotifyWARNBorder = { fg = c.yellow },
+  NotifyINFOBorder = { fg = c.green },
+  NotifyDEBUGBorder = { fg = a.fg },
+  NotifyTRACEBorder = { fg = c.magenta },
+  NotifyERRORIcon = { fg = b.red },
+  NotifyWARNIcon = { fg = b.yellow },
+  NotifyINFOIcon = { fg = b.green },
+  NotifyDEBUGIcon = { fg = a.fg },
+  NotifyTRACEIcon = { fg = b.magenta },
+  NotifyERRORTitle = { fg = b.red },
+  NotifyWARNTitle = { fg = b.yellow },
+  NotifyINFOTitle = { fg = b.green },
+  NotifyDEBUGTitle = { fg = a.fg },
+  NotifyTRACETitle = { fg = b.magenta },
+  NotifyERRORBody = 'Normal',
+  NotifyWARNBody = 'Normal',
+  NotifyINFOBody = 'Normal',
+  NotifyDEBUGBody = 'Normal',
+  NotifyTRACEBody = 'Normal',
 } do
   if type(attrs) == 'table' then
     vim.api.nvim_set_hl(0, name, attrs)

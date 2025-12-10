@@ -92,13 +92,13 @@ for name, attrs in pairs {
   -- VisualNOS = {},
 
   Conceal = { fg = a.com },
-  Whitespace = { fg = a.ui },
+  Whitespace = { fg = a.ui }, -- TODO: FIXME
   -- EndOfBuffer = {},
   NonText = 'Whitespace',
   SpecialKey = 'Whitespace',
 
   Directory = { fg = c.green },
-  Title = { fg = c.yellow, bold = bold },
+  Title = { fg = a.fg, bold = bold, italic = italic },
   ErrorMsg = { bg = d.red },
   ModeMsg = { fg = a.com },
   -- MsgArea = {},
@@ -131,7 +131,7 @@ for name, attrs in pairs {
 
   ---- :help group-name --------------------------------------
 
-  Comment = { fg = a.ui },
+  Comment = { fg = a.ui, italic = true },
   Identifier = { fg = a.fg },
   Function = { bold = true },
   Constant = { fg = c.magenta },
@@ -141,7 +141,7 @@ for name, attrs in pairs {
   Boolean = 'Number',
   -- Float = {},
 
-  Statement = { italic = true },
+  Statement = { fg = a.com },
   -- Conditional = {},
   -- Repeat = {},
   -- Label = {},
@@ -226,7 +226,7 @@ for name, attrs in pairs {
 
   -- ['@keyword'] = {},
   -- ['@keyword.coroutine'] = {},
-  ['@keyword.function'] = { fg = b.green, italic = true },
+  ['@keyword.function'] = { fg = b.green },
   -- ['@keyword.operator'] = {},
   ['@keyword.import'] = '@keyword.function',
   -- ['@keyword.type'] = {},
@@ -258,14 +258,16 @@ for name, attrs in pairs {
 
   ['@markup.heading'] = 'Title',
   -- ['@markup.heading.1'] = {},
-  ['@markup.heading.2'] = { fg = b.yellow, bold = bold },
-  ['@markup.heading.3'] = { fg = b.green, bold = bold },
+  -- ['@markup.heading.2'] = { fg = b.yellow, bold = bold },
+  -- ['@markup.heading.3'] = { fg = b.green, bold = bold },
   -- ['@markup.heading.4'] = '@markup.heading',
-  ['@markup.heading.5'] = '@markup.heading.2',
-  ['@markup.heading.6'] = '@markup.heading.3',
+  -- ['@markup.heading.5'] = '@markup.heading.2',
+  -- ['@markup.heading.6'] = '@markup.heading.3',
 
   ['@markup.quote'] = 'Comment',
-  ['@markup.math'] = '@markup.raw',
+  -- ['@markup.math'] = '@markup.raw',
+  -- ['@markup.math'] = { fg = d.blue },
+  ['@markup.math'] = {},
 
   ['@markup.link'] = { underline = underline },
   -- ['@markup.link.label'] = {},
@@ -382,6 +384,9 @@ for name, attrs in pairs {
   texMathDelim = 'Delimiter',
   texMathSymbol = 'Operator',
   texItemLabelConcealed = '@label',
+
+  -- TEMP
+  typstMarkupHeading = 'Title',
 
   ---- "echasnovski/mini.nvim" -------------------------------
   ---- https://github.com/echasnovski/mini.nvim/blob/main/CONTRIBUTING.md#list-of-highlight-groups

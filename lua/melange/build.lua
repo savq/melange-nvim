@@ -378,6 +378,9 @@ melange-$variant {
 
 return {
   build = function()
-    build(terminals)
+    -- build(terminals)
+
+    local just_ghostty = { ghostty = terminals.ghostty }
+    build(just_ghostty)
   end,
 }

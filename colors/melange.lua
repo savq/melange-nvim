@@ -179,7 +179,7 @@ for name, attrs in pairs {
 
   ['@variable'] = 'Identifier',
   ['@variable.builtin'] = '@string.special.symbol',
-  -- ['@variable.parameter'] = {},
+  ['@variable.parameter'] = { fg = a.fg, bold = bold },
   -- ['@variable.parameter.builtin'] = {},
   -- ['@variable.member'] = {},
 
@@ -343,8 +343,7 @@ for name, attrs in pairs {
   ['@lsp.type.namespace'] = 'Directory',
   -- ['@lsp.type.number'] = {},
   -- ['@lsp.type.operator'] = {},
-  ['@lsp.type.parameter'] = { fg = a.fg, bold = bold },
-  -- ['@lsp.type.property'] = {},
+  ['@lsp.type.parameter'] = '@variable.parameter',
   -- ['@lsp.type.struct'] = {},
   -- ['@lsp.type.type'] = {},
   -- ['@lsp.type.typeParameter'] = {},

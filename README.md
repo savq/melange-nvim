@@ -82,3 +82,9 @@ and it's been inspired by many colorschemes, in particular Ayu and Gruvbox.
 
 <img width="1326" title="Melange Dark with IBM Plex Mono" alt="Screenshot of code listing using melange dark" src="https://user-images.githubusercontent.com/30883030/212500086-a6709213-c82a-4eca-8f3f-67fdc5c26f23.png">
 <img width="1326" title="Melange Light with IBM Plex Mono" alt="Screenshot of code listing using melange light" src="https://user-images.githubusercontent.com/30883030/212500082-b67699c7-09dd-42f5-ac7e-ee71ca41c5c6.png">
+
+
+
+
+Negor 
+
